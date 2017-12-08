@@ -1,0 +1,151 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Critical assessment of Linear-Response Excitations in Molecular system\\
+or \\
+On the Localization of the Linear-Response excitations in Open Systems}
+\author{You}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+By performing linear-response (LR)-TDDFT calculation of molecular systems within a highly complete real-space basis set, we analyse how the behaviour of the dynamical polarizability is influenced by
+the discretization conditions of the computational treatment.
+We show that optical excitations of energy below the LR ionization potential behave as observable, localized quantities, that can be studied with high precision, provided an adequate level of completeness.
+We then present indicators that can help to quantify such potential observable property of an excitation, that can be evaluated in any discretization scheme.
+Under this light, we also show that 
+excitation energies above ionization threshold do not exhibit such observable features and \emph{cannot} be considered as poles of the dynamical polarizability.
+This result is a inherent behaviour of the system's Liouvillian, and does not depend on computational treatment of the unoccupied subspace.
+\end{abstract}
+
+\section{Reboot with recent considerations}
+\begin{itemize}
+\item Write the excitations as the eigenstates of the Liouvillian:
+\begin{itemize}
+\item The Casida Matrix provides the eigenvectors in the basis of the unperturbed transitions
+\item From the Casida eigenproblem we 
+get the poles of the dynamical polarizability and we may reconstruct the perturbed wavefunctions
+\item Lot of solution in state of 
+the art to express \emph{the same information}, still by avoiding the explicit diagonalization of the problem
+\end{itemize}
+\item Such transitions might also be written in terms of the solutions of the eigenproblem for the perturbed hamiltonian
+\begin{itemize}
+\item There are therefore excitations which correspond to localized solutions of the above eigenproblems
+\item There is a \emph{energy threshold} above which the eigenfunction associated \emph{cannot be anymore} localized
+\end{itemize}
+\item Below threshold, the eigenfunction are localized and the energy values are \emph{observable} quantities (there is a convergence in terms of the simulation parameters)
+\begin{itemize}
+\item Casida treatments for different
+basis sets exhibit convergence of the low-energy excitations
+\item Still, even for such localized excitations, non-trivial dependence on the empty states on some of excitation value is observed (energies converge relatively slowly wrt $N_\alpha$)
+\item The locality of the excitation can be \emph{measured}
+{\bf NEW idea for the SoB: why not to consider}
+$$
+\int \mathrm d \mathbf r
+\rho(\mathbf r) |\phi_p^E(\mathbf r)|^2
+$$
+or similar quantities, that are independent on the number of empty and  bound states
+\item Localized Excitation are the  only one with an observable character (this is surely already known)
+\item The spectrum of the Loiuvillian in this regime is a \emph{discrete} spectrum; the excitation energies are \emph{poles} of the dynamical polarizability
+nano\item We may associate the value of the threshold to the \emph{ionization potential}: This is a very intersting remark in my opinion: the physics of the optical excitation is observable (and therefore localized) only if the energies are not higher than the energy needed to ionize the system. After this point, it seems normal to me that the ``optical'' excitations with real value of the energy are not  meant to be observable anymore.
+\item Optical Excitations below threshold have therefore a (very) long lifetime (poles on the real axis), and they contribute to the analytic structure of the dynamical polarizability.
+\end{itemize}
+\item Above this threshold the energies have a strong dependence on the computational treatment
+\begin{itemize}
+\item The high-energy part of the 
+spectrum does not converge with the 
+boundary conditions, even though they converge wrt the empty states (established techniques \emph{do not solve} such problem)
+\item This is \emph{not} a problem that is related to the continuum collapse of the empty states.
+\item They belong to the continuum of  the Liouvillian $\rightarrow$ they collapse, or depend strongly on the basis set adopted
+\item They cannot be considered separately \emph{even when they are expressed in localized basis} as 
+their shape is dependent on the treatment
+\item They energies are not \emph{true} poles of the dynamical polarizability (the spectra converge only by superposition of deltas)
+\end{itemize}
+\item Optical excitation above Ionization threshold are therefore observable \emph{only} if they possess a lifetime (the peaks of the spectrum have a well-defined broadening). In this way they might be expressed in terms of resonant wavefunctions
+\end{itemize}
+
+\section{Draft of the paper - old notes}
+
+\begin{itemize}
+\item Aim of the paper: Compute the electronic properties of a molecular system with the formalism of linear scaling using a LR-TDDFT inside BigDFT code. 
+%We also want to define a set of computational tools that allow to check the reliability of the computation.  
+\end{itemize}
+
+\begin{itemize}
+\item Motivation: the DFT code have reached reliable features of precision for the computation of the GS. The same probletic are instead needed in order to achieve the same type of results for spectroscopic properties in large systems
+\begin{itemize}
+\item Quantify the impact of several modelling of a given systems (environment, disorder)
+\item Systematic approach has proven its effectiveness for GS calculations (easy to handle)~\cite{deltatest2016}. The quality of localized basis function is therefore easy to quantify (variational theorem)
+\item A challenge is represented by large scale computation for \emph{molecular} systems
+\end{itemize}
+\item State-of-the-art 
+\begin{itemize}
+\item localized basis set for representing the Hamiltonians (e.g. Fiesta (Blase, Olevano), FHI-Aims, GWMol)
+\item This approach has been also generalized to LR calculation in the case of ONETEP \cite{Ratcliff2013}. However little is said about the reliability of the results in terms of the convergence of the spectra
+\end{itemize}
+\item Content of the paper: 
+\begin{itemize}
+\item Brief illustration of the support function approach in wavelets (Large systems are  accessible for the structure (Energy, Forces,\ldots)
+\item We want to exploit the wavelet properties in the context of LR, \emph{by also providing some criteria} which may be of interest for the evaluation of the quality of the LR results.
+\end{itemize}
+\item Conclusions and implications
+\begin{itemize}
+\item We might apply this formalism also in the contect of MBPT and inspect the validity of the linear response functional for e.g. GW calcualtions (the perturbation operator will be different from the dipole)
+\end{itemize}
+\end{itemize}
+
+
+\section{Introduction}
+
+\subsection{How to add Comments}
+
+Comments can be added to your project by clicking on the comment icon in the toolbar above. % * <john.hammersley@gmail.com> 2016-07-03T09:54:16.211Z:
+%
+% Here's an example comment!
+%
+To reply to a comment, simply click the reply button in the lower right corner of the comment, and you can close them when you're done.
+
+Comments can also be added to the margins of the compiled PDF using the todo command\todo{Here's a comment in the margin!}, as shown in the example on the right. You can also add inline comments:
+
+\todo[inline, color=green!40]{This is an inline comment.}
+
+\subsection{How to add Tables}
+
+Use the table and tabular commands for basic tables --- see Table~\ref{tab:widgets}, for example. 
+
+\begin{table}
+\centering
+\begin{tabular}{l|r}
+Item & Quantity \\\hline
+Widgets & 42 \\
+Gadgets & 13
+\end{tabular}
+\caption{\label{tab:widgets}An example table.}
+\end{table}
+
+\subsection{How to add Citations and a References List}
+
+You can upload a \verb|.bib| file containing your BibTeX entries, created with JabRef; or import your \href{https://www.overleaf.com/blog/184}{Mendeley}, CiteULike or Zotero library as a \verb|.bib| file. You can then cite entries from it, like this: \cite{greenwade93}. Just remember to specify a bibliography style, as well as the filename of the \verb|.bib|.
+
+You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
+
+We hope you find Overleaf useful, and please let us know if you have any feedback using the help menu above --- or use the contact form at \url{https://www.overleaf.com/contact}!
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}
