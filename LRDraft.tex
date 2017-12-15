@@ -11,8 +11,80 @@
 %% Useful packages
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathtools,braket}
+\usepackage{xifthen}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+% notation for standard math
+\renewcommand{\d}{\partial}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\dd}{{\rm d}}
+\renewcommand{\r}{{\bf r}}
+\newcommand{\x}{{\bf x}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\intdef}[3]{\int_{#1}^{#2} \dd {#3}}
+\newcommand{\intover}[1]{\int_{-\infty}^{+\infty} \dd {#1}}
+\newcommand{\sint}{\mathrlap{\displaystyle\int}
+\mathrlap{\textstyle\sum}
+\phantom{\mathrlap{\displaystyle
+\int}\textstyle\sum}}
+
+% notatiotion for equation environments
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\baa}{\begin{align}}
+\newcommand{\eaa}{\end{align}}
+\newcommand{\nn}{\notag}
+\newcommand{\qq}{\qquad}
+\newcommand{\lb}{\label}
+\newcommand{\mat}[1]{\begin{pmatrix} #1\end{pmatrix}}
+
+% notation for the operators
+\newcommand{\op}[1]{\hat {#1}}
+\newcommand{\sop}[1]{\op{\op {#1}}}
+\newcommand{\commutator}[2]{\left[ {#1} , {#2} \right]}
+\newcommand{\trace}[1]{\mathrm{tr}\left(#1\right)}
+\newcommand{\argument}[1]{\ifthenelse{\isempty{#1}{}}{}{(#1)}}
+\newcommand{\matop}[1]{\mathbf{#1}}
+\newcommand{\optr}[1]{\check #1}
+
+% notation for the states
+\newcommand{\tket}[1]{| \tilde #1 \rangle}
+\newcommand{\tbra}[1]{\langle \tilde #1 |}
+\newcommand{\brket}[2]{\langle  #1 | #2 \rangle} %standard braket
+\newcommand{\tbraket}[2]{\langle \tilde #1 | #2 \rangle}
+\newcommand{\ketbra}[2]{| #1 \rangle \langle #2 |}
+\newcommand{\tketbra}[2]{| #1 \rangle \langle \tilde #2 |}
+\newcommand{\sket}[2]{| #2)^{#1}}
+\newcommand{\sbra}[2]{( #2|_{#1}}
+\newcommand{\sketor}[2]{| #2]^{#1}}
+\newcommand{\sbraor}[2]{[ #2|_{#1}}
+\newcommand{\sbraket}[2]{\braket{\op{#1} | \op{#2}}}
+\newcommand{\dket}[1]{\Bigl| #1 \Bigr)}
+\newcommand{\dbra}[1]{\Bigl(#1 \Bigr|}
+\newcommand{\dbraket}[2]{\Bigl(#1 \Bigl| #2 \Bigr)}
+\newcommand{\dketor}[1]{\Bigl| #1 \Bigr]}
+\newcommand{\dbraor}[1]{\Bigl[#1 \Bigr|}
+\newcommand{\hket}[1]{| #1 ]}
+\newcommand{\hbra}[1]{[ #1 |}
+\newcommand{\hbraket}[2]{[#1 | #2 ]}
+
+% special operators
+\newcommand{\dmnot}{\op{\rho}_0}
+\newcommand{\dm}{\op{\rho}}
+\newcommand{\hnot}{\op{H}_0}
+\newcommand{\hone}[1]{\op{H}_1\argument{#1}}
+\newcommand{\transition}[1]{\op T_{#1}}
+\newcommand{\excite}[2]{\op e_{{#1}{#2}}}
+\newcommand{\decay}[2]{\op d_{{#1}{#2}}}
+\newcommand{\honetmp}[1][]{\op{H_1}\argument{#1}} 
+\newcommand{\identity}{\op{\mathbb I}}
+\newcommand{\rmat}[1]{\optr R}
+
 
 \title{Critical assessment of Linear-Response Excitations in Molecular system\\
 or \\
@@ -61,7 +133,8 @@ $$
 or similar quantities, that are independent on the number of empty and  bound states
 \item Localized Excitation are the  only one with an observable character (this is surely already known)
 \item The spectrum of the Loiuvillian in this regime is a \emph{discrete} spectrum; the excitation energies are \emph{poles} of the dynamical polarizability
-nano\item We may associate the value of the threshold to the \emph{ionization potential}: This is a very intersting remark in my opinion: the physics of the optical excitation is observable (and therefore localized) only if the energies are not higher than the energy needed to ionize the system. After this point, it seems normal to me that the ``optical'' excitations with real value of the energy are not  meant to be observable anymore.
+nano\item We may associate the value of the threshold to the \emph{ionization potential}: This is a very intersting remark in my opinion: the physics of the optical excitation is observable 
+(and therefore localized) only if the energies are not higher than the energy needed to ionize the system. After this point, it seems normal to me that the ``optical'' excitations with real value of the energy are not  meant to be observable anymore.
 \item Optical Excitations below threshold have therefore a (very) long lifetime (poles on the real axis), and they contribute to the analytic structure of the dynamical polarizability.
 \end{itemize}
 \item Above this threshold the energies have a strong dependence on the computational treatment
@@ -77,6 +150,99 @@ their shape is dependent on the treatment
 \end{itemize}
 \item Optical excitation above Ionization threshold are therefore observable \emph{only} if they possess a lifetime (the peaks of the spectrum have a well-defined broadening). In this way they might be expressed in terms of resonant wavefunctions
 \end{itemize}
+
+\section{THEORY}
+
+\subsection{Basic definitions}
+
+We consider a generic one-body quantum mechanical problem described by the hermitian Hamiltonian $\hnot$  written in terms of the standard 
+kinetic operator $\op T$ plus a one-body potential $\op V$, which we assume to be completely general, i.e. possibly nonlocal.
+We consider open systems, so that $\hnot$ is defined on $\mathbb L_2(\mathbb R_3)$ and the basis of its eigenfunctions spans this 
+functional space. Therefore, together with the discrete part of its spectrum $\epsilon_p$, the Hamiltonian may have an essential spectrum 
+$\epsilon(\alpha)$, parametrized by the continuum label $\alpha$. 
+
+A generic state $\ket{f} \in \mathbb L_2(\mathbb R_3)$ can be expanded in the basis of the eigenstates of $\hnot$, that is:
+\be\lb{ketBasisExpDef1}
+\ket{f} = \sum_p f_p \ket{\psi_p} + \int \dd \alpha f(\alpha) \ket{\psi(\alpha)}  = 
+\sint \dd s f(s) \ket{\psi(s)} \;,
+\ee
+where we have introduced the compact multi-index $s$ that collect both the discrete and continuum part of the spectrum of $\hnot$.
+The normalization of the basis can be chosen so that the standard orthonormality condition holds, that is: 
+\be
+\brket{\psi(s)}{\psi(s')} = \delta(s-s') \;,
+\ee
+and the completeness condition is written as:
+\be\lb{completenessH0basis1}
+\identity = \sint \dd s \ketbra{\psi(s)}{\psi(s)} = \sum_{p} \ketbra{\psi_p}{\psi_p} + \int \dd\alpha \ketbra{\psi(\alpha)}{\psi(\alpha)} \;. 
+\ee
+Thanks to this condition the coefficients of the expansion \eqref{ketBasisExpDef1} can be expressed via a scalar products, namely $f_{p} = 
+\brket{\psi_p}{f}$ and $f(\alpha) = \brket{\psi(\alpha)}{f}$.
+
+\subsection{Time evolution of states in the linear response regime}
+
+We discuss the time evolution of a generic state vector in the case in which a hermitian time dependent perturbation $\hone{t}$ is added to $\hnot$. 
+To achieve this task we have to solve the time dependent Schroedinger equation supplied by the knowledge of the state at the ``initial'' time $t_0$.
+We seek for a solution of the form:
+\be\lb{ketTimeEvol1}
+\ket{\psi(t_{0},t)} = e^{-\ii \hnot t} \op{U}_{I}(t,t_0) e^{\ii \hnot t_0}\ket{\psi_0} \; . 
+\ee
+where $\op{U}_I(t,t_0)$ is the time evolution operator induced by $\hone{}$ that satisfies the ``initial'' time condition $\op{U}_I(t_0,t_0)=1$. 
+Plugging the expression \eqref{ketTimeEvol1} in the Schroedinger equation we obtain a differential equation for $\op{U}_I$ that can be solved 
+iteratively as a power series in $\hone{}$. Limiting to the linear order provides:
+\be \lb{UiLinOrderSol1}
+\op{U}_I(t,t_0) = \identity - \ii \intdef{t_0}{t}{t'} e^{\ii \hnot t'} \hone{t'} e^{-\ii \hnot t'} \; .
+\ee
+So, at the first order in $\hone{}$ equation \eqref{ketTimeEvol1} can thus be written as:
+\be \lb{ketTimeEvol2} 
+\ket{\psi(t_{0},t)} = \left( \op{U}_0(t-t_0) - \ii \intdef{t_0}{t}{t'} \op{U}_0(t-t') \hone{t'} 
+\op{U}_0(t'-t_0) \right)\ket{\psi_0} \; ,
+\ee
+were we have defined the time evolution operator of the unperturbed Hamiltonian by
+\be
+\op{U}_0(t-t_0)\equiv e^{-\ii \hnot(t -t_0)} \;.
+\ee
+The time evolution of left vectors can be derived in the same way. We can express the temporal evolution of the left 
+vectors in the form:
+\be \lb{braTimeEvol1}
+\bra{\psi(t_{0},t)} = \bra{\psi_0} e^{-\ii \hnot t_0} \op{U}_{I}(t_0,t) e^{\ii \hnot t} \;,
+\ee
+plugging this equation in the conjugate Schroedinger equation and pursuing the same procedure defined above, we obtain the 
+linear order expression of time evolution of left vectors:
+\be\lb{leftVectTimeEvol2}
+\bra{\psi(t_{0},t)} = \bra{\psi_0} \left( \op{U}_0(t_0-t) + \ii \intdef{t_0}{t}{t'} \op{U}_0(t_0-t') 
+\hone{t'} \op{U}_0(t'-t) \right) 
+\ee
+It is immediate to check that, in order to preserve the norm vectors during the time evolution, it is sufficient that $\op{U}_I$ 
+possesses the  semi-group structure $\op{U}_I(t_2,t_1) \op{U}_I(t_1,t_0) = \op{U}_I(t_2,t_0)$. An inspection of \eqref{UiLinOrderSol1}
+evidences that this condition is satisfied in the linear response regime.
+
+
+
+
+
+
+\subsubsection{Evolution of the eigenstates of $\hnot$. Adiabatic limit vs finite time switch-on procedure}
+
+
+
+
+
+% \be \label{SchroedingerKet1}
+% \ii \partial_t \ket{\psi(t)}  = \left( \hnot + \hone{t}\right) \ket{\psi(t)}  \;,
+% \ee
+
+
+
+
+
+
+\subsection{Linear response on the density operator. Liouville equation in the time domain}
+
+\subsection{Self-consistent Hamiltonians. Generalized Liouville operator}
+
+\subsection{Formulation in the frequency domain}
+
+\subsection{Analysis of the excitations}
 
 \section{Draft of the paper - old notes}
 
@@ -109,41 +275,41 @@ their shape is dependent on the treatment
 \end{itemize}
 
 
-\section{Introduction}
-
-\subsection{How to add Comments}
-
-Comments can be added to your project by clicking on the comment icon in the toolbar above. % * <john.hammersley@gmail.com> 2016-07-03T09:54:16.211Z:
-%
-% Here's an example comment!
-%
-To reply to a comment, simply click the reply button in the lower right corner of the comment, and you can close them when you're done.
-
-Comments can also be added to the margins of the compiled PDF using the todo command\todo{Here's a comment in the margin!}, as shown in the example on the right. You can also add inline comments:
-
-\todo[inline, color=green!40]{This is an inline comment.}
-
-\subsection{How to add Tables}
-
-Use the table and tabular commands for basic tables --- see Table~\ref{tab:widgets}, for example. 
-
-\begin{table}
-\centering
-\begin{tabular}{l|r}
-Item & Quantity \\\hline
-Widgets & 42 \\
-Gadgets & 13
-\end{tabular}
-\caption{\label{tab:widgets}An example table.}
-\end{table}
-
-\subsection{How to add Citations and a References List}
-
-You can upload a \verb|.bib| file containing your BibTeX entries, created with JabRef; or import your \href{https://www.overleaf.com/blog/184}{Mendeley}, CiteULike or Zotero library as a \verb|.bib| file. You can then cite entries from it, like this: \cite{greenwade93}. Just remember to specify a bibliography style, as well as the filename of the \verb|.bib|.
-
-You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
-
-We hope you find Overleaf useful, and please let us know if you have any feedback using the help menu above --- or use the contact form at \url{https://www.overleaf.com/contact}!
+% \section{Introduction}
+% 
+% \subsection{How to add Comments}
+% 
+% Comments can be added to your project by clicking on the comment icon in the toolbar above. % * <john.hammersley@gmail.com> 2016-07-03T09:54:16.211Z:
+% %
+% % Here's an example comment!
+% %
+% To reply to a comment, simply click the reply button in the lower right corner of the comment, and you can close them when you're done.
+% 
+% Comments can also be added to the margins of the compiled PDF using the todo command\todo{Here's a comment in the margin!}, as shown in the example on the right. You can also add inline comments:
+% 
+% \todo[inline, color=green!40]{This is an inline comment.}
+% 
+% \subsection{How to add Tables}
+% 
+% Use the table and tabular commands for basic tables --- see Table~\ref{tab:widgets}, for example. 
+% 
+% \begin{table}
+% \centering
+% \begin{tabular}{l|r}
+% Item & Quantity \\\hline
+% Widgets & 42 \\
+% Gadgets & 13
+% \end{tabular}
+% \caption{\label{tab:widgets}An example table.}
+% \end{table}
+% 
+% \subsection{How to add Citations and a References List}
+% 
+% You can upload a \verb|.bib| file containing your BibTeX entries, created with JabRef; or import your \href{https://www.overleaf.com/blog/184}{Mendeley}, CiteULike or Zotero library as a \verb|.bib| file. You can then cite entries from it, like this: \cite{greenwade93}. Just remember to specify a bibliography style, as well as the filename of the \verb|.bib|.
+% 
+% You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
+% 
+% We hope you find Overleaf useful, and please let us know if you have any feedback using the help menu above --- or use the contact form at \url{https://www.overleaf.com/contact}!
 
 \bibliographystyle{alpha}
 \bibliography{sample}
