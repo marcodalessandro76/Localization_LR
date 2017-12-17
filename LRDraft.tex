@@ -217,12 +217,32 @@ possesses the  semi-group structure $\op{U}_I(t_2,t_1) \op{U}_I(t_1,t_0) = \op{U
 evidences that this condition is satisfied in the linear response regime.
 
 
-
-
-
-
 \subsubsection{Evolution of the eigenstates of $\hnot$. Adiabatic limit vs finite time switch-on procedure}
 
+We are interested in determining the time evolution of an eigenstate of $\hnot$ under the action of the perturbation $\hone{t}$ in the linear 
+response regime. A proper statement of the problem requires the specification of the way in which the perturbation is switched on.
+Possible choice of the switching on protocol are, for instance, the \emph{adiabatic limit} and the \emph{sudden limit} case. In the first
+case the perturbation is switched on at $t_0=-\infty$, but the intrinsic time structure of $\hone{}$ is modified by the damping function 
+$e^{-\eta_a |t|}$. In the second protocol the perturbation is abruptly switched on at the finite time $t_0$, so that the time structure of
+$\hone{}$ is multiplied times the $\theta$-function $\theta(t-t_0)$.
+
+It is possible to write:
+\be \lb{ketTimeEvol3} 
+\ket{\psi_p(t)} = e^{-\ii E_p t}\left( \identity - \ii \op A(t_0,t)  \right)\ket{\psi_p} \; ,
+\ee
+where: 
+\be
+\op A(t_0,t) = \intdef{t_0}{t}{t'} \op{U}_0(t-t') \hone{t'} \op{U}_0(t'-t)
+\ee
+we can write:
+\be
+\op A(t) = \intdef{-\infty}{\infty}{t'} \op{U}^{-}_0(t-t') \Phi^{a.l,s.l}(t') \op{U}^{+}_0(t'-t)
+\ee
+where:
+\be
+\Phi^{a.l.}(t) = e^{-\eta_a |t|} \hone{t} \;, \qq
+\Phi^{s.l.}(t) = \theta(t-t_0) \hone{t}
+\ee
 
 
 
