@@ -23,6 +23,7 @@
 \newcommand{\dd}{{\rm d}}
 \renewcommand{\r}{{\bf r}}
 \newcommand{\x}{{\bf x}}
+\newcommand{\eps}{\epsilon}
 \newcommand{\ii}{\mathrm{i}}
 \newcommand{\intdef}[3]{\int_{#1}^{#2} \dd {#3}}
 \newcommand{\intover}[1]{\int_{-\infty}^{+\infty} \dd {#1}}
@@ -95,13 +96,13 @@ On the Localization of the Linear-Response excitations in Open Systems}
 \maketitle
 
 \begin{abstract}
-By performing linear-response (LR)-TDDFT calculation of molecular systems within a highly complete real-space basis set, we analyse how the behaviour of the dynamical polarizability is influenced by
-the discretization conditions of the computational treatment.
-We show that optical excitations of energy below the LR ionization potential behave as observable, localized quantities, that can be studied with high precision, provided an adequate level of completeness.
-We then present indicators that can help to quantify such potential observable property of an excitation, that can be evaluated in any discretization scheme.
-Under this light, we also show that 
-excitation energies above ionization threshold do not exhibit such observable features and \emph{cannot} be considered as poles of the dynamical polarizability.
-This result is a inherent behaviour of the system's Liouvillian, and does not depend on computational treatment of the unoccupied subspace.
+By performing linear-response (LR)-TDDFT calculation of molecular systems within a highly complete real-space basis set, we analyze how the behavior of the dynamical 
+polarizability is influenced by the discretization conditions of the computational treatment.
+We show that optical excitations of energy below the LR ionization potential behave as observable, localized quantities, that can be studied with high precision, 
+provided an adequate level of completeness. We then present indicators that can help to quantify such potential observable property of an excitation, that can be evaluated 
+in any discretization scheme. Under this light, we also show that excitation energies above ionization threshold do not exhibit such observable features and \emph{cannot} be 
+considered as poles of the dynamical polarizability. This result is a inherent behavior of the system's Liouvillian, and does not depend on computational treatment of the 
+unoccupied subspace.
 \end{abstract}
 
 \section{Reboot with recent considerations}
@@ -132,9 +133,10 @@ $$
 $$
 or similar quantities, that are independent on the number of empty and  bound states
 \item Localized Excitation are the  only one with an observable character (this is surely already known)
-\item The spectrum of the Loiuvillian in this regime is a \emph{discrete} spectrum; the excitation energies are \emph{poles} of the dynamical polarizability
-nano\item We may associate the value of the threshold to the \emph{ionization potential}: This is a very intersting remark in my opinion: the physics of the optical excitation is observable 
-(and therefore localized) only if the energies are not higher than the energy needed to ionize the system. After this point, it seems normal to me that the ``optical'' excitations with real value of the energy are not  meant to be observable anymore.
+\item The spectrum of the Liouvillian in this regime is a \emph{discrete} spectrum; the excitation energies are \emph{poles} of the dynamical polarizability
+nano\item We may associate the value of the threshold to the \emph{ionization potential}: This is a very interesting remark in my opinion: the physics of the optical excitation is observable 
+(and therefore localized) only if the energies are not higher than the energy needed to ionize the system. After this point, it seems normal to me that the ``optical'' excitations with 
+real value of the energy are not  meant to be observable anymore.
 \item Optical Excitations below threshold have therefore a (very) long lifetime (poles on the real axis), and they contribute to the analytic structure of the dynamical polarizability.
 \end{itemize}
 \item Above this threshold the energies have a strong dependence on the computational treatment
@@ -148,7 +150,8 @@ boundary conditions, even though they converge wrt the empty states (established
 their shape is dependent on the treatment
 \item They energies are not \emph{true} poles of the dynamical polarizability (the spectra converge only by superposition of deltas)
 \end{itemize}
-\item Optical excitation above Ionization threshold are therefore observable \emph{only} if they possess a lifetime (the peaks of the spectrum have a well-defined broadening). In this way they might be expressed in terms of resonant wavefunctions
+\item Optical excitation above Ionization threshold are therefore observable \emph{only} if they possess a lifetime (the peaks of the spectrum have a well-defined broadening). 
+In this way they might be expressed in terms of resonant wavefunctions
 \end{itemize}
 
 \section{THEORY}
@@ -158,8 +161,8 @@ their shape is dependent on the treatment
 We consider a generic one-body quantum mechanical problem described by the hermitian Hamiltonian $\hnot$  written in terms of the standard 
 kinetic operator $\op T$ plus a one-body potential $\op V$, which we assume to be completely general, i.e. possibly nonlocal.
 We consider open systems, so that $\hnot$ is defined on $\mathbb L_2(\mathbb R_3)$ and the basis of its eigenfunctions spans this 
-functional space. Therefore, together with the discrete part of its spectrum $\epsilon_p$, the Hamiltonian may have an essential spectrum 
-$\epsilon(\alpha)$, parametrized by the continuum label $\alpha$. 
+functional space. Therefore, together with the discrete part of its spectrum $\eps_p$, the Hamiltonian may have an essential spectrum 
+$\eps(\alpha)$, parametrized by the continuum label $\alpha$. 
 
 A generic state $\ket{f} \in \mathbb L_2(\mathbb R_3)$ can be expanded in the basis of the eigenstates of $\hnot$, that is:
 \be\lb{ketBasisExpDef1}
@@ -217,48 +220,105 @@ possesses the  semi-group structure $\op{U}_I(t_2,t_1) \op{U}_I(t_1,t_0) = \op{U
 evidences that this condition is satisfied in the linear response regime.
 
 
-\subsubsection{Evolution of the eigenstates of $\hnot$. Adiabatic limit vs finite time switch-on procedure}
+\subsubsection{Time evolution of stationary states. Adiabatic limit vs finite time switch-on procedure}
 
 We are interested in determining the time evolution of an eigenstate of $\hnot$ under the action of the perturbation $\hone{t}$ in the linear 
 response regime. A proper statement of the problem requires the specification of the way in which the perturbation is switched on.
-Possible choice of the switching on protocol are, for instance, the \emph{adiabatic limit} and the \emph{sudden limit} case. In the first
+Possible choice of the switching on protocol are, for instance, the \emph{adiabatic limit} and the \emph{sudden limit} protocols. In the first
 case the perturbation is switched on at $t_0=-\infty$, but the intrinsic time structure of $\hone{}$ is modified by the damping function 
-$e^{-\eta_a |t|}$. In the second protocol the perturbation is abruptly switched on at the finite time $t_0$, so that the time structure of
+$e^{-\eta_a |t|}$. In the second one the perturbation is abruptly switched on at the finite time $t_0$, so that the time structure of
 $\hone{}$ is multiplied times the $\theta$-function $\theta(t-t_0)$.
 
-It is possible to write:
+Starting from the generic time evolution equation \eqref{ketTimeEvol2} and choosing the initial condition in the form 
+$\ket{\psi_0} = e^{-\\i \eps_p t_0}\ket{\psi_p}$, we can write the time evolution of a (discrete) eigenvector of $\hnot$ as:
 \be \lb{ketTimeEvol3} 
-\ket{\psi_p(t)} = e^{-\ii E_p t}\left( \identity - \ii \op A(t_0,t)  \right)\ket{\psi_p} \; ,
+\ket{\psi_p(t)} = e^{-\ii \eps_p t}\left( \identity - \ii \intdef{t_0}{t}{t'} \op{U}_0(t-t') \Phi^{a.l,s.l}(t') \op{U}_0(t'-t)  \right)\ket{\psi_p} \; ,
 \ee
-where: 
-\be
-\op A(t_0,t) = \intdef{t_0}{t}{t'} \op{U}_0(t-t') \hone{t'} \op{U}_0(t'-t)
-\ee
-we can write:
-\be
-\op A(t) = \intdef{-\infty}{\infty}{t'} \op{U}^{-}_0(t-t') \Phi^{a.l,s.l}(t') \op{U}^{+}_0(t'-t)
-\ee
-where:
+where we have introduced the \emph{perturbing field operators}: 
 \be
 \Phi^{a.l.}(t) = e^{-\eta_a |t|} \hone{t} \;, \qq
 \Phi^{s.l.}(t) = \theta(t-t_0) \hone{t}
 \ee
-
-
-
-
-% \be \label{SchroedingerKet1}
-% \ii \partial_t \ket{\psi(t)}  = \left( \hnot + \hone{t}\right) \ket{\psi(t)}  \;,
-% \ee
-
-
-
-
-
+that codify the effective of the perturbing Hamiltonian in the specific switch-on procedure. Making usage of elementary properties of $\theta$ functions allows us
+to rewrite the former time integral as:
+\be\lb{AopDef1}
+\op A(t) = \intdef{-\infty}{\infty}{t'} \op{U}^{+}_0(t-t') \Phi^{a.l,s.l}(t') \op{U}^{-}_0(t'-t) \;,
+\ee
+so that the effect of the switch-on protocol are completely reabsorbed in the perturbing field. In the subsequent analysis we will omit the apex in the fields $\Phi$, 
+unless explicitly needed, to keep notations as simple as possible. Thanks to this definition we can express the time evolution of the eigenvectors of $\hnot$ in the 
+compact form:
+\be\lb{ketBraTimeEvol1}
+\ket{\psi_p(t)} = e^{-\ii \eps_p t}\left( \identity - \ii \op A(t)  \right)\ket{\psi_p} \; , \qq 
+\bra{\psi_p(t)} = \bra{\psi_p} \left( \identity + \ii \op A(t)  \right) e^{\ii \eps_p t} \; .
+\ee
 
 \subsection{Linear response on the density operator. Liouville equation in the time domain}
 
+We introduce the \emph{density operator} defined as the sum of the densities of all the occupied states having energy $\epsilon_p$ lower than the \emph{chemical potential} 
+(Fermi energy):
+\be\label{rhodef1}
+\dmnot = \sum_p^{n_{occ}} \ket{\psi_p} \bra{\psi_p}  \;. 
+\ee
+Clearly $\dmnot$ commutes with $\hnot$ and in the unperturbed case is a time-independent operator. When the perturbation is switched the system starts to evolve
+and we indicate with $\dm(t)$ the modified density of the perturbed system. We introduce the shorthand notation:
+\be\lb{rhodef2}
+\dm(t)  =  \dmnot + \dm'(t)\;,
+\ee
+where $\dm'(t)$ is called the \emph{response density operator} and represents the time dependent modification of the ground state density induced by the perturbation.
+Here we are assuming that the highest occupied energy level and the lowest unoccupied one will never intersect during the time evolution. Thanks to this condition, the 
+linear response regime the expression of $\dm'(t)$ can be readily derived using equations \eqref{ketBraTimeEvol1} and reads:  
+\be\lb{rhoTimeEvolutionDef3}
+\dm'(t) = \ii \commutator{\dmnot}{\op A(t)} \;.
+\ee
+The equation of motion (Liouville equation) for $\dm'$ is obtained by performing the time derivative of the previous equation. The derivative of $\op A(t)$ can be 
+computed starting from its definition and reads:
+\be
+\d_t\op A(t) = \op\Phi(t) -\\i \commutator{\hnot}{\op A(t)} \nn \;,
+\ee
+and using the Jacobi identity we have:
+\be\lb{LiouvilleRhoDef1}
+\ii \d_t \dm'(t) = \commutator{\op\Phi(t)}{\dmnot} + \ii\commutator{\hnot}{\commutator{\dmnot}{\op A(t)}} = 
+\commutator{\op\Phi(t)}{\dmnot} + \commutator{\hnot}{\dm'(t)} \;.
+\ee
+It is useful to introduce the \emph{Liouvillian} superoperator:
+\be
+\sop{\mathcal L_0} \equiv \commutator{\hnot}{\cdot} \;,
+\ee
+so that the Liouville equation can be written as:
+\be\lb{LiouvilleRhoDef2}
+\ii \d_t \dm'(t) = \sop{\mathcal L_0} \dm'(t) + \commutator{\op\Phi(t)}{\dmnot} \;.
+\ee
+
 \subsection{Self-consistent Hamiltonians. Generalized Liouville operator}
+
+Let us extend the the former analysis to self-consistent systems, \emph{i.e.} to the case in which the unperturbed Hamiltonian is itself a function of the density.
+In this case the perturbing field $\Phi$ has also the effect of adding a further perturbation operator to the perturbing Hamiltonian. In the linear response framework, 
+this latter quantity can be expressed as the functional derivatives of $\hnot$ with respect to the density kernel (evaluated at $\dm=\dmnot$) times the value of the
+induced density modification, that is:
+\be\label{V'tspacedef1}
+\op V'(t)= 
+\int \dd \r \dd \r' \frac{\delta\hnot}{\delta \rho_0(\r,\r')}
+\trace{\dm'(t) \ket{\r} \bra{\r'}} \;.
+\ee
+The Liouville equation for self-consistent systems can be written by adding the contribution of $\op V'$ to $\op\Phi$ in \eqref{LiouvilleRhoDef2}. 
+It reads:
+\be\lb{LiouvilleRhoSelfDef1}
+\ii \d_t \dm'(t) = \sop{\mathcal L_0} \dm'(t) + \commutator{\op V'(t)}{\dmnot} + \commutator{\op \Phi(t)}{\dmnot} \;.
+\ee
+We point out that the response density operator obeys a self-consistent equation, since the  induced perturbing field $\op V'$ is itself a function of $\dm'$. 
+It is possible to formally recast \eqref{LiouvilleRhoSelfDef1} in the same form of \eqref{LiouvilleRhoDef2} by introducing the \emph{coupling}
+superoperator:
+\be
+\sop{\mathcal K} = 
+\int \dd \r \dd \r' \commutator{\frac{\delta\hnot}{\delta \rho_0(\r,\r')}}{\dmnot}
+\trace{\cdot \ket{\r} \bra{\r'}} \;,
+\ee
+in this way the first commutator in \eqref{LiouvilleRhoSelfDef1} can be written as the formal action of the coupling superoperator to $\dm'$ and \eqref{LiouvilleRhoSelfDef1}
+can be written as:
+\be\lb{LiouvilleRhoSelfDef2}
+\ii \d_t \dm'(t) = \sop{\mathcal L} \dm'(t) + \commutator{\op \Phi(t)}{\dmnot} \;, \qq
+\sop{\mathcal L} = \sop{\mathcal L_0} + \sop{\mathcal K} \;.
+\ee
 
 \subsection{Formulation in the frequency domain}
 
