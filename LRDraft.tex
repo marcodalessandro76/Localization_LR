@@ -24,6 +24,7 @@
 \renewcommand{\r}{{\bf r}}
 \newcommand{\x}{{\bf x}}
 \newcommand{\eps}{\epsilon}
+\newcommand{\bbomega}{{\bar{\bar\omega}}}
 \newcommand{\ii}{\mathrm{i}}
 \newcommand{\intdef}[3]{\int_{#1}^{#2} \dd {#3}}
 \newcommand{\intover}[1]{\int_{-\infty}^{+\infty} \dd {#1}}
@@ -156,17 +157,17 @@ In this way they might be expressed in terms of resonant wavefunctions
 
 \section{THEORY}
 
-\subsection{Basic definitions}
+\subsection{Basic definitions}\lb{BasicDef}
 
 We consider a generic one-body quantum mechanical problem described by the hermitian Hamiltonian $\hnot$  written in terms of the standard 
 kinetic operator $\op T$ plus a one-body potential $\op V$, which we assume to be completely general, i.e. possibly nonlocal.
 We consider open systems, so that $\hnot$ is defined on $\mathbb L_2(\mathbb R_3)$ and the basis of its eigenfunctions spans this 
-functional space. Therefore, together with the discrete part of its spectrum $\eps_p$, the Hamiltonian may have an essential spectrum 
-$\eps(\alpha)$, parametrized by the continuum label $\alpha$. 
+functional space. Therefore, together with the discrete (bound) part of its spectrum $\eps_b$, the Hamiltonian may have an essential spectrum 
+$\eps(c)$, parametrized by the continuum label $c$. 
 
 A generic state $\ket{f} \in \mathbb L_2(\mathbb R_3)$ can be expanded in the basis of the eigenstates of $\hnot$, that is:
 \be\lb{ketBasisExpDef1}
-\ket{f} = \sum_p f_p \ket{\psi_p} + \int \dd \alpha f(\alpha) \ket{\psi(\alpha)}  = 
+\ket{f} = \sum_b f_b \ket{\psi_b} + \int \dd c f(c) \ket{\psi(c)}  = 
 \sint \dd s f(s) \ket{\psi(s)} \;,
 \ee
 where we have introduced the compact multi-index $s$ that collect both the discrete and continuum part of the spectrum of $\hnot$.
@@ -176,10 +177,10 @@ The normalization of the basis can be chosen so that the standard orthonormality
 \ee
 and the completeness condition is written as:
 \be\lb{completenessH0basis1}
-\identity = \sint \dd s \ketbra{\psi(s)}{\psi(s)} = \sum_{p} \ketbra{\psi_p}{\psi_p} + \int \dd\alpha \ketbra{\psi(\alpha)}{\psi(\alpha)} \;. 
+\identity = \sint \dd s \ketbra{\psi(s)}{\psi(s)} = \sum_{b} \ketbra{\psi_b}{\psi_b} + \int \dd c \ketbra{\psi(c)}{\psi(c)} \;. 
 \ee
-Thanks to this condition the coefficients of the expansion \eqref{ketBasisExpDef1} can be expressed via a scalar products, namely $f_{p} = 
-\brket{\psi_p}{f}$ and $f(\alpha) = \brket{\psi(\alpha)}{f}$.
+Thanks to this condition the coefficients of the expansion \eqref{ketBasisExpDef1} can be expressed via a scalar products, namely $f_{b} = 
+\brket{\psi_b}{f}$ and $f(c) = \brket{\psi(c)}{f}$.
 
 \subsection{Time evolution of states in the linear response regime}
 
@@ -230,9 +231,9 @@ $e^{-\eta_a |t|}$. In the second one the perturbation is abruptly switched on at
 $\hone{}$ is multiplied times the $\theta$-function $\theta(t-t_0)$.
 
 Starting from the generic time evolution equation \eqref{ketTimeEvol2} and choosing the initial condition in the form 
-$\ket{\psi_0} = e^{-\\i \eps_p t_0}\ket{\psi_p}$, we can write the time evolution of a (discrete) eigenvector of $\hnot$ as:
+$\ket{\psi_0} = e^{-\\i \eps_b t_0}\ket{\psi_b}$, we can write the time evolution of the generic $\ket{\psi_b}$ eigenvector of $\hnot$ as:
 \be \lb{ketTimeEvol3} 
-\ket{\psi_p(t)} = e^{-\ii \eps_p t}\left( \identity - \ii \intdef{t_0}{t}{t'} \op{U}_0(t-t') \op\Phi^{a.l,s.l}(t') \op{U}_0(t'-t)  \right)\ket{\psi_p} \; ,
+\ket{\psi_b(t)} = e^{-\ii \eps_b t}\left( \identity - \ii \intdef{t_0}{t}{t'} \op{U}_0(t-t') \op\Phi^{a.l,s.l}(t') \op{U}_0(t'-t)  \right)\ket{\psi_b} \; ,
 \ee
 where we have introduced the \emph{perturbing field operators}: 
 \be
@@ -244,21 +245,22 @@ to rewrite the former time integral as:
 \be\lb{AopDef1}
 \op A(t) = \intdef{-\infty}{\infty}{t'} \op{U}^{+}_0(t-t') \op\Phi^{a.l,s.l}(t') \op{U}^{-}_0(t'-t) \;,
 \ee
-so that the effect of the switch-on protocol are completely reabsorbed in the perturbing field. In the subsequent analysis we will omit the apex in the fields $\Phi$, 
+so that the effect of the switch-on protocol are completely reabsorbed in the perturbing field. In the subsequent analysis we will omit the apex in the fields $\op\Phi$, 
 unless explicitly needed, to keep notations as simple as possible. Thanks to this definition we can express the time evolution of the eigenvectors of $\hnot$ in the 
 compact form:
 \be\lb{ketBraTimeEvol1}
-\ket{\psi_p(t)} = e^{-\ii \eps_p t}\left( \identity - \ii \op A(t)  \right)\ket{\psi_p} \; , \qq 
-\bra{\psi_p(t)} = \bra{\psi_p} \left( \identity + \ii \op A(t)  \right) e^{\ii \eps_p t} \; .
+\ket{\psi_b(t)} = e^{-\ii \eps_b t}\left( \identity - \ii \op A(t)  \right)\ket{\psi_b} \; , \qq 
+\bra{\psi_b(t)} = \bra{\psi_b} \left( \identity + \ii \op A(t)  \right) e^{\ii \eps_b t} \; .
 \ee
 
 \subsection{Linear response on the density operator. Liouville equation in the time domain}
 
-We introduce the \emph{density operator} defined as the sum of the densities of all the occupied states having energy $\epsilon_p$ lower than the \emph{chemical potential} 
+We introduce the \emph{density operator} defined as the sum of the one-particle densities of all the states with energy lower than the \emph{chemical potential} 
 (Fermi energy):
 \be\label{rhodef1}
-\dmnot = \sum_p^{n_{occ}} \ket{\psi_p} \bra{\psi_p}  \;. 
+\dmnot = \sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}  \;,
 \ee
+where the index $p$ labels the occupied state, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with energy lower than the Fermi energy.
 Clearly $\dmnot$ commutes with $\hnot$ and in the unperturbed case is a time-independent operator. When the perturbation is switched the system starts to evolve
 and we indicate with $\dm(t)$ the modified density of the perturbed system. We introduce the shorthand notation:
 \be\lb{rhodef2}
@@ -292,7 +294,7 @@ so that the Liouville equation can be written as:
 \subsection{Self-consistent Hamiltonians. Generalized Liouville operator}
 
 Let us extend the the former analysis to self-consistent systems, \emph{i.e.} to the case in which the unperturbed Hamiltonian is itself a function of the density.
-In this case the perturbing field $\Phi$ has also the effect of adding a further perturbation operator to the perturbing Hamiltonian. In the linear response framework, 
+In this case the perturbing field $\op\Phi$ has also the effect of adding a further perturbation operator to the perturbing Hamiltonian. In the linear response framework, 
 this latter quantity can be expressed as the functional derivatives of $\hnot$ with respect to the density kernel (evaluated at $\dm=\dmnot$) times the value of the
 induced density modification, that is:
 \be\label{V'tspacedef1}
@@ -326,31 +328,92 @@ We reformulate the Liouville equation \eqref{LiouvilleRhoSelfDef2} in the freque
 preferable to directly compute the action of the Liouville operator on the Fourier transform of the response density, since in this
 way some subtleties that concerns the analytic structure in the $\omega$ complex plane can be properly taken into account.
 We first define the response density in the frequency domain that, staring from \eqref{rhoTimeEvolutionDef3}, is given by:
-\be\label{rhoPrimeOmegaDef1}
+\be\lb{rhoPrimeOmegaDef1}
 \dm'(\omega) \equiv \intover{t} e^{\ii \omega t} \dm'(t)
 = \ii \commutator{\dmnot}{\op A(\omega)} \;,
 \ee
 where $\op A(\omega)$ is The Fourier transform of \eqref{AopDef1} and reads:
-\be \label{AomegaDef1}
+\be \lb{AomegaDef1}
 \op A(\omega) = \frac{1}{2\pi} \int_{-\infty}^\infty  \dd \omega'
 \op G_0^+(\omega') \op \Phi(\omega) \op G_0^-(\omega'-\omega)\;.
 \ee
 The action of $\sop{\mathcal L_0}$ on $\dm'(\omega)$ follows from \eqref{L0sopDef1}:
-\be\label{LiouvillianF'def1}
+\be\lb{LiouvillianRho'omegaDef1}
 \sop{\mathcal L_0} \dm'(\omega) = \ii \commutator{\hnot}{\commutator{\dmnot}{\op A(\omega)}} = 
-\ii \commutator{\dmnot}{\commutator{\hnot}{\op A(\omega)}}
-\;,
+\ii \commutator{\dmnot}{\commutator{\hnot}{\op A(\omega)}} \;,
 \ee
-\be\label{eoma}
-\commutator{\hnot }{\op A(\omega)} = \bar{\bar\omega} \op A(\omega) - \ii \op \Phi(\omega)\;.
+and the commutator between the unperturbed Hamiltonian and $\op A(\omega)$ can be directly computed starting from \eqref{AomegaDef1}: 
+\be
+\commutator{\hnot }{\op A(\omega)} = \bbomega \op A(\omega) - \ii \op \Phi(\omega)\;, \nn
 \ee
-where $\bar{\bar\omega} = \omega + 2\ii\eta$
-
-
-
-
+where $\bbomega \equiv \omega + 2\ii\eta$, so that:
+\be\lb{LiouvillianRho'omegaDef2}
+\sop{\mathcal L_0} \dm'(\omega) =  \bbomega\dm'(\omega) + \commutator{\dmnot}{\op\Phi(\omega)}\;.
+\ee
+The coupling superoperator has the same formal action on the response density both in the time and in the frequency domain, so the complete
+Liouville equation in $\omega$ space can be written as:
+\be\lb{LiouvillianRho'omegaDef3}
+\left(\bbomega - \sop{\mathcal L}\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot}\;.
+\ee
 
 \subsection{Analysis of the excitations}
+
+\subsubsection{Definition of the basis of transitions}
+
+We now introduce the notion of \emph{basis of transitions} and identify the operators than can be expanded in such a basis. 
+
+We split the complete
+set of eigenstates of $\hnot$ in two sets. The first one is composed by the eigenvectors of $\hnot$ in the subspace of the occupied orbitals. The second 
+one is composed by the remaining eigenvectors, both in the bound and in the continuum region, and its elements are denoted as $\ket{\psi(\alpha)}$, where $\alpha$ 
+is a multi-index in the sense described in \ref{BasicDef}. The elements of these sets satisfy the following orthonormality relation: 
+\be\lb{orthonormalityDef1}
+\brket{\psi(\alpha)}{\psi_p} = \brket{\psi_p}{\psi(\alpha)} = 0 \;, \qq \brket{\psi_p}{\psi_q} = \delta_{pq} \;, \qq
+\brket{\psi(\alpha)}{\psi(\beta)} = \delta(\alpha-\beta) \;.
+\ee
+Obviously, the direct sum of these two sets coincides with the complete set of eigenstates of $\hnot$ and thus 
+constitute a complete basis. 
+A generic operator can be decomposed in this basis and its formal expansion contains four distinct contribution of the form $\ketbra{\psi_p}{\psi_q}$, 
+$\ketbra{\psi(\alpha)}{\psi(\beta)}$, $\ketbra{\psi(\alpha)}{\psi_p}$, $\ketbra{\psi_p}{\psi(\alpha)}$. However an inspection of equations \eqref{rhoPrimeOmegaDef1}
+and \eqref{LiouvillianRho'omegaDef3} evidences that the relevant operators in the contest of the linear response are expressed as a commutator with $\dmnot$. 
+For this class of operators the only non vanishing contribution comes from the \emph{transition operators}:
+\be
+\excite{p}{\alpha} \equiv \ketbra{\psi(\alpha)}{\psi_p}\;, \qq
+\decay{\alpha}{p} \equiv \ketbra{\psi_p}{\psi(\alpha)} \;.
+\ee
+The orthonormality conditions \eqref{orthonormalityDef1} imply that:
+\be\lb{transitionOpOrthonormalityDef1}
+\trace{\excite{p}{\alpha}\excite{q}{\beta}} = \trace{\decay{\alpha}{p}\decay{\beta}{q}} = 0 \;, \qq
+\trace{\excite{p}{\alpha}\decay{\beta}{q}} = \delta_{pq}\delta(\alpha-\beta) \;,
+\ee
+so that the expansion of a suitable operator $\op O$ in the basis of transitions reads:
+\be\lb{OperatorTransBasisExpDef1}
+\op O = \sum_p\sint \dd \alpha\left(
+\excite{p}{\alpha}\trace{\decay{\alpha}{p}\op O} + \decay{\alpha}{p}\trace{\excite{p}{\alpha}\op O}
+\right)
+\ee
+In order to recast this expansion in a simpler expression it turns out to be useful to define the rank-2 vectors of the transition basis: 
+\be
+\sbra{p\alpha}{\cdot} \equiv 
+\mat{ \excite{p}{\alpha} \;, & \decay{\alpha}{p} }\;,
+\ee
+as well as a different representation for the trace between the operators and the above mentioned transitions:
+\be
+\sket{p\alpha}{\op O}  \equiv \mat{ \trace{ \op O \decay{\alpha}{p}} \\ 
+\trace{\op O \excite{p}{\alpha}}} \; .
+\ee
+Thanks to this formalism we have that equation \eqref{OperatorTransBasisExpDef1} can be expressed as:
+\be\lb{OperatorTransBasisExpDef2}
+\op O = \sum_p\sint \dd \alpha \sbra{p\alpha}{\cdot}\sket{p\alpha}{\op O} = 
+\dbraket{\cdot}{\op O} \;,
+\ee
+where the last equality implicitly define the index-less ``big-shaped'' vectors and the sum over unwritten indexes is understood.  
+
+
+\subsubsection{OPE of the Liouville operator}
+
+
+
+
 
 \section{Draft of the paper - old notes}
 
