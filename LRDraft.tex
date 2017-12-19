@@ -232,17 +232,17 @@ $\hone{}$ is multiplied times the $\theta$-function $\theta(t-t_0)$.
 Starting from the generic time evolution equation \eqref{ketTimeEvol2} and choosing the initial condition in the form 
 $\ket{\psi_0} = e^{-\\i \eps_p t_0}\ket{\psi_p}$, we can write the time evolution of a (discrete) eigenvector of $\hnot$ as:
 \be \lb{ketTimeEvol3} 
-\ket{\psi_p(t)} = e^{-\ii \eps_p t}\left( \identity - \ii \intdef{t_0}{t}{t'} \op{U}_0(t-t') \Phi^{a.l,s.l}(t') \op{U}_0(t'-t)  \right)\ket{\psi_p} \; ,
+\ket{\psi_p(t)} = e^{-\ii \eps_p t}\left( \identity - \ii \intdef{t_0}{t}{t'} \op{U}_0(t-t') \op\Phi^{a.l,s.l}(t') \op{U}_0(t'-t)  \right)\ket{\psi_p} \; ,
 \ee
 where we have introduced the \emph{perturbing field operators}: 
 \be
-\Phi^{a.l.}(t) = e^{-\eta_a |t|} \hone{t} \;, \qq
-\Phi^{s.l.}(t) = \theta(t-t_0) \hone{t}
+\op\Phi^{a.l.}(t) = e^{-\eta_a |t|} \hone{t} \;, \qq
+\op\Phi^{s.l.}(t) = \theta(t-t_0) \hone{t}
 \ee
 that codify the effective of the perturbing Hamiltonian in the specific switch-on procedure. Making usage of elementary properties of $\theta$ functions allows us
 to rewrite the former time integral as:
 \be\lb{AopDef1}
-\op A(t) = \intdef{-\infty}{\infty}{t'} \op{U}^{+}_0(t-t') \Phi^{a.l,s.l}(t') \op{U}^{-}_0(t'-t) \;,
+\op A(t) = \intdef{-\infty}{\infty}{t'} \op{U}^{+}_0(t-t') \op\Phi^{a.l,s.l}(t') \op{U}^{-}_0(t'-t) \;,
 \ee
 so that the effect of the switch-on protocol are completely reabsorbed in the perturbing field. In the subsequent analysis we will omit the apex in the fields $\Phi$, 
 unless explicitly needed, to keep notations as simple as possible. Thanks to this definition we can express the time evolution of the eigenvectors of $\hnot$ in the 
@@ -281,7 +281,7 @@ and using the Jacobi identity we have:
 \commutator{\op\Phi(t)}{\dmnot} + \commutator{\hnot}{\dm'(t)} \;.
 \ee
 It is useful to introduce the \emph{Liouvillian} superoperator:
-\be
+\be\lb{L0sopDef1}
 \sop{\mathcal L_0} \equiv \commutator{\hnot}{\cdot} \;,
 \ee
 so that the Liouville equation can be written as:
@@ -321,6 +321,34 @@ can be written as:
 \ee
 
 \subsection{Formulation in the frequency domain}
+
+We reformulate the Liouville equation \eqref{LiouvilleRhoSelfDef2} in the frequency domain. In order to achieve this task it is
+preferable to directly compute the action of the Liouville operator on the Fourier transform of the response density, since in this
+way some subtleties that concerns the analytic structure in the $\omega$ complex plane can be properly taken into account.
+We first define the response density in the frequency domain that, staring from \eqref{rhoTimeEvolutionDef3}, is given by:
+\be\label{rhoPrimeOmegaDef1}
+\dm'(\omega) \equiv \intover{t} e^{\ii \omega t} \dm'(t)
+= \ii \commutator{\dmnot}{\op A(\omega)} \;,
+\ee
+where $\op A(\omega)$ is The Fourier transform of \eqref{AopDef1} and reads:
+\be \label{AomegaDef1}
+\op A(\omega) = \frac{1}{2\pi} \int_{-\infty}^\infty  \dd \omega'
+\op G_0^+(\omega') \op \Phi(\omega) \op G_0^-(\omega'-\omega)\;.
+\ee
+The action of $\sop{\mathcal L_0}$ on $\dm'(\omega)$ follows from \eqref{L0sopDef1}:
+\be\label{LiouvillianF'def1}
+\sop{\mathcal L_0} \dm'(\omega) = \ii \commutator{\hnot}{\commutator{\dmnot}{\op A(\omega)}} = 
+\ii \commutator{\dmnot}{\commutator{\hnot}{\op A(\omega)}}
+\;,
+\ee
+\be\label{eoma}
+\commutator{\hnot }{\op A(\omega)} = \bar{\bar\omega} \op A(\omega) - \ii \op \Phi(\omega)\;.
+\ee
+where $\bar{\bar\omega} = \omega + 2\ii\eta$
+
+
+
+
 
 \subsection{Analysis of the excitations}
 
