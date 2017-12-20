@@ -414,8 +414,10 @@ where the last equality implicitly define the index-less ``big-shaped'' vectors 
 
 \subsubsection{OPE of the Liouville operator}
 
-The Liouville equation \eqref{LiouvillianRho'omegaDef3} can be written in the basis of transititions and becomes a linear matrix equation for the rank-2 vectors
-of the coefficients \eqref{OperatorTransitionCoeffDef1} of the operators in its left and right side:
+The Liouville equation \eqref{LiouvillianRho'omegaDef3} can be consistently written in the transition basis. Indeed, its r.h.s is explicitly written
+as a commutator with $\dmnot$, while an inspection of the formal definition of the response density and of the Liouville superoperator evidences that
+they both contain a commutator with $\dmnot$. Written in the basis of transitions Liouville equation becomes a linear matrix equation for the rank-2 
+vectors of the coefficients \eqref{OperatorTransitionCoeffDef1} of the operators in its left and right side:
 \be
 \omega\mat{ \trace{\decay{\alpha}{p}\dm'(\omega)} \\ \trace{\excite{p}{\alpha}\dm'(\omega)}} - 
 \mat{ \trace{\decay{\alpha}{p}\Liouv\dm'(\omega)} \\ \trace{\excite{p}{\alpha}\Liouv\dm'(\omega)}} =
@@ -429,12 +431,63 @@ we can recast this quantity as the action of a 2-dimensional matrix on the rank-
 \sket{p\alpha}{\commutator{\op\Phi(\omega)}{\dmnot}} \;.
 \ee
 with:
-\be
+\be\lb{LiouvilleMatrixTransBasisDef1}
 \optr{L}^{p \alpha}_{q\beta} \equiv \mat{\trace{\decay{\alpha}{p}\, \Liouv\, \excite{q}{\beta}} &
 \trace{\decay{\alpha}{p}\, \Liouv\, \decay{\beta}{q}} \\
 \trace{\excite{p}{\alpha}\, \Liouv\, \excite{q}{\beta}} &
 \trace{\excite{p}{\alpha}\, \Liouv\, \decay{\beta}{q}}} \;.
 \ee
+This formulation of the Liouville equation is the starting point for the derivation of the spectral decomposition of the response density operator
+in terms of the eigenvectors if the Liouville operator. 
+The first step in the achievement of this result is provided by the construction of the eigenvectors of the matrix \eqref{LiouvilleMatrixTransBasisDef1}.
+Following the notation previously defined we introduce the rank-2 vectors $\sket{p\alpha}{E}$ and $\sbra{p\alpha}{\tilde E}$ that represent, by definition,
+the right and left eigenvectors $\optr{L}$, respectively, so that:
+\be\lb{LiouvMatrixEigenvectorDef1}
+\sum_q \sint \dd \beta \optr{L}^{p \alpha}_{q\beta} \sket{q \beta}{E} = E \sket{p\alpha}{E} \;, \quad
+\sum_p \sint \dd \alpha \sbra{p\alpha}{\tilde E} \optr{L}^{p \alpha}_{q\beta} = E \sbra{q\beta}{\tilde E}\;.
+\ee
+In general, left and right eigenvectors do not coincide, but it is always possible to choose they normalization so that a orthonormality conditions among the
+elements of left and right spaces holds, namely:
+\be
+\sum_p \sint \dd \alpha \sbra{p\alpha}{\tilde E}\sket{p\alpha}{E'} \equiv \dbraket{\tilde E}{E'} = \delta(E-E') \;.
+\ee
+Once that the eigenvectors are known, the spectral decomposition of the resolvent of $\optr{L}$ can be provided:  
+\be
+\left[\left(\bbomega-\optr{L}\right)^{-1}\right]^{p\alpha}_{q\beta} =\sint\dd E
+\frac{\sket{p\alpha}{E}\sbra{q\beta}{\tilde E}}{\bbomega-E} \;,
+\ee
+so equation \eqref{LiouvilleTransBasisDef1} can be inverted:
+\be
+\sket{p\alpha}{\dm'(\omega)} = 
+\sint\dd E \sket{p\alpha}{E}
+\frac{\sum_q \sint \dd \beta\sbra{q\beta}{\tilde E}
+\sket{q\beta}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
+\ee
+that can be compactly rewritten by using the index-less notation:
+\be
+\sket{p\alpha}{\dm'(\omega)} = 
+\sint\dd E \sket{p\alpha}{E}
+\frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
+\ee
+
+
+% \be
+% \sket{p\alpha}{E} \equiv \mat{X_E^{p\alpha} \\ Y_E^{p\alpha}}
+% \;,
+% \quad
+% \sbra{p\alpha}{\tilde E} \equiv \mat{\tilde X_{E\,p\alpha} & \tilde Y_{E\,p\alpha}}
+% \ee
+
+
+
+
+
+
+
+
+
+
+
 
 
 
