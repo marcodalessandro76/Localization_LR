@@ -83,6 +83,9 @@
 \newcommand{\transition}[1]{\op T_{#1}}
 \newcommand{\excite}[2]{\op e_{{#1}{#2}}}
 \newcommand{\decay}[2]{\op d_{{#1}{#2}}}
+\newcommand{\Liouv}{\sop{\mathcal L}}
+\newcommand{\Liouvnot}{\sop{\mathcal L_0}}
+\newcommand{\coupl}{\sop{\mathcal K}}
 \newcommand{\honetmp}[1][]{\op{H_1}\argument{#1}} 
 \newcommand{\identity}{\op{\mathbb I}}
 \newcommand{\rmat}[1]{\optr R}
@@ -284,11 +287,11 @@ and using the Jacobi identity we have:
 \ee
 It is useful to introduce the \emph{Liouvillian} superoperator:
 \be\lb{L0sopDef1}
-\sop{\mathcal L_0} \equiv \commutator{\hnot}{\cdot} \;,
+\Liouvnot \equiv \commutator{\hnot}{\cdot} \;,
 \ee
 so that the Liouville equation can be written as:
 \be\lb{LiouvilleRhoDef2}
-\ii \d_t \dm'(t) = \sop{\mathcal L_0} \dm'(t) + \commutator{\op\Phi(t)}{\dmnot} \;.
+\ii \d_t \dm'(t) = \Liouvnot \dm'(t) + \commutator{\op\Phi(t)}{\dmnot} \;.
 \ee
 
 \subsection{Self-consistent Hamiltonians. Generalized Liouville operator}
@@ -305,21 +308,21 @@ induced density modification, that is:
 The Liouville equation for self-consistent systems can be written by adding the contribution of $\op V'$ to $\op\Phi$ in \eqref{LiouvilleRhoDef2}. 
 It reads:
 \be\lb{LiouvilleRhoSelfDef1}
-\ii \d_t \dm'(t) = \sop{\mathcal L_0} \dm'(t) + \commutator{\op V'(t)}{\dmnot} + \commutator{\op \Phi(t)}{\dmnot} \;.
+\ii \d_t \dm'(t) = \Liouvnot \dm'(t) + \commutator{\op V'(t)}{\dmnot} + \commutator{\op \Phi(t)}{\dmnot} \;.
 \ee
 We point out that the response density operator obeys a self-consistent equation, since the  induced perturbing field $\op V'$ is itself a function of $\dm'$. 
 It is possible to formally recast \eqref{LiouvilleRhoSelfDef1} in the same form of \eqref{LiouvilleRhoDef2} by introducing the \emph{coupling}
 superoperator:
 \be
-\sop{\mathcal K} = 
+\coupl = 
 \int \dd \r \dd \r' \commutator{\frac{\delta\hnot}{\delta \rho_0(\r,\r')}}{\dmnot}
 \trace{\cdot \ket{\r} \bra{\r'}} \;,
 \ee
 in this way the first commutator in \eqref{LiouvilleRhoSelfDef1} can be written as the formal action of the coupling superoperator to $\dm'$ and \eqref{LiouvilleRhoSelfDef1}
 can be written as:
 \be\lb{LiouvilleRhoSelfDef2}
-\ii \d_t \dm'(t) = \sop{\mathcal L} \dm'(t) + \commutator{\op \Phi(t)}{\dmnot} \;, \qq
-\sop{\mathcal L} = \sop{\mathcal L_0} + \sop{\mathcal K} \;.
+\ii \d_t \dm'(t) = \Liouv \dm'(t) + \commutator{\op \Phi(t)}{\dmnot} \;, \qq
+\Liouv = \Liouvnot + \coupl \;.
 \ee
 
 \subsection{Formulation in the frequency domain}
@@ -337,9 +340,9 @@ where $\op A(\omega)$ is The Fourier transform of \eqref{AopDef1} and reads:
 \op A(\omega) = \frac{1}{2\pi} \int_{-\infty}^\infty  \dd \omega'
 \op G_0^+(\omega') \op \Phi(\omega) \op G_0^-(\omega'-\omega)\;.
 \ee
-The action of $\sop{\mathcal L_0}$ on $\dm'(\omega)$ follows from \eqref{L0sopDef1}:
+The action of $\Liouvnot$ on $\dm'(\omega)$ follows from \eqref{L0sopDef1}:
 \be\lb{LiouvillianRho'omegaDef1}
-\sop{\mathcal L_0} \dm'(\omega) = \ii \commutator{\hnot}{\commutator{\dmnot}{\op A(\omega)}} = 
+\Liouvnot \dm'(\omega) = \ii \commutator{\hnot}{\commutator{\dmnot}{\op A(\omega)}} = 
 \ii \commutator{\dmnot}{\commutator{\hnot}{\op A(\omega)}} \;,
 \ee
 and the commutator between the unperturbed Hamiltonian and $\op A(\omega)$ can be directly computed starting from \eqref{AomegaDef1}: 
@@ -348,12 +351,12 @@ and the commutator between the unperturbed Hamiltonian and $\op A(\omega)$ can b
 \ee
 where $\bbomega \equiv \omega + 2\ii\eta$, so that:
 \be\lb{LiouvillianRho'omegaDef2}
-\sop{\mathcal L_0} \dm'(\omega) =  \bbomega\dm'(\omega) + \commutator{\dmnot}{\op\Phi(\omega)}\;.
+\Liouvnot \dm'(\omega) =  \bbomega\dm'(\omega) + \commutator{\dmnot}{\op\Phi(\omega)}\;.
 \ee
 The coupling superoperator has the same formal action on the response density both in the time and in the frequency domain, so the complete
 Liouville equation in $\omega$ space can be written as:
 \be\lb{LiouvillianRho'omegaDef3}
-\left(\bbomega - \sop{\mathcal L}\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot}\;.
+\left(\bbomega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot}\;.
 \ee
 
 \subsection{Analysis of the excitations}
@@ -397,9 +400,9 @@ In order to recast this expansion in a simpler expression it turns out to be use
 \mat{ \excite{p}{\alpha} \;, & \decay{\alpha}{p} }\;,
 \ee
 as well as a different representation for the trace between the operators and the above mentioned transitions:
-\be
-\sket{p\alpha}{\op O}  \equiv \mat{ \trace{ \op O \decay{\alpha}{p}} \\ 
-\trace{\op O \excite{p}{\alpha}}} \; .
+\be\lb{OperatorTransitionCoeffDef1}
+\sket{p\alpha}{\op O}  \equiv \mat{ \trace{\decay{\alpha}{p}\op O } \\ 
+\trace{\excite{p}{\alpha}\op O}} \; .
 \ee
 Thanks to this formalism we have that equation \eqref{OperatorTransBasisExpDef1} can be expressed as:
 \be\lb{OperatorTransBasisExpDef2}
@@ -411,7 +414,27 @@ where the last equality implicitly define the index-less ``big-shaped'' vectors 
 
 \subsubsection{OPE of the Liouville operator}
 
-
+The Liouville equation \eqref{LiouvillianRho'omegaDef3} can be written in the basis of transititions and becomes a linear matrix equation for the rank-2 vectors
+of the coefficients \eqref{OperatorTransitionCoeffDef1} of the operators in its left and right side:
+\be
+\omega\mat{ \trace{\decay{\alpha}{p}\dm'(\omega)} \\ \trace{\excite{p}{\alpha}\dm'(\omega)}} - 
+\mat{ \trace{\decay{\alpha}{p}\Liouv\dm'(\omega)} \\ \trace{\excite{p}{\alpha}\Liouv\dm'(\omega)}} =
+\mat{ \trace{\decay{\alpha}{p}\commutator{\op\Phi(\omega)}{\dmnot}} \\ \trace{\excite{p}{\alpha}\commutator{\op\Phi(\omega)}{\dmnot}}}
+\;.\nn
+\ee
+The second addend in the l.h.s can be further analyzed by writing the transition basis expansion of $\dm'$ inside the traces. Performing this procedure
+we can recast this quantity as the action of a 2-dimensional matrix on the rank-2 vector of the response density. So we have: 
+\be\lb{LiouvilleTransBasisDef1}
+\sum_q\sint\dd\beta \left[\omega\delta_q^p\delta(\alpha-\beta)- \optr{L}^{p \alpha}_{q\beta} \right]\sket{q\beta}{\dm'(\omega)} =
+\sket{p\alpha}{\commutator{\op\Phi(\omega)}{\dmnot}} \;.
+\ee
+with:
+\be
+\optr{L}^{p \alpha}_{q\beta} \equiv \mat{\trace{\decay{\alpha}{p}\, \Liouv\, \excite{q}{\beta}} &
+\trace{\decay{\alpha}{p}\, \Liouv\, \decay{\beta}{q}} \\
+\trace{\excite{p}{\alpha}\, \Liouv\, \excite{q}{\beta}} &
+\trace{\excite{p}{\alpha}\, \Liouv\, \decay{\beta}{q}}} \;.
+\ee
 
 
 
