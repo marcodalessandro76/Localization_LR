@@ -487,14 +487,15 @@ and on the basis of these elements we define the \emph{excitation operators}:
 Excitation operators are the right and left eigenvectors of the Liouville superoperator, as directly follows from their
 definition. Indeed for $\op E$ we have:
 \begin{align}
-\sop{\mathcal L} \op E & = \sum_p \sint \dd \alpha \left(\trace{\decay{\alpha}{p} \sop{\mathcal L} \op E} \excite{p}{\alpha} + 
-\decay{\alpha}{p} \trace{ \excite{p}{\alpha} \sop{\mathcal L} \op E}  \right) = \nn \\
+\Liouv \op E & = \sum_p \sint \dd \alpha \left(\trace{\decay{\alpha}{p} \Liouv \op E} \excite{p}{\alpha} + 
+\decay{\alpha}{p} \trace{ \excite{p}{\alpha} \Liouv \op E}  \right) = \nn \\
 &= \sum_p \sint  \dd \alpha \sbra{p\alpha}{\cdot} \sum_q \sint  \dd \beta \optr{L}^{p \alpha}_{q\beta} \sket{q\beta}{E} 
 = E \sum_p \sint \dd \alpha \sbra{p\alpha}{\cdot} \sket{p\alpha}{E} = E \, \op E \;,	
 \end{align}
 whereas the left action on $\op{\tilde E}$ provides:
 \begin{align}
- \op{\tilde E} \sop{\mathcal L} &= E \op{\tilde E}
+ \op{\tilde E} \Liouv &=  \sum_p \sint \dd \alpha \left(\trace{\op{\tilde E}\sop{\mathcal L}\decay{\alpha}{p}} \excite{p}{\alpha} + 
+\decay{\alpha}{p} \trace{\op{\tilde E}\Liouv\excite{p}{\alpha}}  \right) = \nn \\
 \end{align}
 
 
