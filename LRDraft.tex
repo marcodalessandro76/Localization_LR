@@ -412,7 +412,7 @@ Thanks to this formalism we have that equation \eqref{OperatorTransBasisExpDef1}
 where the last equality implicitly define the index-less ``big-shaped'' vectors and the sum over unwritten indexes is understood.  
 
 
-\subsubsection{OPE of the Liouville operator}
+\subsubsection{Spectral decompositionof the response density in the transitions basis}
 
 The Liouville equation \eqref{LiouvillianRho'omegaDef3} can be consistently written in the transition basis. Indeed, its r.h.s is explicitly written
 as a commutator with $\dmnot$, while an inspection of the formal definition of the response density and of the Liouville superoperator evidences that
@@ -458,8 +458,7 @@ Once that the eigenvectors are known, the spectral decomposition of the resolven
 \ee
 so equation \eqref{LiouvilleTransBasisDef1} can be inverted:
 \be
-\sket{p\alpha}{\dm'(\omega)} = 
-\sint\dd E \sket{p\alpha}{E}
+\sket{p\alpha}{\dm'(\omega)} = \sint\dd E \sket{p\alpha}{E}
 \frac{\sum_q \sint \dd \beta\sbra{q\beta}{\tilde E}
 \sket{q\beta}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
 \ee
@@ -467,16 +466,36 @@ that can be compactly rewritten by using the index-less notation:
 \be
 \sket{p\alpha}{\dm'(\omega)} = 
 \sint\dd E \sket{p\alpha}{E}
-\frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
+\frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;.
 \ee
 
+\subsubsection{Excitation operators}
 
-% \be
-% \sket{p\alpha}{E} \equiv \mat{X_E^{p\alpha} \\ Y_E^{p\alpha}}
-% \;,
-% \quad
-% \sbra{p\alpha}{\tilde E} \equiv \mat{\tilde X_{E\,p\alpha} & \tilde Y_{E\,p\alpha}}
-% \ee
+We introduce the explicit representation of the eigenvectors op $\optr{L}$:
+\be
+\sket{p\alpha}{E} \equiv \mat{X_E^{p\alpha} \\ Y_E^{p\alpha}} \;, \qq
+\sbra{p\alpha}{\tilde E} \equiv \mat{\tilde X_{E\,p\alpha} & \tilde Y_{E\,p\alpha}} \;,
+\ee
+and on the basis of these elements we define the \emph{excitation operators}:
+\be\lb{ExctitationOperatorsDef1}
+\op E = 
+\sum_p \sint \dd \alpha \left(\excite{p}{\alpha} X_E^{p\alpha} + \decay{\alpha}{p} Y_E^{p\alpha}\right) 
+\;, \qq
+\op{\tilde E} = \sum_p \sint \dd \alpha \left(\decay{\alpha}{p} \tilde X_{E\,p\alpha} + 
+\excite{p}{\alpha}\tilde Y_{E\,p\alpha}  \right)\;.
+\ee
+Excitation operators are the right and left eigenvectors of the Liouville superoperator, as directly follows from their
+definition. Indeed for $\op E$ we have:
+\begin{align}
+\sop{\mathcal L} \op E & = \sum_p \sint \dd \alpha \left(\trace{\decay{\alpha}{p} \sop{\mathcal L} \op E} \excite{p}{\alpha} + 
+\decay{\alpha}{p} \trace{ \excite{p}{\alpha} \sop{\mathcal L} \op E}  \right) = \nn \\
+&= \sum_p \sint  \dd \alpha \sbra{p\alpha}{\cdot} \sum_q \sint  \dd \beta \optr{L}^{p \alpha}_{q\beta} \sket{q\beta}{E} 
+= E \sum_p \sint \dd \alpha \sbra{p\alpha}{\cdot} \sket{p\alpha}{E} = E \, \op E \;,	
+\end{align}
+whereas the left action on $\op{\tilde E}$ provides:
+\begin{align}
+ \op{\tilde E} \sop{\mathcal L} &= E \op{\tilde E}
+\end{align}
 
 
 
