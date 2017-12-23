@@ -300,7 +300,7 @@ Let us extend the the former analysis to self-consistent systems, \emph{i.e.} to
 In this case the perturbing field $\op\Phi$ has also the effect of adding a further perturbation operator to the perturbing Hamiltonian. In the linear response framework, 
 this latter quantity can be expressed as the functional derivatives of $\hnot$ with respect to the density kernel (evaluated at $\dm=\dmnot$) times the value of the
 induced density modification, that is:
-\be\label{V'tspacedef1}
+\be\label{Vptspacedef1}
 \op V'(t)= 
 \int \dd \r \dd \r' \frac{\delta\hnot}{\delta \rho_0(\r,\r')}
 \trace{\dm'(t) \ket{\r} \bra{\r'}} \;.
@@ -341,7 +341,7 @@ where $\op A(\omega)$ is The Fourier transform of \eqref{AopDef1} and reads:
 \op G_0^+(\omega') \op \Phi(\omega) \op G_0^-(\omega'-\omega)\;.
 \ee
 The action of $\Liouvnot$ on $\dm'(\omega)$ follows from \eqref{L0sopDef1}:
-\be\lb{LiouvillianRho'omegaDef1}
+\be\lb{LiouvillianRhopomegaDef1}
 \Liouvnot \dm'(\omega) = \ii \commutator{\hnot}{\commutator{\dmnot}{\op A(\omega)}} = 
 \ii \commutator{\dmnot}{\commutator{\hnot}{\op A(\omega)}} \;,
 \ee
@@ -350,12 +350,12 @@ and the commutator between the unperturbed Hamiltonian and $\op A(\omega)$ can b
 \commutator{\hnot }{\op A(\omega)} = \bbomega \op A(\omega) - \ii \op \Phi(\omega)\;, \nn
 \ee
 where $\bbomega \equiv \omega + 2\ii\eta$, so that:
-\be\lb{LiouvillianRho'omegaDef2}
+\be\lb{LiouvillianRhopomegaDef2}
 \Liouvnot \dm'(\omega) =  \bbomega\dm'(\omega) + \commutator{\dmnot}{\op\Phi(\omega)}\;.
 \ee
 The coupling superoperator has the same formal action on the response density both in the time and in the frequency domain, so the complete
 Liouville equation in $\omega$ space can be written as:
-\be\lb{LiouvillianRho'omegaDef3}
+\be\lb{LiouvillianRhopomegaDef3}
 \left(\bbomega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot}\;.
 \ee
 
@@ -377,7 +377,7 @@ Obviously, the direct sum of these two sets coincides with the complete set of e
 constitute a complete basis. 
 A generic operator can be decomposed in this basis and its formal expansion contains four distinct contribution of the form $\ketbra{\psi_p}{\psi_q}$, 
 $\ketbra{\psi(\alpha)}{\psi(\beta)}$, $\ketbra{\psi(\alpha)}{\psi_p}$, $\ketbra{\psi_p}{\psi(\alpha)}$. However an inspection of equations \eqref{rhoPrimeOmegaDef1}
-and \eqref{LiouvillianRho'omegaDef3} evidences that the relevant operators in the contest of the linear response are expressed as a commutator with $\dmnot$. 
+and \eqref{LiouvillianRhopomegaDef3} evidences that the relevant operators in the contest of the linear response are expressed as a commutator with $\dmnot$. 
 For this class of operators the only non vanishing contribution comes from the \emph{transition operators}:
 \be
 \excite{p}{\alpha} \equiv \ketbra{\psi(\alpha)}{\psi_p}\;, \qq
@@ -392,14 +392,14 @@ so that the expansion of a suitable operator $\op O$ in the basis of transitions
 \be\lb{OperatorTransBasisExpDef1}
 \op O = \sum_p\sint \dd \alpha\left(
 \excite{p}{\alpha}\trace{\decay{\alpha}{p}\op O} + \decay{\alpha}{p}\trace{\excite{p}{\alpha}\op O}
-\right)
+\right) \;.
 \ee
-In order to recast this expansion in a simpler expression it turns out to be useful to define the rank-2 vectors of the transition basis: 
+In order to recast this expansion in a simpler expression it turns out to be useful to define the rank-2 row vectors of the transition basis: 
 \be
 \sbra{p\alpha}{\cdot} \equiv 
 \mat{ \excite{p}{\alpha} \;, & \decay{\alpha}{p} }\;,
 \ee
-as well as a different representation for the trace between the operators and the above mentioned transitions:
+and we also introduce a vectorial notation to deal with the coefficients of the expansion of an operator in the transition basis, that is: 
 \be\lb{OperatorTransitionCoeffDef1}
 \sket{p\alpha}{\op O}  \equiv \mat{ \trace{\decay{\alpha}{p}\op O } \\ 
 \trace{\excite{p}{\alpha}\op O}} \; .
@@ -409,12 +409,26 @@ Thanks to this formalism we have that equation \eqref{OperatorTransBasisExpDef1}
 \op O = \sum_p\sint \dd \alpha \sbra{p\alpha}{\cdot}\sket{p\alpha}{\op O} = 
 \dbraket{\cdot}{\op O} \;,
 \ee
-where the last equality implicitly define the index-less ``big-shaped'' vectors and the sum over unwritten indexes is understood.  
+where the last equality implicitly define the ulterior compact notation of the ``big-shaped'' vectors in which the summed indexes are omitted.  
+In the same fashion it will be also useful for the subsequent analysis to introduce a ``conjugate'' notation, in which the basis operators are expressed
+as column vector and the coefficients of the expanded operator as row ones, that is: 
+\be\lb{TransitionBasisConjugateDef1}
+\sket{p\alpha}{\cdot} \equiv 
+\mat{\decay{\alpha}{p} \\  \excite{p}{\alpha}} \;, \qq
+\sbra{p\alpha}{\op O}  \equiv 
+\mat{ \trace{\excite{\alpha}{p}\op O } \;, & \trace{\decay{p}{\alpha}\op O} }
+\;,
+\ee
+where the flip in the role of $\op e$ and $\op d$ in \eqref{TransitionBasisConjugateDef1} follows from the properties of excitation and decay operators
+under hermitian-conjugate operation. The expansion of a suitable operator in the transition basis using the conjugate description reads: 
+\be\lb{OperatorTransBasisConjugateExpDef1}
+\op O = \sum_p\sint \dd \alpha \sbra{p\alpha}{\op O}\sket{p\alpha}{\cdot} = 
+\dbraket{\op O}{\cdot} \;.
+\ee
 
+\subsubsection{Spectral decomposition of the response density in the transitions basis}
 
-\subsubsection{Spectral decompositionof the response density in the transitions basis}
-
-The Liouville equation \eqref{LiouvillianRho'omegaDef3} can be consistently written in the transition basis. Indeed, its r.h.s is explicitly written
+The Liouville equation \eqref{LiouvillianRhopomegaDef3} can be consistently written in the transition basis. Indeed, its r.h.s is explicitly written
 as a commutator with $\dmnot$, while an inspection of the formal definition of the response density and of the Liouville superoperator evidences that
 they both contain a commutator with $\dmnot$. Written in the basis of transitions Liouville equation becomes a linear matrix equation for the rank-2 
 vectors of the coefficients \eqref{OperatorTransitionCoeffDef1} of the operators in its left and right side:
@@ -457,13 +471,13 @@ Once that the eigenvectors are known, the spectral decomposition of the resolven
 \frac{\sket{p\alpha}{E}\sbra{q\beta}{\tilde E}}{\bbomega-E} \;,
 \ee
 so equation \eqref{LiouvilleTransBasisDef1} can be inverted:
-\be
+\be\lb{RhopExcitationTransBasisDef1}
 \sket{p\alpha}{\dm'(\omega)} = \sint\dd E \sket{p\alpha}{E}
 \frac{\sum_q \sint \dd \beta\sbra{q\beta}{\tilde E}
 \sket{q\beta}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
 \ee
 that can be compactly rewritten by using the index-less notation:
-\be
+\be\lb{RhopExcitationTransBasisDef2}
 \sket{p\alpha}{\dm'(\omega)} = 
 \sint\dd E \sket{p\alpha}{E}
 \frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;.
@@ -477,13 +491,13 @@ We introduce the explicit representation of the eigenvectors op $\optr{L}$:
 \sbra{p\alpha}{\tilde E} \equiv \mat{\tilde X_{E\,p\alpha} & \tilde Y_{E\,p\alpha}} \;,
 \ee
 and on the basis of these elements we define the \emph{excitation operators}:
-\be\lb{ExctitationOperatorsDef1}
-\op E = 
+\begin{align}\lb{ExctitationOperatorsDef1}
+\op E &\equiv \dbraket{\cdot}{E} = 
 \sum_p \sint \dd \alpha \left(\excite{p}{\alpha} X_E^{p\alpha} + \decay{\alpha}{p} Y_E^{p\alpha}\right) 
-\;, \qq
-\op{\tilde E} = \sum_p \sint \dd \alpha \left(\decay{\alpha}{p} \tilde X_{E\,p\alpha} + 
+\;,\nn \\
+\op{\tilde E} &\equiv \dbraket{\tilde E}{\cdot} = \sum_p \sint \dd \alpha \left(\decay{\alpha}{p} \tilde X_{E\,p\alpha} + 
 \excite{p}{\alpha}\tilde Y_{E\,p\alpha}  \right)\;.
-\ee
+\end{align}
 Excitation operators are the right and left eigenvectors of the Liouville superoperator, as directly follows from their
 definition. Indeed for $\op E$ we have:
 \begin{align}
@@ -494,12 +508,22 @@ definition. Indeed for $\op E$ we have:
 \end{align}
 whereas the left action on $\op{\tilde E}$ provides:
 \begin{align}
- \op{\tilde E} \Liouv &=  \sum_p \sint \dd \alpha \left(\trace{\op{\tilde E}\sop{\mathcal L}\decay{\alpha}{p}} \excite{p}{\alpha} + 
-\decay{\alpha}{p} \trace{\op{\tilde E}\Liouv\excite{p}{\alpha}}  \right) = \nn \\
+ \op{\tilde E} \Liouv &=  \sum_p \sint \dd \alpha \left(
+\trace{\op{\tilde E}\Liouv\excite{p}{\alpha}}\decay{\alpha}{p} +  
+\trace{\op{\tilde E}\sop{\mathcal L}\decay{\alpha}{p}} \excite{p}{\alpha} \right) = 
+\nn \\ &= \sum_p \sint  \dd \alpha  \sum_q \sint  \dd \beta
+\sbra{q\beta}{\tilde E}\optr{L}^{q\beta}_{p\alpha}\sket{p\alpha}{\cdot} = 
+E\sum_p \sint \dd \alpha \sbra{p\alpha}{\tilde E} \sket{p\alpha}{\cdot}  =
+E \op{\tilde E} \;.
 \end{align}
-
-
-
+The introduction of the excitation operators allows to provided a complete operator version of equation \eqref{RhopExcitationTransBasisDef2}
+\be\lb{RhopExcitationDef1}
+\dm'(\omega) = 
+\sint\dd E \op E
+\frac{\trace{\op{\tilde E}\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
+\ee
+where the algebraic equivalence between the trace written in \eqref{RhopExcitationDef1} and the numerator of \eqref{RhopExcitationTransBasisDef2}
+can be easily proved.
 
 
 
