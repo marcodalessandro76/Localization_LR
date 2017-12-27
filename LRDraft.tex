@@ -536,17 +536,66 @@ coefficients that appears in \eqref{XYcoeffDef1}, that is:
 \tket{\chi^E_p} &\equiv \sint \dd \alpha {\tilde Y}_{E}^{p\alpha} \ket{\psi(\alpha)} \;.
 \end{align}
 Thanks to these definitions we can express the excitation operators as follows:
-\be
+\be\lb{ExctitationOperatorsDef2}
 \op E = \sum_p \left( \ket{\phi^E_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^E_p}\right)\;, \qq
 \op {\tilde E} = \sum_p \left( \ket{\psi_p} \tbra{\phi^E_p} + \tket{\chi^E_p}\bra{\psi_p} \right)\;.
 \ee
 The operator eigenvalue equations \eqref{opEeigenvalueDef1} and \eqref{optildeEeigenvalueDef1} can be translated in Schroedinger-like equations
 for the excitonic states. 
 
+\vspace{0.5cm}
+\emph{Solution for $\coupl = 0$}
+\vspace{0.5cm}
 
 
+\noindent In this case the $\optr{L}_{q\beta}^{p\alpha}$ matrix has only diagonal non-vanishing elements, given by: 
+\be
+\trace{\decay{\alpha}{p}\Liouv\excite{q}{\beta}} = H_{0\alpha\beta}\delta_{pq} - \eps_p\delta_{pq}\delta(\alpha-\beta) \;, \qq
+\trace{\excite{\alpha}{p}\Liouv\decay{q}{\beta}} = \eps_p\delta_{pq}\delta(\alpha-\beta) - H_{0\beta\alpha}\delta_{pq} \;, 
+\ee
+where $H_{0\alpha\beta} = \bra{\psi(\alpha)}\hnot\ket{\psi(\beta)}$. The eigenvalue conditions \eqref{LiouvMatrixEigenvectorDef1} imply
+that the $Y$ and $\tilde Y$ coefficients introduced in \eqref{XYcoeffDef1} vanish so that both $\tket{\chi^E_p}$ and $\bra{\chi^E_p}$ do not
+contribute to the excitation operators \eqref{ExctitationOperatorsDef2}. The eigenvalue operator equation for $\op E$ reduces to:
+\be
+\sum_q\left(\hnot - \eps_q\right)\ket{\phi^E_q}\bra{\psi_q} = E \sum_q \ket{\phi^E_q}\bra{\psi_q} \;,
+\ee
+and projecting on $\ket{\psi_q}$ provides the eigenvalue condition for the excitonic $\ket{\phi^E_p}$ state:
+\be
+\left(\hnot - \eps_p\right)\ket{\phi^E_p} = E \ket{\phi^E_p} \;.
+\ee
+In the same way we can derive an analogous equation for $\tbra{\phi^E_p}$ by using the eigenvalue condition for $\op{\tilde E}$. To achieve this
+result we need the expression of the left action of the (unperturbed) Liouville superoperator defined in \eqref{L0sopDef1}, that can be derived by
+observing that:
+\be
+\trace{\op O' (\Liouvnot \op O)} = \trace{(\op O' \Liouvnot) \op O } =
+\trace{\commutator{\op O'}{\op H_0} \op O} \quad \Rightarrow \quad \op O \Liouvnot = 
+- \Liouvnot \op O \;.
+\ee
+So, the eigenvalue operator equation for $\op{\tilde E}$ provides:
+\be
+\sum_q  \ket{\psi_q} \tbra{\phi^E_q} \left( \hnot - \eps_q \right) =
+E \sum_q  \ket{\psi_q} \tbra{\phi^E_q} \;,
+\ee
+so that:
+\be
+\tbra{\phi^E_p} \left( \hnot - \eps_p \right) = E \tbra{\phi^E_p} \;.
+\ee
+In other terms we find that the perturbation states must be left and right eigenvectors of  $\hnot$. 
 
-
+The operators $\op E$ and $\op{\tilde E}$ have an important physical meaning:
+if they are used as perturbation operators they would generate a response density 
+with a well-defined energy:
+\be
+\commutator{\op E}{\dmnot} = E \;, \qquad \commutator{\op{\tilde E}}{\dmnot} = -\op{\tilde E}
+\ee
+The above equations show that we would have, respectively:
+\be
+\dm'(\omega) = \frac{1}{\bbomega - E} \op E\;,\qquad
+\dm'(\omega) = \frac{1}{\bbomega + E} \op{\tilde E}
+\ee
+In other terms, they constitute the \emph{resonant channels} of the excitation of the
+density. The decomposition of the perturbation operator $\op \Phi$ among these channels
+would provide $\dm'(\omega)$.
 
 
 
