@@ -279,7 +279,7 @@ linear response regime the expression of $\dm'(t)$ can be readily derived using 
 The equation of motion (Liouville equation) for $\dm'$ is obtained by performing the time derivative of the previous equation. The derivative of $\op A(t)$ can be 
 computed starting from its definition and reads:
 \be
-\d_t\op A(t) = \op\Phi(t) -\\i \commutator{\hnot}{\op A(t)} \nn \;,
+\d_t\op A(t) = \op\Phi(t) -\ii \commutator{\hnot}{\op A(t)} \nn \;,
 \ee
 and using the Jacobi identity we have:
 \be\lb{LiouvilleRhoDef1}
@@ -463,7 +463,7 @@ the right and left eigenvectors $\optr{L}$, respectively, so that:
 \ee
 In general, left and right eigenvectors do not coincide, but it is always possible to choose they normalization so that a orthonormality conditions among the
 elements of left and right spaces holds, namely:
-\be
+\be\lb{ExcitationOrthonormalityDef1}
 \sum_p \sint \dd \alpha \sbra{p\alpha}{\tilde E}\sket{p\alpha}{E'} \equiv \dbraket{\tilde E}{E'} = \delta(E-E') \;.
 \ee
 Once that the eigenvectors are known, the spectral decomposition of the resolvent of $\optr{L}$ can be provided:  
@@ -499,6 +499,11 @@ and on the basis of these elements we define the \emph{excitation operators}:
 \op{\tilde E} &\equiv \dbraket{\tilde E}{\cdot} = \sum_p \sint \dd \alpha \left(\decay{\alpha}{p} \tilde X_{E\,p\alpha} + 
 \excite{p}{\alpha}\tilde Y_{E\,p\alpha}  \right)\;.
 \end{align}
+The orthonormality condition \eqref{ExcitationOrthonormalityDef1} implies that:
+\be
+\trace{\op{\tilde E} \op E'} = \sum_p\sint \dd\alpha \left(\tilde X_E^{p\alpha} X_{E'\,p\alpha} +
+\tilde Y_E^{p\alpha} Y_{E'\,p\alpha}\right) = \delta(E-E') \;. 
+\ee
 Excitation operators are the right and left eigenvectors of the Liouville superoperator, as directly follows from their
 definition. Indeed for $\op E$ we have:
 \begin{align}\lb{opEeigenvalueDef1}
@@ -606,7 +611,7 @@ self-consistent part of the perturbing Hamiltonian \eqref{Vptspacedef1}. We star
 \be
 \op V'(t)= 
 \int \dd \br \dd \br' \dd \r \dd \r' \bra{\br'}\frac{\delta\hnot}{\delta \rho_0(\r,\r')}\ket{\br}
-\trace{\dm'(t) \ket{\r} \bra{\r'}} \ketbra{\br}{\br'}\;, \nn
+\trace{\dm'(t) \ket{\r} \bra{\r'}} \ketbra{\br'}{\br}\;, \nn
 \ee
 then we introduce the \emph{coupling kernel}, defined as:
 \be\lb{couplingKernelDef1}
@@ -616,26 +621,37 @@ U\left[\op O; \op O'\right] \equiv  \int \dd \r \dd \r' \trace{\op O \frac{\delt
 using this quantity we can express $\op V'$ as:
 \be\lb{Vptspacedef2}
 \op V'(t)= 
-\int \dd \br \dd \br' U\left[\ketbra{\br}{\br'};\dm'(t)\right] \ketbra{\br}{\br'}\;,
+\int \dd \br \dd \br' U\left[\ketbra{\br}{\br'};\dm'(t)\right] \ketbra{\br'}{\br}\;,
 \ee
 and consequently the formal action of the coupling superoperator \eqref{couplingSopDef1} can be expressed as: 
 \be\lb{couplingSopDef2}
-\coupl = 
-\int \dd \br \dd \br' \commutator{\ketbra{\br}{\br'}}{\dmnot} U\left[\ketbra{\br}{\br'};\cdot\right] \;.
+\coupl\op O = 
+\int \dd \r \dd \r' \commutator{\ketbra{\r'}{\r}}{\dmnot} U\left[\ketbra{\r}{\r'};\op O\right] \;.
 \ee
 Using this formalism we can define the left action of the coupling superoperator, in analogous way of what done in \eqref{leftActionLouv0Def1}, 
 that is:
-\be\lb{leftActionCouplingDef1}
-\trace{\op O' (\coupl \op O)} = \int \dd\br\dd\br'\trace{\ketbra{\br}{\br'}\commutator{\dmnot}{\op O'}}
-U\left[\ketbra{\br}{\br'};\op O\right] \doteq \trace{(\op O' \coupl) \op O } \;,
-\ee
-and so we have:
+\begin{align}\lb{leftActionCouplingDef1}
+\trace{\op O' (\coupl \op O)} &= \int \dd\r\dd\r'\trace{\ketbra{\r'}{\r}\commutator{\dmnot}{\op O'}}
+U\left[\ketbra{\r}{\r'};\op O\right]  = \nn \\ &= 
+U\left[\commutator{\dmnot}{\op O'};\op O\right] \doteq \trace{(\op O' \coupl) \op O } \;,
+\end{align}
+where the second equality follows from the linearity of the coupling kernel. The right action of the coupling superoperator consistent with this result is:
 \be\lb{leftActionCouplingDef2}
-(\op O' \coupl) = \int \dd\br\dd\br'\trace{\ketbra{\br}{\br'}\commutator{\dmnot}{\op O'}}
-U\left[\ketbra{\br}{\br'};\op O\right] \;.
+(\op O \coupl) = \int \dd\r\dd\r'
+U\left[\commutator{\dmnot}{\op O};\ketbra{\r'}{\r}\right]\ketbra{\r}{\r'} \;.
 \ee
-
-
+This formalism allows us to provide a compact expression for the action of the Liouville superoperator on the excitation operators. For the left action we have:
+\begin{align}
+\Liouv\op E &= \sum_p\left(\hnot-\eps_p\right)\ketbra{\phi_p}{\psi_p} - \sum_p\ket{\psi_p} \bra{\chi^E_p}\left(\hnot-\eps_p\right) + \nn \\
+&+ \sum_p \sint \dd\alpha  U[\decay{\alpha}{p}; \op E] \ketbra{\psi(\alpha)}{\psi_p}
+- \sum_p \sint \dd\alpha U[\excite{p}{\alpha}; \op E] \ketbra{\psi_p}{\psi(\alpha)} = E\op E \;,
+\end{align}
+where the action of the coupling superoperator on $\op E$ has been computed imposing its expansion in the transition basis and computing the coefficients with formula 
+\eqref{leftActionCouplingDef1}. Projecting out the previous equation by multiplication with an occupied eigenstates from both the left and right provides the equations:
+\begin{align}
+\left(\hnot-\eps_p\right)\ket{\phi_p} +\sint \dd\alpha  U[\decay{\alpha}{p}; \op E] \ket{\psi(\alpha)} &= E\ket{\phi_p} \nn \\
+\bra{\chi_p}\left(\hnot-\eps_p\right) +\sint \dd\alpha \bra{\psi(\alpha)} U[\excite{p}{\alpha}; \op E] &= -E\bra{\chi_p} 
+\end{align}
 
 
 \section{Draft of the paper - old notes}
