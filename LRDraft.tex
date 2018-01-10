@@ -360,6 +360,47 @@ Liouville equation in $\omega$ space can be written as:
 \left(\bbomega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot}\;.
 \ee
 
+\subsection{Localization properties of the response density}
+
+We present an ulterior expression of the response density operator in the frequency space with the aim to establish its (spatial) localization properties.
+The starting point of this analysis is the expression of the response density in terms of the commutator of \eqref{rhoPrimeOmegaDef1}. We observe that, for any 
+operator $\op O$, we may write:  
+\be
+\commutator{\dmnot}{\op O} = \dmnot \op O \op Q_0 - \op Q_0 \op O \dmnot\;,
+\ee
+where $\op Q_0= \identity - \dmnot$ projects the operator in the subspace orthogonal to $\dmnot$. So, thanks to this relation we have that:
+\be
+\dm'(\omega) = \ii\sum_p\left(\ketbra{\psi_p}{\psi_p}\op A(\omega)\op Q_0 - \op Q_0\op A(\omega)\ketbra{\psi_p}{\psi_p}\right) \;.
+\ee
+This equation suggests us to define the \emph{fluctuation states}:
+\be\lb{fluctuationStateDef1}
+\ket{f_p(\omega)} \doteq -\ii\op Q_0\op A(\omega)\ket{\psi_p} \;, \qq
+\bra{f_p(\omega)} \doteq \bra{\psi_p}\ii\op A(-\omega)\op Q_0 \;,
+\ee
+where the $\omega$ dependence of the bra is consistent with hermitian conjugation property of the Fourier transform of a hermitian operator. Fluctuation states are, by definition,
+orthogonal to the occupied eigenstates of $\hnot$, so that:
+\be
+\brket{f_p(\omega)}{\psi_q} = \brket{\psi_q}{f_p(\omega)} = 0 \;, \forall p,q,\omega
+\ee
+The response density written in terms of the fluctuation states reads:
+\be\lb{rhoPrimeFluctuationStateDef1}
+\dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;.
+\ee
+Applying the Liouville equation \eqref{LiouvillianRhopomegaDef3} to \eqref{rhoPrimeFluctuationStateDef1} allows us to derive a set of equation of motion for the
+fluctuation states. The following equations are useful for this task:
+\begin{align}
+\Liouvnot\dm'(\omega) & = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)}\left(\eps_p-\hnot\right) + \left(\hnot-\eps_p\right)\ketbra{f_p(\omega)}{\psi_p}\right) \;, \nn \\
+\coupl\dm'(\omega) &= \commutator{\op V'(\omega)}{\dmnot} = \op Q_0 \op V'(\omega) \dmnot - \dmnot \op V'(\omega) \op Q_0 = \nn \\
+& = \sum_p\left( \op Q_0 \op V'(\omega) \ketbra{\psi_p}{\psi_p} - \ketbra{\psi_p}{\psi_p} \op V'(\omega) \op Q_0 \right) \;, \nn \\
+\commutator{\op \Phi(\omega)}{\dmnot} & =  \sum_p\left( \op Q_0 \op \Phi(\omega) \ketbra{\psi_p}{\psi_p} - \ketbra{\psi_p}{\psi_p} \op \Phi(\omega) \op Q_0 \right) \;, \nn
+\end{align} 
+so that:
+\begin{align}
+\left[\bbomega - \left(\hnot-\eps_p\right)\right]\ket{f_p(\omega)} &= \op Q_0\left(\op V'(\omega) + \op \Phi(\omega)\right)\ket{\psi_p} \;, \nn \\
+\bra{f_p(\omega)}\left[\bbomega + \left(\eps_p-\hnot\right)\right] &= \bra{\psi_p}\left(\op V'(-\omega) + \op \Phi(-\omega)\right)\op Q_0 \;.
+\end{align}
+
+
 \subsection{Analysis of the excitations}
 
 \subsubsection{Definition of the basis of transitions}
@@ -622,7 +663,7 @@ using this quantity we can express $\op V'$ as:
 \op V'(t)= 
 \int \dd \br \dd \br' U\left[\ketbra{\br}{\br'};\dm'(t)\right] \ketbra{\br'}{\br}\;,
 \ee
-and consequently the formal action of the coupling superoperator \eqref{couplingSopDef1} can be expressed as: 
+and consequently the formal action of the coupling superoperator \eqref{couplingSopDef1} on a generic operator $\op O$ can be expressed as: 
 \be\lb{couplingSopDef2}
 \coupl\op O = 
 \int \dd \r \dd \r' \commutator{\ketbra{\r'}{\r}}{\dmnot} U\left[\ketbra{\r}{\r'};\op O\right] \;.
@@ -642,56 +683,63 @@ U\left[\commutator{\dmnot}{\op O};\ketbra{\r'}{\r}\right]\ketbra{\r}{\r'} \;.
 This formalism allows us to provide a compact expression for the action of the Liouville superoperator on the excitation operators. For the left action we have:
 \begin{align}
 \Liouv\op E &= \sum_p\left(\hnot-\eps_p\right)\ketbra{\phi^E_p}{\psi_p} - \sum_p\ketbra{\psi_p}{\chi^E_p}\left(\hnot-\eps_p\right) + \nn \\
-&+ \sum_p \sint \dd\alpha  U[\decay{\alpha}{p}; \op E] \ketbra{\psi(\alpha)}{\psi_p}
-- \sum_p \sint \dd\alpha U[\excite{p}{\alpha}; \op E] \ketbra{\psi_p}{\psi(\alpha)} = E\op E \;, \nn
+&+ \sum_p \sint \dd\alpha  U\left[\decay{\alpha}{p}; \op E\right] \ketbra{\psi(\alpha)}{\psi_p}
+- \sum_p \sint \dd\alpha U\left[\excite{p}{\alpha}; \op E\right] \ketbra{\psi_p}{\psi(\alpha)} = E\op E \;, \nn
 \end{align}
-where the action of the coupling superoperator on $\op E$ has been computed imposing its expansion in the transition basis and computing the coefficients with formula 
+here the action of the coupling superoperator on $\op E$ has been computed imposing its expansion in the transition basis and computing the coefficients with formula 
 \eqref{leftActionCouplingDef1}. Projecting out the previous equation by multiplication with an occupied eigenstates from both the left and right provides the equations:
 \begin{align}\lb{PhipChipEqDef1}
-\left(\hnot-\eps_p\right)\ket{\phi^E_p} +\sint \dd\alpha  U[\decay{\alpha}{p}; \op E] \ket{\psi(\alpha)} &= E\ket{\phi^E_p} \;,\nn \\
-\bra{\chi^E_p}\left(\hnot-\eps_p\right) +\sint \dd\alpha \bra{\psi(\alpha)} U[\excite{p}{\alpha}; \op E] &= -E\bra{\chi^E_p} \;.
+\left(\hnot-\eps_p\right)\ket{\phi^E_p} +\sint \dd\alpha  U\left[\decay{\alpha}{p}; \op E\right] \ket{\psi(\alpha)} &= E\ket{\phi^E_p} \;,\nn \\
+\bra{\chi^E_p}\left(\hnot-\eps_p\right) +\sint \dd\alpha \bra{\psi(\alpha)} U\left[\excite{p}{\alpha}; \op E\right] &= -E\bra{\chi^E_p} \;.
 \end{align}
 We observe that the coupling kernel behaves as a (non-local) potential that depends on both the $X_{E}^{p \alpha}$ and $Y_{E}^{p \alpha}$ coefficients of \eqref{ExcitonicStatesDef1}
 thus introducing a coupling between the $\phi$ and $\chi$ states. 
 
 In the same way the right action provides:
 \begin{align}
-\op{\tilde E}\Liouv &= \sum_p\tketbra{\psi_p}{\phi^E_p}\left(\hnot-\eps_p\right) - \sum_p\left(\hnot-\eps_p\right)\tketbra{\chi^E_p}{\psi^E_p} + \nn \\
-&+ \sum_p \sint \dd\alpha  U[\commutator{\dmnot}{\op{\tilde E}};\decay{\alpha}{p}] \ketbra{\psi(\alpha)}{\psi_p}
-+ \sum_p \sint \dd\alpha U[\commutator{\dmnot}{\op{\tilde E}};\excite{p}{\alpha}] \ketbra{\psi_p}{\psi(\alpha)} = E\op{\tilde E} \;, \nn
+\op{\tilde E}\Liouv &= \sum_p\tketbra{\psi_p}{\phi^E_p}\left(\hnot-\eps_p\right) - \sum_p\left(\hnot-\eps_p\right)\tket{\chi^E_p}\bra{\psi^E_p} + \nn \\
+&+ \sum_p \sint \dd\alpha  U\left[\commutator{\dmnot}{\op{\tilde E}};\decay{\alpha}{p}\right] \ketbra{\psi(\alpha)}{\psi_p}
++ \sum_p \sint \dd\alpha U\left[\commutator{\dmnot}{\op{\tilde E}};\excite{p}{\alpha}\right] \ketbra{\psi_p}{\psi(\alpha)} = E\op{\tilde E} \;, \nn
+\end{align}
+so that:
+\begin{align}\lb{TildePhipChipEqDef1}
+\tbra{\phi^E_p}\left(\hnot-\eps_p\right) +\sint \dd\alpha \bra{\psi(\alpha)} U\left[\commutator{\dmnot}{\op{\tilde E}};\excite{p}{\alpha}\right]  &= E\tbra{\phi^E_p} \;,\nn \\
+\left(\hnot-\eps_p\right)\tket{\chi^E_p} -\sint \dd\alpha \bra{\psi(\alpha)} U\left[\commutator{\dmnot}{\op{\tilde E}};\decay{\alpha}{p}\right] &= -E\tket{\chi^E_p} \;.
 \end{align}
 
 
 
-\section{Draft of the paper - old notes}
 
-\begin{itemize}
-\item Aim of the paper: Compute the electronic properties of a molecular system with the formalism of linear scaling using a LR-TDDFT inside BigDFT code. 
-%We also want to define a set of computational tools that allow to check the reliability of the computation.  
-\end{itemize}
-
-\begin{itemize}
-\item Motivation: the DFT code have reached reliable features of precision for the computation of the GS. The same probletic are instead needed in order to achieve the same type of results for spectroscopic properties in large systems
-\begin{itemize}
-\item Quantify the impact of several modelling of a given systems (environment, disorder)
-\item Systematic approach has proven its effectiveness for GS calculations (easy to handle)~\cite{deltatest2016}. The quality of localized basis function is therefore easy to quantify (variational theorem)
-\item A challenge is represented by large scale computation for \emph{molecular} systems
-\end{itemize}
-\item State-of-the-art 
-\begin{itemize}
-\item localized basis set for representing the Hamiltonians (e.g. Fiesta (Blase, Olevano), FHI-Aims, GWMol)
-\item This approach has been also generalized to LR calculation in the case of ONETEP \cite{Ratcliff2013}. However little is said about the reliability of the results in terms of the convergence of the spectra
-\end{itemize}
-\item Content of the paper: 
-\begin{itemize}
-\item Brief illustration of the support function approach in wavelets (Large systems are  accessible for the structure (Energy, Forces,\ldots)
-\item We want to exploit the wavelet properties in the context of LR, \emph{by also providing some criteria} which may be of interest for the evaluation of the quality of the LR results.
-\end{itemize}
-\item Conclusions and implications
-\begin{itemize}
-\item We might apply this formalism also in the contect of MBPT and inspect the validity of the linear response functional for e.g. GW calcualtions (the perturbation operator will be different from the dipole)
-\end{itemize}
-\end{itemize}
+% \section{Draft of the paper - old notes}
+% 
+% \begin{itemize}
+% \item Aim of the paper: Compute the electronic properties of a molecular system with the formalism of linear scaling using a LR-TDDFT inside BigDFT code. 
+% %We also want to define a set of computational tools that allow to check the reliability of the computation.  
+% \end{itemize}
+% 
+% \begin{itemize}
+% \item Motivation: the DFT code have reached reliable features of precision for the computation of the GS. The same probletic are instead needed in order to achieve the same type of results for spectroscopic 
+% properties in large systems
+% \begin{itemize}
+% \item Quantify the impact of several modelling of a given systems (environment, disorder)
+% \item Systematic approach has proven its effectiveness for GS calculations (easy to handle)~\cite{deltatest2016}. The quality of localized basis function is therefore easy to quantify (variational theorem)
+% \item A challenge is represented by large scale computation for \emph{molecular} systems
+% \end{itemize}
+% \item State-of-the-art 
+% \begin{itemize}
+% \item localized basis set for representing the Hamiltonians (e.g. Fiesta (Blase, Olevano), FHI-Aims, GWMol)
+% \item This approach has been also generalized to LR calculation in the case of ONETEP \cite{Ratcliff2013}. However little is said about the reliability of the results in terms of the convergence of the spectra
+% \end{itemize}
+% \item Content of the paper: 
+% \begin{itemize}
+% \item Brief illustration of the support function approach in wavelets (Large systems are  accessible for the structure (Energy, Forces,\ldots)
+% \item We want to exploit the wavelet properties in the context of LR, \emph{by also providing some criteria} which may be of interest for the evaluation of the quality of the LR results.
+% \end{itemize}
+% \item Conclusions and implications
+% \begin{itemize}
+% \item We might apply this formalism also in the contect of MBPT and inspect the validity of the linear response functional for e.g. GW calcualtions (the perturbation operator will be different from the dipole)
+% \end{itemize}
+% \end{itemize}
 
 
 % \section{Introduction}
@@ -730,7 +778,7 @@ In the same way the right action provides:
 % 
 % We hope you find Overleaf useful, and please let us know if you have any feedback using the help menu above --- or use the contact form at \url{https://www.overleaf.com/contact}!
 
-\bibliographystyle{alpha}
-\bibliography{sample}
+%\bibliographystyle{alpha}
+%\bibliography{sample}
 
 \end{document}
