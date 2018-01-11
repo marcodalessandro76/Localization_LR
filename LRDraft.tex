@@ -380,7 +380,7 @@ This equation suggests us to define the \emph{fluctuation states}:
 where the $\omega$ dependence of the bra is consistent with hermitian conjugation property of the Fourier transform of a hermitian operator. Fluctuation states are, by definition,
 orthogonal to the occupied eigenstates of $\hnot$, so that:
 \be
-\brket{f_p(\omega)}{\psi_q} = \brket{\psi_q}{f_p(\omega)} = 0 \;, \forall p,q,\omega
+\brket{f_p(\omega)}{\psi_q} = \brket{\psi_q}{f_p(\omega)} = 0 \;, \forall \, p,q,\omega
 \ee
 The response density written in terms of the fluctuation states reads:
 \be\lb{rhoPrimeFluctuationStateDef1}
@@ -389,7 +389,7 @@ The response density written in terms of the fluctuation states reads:
 Applying the Liouville equation \eqref{LiouvillianRhopomegaDef3} to \eqref{rhoPrimeFluctuationStateDef1} allows us to derive a set of equation of motion for the
 fluctuation states. The following equations are useful for this task:
 \begin{align}
-\Liouvnot\dm'(\omega) & = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)}\left(\eps_p-\hnot\right) + \left(\hnot-\eps_p\right)\ketbra{f_p(\omega)}{\psi_p}\right) \;, \nn \\
+\Liouvnot\dm'(\omega) & = \sum_p\left(-\ketbra{\psi_p}{f_p(-\omega)}\left(\hnot-\eps_p\right) + \left(\hnot-\eps_p\right)\ketbra{f_p(\omega)}{\psi_p}\right) \;, \nn \\
 \coupl\dm'(\omega) &= \commutator{\op V'(\omega)}{\dmnot} = \op Q_0 \op V'(\omega) \dmnot - \dmnot \op V'(\omega) \op Q_0 = \nn \\
 & = \sum_p\left( \op Q_0 \op V'(\omega) \ketbra{\psi_p}{\psi_p} - \ketbra{\psi_p}{\psi_p} \op V'(\omega) \op Q_0 \right) \;, \nn \\
 \commutator{\op \Phi(\omega)}{\dmnot} & =  \sum_p\left( \op Q_0 \op \Phi(\omega) \ketbra{\psi_p}{\psi_p} - \ketbra{\psi_p}{\psi_p} \op \Phi(\omega) \op Q_0 \right) \;, \nn
@@ -397,7 +397,7 @@ fluctuation states. The following equations are useful for this task:
 so that:
 \begin{align}
 \left[\bbomega - \left(\hnot-\eps_p\right)\right]\ket{f_p(\omega)} &= \op Q_0\left(\op V'(\omega) + \op \Phi(\omega)\right)\ket{\psi_p} \;, \nn \\
-\bra{f_p(\omega)}\left[\bbomega + \left(\eps_p-\hnot\right)\right] &= \bra{\psi_p}\left(\op V'(-\omega) + \op \Phi(-\omega)\right)\op Q_0 \;.
+\bra{f_p(\omega)}\left[\bbomega - \left(\hnot-\eps_p\right)\right] &= \bra{\psi_p}\left(\op V'(-\omega) + \op \Phi(-\omega)\right)\op Q_0 \;.
 \end{align}
 
 
