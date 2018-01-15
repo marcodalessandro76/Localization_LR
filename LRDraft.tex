@@ -159,7 +159,7 @@ their shape is dependent on the treatment
 In this way they might be expressed in terms of resonant wavefunctions
 \end{itemize}
 
-\section{GENERAL THEORETICAL SETUP}
+\section{General theoretical setup}
 
 \subsection{Basic definitions}\lb{BasicDef}
 
@@ -362,15 +362,20 @@ Liouville equation in $\omega$ space can be written as:
 
 \section{Critical Analysis of the linear response results}
 
-\subsection{Localization properties of the response density}
+The main aim of this section is to discuss the reliability in the assessment of the results provided by the linear response formalism. In particular we are interested in 
+analyzing the \emph{linear response functional} defined as:
+\be\lb{LinearResponseFunctDef1}
+{\cal R}_{\op O}(\omega) = \trace{\dm'(\omega)\op O} \;,
+\ee
+that represents the perturbation-induced modification of the expectation value of an observable $\op O$. Here, for a sake of concreteness, we are limiting our considerations 
+to observables that do not explicitly depend on time. 
 
-We present an ulterior expression of the response density operator in the frequency space with the aim to establish its (spatial) localization properties.
-The starting point of this analysis is the expression of the response density in terms of the commutator of \eqref{rhoPrimeOmegaDef1}. We observe that, for any 
+We start this analysis by deriving an ulterior expression of the response density operator in the frequency space. We consider equation \eqref{rhoPrimeOmegaDef1} and observe that, for any 
 operator $\op O$, we may write:  
 \be
 \commutator{\dmnot}{\op O} = \dmnot \op O \op Q_0 - \op Q_0 \op O \dmnot\;,
 \ee
-where $\op Q_0= \identity - \dmnot$ projects the operator in the subspace orthogonal to $\dmnot$. So, thanks to this relation we have that:
+where $\op Q_0= \identity - \dmnot$ is the projection operator in the subspace orthogonal to $\dmnot$. So, thanks to this relation we have that:
 \be
 \dm'(\omega) = \ii\sum_p\left(\ketbra{\psi_p}{\psi_p}\op A(\omega)\op Q_0 - \op Q_0\op A(\omega)\ketbra{\psi_p}{\psi_p}\right) \;.
 \ee
@@ -379,28 +384,74 @@ This equation suggests us to define the \emph{fluctuation states}:
 \ket{f_p(\omega)} \doteq -\ii\op Q_0\op A(\omega)\ket{\psi_p} \;, \qq
 \bra{f_p(\omega)} \doteq \bra{\psi_p}\ii\op A(-\omega)\op Q_0 \;,
 \ee
-where the $\omega$ dependence of the bra is consistent with hermitian conjugation property of the Fourier transform of a hermitian operator. Fluctuation states are, by definition,
-orthogonal to the occupied eigenstates of $\hnot$, so that:
+where the $\omega$ dependence of the bra is consistent with hermitian conjugation property of the Fourier transform of a hermitian operator. An inspection of equation \eqref{ketBraTimeEvol1} 
+evidence that formulas \eqref{fluctuationStateDef1} are equivalent to the action of the $\op Q_0$ projector acting on the time evolution of the (occupied) eigenstates of $\hnot$, written 
+in the $\omega$ domain. Fluctuation states are, by definition, orthogonal to the occupied eigenstates of $\hnot$, so that:
 \be
-\brket{f_p(\omega)}{\psi_q} = \brket{\psi_q}{f_p(\omega)} = 0 \;, \forall \, p,q,\omega
+\brket{f_p(\omega)}{\psi_q} = \brket{\psi_q}{f_p(\omega)} = 0 \;, \forall \, p,q,\omega \;.
 \ee
 The response density written in terms of the fluctuation states reads:
 \be\lb{rhoPrimeFluctuationStateDef1}
-\dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;.
+\dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;,
 \ee
-Applying the Liouville equation \eqref{LiouvillianRhopomegaDef3} to \eqref{rhoPrimeFluctuationStateDef1} allows us to derive a set of equation of motion for the
-fluctuation states. The following equations are useful for this task:
+and consequently the linear response functional can be expressed as:
+\be\lb{LinearResponseFunctDef2}
+{\cal R}_{\op O}(\omega) = 
+\sum_p\left(\bra{f_p(-\omega)}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{f_p(\omega)}\right) \;.
+\ee
+The task of the linear response formalism to provided reliable results for the expectation value of $\op O$ can be reformulated in the problem of finding an accurate and unbiased
+expression for the fluctuation states in the domain in which $\op O\ket{\psi_p}$ (and its hermitian conjugate) are not vanishing. 
+
+\subsection{Localization argument for the fluctuation states}
+
+Starting from the Liouville equation \eqref{LiouvillianRhopomegaDef3} it is possible to derive a set of equation of motion for the fluctuation states. 
+The following equations are useful for this task: 
 \begin{align}
 \Liouvnot\dm'(\omega) & = \sum_p\left(-\ketbra{\psi_p}{f_p(-\omega)}\left(\hnot-\eps_p\right) + \left(\hnot-\eps_p\right)\ketbra{f_p(\omega)}{\psi_p}\right) \;, \nn \\
 \coupl\dm'(\omega) &= \commutator{\op V'(\omega)}{\dmnot} = \op Q_0 \op V'(\omega) \dmnot - \dmnot \op V'(\omega) \op Q_0 = \nn \\
 & = \sum_p\left( \op Q_0 \op V'(\omega) \ketbra{\psi_p}{\psi_p} - \ketbra{\psi_p}{\psi_p} \op V'(\omega) \op Q_0 \right) \;, \nn \\
-\commutator{\op \Phi(\omega)}{\dmnot} & =  \sum_p\left( \op Q_0 \op \Phi(\omega) \ketbra{\psi_p}{\psi_p} - \ketbra{\psi_p}{\psi_p} \op \Phi(\omega) \op Q_0 \right) \;, \nn
+\commutator{\op \Phi(\omega)}{\dmnot} & =  \sum_p\left( \op Q_0 \op \Phi(\omega) \ketbra{\psi_p}{\psi_p} - \ketbra{\psi_p}{\psi_p} \op \Phi(\omega) \op Q_0 \right) \;. \nn
 \end{align} 
-so that:
-\begin{align}
+Liouville equation written in this fashion implies the following equations for the fluctuation states, that can be extracted by multiplying from left and right for the 
+occupied eigenstates of $\hnot$:
+\begin{align}\lb{fluctuationStateEqMotion1}
 \left[\bbomega - \left(\hnot-\eps_p\right)\right]\ket{f_p(\omega)} &= \op Q_0\left(\op V'(\omega) + \op \Phi(\omega)\right)\ket{\psi_p} \;, \nn \\
-\bra{f_p(\omega)}\left[\bbomega - \left(\hnot-\eps_p\right)\right] &= \bra{\psi_p}\left(\op V'(-\omega) + \op \Phi(-\omega)\right)\op Q_0 \;.
+\bra{f_p(-\omega)}\left[-\bbomega - \left(\hnot-\eps_p\right)\right] &= \bra{\psi_p}\left(\op V'(\omega) + \op \Phi(\omega)\right)\op Q_0 \;.
 \end{align}
+These equations allows us to present a localization argument for the fluctuation states. We discuss this point for the right vectors, \emph{i.e.} for the first line of 
+\eqref{fluctuationStateEqMotion1}, but the same argument holds also for the left ones. 
+
+We split the unperturbed Hamiltonian as the kinetic $\op T$ plus the potential $\op V$ term, so that the equation of motion for $\ket{f_p(\omega)}$ is recasted as:
+\be\lb{fluctuationStateEqMotion}
+\left(\bbomega+\eps_p -\op T\right)\ket{f_p(\omega)} = \op V\ket{f_p(\omega)} + \op Q_0\left(\op V'(\omega) + \op \Phi(\omega)\right)\ket{\psi_p} \;.
+\ee
+
+
+
+% We present an ulterior expression of the response density operator in the frequency space with the aim to establish its (spatial) localization properties.
+% The starting point of this analysis is the expression of the response density in terms of the commutator of \eqref{rhoPrimeOmegaDef1}. We observe that, for any 
+% operator $\op O$, we may write:  
+% \be
+% \commutator{\dmnot}{\op O} = \dmnot \op O \op Q_0 - \op Q_0 \op O \dmnot\;,
+% \ee
+% where $\op Q_0= \identity - \dmnot$ projects the operator in the subspace orthogonal to $\dmnot$. So, thanks to this relation we have that:
+% \be
+% \dm'(\omega) = \ii\sum_p\left(\ketbra{\psi_p}{\psi_p}\op A(\omega)\op Q_0 - \op Q_0\op A(\omega)\ketbra{\psi_p}{\psi_p}\right) \;.
+% \ee
+% This equation suggests us to define the \emph{fluctuation states}:
+% \be%\lb{fluctuationStateDef1}
+% \ket{f_p(\omega)} \doteq -\ii\op Q_0\op A(\omega)\ket{\psi_p} \;, \qq
+% \bra{f_p(\omega)} \doteq \bra{\psi_p}\ii\op A(-\omega)\op Q_0 \;,
+% \ee
+% where the $\omega$ dependence of the bra is consistent with hermitian conjugation property of the Fourier transform of a hermitian operator. Fluctuation states are, by definition,
+% orthogonal to the occupied eigenstates of $\hnot$, so that:
+% \be
+% \brket{f_p(\omega)}{\psi_q} = \brket{\psi_q}{f_p(\omega)} = 0 \;, \forall \, p,q,\omega
+% \ee
+% The response density written in terms of the fluctuation states reads:
+% \be\lb{rhoPrimeFluctuationStateDef1}
+% \dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;.
+% \ee
 
 
 \subsection{Analysis of the excitations}
