@@ -425,7 +425,26 @@ We split the unperturbed Hamiltonian as the kinetic $\op T$ plus the potential $
 \be\lb{fluctuationStateEqMotion}
 \left(\bbomega+\eps_p -\op T\right)\ket{f_p(\omega)} = \op V\ket{f_p(\omega)} + \op Q_0\left(\op V'(\omega) + \op \Phi(\omega)\right)\ket{\psi_p} \;.
 \ee
+This equation has the formal structure of an inhomogeneous Helmholtz equation and can be written in the coordinate representation as:
+\be
+\left(k_p(\omega)^2+\ii\eta + \nabla^2\right)f_p(\omega,\r) = s(\omega,\r) \;\;, {\rm with} \;\; k_p(\omega)^2 = 2(\omega+\eps_p) \;,
+\ee
+and admits an integral representation in the form
+\be\lb{fluctuationStateIntEq1}
+f_p(\omega,\r) = \int \dd\r' g_H(\r-\r')s(\r') \;,
+\ee
+where $g_H(\r)$ is the Green function of the Helmholtz operator in three dimensions. This integral representation allows us to assess the localization character 
+of the fluctuation states, \emph{i.e.} the behavior of $f_p(\omega,\r)$ when $\r$ becomes large. Indeed, assuming that the support of the source term is compact
+we have that, for $\r$ outside the domain in which the integrand of \eqref{fluctuationStateIntEq1} is not vanishing:
+\be\lb{fluctuationStateIntEq2}
+f_p(\omega,\r) \sim \frac{e^{\ii \sqrt{k_p(\omega)^2} |\r|}}{|\r|} \;,
+\ee
+so the asymptotic character of the fluctuation states depends on the sign of $k_p(\omega)^2$. In particular equation \eqref{fluctuationStateIntEq2} describes an
+exponential damping for $\omega < |\eps_p|$ and an oscillating power law behavior for $\omega \geq |\eps_p|$ ().  
 
+This argument holds for all the fluctuation states that contribute to the perturbation-induced expectation value \eqref{LinearResponseFunctDef2}. We conclude that
+the linear response functional is built in terms of pure localized functions for $\omega < |\eps_h|$, instead in the range $\eps_h|\leq\omega<|\eps_0|$ it contains both
+contributions from local and non-local quantities and, finally is composed only by non-local fluctuation states for $\omega\geq|\eps_0|$. 
 
 
 % We present an ulterior expression of the response density operator in the frequency space with the aim to establish its (spatial) localization properties.
