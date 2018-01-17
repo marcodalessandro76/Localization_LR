@@ -440,37 +440,44 @@ we have that, for $\r$ outside the domain in which the integrand of \eqref{fluct
 f_p(\omega,\r) \sim \frac{e^{\ii \sqrt{k_p(\omega)^2} |\r|}}{|\r|} \;,
 \ee
 so the asymptotic character of the fluctuation states depends on the sign of $k_p(\omega)^2$. In particular equation \eqref{fluctuationStateIntEq2} describes an
-exponential damping for $\omega < |\eps_p|$ and an oscillating power law behavior for $\omega \geq |\eps_p|$ ().  
+exponential damping for $\omega < |\eps_p|$ and an oscillating power law behavior for $\omega \geq |\eps_p|$.  
 
 This argument holds for all the fluctuation states that contribute to the perturbation-induced expectation value \eqref{LinearResponseFunctDef2}. We conclude that
 the linear response functional is built in terms of pure localized functions for $\omega < |\eps_h|$, instead in the range $\eps_h|\leq\omega<|\eps_0|$ it contains both
 contributions from local and non-local quantities and, finally is composed only by non-local fluctuation states for $\omega\geq|\eps_0|$. 
 
+\subsection{Criterion for the choice of the underlying computational basis}
 
-% We present an ulterior expression of the response density operator in the frequency space with the aim to establish its (spatial) localization properties.
-% The starting point of this analysis is the expression of the response density in terms of the commutator of \eqref{rhoPrimeOmegaDef1}. We observe that, for any 
-% operator $\op O$, we may write:  
-% \be
-% \commutator{\dmnot}{\op O} = \dmnot \op O \op Q_0 - \op Q_0 \op O \dmnot\;,
-% \ee
-% where $\op Q_0= \identity - \dmnot$ projects the operator in the subspace orthogonal to $\dmnot$. So, thanks to this relation we have that:
-% \be
-% \dm'(\omega) = \ii\sum_p\left(\ketbra{\psi_p}{\psi_p}\op A(\omega)\op Q_0 - \op Q_0\op A(\omega)\ketbra{\psi_p}{\psi_p}\right) \;.
-% \ee
-% This equation suggests us to define the \emph{fluctuation states}:
-% \be%\lb{fluctuationStateDef1}
-% \ket{f_p(\omega)} \doteq -\ii\op Q_0\op A(\omega)\ket{\psi_p} \;, \qq
-% \bra{f_p(\omega)} \doteq \bra{\psi_p}\ii\op A(-\omega)\op Q_0 \;,
-% \ee
-% where the $\omega$ dependence of the bra is consistent with hermitian conjugation property of the Fourier transform of a hermitian operator. Fluctuation states are, by definition,
-% orthogonal to the occupied eigenstates of $\hnot$, so that:
-% \be
-% \brket{f_p(\omega)}{\psi_q} = \brket{\psi_q}{f_p(\omega)} = 0 \;, \forall \, p,q,\omega
-% \ee
-% The response density written in terms of the fluctuation states reads:
-% \be\lb{rhoPrimeFluctuationStateDef1}
-% \dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;.
-% \ee
+Let us further investigate formula \eqref{LinearResponseFunctDef2} pointing out some computation aspects. We introduce a computational basis $\{\ket{\mu}\}$, composed by a \emph{finite}
+set of functions on which we expand the formal scalar products appearing in \eqref{LinearResponseFunctDef2} as follows:
+\be
+\bra{f_p(-\omega)}\op O\ket{\psi_p} = \sum_\mu \brket{f_p(-\omega)}{\mu}\bra{\mu}\op O\ket{\psi_p} \;.
+\ee
+The quality of the basis can be evaluated by the requirement that the numerical coefficients appearing in the r.h.s provide a reliable reconstruction of the formal scalar product. 
+Here we are assuming that the ground state properties of the unperturbed system have been computed in the same basis introduced above. This means that the feature of the basis, 
+that for instance for real space basis are given by the grid spacing and number of points (that determines the dimension simulation box), are chosen so that the coefficients
+$\brket{\mu}{\psi_p}$ represent a valid discretization of the occupied orbitals. The same can be stated also for the matrix elements $\bra{\mu}\op O\ket{\psi_p}$, by assuming 
+that $\op O$ acts as a local operator on the occupied orbitals. 
+
+The most interesting point of this discussion concerns the assessment of the reliable sampling of the fluctuation states through the coefficients $\brket{f_p(-\omega)}{\mu}$ and
+$\brket{\mu}{f_p(\omega)}$. The question is non-trivial, as the behavior of the fluctuation states strongly depends on $\omega$, as previously explained.
+The first step needed to address this problem concerns with the evaluation of the reliability of the $\{\ket{\mu}\}$ basis for $\omega=0$, \emph{i.e.} for a perturbing field that does 
+not depend on time. In this case the fluctuation states, as well as the expectation value of a given observable, can be computed performing a ground state calculation in which the perturbing 
+field $\op\Phi$ is added to the external potential of $\hnot$\footnote{We are interested in the linear response, so the magnitude of $\op\Phi$ has to be chosen in a way that respects this 
+regime. To check this point we can compute the perturbation-induced modification of an observable an verify that its value scales linearly with the magnitude of the field}. %, without  
+
+%In order to address this aspects it is possible to assess the reali
+%We propose an operative procedure to perform a direct measurement of the  
+
+%An explicit check can be performed at $\omega=0$.  
+
+
+
+%This condition implies that the coefficients
+%$\brket{\mu}{\psi_p}$ represent a valid discretization of the occupied orbitals and also the matrix elements $\bra{\mu}\op O\ket{\psi_p}$ can assumed to be well sampled, assuming that
+%$\op O$ acts as a local operator on the occupied orbitals. 
+
+
 
 
 \subsection{Analysis of the excitations}
