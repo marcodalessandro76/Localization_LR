@@ -450,37 +450,48 @@ contributions from local and non-local quantities and, finally is composed only 
 
 Let us further investigate formula \eqref{LinearResponseFunctDef2} pointing out some computation aspects. We introduce a computational basis $\{\ket{\mu}\}$, composed by a \emph{finite}
 set of functions on which we expand the formal scalar products appearing in \eqref{LinearResponseFunctDef2} as follows:
-\be
+\be\lb{LinearResponseFunctDef3}
 \bra{f_p(-\omega)}\op O\ket{\psi_p} = \sum_\mu \brket{f_p(-\omega)}{\mu}\bra{\mu}\op O\ket{\psi_p} \;.
 \ee
-The quality of the basis can be evaluated by the requirement that the numerical coefficients appearing in the r.h.s provide a reliable reconstruction of the formal scalar product. 
-Here we are assuming that the ground state properties of the unperturbed system have been computed in the same basis introduced above. This means that the feature of the basis, 
-that for instance for real space basis are given by the grid spacing and number of points (that determines the dimension simulation box), are chosen so that the coefficients
-$\brket{\mu}{\psi_p}$ represent a valid discretization of the occupied orbitals. The same can be stated also for the matrix elements $\bra{\mu}\op O\ket{\psi_p}$, by assuming 
+The quality of the basis can be evaluated by the requirement that the numerical coefficients appearing in the r.h.s of \eqref{LinearResponseFunctDef3} provide a reliable reconstruction 
+of the formal scalar product. Here we are assuming that the ground state properties of the unperturbed system have been computed in the same basis introduced above. This means that the 
+feature of the basis, that for instance for real space basis are given by the grid spacing and number of points (that determines the dimension simulation box), are chosen so that the 
+coefficients $\brket{\mu}{\psi_p}$ represent a valid discretization of the occupied orbitals. The same can be stated also for the matrix elements $\bra{\mu}\op O\ket{\psi_p}$, by assuming 
 that $\op O$ acts as a local operator on the occupied orbitals. 
 
-The most interesting point of this discussion concerns the assessment of the reliable sampling of the fluctuation states through the coefficients $\brket{f_p(-\omega)}{\mu}$ and
+The most interesting point of this discussion concerns with the assessment of the reliable sampling of the fluctuation states through the coefficients $\brket{f_p(-\omega)}{\mu}$ and
 $\brket{\mu}{f_p(\omega)}$. The question is non-trivial, as the behavior of the fluctuation states strongly depends on $\omega$, as previously explained.
 The first step needed to address this problem concerns with the evaluation of the reliability of the $\{\ket{\mu}\}$ basis for $\omega=0$, \emph{i.e.} for a perturbing field that does 
 not depend on time. In this case the fluctuation states, as well as the expectation value of a given observable, can be computed performing a ground state calculation in which the perturbing 
 field $\op\Phi$ is added to the external potential of $\hnot$\footnote{We are interested in the linear response, so the magnitude of $\op\Phi$ has to be chosen in a way that respects this 
-regime. To check this point we can compute the perturbation-induced modification of an observable an verify that its value scales linearly with the magnitude of the field}. %, without  
+regime. To check this point we can compute the perturbation-induced modification of an observable an verify that its value scales linearly with the magnitude of the field}. 
+The goodness of the $\{\ket{\mu}\}$ basis can thus be verified as in the standard ground state calculation, for instance by checking that, given a certain level of completeness of the basis,
+the energy of the occupied (perturbed) orbitals is stable with respect to further refinements. 
 
-%In order to address this aspects it is possible to assess the reali
-%We propose an operative procedure to perform a direct measurement of the  
+Once that a basis with acceptable features has been chosen and verified for $\omega=0$ we can reasonably extend its reliability to $\omega>0$ by using the localization argument presented above. 
+Indeed, we have argued that fluctuation states retain a local behavior up to $\omega=|\eps_h|$ and so we can expect that, up to this threshold value, the $\{\ket{\mu}\}$ basis represents an 
+effective tool for a precise discretization of \eqref{LinearResponseFunctDef3}, thus providing a reliable estimate of the linear response.  
 
-%An explicit check can be performed at $\omega=0$.  
+On the contrary, the situation becomes very less predictable for $\omega$ higher than the threshold $|\eps_h|$ since in this regime the fluctuation states start to delocalize in all the 
+accessible space and the spatial cutoff is provided only by the ground state matrix elements $\bra{\mu}\op O\ket{\psi_p}$.  
+In this case formula \eqref{LinearResponseFunctDef3} provides basis independent results only if the (partial) sampling of the fluctuation states is reconstructed in the domain in which
+$\bra{\mu}\op O\ket{\psi_p}$ are non vanishing. As we shall see through explicit computations this requirement turns out to be quite severe and choices of the basis that provide precise
+results below $|\eps_p|$ fails in the high-$\omega$ regime.  
 
+\subsection{Excitation operator and the analytic structure of the linear response}
 
+%The linear response presented so far is expressed in functions of the fluctuation states. These objects essentially describe the modification of the occupied eigenstates of 
+%$\hnot$ induced by the perturbation. They exhibit an explicit dependence on the perturbing field and their $\omega$ dependence is a complicated combination of the intrinsic
+%feature of the system  
 
-%This condition implies that the coefficients
-%$\brket{\mu}{\psi_p}$ represent a valid discretization of the occupied orbitals and also the matrix elements $\bra{\mu}\op O\ket{\psi_p}$ can assumed to be well sampled, assuming that
-%$\op O$ acts as a local operator on the occupied orbitals. 
+The linear response presented so far is expressed in functions of the fluctuation states. These objects essentially describe the modification of the occupied eigenstates of 
+$\hnot$ induced by the perturbation and, by definition, explicitly depend on the perturbing field. As a consequence, the $\omega$ dependence of fluctuation states is a complicated 
+combination of the one of $\op\Phi(\omega)$ and of the intrinsic energetic feature of the system. 
 
+For these reason it is preferable to present an equivalent but alternative formula for the linear response functional \eqref{LinearResponseFunctDef2}...  
 
-
-
-\subsection{Analysis of the excitations}
+%They exhibit an explicit dependence on the perturbing field and their $\omega$ dependence is a complicated combination of the intrinsic
+%eature of the system  
 
 \subsubsection{Definition of the basis of transitions}
 
