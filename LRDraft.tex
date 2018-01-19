@@ -403,6 +403,7 @@ The task of the linear response formalism to provided reliable results for the e
 expression for the fluctuation states in the domain in which $\op O\ket{\psi_p}$ (and its hermitian conjugate) are not vanishing. 
 
 \subsection{Localization argument for the fluctuation states}
+\lb{LocalizationFluctuationStates}
 
 Starting from the Liouville equation \eqref{LiouvillianRhopomegaDef3} it is possible to derive a set of equation of motion for the fluctuation states. 
 The following equations are useful for this task: 
@@ -427,7 +428,7 @@ We split the unperturbed Hamiltonian as the kinetic $\op T$ plus the potential $
 \ee
 This equation has the formal structure of an inhomogeneous Helmholtz equation and can be written in the coordinate representation as:
 \be
-\left(k_p(\omega)^2+\ii\eta + \nabla^2\right)f_p(\omega,\r) = s(\omega,\r) \;\;, {\rm with} \;\; k_p(\omega)^2 = 2(\omega+\eps_p) \;,
+\left(k^2_p(\omega)+\ii\eta + \nabla^2\right)f_p(\omega,\r) = s(\omega,\r) \;\;, {\rm with} \;\; k^2_p(\omega) = 2(\omega+\eps_p) \;,
 \ee
 and admits an integral representation in the form
 \be\lb{fluctuationStateIntEq1}
@@ -437,9 +438,9 @@ where $g_H(\r)$ is the Green function of the Helmholtz operator in three dimensi
 of the fluctuation states, \emph{i.e.} the behavior of $f_p(\omega,\r)$ when $\r$ becomes large. Indeed, assuming that the support of the source term is compact
 we have that, for $\r$ outside the domain in which the integrand of \eqref{fluctuationStateIntEq1} is not vanishing:
 \be\lb{fluctuationStateIntEq2}
-f_p(\omega,\r) \sim \frac{e^{\ii \sqrt{k_p(\omega)^2} |\r|}}{|\r|} \;,
+f_p(\omega,\r) \sim \frac{e^{\ii \sqrt{k^2_p(\omega)} |\r|}}{|\r|} \;,
 \ee
-so the asymptotic character of the fluctuation states depends on the sign of $k_p(\omega)^2$. In particular equation \eqref{fluctuationStateIntEq2} describes an
+so the asymptotic character of the fluctuation states depends on the sign of $k^2_p(\omega)$. In particular equation \eqref{fluctuationStateIntEq2} describes an
 exponential damping for $\omega < |\eps_p|$ and an oscillating power law behavior for $\omega \geq |\eps_p|$.  
 
 This argument holds for all the fluctuation states that contribute to the perturbation-induced expectation value \eqref{LinearResponseFunctDef2}. We conclude that
@@ -480,18 +481,20 @@ results below $|\eps_p|$ fails in the high-$\omega$ regime.
 
 \subsection{Excitation operator and the analytic structure of the linear response}
 
-%The linear response presented so far is expressed in functions of the fluctuation states. These objects essentially describe the modification of the occupied eigenstates of 
-%$\hnot$ induced by the perturbation. They exhibit an explicit dependence on the perturbing field and their $\omega$ dependence is a complicated combination of the intrinsic
-%feature of the system  
+The linear response presented so far is expressed in functions of the fluctuation states, that essentially describe the modification of the occupied eigenstates of $\hnot$ induced by 
+the perturbation. Fluctuation states depend explicitly on the perturbing field $\op\Phi(\omega)$ and, consequently, the analytic structure of the linear response written as in formula 
+\eqref{LinearResponseFunctDef2} emerge through a combination of the $\omega$ dependence of the perturbing field an on the intrinsic response of the system under inspection.    
 
-The linear response presented so far is expressed in functions of the fluctuation states. These objects essentially describe the modification of the occupied eigenstates of 
-$\hnot$ induced by the perturbation and, by definition, explicitly depend on the perturbing field. As a consequence, the $\omega$ dependence of fluctuation states is a complicated 
-combination of the one of $\op\Phi(\omega)$ and of the intrinsic energetic feature of the system. 
+It is however possible to present and equivalent but alternative formulation of the linear response that allows us to express the response density operator in term of the spectral
+decomposition of the Liouville superoperator. This approach naturally leads to the concept of \emph{excitation operators}, defined through a self-consistent operator eigenvalue equation,
+that codify the intrinsic capability of the system to respond to an arbitrary perturbation. Excitations behave as singularity of the response density operator and their knowledge provides a 
+deeper insight into the analytic structure of the linear response. 
 
-For these reason it is preferable to present an equivalent but alternative formula for the linear response functional \eqref{LinearResponseFunctDef2}...  
-
-%They exhibit an explicit dependence on the perturbing field and their $\omega$ dependence is a complicated combination of the intrinsic
-%eature of the system  
+The material presented in this section discusses a complete re-derivation of the linear response written in terms of excitation operators. Moreover, we will evidence that a \emph{localization 
+argument}, analogous to the one presented in section \ref{LocalizationFluctuationStates} for the fluctuation states, holds also for the excited states of the systems below a specific energetic
+threshold. This analysis has relevant consequence both under theoretical and computational point of view. Indeed, it provides a deeper understanding in the role of both localized and de-localized 
+excitations in determining the analytic structure of the linear response and it gives us clear indication in the level of refinement of the computational setup needed to obtain reliable results 
+from a linear response calculation. 
 
 \subsubsection{Definition of the basis of transitions}
 
