@@ -404,10 +404,59 @@ and consequently the linear response functional can be expressed as:
 {\cal R}_{\op O}(\omega) = 
 \sum_p\left(\bra{f_p(-\omega)}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{f_p(\omega)}\right) \;.
 \ee
-The task of the linear response formalism to provided reliable results for the expectation value of $\op O$ can be reformulated in the problem of finding an accurate and unbiased
-expression for the fluctuation states in the domain in which $\op O\ket{\psi_p}$ (and its hermitian conjugate) are not vanishing. 
+Let us further investigate this formula pointing out some of the  computational aspects needed to explicitly perform the scalar products appearing in 
+\eqref{LinearResponseFunctDef2}. 
+We introduce a computational $\mu$-basis, composed by a finite set of $n_\mu$ basis elements $\{\ket{\mu}\}$, and assume that a reliable solution of the ground state problem has 
+been provided in this basis. This means that the feature of the basis (that, for instance, for real space basis are given by the grid spacing and number of points) are chosen so 
+that the coefficients $\brket{\mu}{\psi_p}$ represent a valid discretization of the occupied orbitals. The same can be stated also for the matrix elements $\bra{\mu}\op O\ket{\psi_p}$, 
+under the hypothesis that the observable $\op O$ acts as a local operator on the occupied orbitals.  
 
-\subsection{Localization argument for the fluctuation states}
+The formal scalar products that express the linear response functional \eqref{LinearResponseFunctDef1} can be evaluated in the same basis introduced above, that is: 
+%For instance the first addend of \eqref{LinearResponseFunctDef2} reads: 
+%\be\lb{LinearResponseFunctDef3}
+%\bra{f_p(-\omega)}\op O\ket{\psi_p} = \sum_\mu \brket{f_p(-\omega)}{\mu}\bra{\mu}\op O\ket{\psi_p} \;.
+%\ee
+\be\lb{LinearResponseFunctDef3}
+{\cal R}_{\op O}(\omega) = 
+\sum_p\sum_\mu\left(\brket{f_p(-\omega)}{\mu}\bra{\mu}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{\mu}\brket{\mu}{f_p(\omega)}\right) \;.
+\ee
+The task of the linear response formalism to provide reliable results for the expectation value of $\op O$ can be reformulated in the problem of finding an accurate and unbiased
+expression for the numerical coefficients appearing in \eqref{LinearResponseFunctDef3}. The features of the computational basis described above ensures that this requirement should
+be satisfied for $\bra{\mu}\op O\ket{\psi_p}$ (and its hermitian conjugates). 
+On the contrary, the problem of the reliable reconstruction of the fluctuation states through the sampling of the coefficients $\brket{f_p(-\omega)}{\mu}$ and $\brket{\mu}{f_p(\omega)}$
+turns out to be highly non-trivial, since the behavior of the fluctuation states strongly depends on $\omega$, as will be readily clarified in the next section.
+
+
+%On the contrary, the most interesting point of this discussion concerns with the assessment of the 
+%reliable sampling of the fluctuation states through the coefficients $\brket{f_p(-\omega)}{\mu}$ and $\brket{\mu}{f_p(\omega)}$. The problem turns out to be highly is non-trivial 
+%since the behavior of the fluctuation states strongly depends on $\omega$, as will be readily clarified in the next section.
+
+
+%$\brket{f_p(-\omega)}{\mu}$ and $\brket{\mu}{f_p(\omega)}$ in the domain in which the matrix elements $\bra{\mu}\op O\ket{\psi_p}$ (and its hermitian 
+%conjugates) are not vanishing. 
+%The task of the linear response formalism to provide reliable results for the expectation value of $\op O$ can be reformulated in the problem of finding an accurate and unbiased
+%expression for the coefficients $\brket{f_p(-\omega)}{\mu}$ and $\brket{\mu}{f_p(\omega)}$ in the domain in which the matrix elements $\bra{\mu}\op O\ket{\psi_p}$ (and its hermitian 
+%conjugates) are not vanishing. 
+
+
+% We assume that the ground state problem has been already solved and that the occupied orbitals  introduce a computational basis $\{\ket{\mu}\}$, composed by a \emph{finite}
+% set of functions
+% 
+% Here we are dealing with a linear response problem and 
+
+% The quality of the basis can be evaluated by the requirement that the numerical coefficients appearing in the r.h.s of \eqref{LinearResponseFunctDef3} provide a reliable reconstruction 
+% of the formal scalar product. 
+
+% Here we are assuming that the ground state properties of the unperturbed system have been computed in the same basis introduced above. This means that the 
+% feature of the basis, that for instance for real space basis are given by the grid spacing and number of points (that determines the dimension simulation box), are chosen so that the 
+% coefficients $\brket{\mu}{\psi_p}$ represent a valid discretization of the occupied orbitals. The same can be stated also for the matrix elements $\bra{\mu}\op O\ket{\psi_p}$, by assuming 
+% that $\op O$ acts as a local operator on the occupied orbitals. 
+
+
+% aggiungere un preambolo a quello che segue. Soluzione usando le equazioni di Sternheimer e approccio con le eccitazioni....
+
+\subsection{Sternheimer equations and localization properties of the fluctuation states}
+%\subsection{Localization argument for the fluctuation states}
 \lb{LocalizationFluctuationStates}
 
 Starting from the Liouville equation \eqref{LiouvillianRhopomegaDef3} it is possible to derive a set of equation of motion for the fluctuation states. 
@@ -424,58 +473,51 @@ occupied eigenstates of $\hnot$:
 \left[\bbomega - \left(\hnot-\eps_p\right)\right]\ket{f_p(\omega)} &= \op Q_0\left(\op V'(\omega) + \op \Phi(\omega)\right)\ket{\psi_p} \;, \nn \\
 \bra{f_p(-\omega)}\left[-\bbomega - \left(\hnot-\eps_p\right)\right] &= \bra{\psi_p}\left(\op V'(\omega) + \op \Phi(\omega)\right)\op Q_0 \;.
 \end{align}
-These equations allows us to present a localization argument for the fluctuation states. We discuss this point for the right vectors, \emph{i.e.} for the first line of 
-\eqref{fluctuationStateEqMotion1}, but the same argument holds also for the left ones. 
+Equations \eqref{fluctuationStateEqMotion1} have the form of a Sternheimer equation. Once projected in the $\{\ket{\mu}\}$ basis, and fixed the value of $\omega$, they can be solved 
+using a self-consistent procedure (add references). This approach provides a direct evaluation of the fluctuation states and thus the linear response functional \eqref{LinearResponseFunctDef3}
+can be computed.
 
-We split the unperturbed Hamiltonian as the kinetic $\op T$ plus the potential $\op V$ term, so that the equation of motion for $\ket{f_p(\omega)}$ is recasted as:
+Much more interestingly for the main topic of the present discussion, and regardless from the detailed strategy of their solutions, equations \eqref{fluctuationStateEqMotion1} 
+allow us to present a \emph{localization argument} for the fluctuation states. We discuss this point for the right vectors, \emph{i.e.} for the first line of \eqref{fluctuationStateEqMotion1}, 
+but the same argument holds also for the left ones. We split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term, so that the equation of motion 
+for $\ket{f_p(\omega)}$ is recasted as:
 \be\lb{fluctuationStateEqMotion}
 \left(\bbomega+\eps_p -\op T\right)\ket{f_p(\omega)} = \op V\ket{f_p(\omega)} + \op Q_0\left(\op V'(\omega) + \op \Phi(\omega)\right)\ket{\psi_p} \;.
 \ee
 This equation has the formal structure of an inhomogeneous Helmholtz equation and can be written in the coordinate representation as:
 \be
-\left(k^2_p(\omega)+\ii\eta + \nabla^2\right)f_p(\omega,\r) = s(\omega,\r) \;\;, {\rm with} \;\; k^2_p(\omega) = 2(\omega+\eps_p) \;,
+\left(k^2_p(\omega)+\ii\eta + \nabla^2\right)f_p(\omega,\r) = s(\omega,\r) \;\;, {\rm with} \;\; k^2_p(\omega) = 2(\omega+\eps_p) \;.
 \ee
-and admits an integral representation in the form
+The solution of this equation admits an integral representation in the form:
 \be\lb{fluctuationStateIntEq1}
 f_p(\omega,\r) = \int \dd\r' g_H(\r-\r')s(\r') \;,
 \ee
 where $g_H(\r)$ is the Green function of the Helmholtz operator in three dimensions. This integral representation allows us to assess the localization character 
 of the fluctuation states, \emph{i.e.} the behavior of $f_p(\omega,\r)$ when $\r$ becomes large. Indeed, assuming that the support of the source term is compact
-we have that, for $\r$ outside the domain in which the integrand of \eqref{fluctuationStateIntEq1} is not vanishing:
+we have that, for $\r$ outside the domain in which the integrand of \eqref{fluctuationStateIntEq1} is not vanishing, the leading contribution of the fluctuation states
+is given by:
 \be\lb{fluctuationStateIntEq2}
-f_p(\omega,\r) \sim \frac{e^{\ii \sqrt{k^2_p(\omega)} |\r|}}{|\r|} \;,
+f_p(\omega,\r) \sim \frac{e^{\ii \sqrt{k^2_p(\omega)+\ii\eta} |\r|}}{|\r|} \;.
 \ee
-so the asymptotic character of the fluctuation states depends on the sign of $k^2_p(\omega)$. In particular equation \eqref{fluctuationStateIntEq2} describes an
-exponential damping for $\omega < |\eps_p|$ and an oscillating power law behavior for $\omega \geq |\eps_p|$.  
-
-This argument holds for all the fluctuation states that contribute to the perturbation-induced expectation value \eqref{LinearResponseFunctDef2}. We conclude that
-the linear response functional is built in terms of pure localized functions for $\omega < |\eps_h|$, instead in the range $\eps_h|\leq\omega<|\eps_0|$ it contains both
+We observe that the presence of the regularization parameter $\eta$ ensures a (slow) asymptotic convergence to zero, nonetheless the qualitative $\r$-dependence of the fluctuation 
+states is determined by the sign of $k^2_p(\omega)$. In particular equation \eqref{fluctuationStateIntEq2} describes an exponential damping for $\omega < |\eps_p|$ and an oscillating 
+power law behavior for $\omega \geq |\eps_p|$.
+This argument holds for all the fluctuation states that contribute to the perturbation-induced expectation value \eqref{LinearResponseFunctDef3}, so we conclude that
+the linear response functional is built in terms of localized fluctuation states for $\omega < |\eps_h|$. Instead, in the range $\eps_h|\leq\omega<|\eps_0|$ it contains both
 contributions from local and non-local quantities and, finally is composed only by non-local fluctuation states for $\omega\geq|\eps_0|$. 
 
-\subsection{Criterion for the choice of the underlying computational basis}
+\subsubsection{Criterion for the choice of the computational basis} %underlying
 
-Let us further investigate formula \eqref{LinearResponseFunctDef2} pointing out some computation aspects. We introduce a computational basis $\{\ket{\mu}\}$, composed by a \emph{finite}
-set of functions on which we expand the formal scalar products appearing in \eqref{LinearResponseFunctDef2} as follows:
-\be\lb{LinearResponseFunctDef3}
-\bra{f_p(-\omega)}\op O\ket{\psi_p} = \sum_\mu \brket{f_p(-\omega)}{\mu}\bra{\mu}\op O\ket{\psi_p} \;.
-\ee
-The quality of the basis can be evaluated by the requirement that the numerical coefficients appearing in the r.h.s of \eqref{LinearResponseFunctDef3} provide a reliable reconstruction 
-of the formal scalar product. Here we are assuming that the ground state properties of the unperturbed system have been computed in the same basis introduced above. This means that the 
-feature of the basis, that for instance for real space basis are given by the grid spacing and number of points (that determines the dimension simulation box), are chosen so that the 
-coefficients $\brket{\mu}{\psi_p}$ represent a valid discretization of the occupied orbitals. The same can be stated also for the matrix elements $\bra{\mu}\op O\ket{\psi_p}$, by assuming 
-that $\op O$ acts as a local operator on the occupied orbitals. 
-
-The most interesting point of this discussion concerns with the assessment of the reliable sampling of the fluctuation states through the coefficients $\brket{f_p(-\omega)}{\mu}$ and
-$\brket{\mu}{f_p(\omega)}$. The question is non-trivial, as the behavior of the fluctuation states strongly depends on $\omega$, as previously explained.
-The first step needed to address this problem concerns with the evaluation of the reliability of the $\{\ket{\mu}\}$ basis for $\omega=0$, \emph{i.e.} for a perturbing field that does 
+The capability of the computational basis to express the results of the linear response can be discussed on the localization argument previously presented. 
+The first step needed to address this problem concerns with the evaluation of the reliability of the $\mu$-basis for $\omega=0$, \emph{i.e.} for a perturbing field that does 
 not depend on time. In this case the fluctuation states, as well as the expectation value of a given observable, can be computed performing a ground state calculation in which the perturbing 
 field $\op\Phi$ is added to the external potential of $\hnot$\footnote{We are interested in the linear response, so the magnitude of $\op\Phi$ has to be chosen in a way that respects this 
 regime. To check this point we can compute the perturbation-induced modification of an observable an verify that its value scales linearly with the magnitude of the field}. 
-The goodness of the $\{\ket{\mu}\}$ basis can thus be verified as in the standard ground state calculation, for instance by checking that, given a certain level of completeness of the basis,
+The goodness of the $\mu$-basis can thus be verified as in the standard ground state calculation, for instance by checking that, given a certain level of completeness of the basis,
 the energy of the occupied (perturbed) orbitals is stable with respect to further refinements. 
 
-Once that a basis with acceptable features has been chosen and verified for $\omega=0$ we can reasonably extend its reliability to $\omega>0$ by using the localization argument presented above. 
-Indeed, we have argued that fluctuation states retain a local behavior up to $\omega=|\eps_h|$ and so we can expect that, up to this threshold value, the $\{\ket{\mu}\}$ basis represents an 
+Once that a basis with acceptable features has been chosen and verified for $\omega=0$ we can reasonably extend its reliability to $\omega>0$ by using the localization argument. 
+Indeed, we have argued that fluctuation states retain a local behavior up to $\omega=|\eps_h|$ and so we can expect that, up to this threshold value, the $\mu$-basis represents an 
 effective tool for a precise discretization of \eqref{LinearResponseFunctDef3}, thus providing a reliable estimate of the linear response.  
 
 On the contrary, the situation becomes very less predictable for $\omega$ higher than the threshold $|\eps_h|$ since in this regime the fluctuation states start to delocalize in all the 
@@ -484,7 +526,8 @@ In this case formula \eqref{LinearResponseFunctDef3} provides basis independent 
 $\bra{\mu}\op O\ket{\psi_p}$ are non vanishing. As we shall see through explicit computations this requirement turns out to be quite severe and choices of the basis that provide precise
 results below $|\eps_p|$ fails in the high-$\omega$ regime.  
 
-\subsection{Excitation operator and the analytic structure of the linear response}
+%\subsection{Excitation operator and the analytic structure of the linear response}
+\subsection{Linear response \emph{via} the construction of the excitation operators}
 
 The linear response presented so far is expressed in functions of the fluctuation states, that essentially describe the modification of the occupied eigenstates of $\hnot$ induced by 
 the perturbation. Fluctuation states depend explicitly on the perturbing field $\op\Phi(\omega)$ and, consequently, the analytic structure of the linear response written as in formula 
@@ -501,20 +544,42 @@ threshold. This analysis has relevant consequence both under theoretical and com
 excitations in determining the analytic structure of the linear response and it gives us clear indication in the level of refinement of the computational setup needed to obtain reliable results 
 from a linear response calculation. 
 
-\subsubsection{Definition of the basis of transitions}
+%\subsubsection{Definition of the basis of transitions}
+\subsubsection{Explicit sampling of the empty-states subspace}
 
-We now introduce the notion of \emph{basis of transitions} and identify the operators than can be expanded in such a basis. 
-
-We split the complete
-set of eigenstates of $\hnot$ in two sets. The first one is composed by the eigenvectors of $\hnot$ in the subspace of the occupied orbitals. The second 
-one is composed by the remaining eigenvectors, both in the bound and in the continuum region, and its elements are denoted as $\ket{\psi(\alpha)}$, where $\alpha$ 
-is a multi-index in the sense described in \ref{BasicDef}. The elements of these sets satisfy the following orthonormality relation: 
-\be\lb{orthonormalityDef1}
-\brket{\psi(\alpha)}{\psi_p} = \brket{\psi_p}{\psi(\alpha)} = 0 \;, \qq \brket{\psi_p}{\psi_q} = \delta_{pq} \;, \qq
-\brket{\psi(\alpha)}{\psi(\beta)} = \delta(\alpha-\beta) \;.
+We introduce a set of basis vectors $\{\ket{\psi(\alpha)}\}$ in the subspace of the empty-states, \emph{i.e.} in the subspace orthogonal to the occupied eigenstates of $\hnot$. 
+The elements of this set satisfy, by definition, the following orthonormality relation: 
+\be\lb{psiAlphaDef1}%{orthonormalityDef1}
+\brket{\psi(\alpha)}{\psi_p} = \brket{\psi_p}{\psi(\alpha)} = 0 \;, \qq
+\brket{\psi(\alpha)}{\psi(\beta)} = \delta(\alpha-\beta) \;,
 \ee
-Obviously, the direct sum of these two sets coincides with the complete set of eigenstates of $\hnot$ and thus 
-constitute a complete basis. 
+where we have parametrized the basis element through the multi-index $\alpha$, in the sense described in \ref{BasicDef}, since the associated vector can describe both a localized or a 
+de-localized state. The $\op Q_0$ projector as well as the completeness relation can be easily written in function of this basis: 
+\be\lb{psiAlphaQ0}
+\op Q_0 = \sint\dd\alpha\ketbra{\psi(\alpha)}{\psi(\alpha)} \;, \;\; 
+\identity = \sum_p\ketbra{\psi_p}{\psi_p} + \sint\dd\alpha\ketbra{\psi(\alpha)}{\psi(\alpha)} \;.
+\ee
+The dimension $n_\alpha$ of the $\alpha$-basis can be determined by expressing its elements $\{\ket{\psi(\alpha)}\}$ in the same $\mu$-basis used to perform the ground states calculation. 
+%both with and without the explicit time-independent perturbing field. 
+%Denoting with $n_{occ}$ the number of occupied orbitals  
+Since the orthogonality condition with respect to the occupied orbitals imposes $n_{occ}$ constraints we conclude that $n_\alpha=n_\mu-n_{occ}$. 
+
+
+% We now introduce the notion of \emph{basis of transitions} and identify the operators than can be expanded in such a basis. 
+% 
+% We split the complete
+% set of eigenstates of $\hnot$ in two sets. The first one is composed by the eigenvectors of $\hnot$ in the subspace of the occupied orbitals. The second 
+% one is composed by the remaining eigenvectors, both in the bound and in the continuum region, and its elements are denoted as $\ket{\psi(\alpha)}$, where $\alpha$ 
+% is a multi-index in the sense described in \ref{BasicDef}. The elements of these sets satisfy the following orthonormality relation: 
+% \be\lb{orthonormalityDef1}
+% \brket{\psi(\alpha)}{\psi_p} = \brket{\psi_p}{\psi(\alpha)} = 0 \;, \qq \brket{\psi_p}{\psi_q} = \delta_{pq} \;, \qq
+% \brket{\psi(\alpha)}{\psi(\beta)} = \delta(\alpha-\beta) \;.
+% \ee
+% Obviously, the direct sum of these two sets coincides with the complete set of eigenstates of $\hnot$ and thus 
+% constitute a complete basis. 
+
+\subsubsection{Linear response in the basis of transitions}
+
 A generic operator can be decomposed in this basis and its formal expansion contains four distinct contribution of the form $\ketbra{\psi_p}{\psi_q}$, 
 $\ketbra{\psi(\alpha)}{\psi(\beta)}$, $\ketbra{\psi(\alpha)}{\psi_p}$, $\ketbra{\psi_p}{\psi(\alpha)}$. However an inspection of equations \eqref{rhoPrimeOmegaDef1}
 and \eqref{LiouvillianRhopomegaDef3} evidences that the relevant operators in the contest of the linear response are expressed as a commutator with $\dmnot$. 
@@ -523,7 +588,7 @@ For this class of operators the only non vanishing contribution comes from the \
 \excite{p}{\alpha} \equiv \ketbra{\psi(\alpha)}{\psi_p}\;, \qq
 \decay{\alpha}{p} \equiv \ketbra{\psi_p}{\psi(\alpha)} \;.
 \ee
-The orthonormality conditions \eqref{orthonormalityDef1} imply that:
+The orthonormality conditions \eqref{psiAlphaDef1} imply that:
 \be\lb{transitionOpOrthonormalityDef1}
 \trace{\excite{p}{\alpha}\excite{q}{\beta}} = \trace{\decay{\alpha}{p}\decay{\beta}{q}} = 0 \;, \qq
 \trace{\excite{p}{\alpha}\decay{\beta}{q}} = \delta_{pq}\delta(\alpha-\beta) \;,
@@ -566,7 +631,7 @@ under hermitian-conjugate operation. The expansion of a suitable operator in the
 \dbraket{\op O}{\cdot} \;.
 \ee
 
-\subsubsection{Spectral decomposition of the response density in the transitions basis}
+%\subsubsection{Spectral decomposition of the response density in the transitions basis}
 
 The Liouville equation \eqref{LiouvillianRhopomegaDef3} can be consistently written in the transition basis. Indeed, its r.h.s is explicitly written
 as a commutator with $\dmnot$, while an inspection of the formal definition of the response density and of the Liouville superoperator evidences that
@@ -591,6 +656,9 @@ with:
 \trace{\excite{p}{\alpha}\, \Liouv\, \excite{q}{\beta}} &
 \trace{\excite{p}{\alpha}\, \Liouv\, \decay{\beta}{q}}} \;.
 \ee
+
+\subsubsection{Spectral decomposition of the response density in the transitions basis}
+
 This formulation of the Liouville equation is the starting point for the derivation of the spectral decomposition of the response density operator
 in terms of the eigenvectors if the Liouville operator. 
 The first step in the achievement of this result is provided by the construction of the eigenvectors of the matrix \eqref{LiouvilleMatrixTransBasisDef1}.
@@ -623,7 +691,7 @@ that can be compactly rewritten by using the index-less notation:
 \frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;.
 \ee
 
-\subsubsection{Excitation operators}
+\subsubsection{Definition of excitation operators}
 
 We introduce the explicit representation of the eigenvectors op $\optr{L}$:
 \be\lb{XYcoeffDef1}
@@ -670,7 +738,7 @@ The introduction of the excitation operators allows to provide a complete operat
 where the algebraic equivalence between the trace written in \eqref{RhopExcitationDef1} and the numerator of \eqref{RhopExcitationTransBasisDef2}
 can be easily proved.
 
-\subsubsection{Schroedinger-like equation for excitonic states}
+\subsubsection{Sternheimer equation for excitonic states. Localization argument revisited}
 
 We introduce the \emph{excitonic states} defined via the linear combination of the basis set orthogonal to $\dmnot$ with the
 coefficients that appears in \eqref{XYcoeffDef1}, that is:
