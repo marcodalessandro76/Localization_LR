@@ -508,7 +508,7 @@ contributions from local and non-local quantities and, finally is composed only 
 
 \subsubsection{Criterion for the choice of the computational basis} %underlying
 
-The capability of the computational basis to express the results of the linear response can be discussed on the localization argument previously presented. 
+The capability of the computational basis to express the results of the linear response can be analyzed using the localization argument previously discussed. 
 The first step needed to address this problem concerns with the evaluation of the reliability of the $\mu$-basis for $\omega=0$, \emph{i.e.} for a perturbing field that does 
 not depend on time. In this case the fluctuation states, as well as the expectation value of a given observable, can be computed performing a ground state calculation in which the perturbing 
 field $\op\Phi$ is added to the external potential of $\hnot$\footnote{We are interested in the linear response, so the magnitude of $\op\Phi$ has to be chosen in a way that respects this 
@@ -547,9 +547,9 @@ from a linear response calculation.
 %\subsubsection{Definition of the basis of transitions}
 \subsubsection{Explicit sampling of the empty-states subspace}
 
-We introduce a set of basis vectors $\{\ket{\psi(\alpha)}\}$ in the subspace of the empty-states, \emph{i.e.} in the subspace orthogonal to the occupied eigenstates of $\hnot$. 
-The elements of this set satisfy, by definition, the following orthonormality relation: 
-\be\lb{psiAlphaDef1}%{orthonormalityDef1}
+We now introduce the notion of $\alpha$-basis, that is a set of orthonormal vectors $\{\ket{\psi(\alpha)}\}$ that form a basis in the subspace of the empty-states, \emph{i.e.} in the subspace 
+orthogonal to the occupied eigenstates of $\hnot$. The elements of this set satisfy, by definition, the following orthonormality relation: 
+\be\lb{psiAlphaDef1}
 \brket{\psi(\alpha)}{\psi_p} = \brket{\psi_p}{\psi(\alpha)} = 0 \;, \qq
 \brket{\psi(\alpha)}{\psi(\beta)} = \delta(\alpha-\beta) \;,
 \ee
@@ -559,10 +559,39 @@ de-localized state. The $\op Q_0$ projector as well as the completeness relation
 \op Q_0 = \sint\dd\alpha\ketbra{\psi(\alpha)}{\psi(\alpha)} \;, \;\; 
 \identity = \sum_p\ketbra{\psi_p}{\psi_p} + \sint\dd\alpha\ketbra{\psi(\alpha)}{\psi(\alpha)} \;.
 \ee
-The dimension $n_\alpha$ of the $\alpha$-basis can be determined by expressing its elements $\{\ket{\psi(\alpha)}\}$ in the same $\mu$-basis used to perform the ground states calculation. 
-%both with and without the explicit time-independent perturbing field. 
-%Denoting with $n_{occ}$ the number of occupied orbitals  
-Since the orthogonality condition with respect to the occupied orbitals imposes $n_{occ}$ constraints we conclude that $n_\alpha=n_\mu-n_{occ}$. 
+The $\alpha$-basis, defined through equations \eqref{psiAlphaDef1} and \eqref{psiAlphaQ0}, formally spans an infinite dimensional domain. However, for obvious computational reason it is 
+interesting to express the $\{\ket{\psi(\alpha)}\}$ in the same $\mu$-basis used to perform the ground states calculations. The discretization conditions imposed by the $\mu$-basis reduce 
+the $\{\ket{\psi(\alpha)}\}$ to a finite dimensional set. The dimension $n_\alpha$ of the basis can be computed by subtracting to the $n_\mu$ degrees of freedom the $n_{occ}$ constraints 
+needed to imposes the orthonormality of the $\{\ket{\psi(\alpha)}\}$ to the occupied states, so that $n_\alpha=n_\mu-n_{occ}$.
+
+\vspace{0.4cm}
+\emph{Quality assessment of the reduced $\alpha$-basis}
+\vspace{0.4cm}
+
+When the sampling of the empty state subspace is needed to perform practical calculations in realistic systems the construction of a complete $\alpha$-basis typically turns out to be 
+computationally unaffordable. In these cases it is possible to introduce a \emph{reduced} basis, denoted as $r\alpha$-basis, composed of a subset of dimension $n_{r\alpha}$ of the 
+$\{\ket{\psi(\alpha)}\}$ elements of the complete basis. 
+
+The capability of the reduced basis to express the results of the linear response can be evaluated by using the results of a ground state calculation in which the time-independent 
+perturbing field $\op\Phi$ is added to the external potential of $\hnot$. We denote with $\ket{\psi_p^\Phi}$ the occupied eigenstate of the perturbed Hamiltonian and, using the 
+completeness relation of \eqref{psiAlphaQ0}, we can write the following expansion:
+\be\lb{PertPsiExpansion1}
+\ket{\psi_p^{\Phi}} = \sum_q a_{pq}\ket{\psi_q} + \sint\dd\alpha \,a_{p\alpha}\ket{\psi(\alpha)} \;,
+\ee
+where $a_{pq} = \brket{\psi_q}{\psi_p^{\Phi}}$ and $a_{p\alpha} = \brket{\psi(\alpha)}{\psi_p^{\Phi}}$. Equation \eqref{PertPsiExpansion1} holds exactly since the sum over the empty states
+is extended to the complete $\alpha$-basis. Taking the norm of $\ket{\psi_p^\Phi}$ and summing over $p$ provides:
+\be\lb{PertPsiExpansion2}
+n_{occ} = \sum_{pq} |a_{pq}|^2 + \sum_p\sint\dd\alpha\,|a_{p\alpha}|^2 \;,
+\ee
+the two addend of this equation measure the distribution of the total electronic charge of the perturbed system between the occupied and empty subspaces. Furthermore, we can use
+equation \eqref{PertPsiExpansion2} to build an estimator $C(n_{r\alpha})$ of the capability of the $r\alpha$-basis to describe the modification of the ground state density induced 
+by the time-independent perturbation. We define this estimator as follows:
+\be\lb{Cestimator1}
+C(n_{r\alpha}) = 1 - \frac{\sum_p\sum_\alpha^{n_{r\alpha}}|a_{p\alpha}|^2}{n_{occ} - \sum_{pq} |a_{pq}|^2} \;,
+\ee
+$C(n_{r\alpha})$ is by construction a positive function with values between 1, achieved when the sampling of the empty-states subspace is absent and 0, obtained when the reduced basis
+is complete. The normalization adopted in \eqref{Cestimator1} ensures that $C(n_{r\alpha})$ is an intensive estimator, so that its value does not depend on the number of occupied
+orbitals of the system. 
 
 
 % We now introduce the notion of \emph{basis of transitions} and identify the operators than can be expanded in such a basis. 
@@ -580,25 +609,51 @@ Since the orthogonality condition with respect to the occupied orbitals imposes 
 
 \subsubsection{Linear response in the basis of transitions}
 
-A generic operator can be decomposed in this basis and its formal expansion contains four distinct contribution of the form $\ketbra{\psi_p}{\psi_q}$, 
-$\ketbra{\psi(\alpha)}{\psi(\beta)}$, $\ketbra{\psi(\alpha)}{\psi_p}$, $\ketbra{\psi_p}{\psi(\alpha)}$. However an inspection of equations \eqref{rhoPrimeOmegaDef1}
-and \eqref{LiouvillianRhopomegaDef3} evidences that the relevant operators in the contest of the linear response are expressed as a commutator with $\dmnot$. 
-For this class of operators the only non vanishing contribution comes from the \emph{transition operators}:
+The defining equation of the linear response can be reformulated using the explicit sampling of the empty states defined above. The fundamental observation on the basis
+of this procedure regards the fact that both the response density operator \eqref{rhoPrimeOmegaDef1} and all the operators appearing in the Liouville equation 
+\eqref{LiouvillianRhopomegaDef3} are expressed as a commutator with $\dmnot$. This observation implies that all the operators $\op O$ appearing in the contest of the linear 
+response satisfy the formal relation:
 \be
-\excite{p}{\alpha} \equiv \ketbra{\psi(\alpha)}{\psi_p}\;, \qq
-\decay{\alpha}{p} \equiv \ketbra{\psi_p}{\psi(\alpha)} \;.
+\op O = \dmnot\op O\op Q_0 + \op Q_0\op O\dmnot \;.
 \ee
-The orthonormality conditions \eqref{psiAlphaDef1} imply that:
-\be\lb{transitionOpOrthonormalityDef1}
-\trace{\excite{p}{\alpha}\excite{q}{\beta}} = \trace{\decay{\alpha}{p}\decay{\beta}{q}} = 0 \;, \qq
-\trace{\excite{p}{\alpha}\decay{\beta}{q}} = \delta_{pq}\delta(\alpha-\beta) \;,
-\ee
-so that the expansion of a suitable operator $\op O$ in the basis of transitions reads:
+Plugging the operator expression of $\dmnot$ and $\op Q_0$ in terms of basis vector in the occupied and empty subspace provides:
 \be\lb{OperatorTransBasisExpDef1}
 \op O = \sum_p\sint \dd \alpha\left(
 \excite{p}{\alpha}\trace{\decay{\alpha}{p}\op O} + \decay{\alpha}{p}\trace{\excite{p}{\alpha}\op O}
-\right) \;.
+\right) \;,
 \ee
+where we have defined the \emph{transition operators}:
+\be
+\excite{p}{\alpha} \equiv \ketbra{\psi(\alpha)}{\psi_p}\;, \qq
+\decay{\alpha}{p} \equiv \ketbra{\psi_p}{\psi(\alpha)} \;,
+\ee
+that thanks to \eqref{psiAlphaDef1} satisfy the orthonormality conditions:
+\be\lb{transitionOpOrthonormalityDef1}
+\trace{\excite{p}{\alpha}\excite{q}{\beta}} = \trace{\decay{\alpha}{p}\decay{\beta}{q}} = 0 \;, \qq
+\trace{\excite{p}{\alpha}\decay{\beta}{q}} = \delta_{pq}\delta(\alpha-\beta) \;.
+\ee
+% \vspace{2cm}
+% A generic operator can be decomposed in this basis and its formal expansion contains four distinct contribution of the form $\ketbra{\psi_p}{\psi_q}$, 
+% $\ketbra{\psi(\alpha)}{\psi(\beta)}$, $\ketbra{\psi(\alpha)}{\psi_p}$, $\ketbra{\psi_p}{\psi(\alpha)}$. However an inspection of equations \eqref{rhoPrimeOmegaDef1}
+% and \eqref{LiouvillianRhopomegaDef3} evidences that the relevant operators in the contest of the linear response are expressed as a commutator with $\dmnot$. 
+% For this class of operators the only non vanishing contribution comes from the \emph{transition operators}:
+% \be
+% \excite{p}{\alpha} \equiv \ketbra{\psi(\alpha)}{\psi_p}\;, \qq
+% \decay{\alpha}{p} \equiv \ketbra{\psi_p}{\psi(\alpha)} \;.
+% \ee
+% The orthonormality conditions \eqref{psiAlphaDef1} imply that:
+% \be\lb{transitionOpOrthonormalityDef1}
+% \trace{\excite{p}{\alpha}\excite{q}{\beta}} = \trace{\decay{\alpha}{p}\decay{\beta}{q}} = 0 \;, \qq
+% \trace{\excite{p}{\alpha}\decay{\beta}{q}} = \delta_{pq}\delta(\alpha-\beta) \;,
+% \ee
+% so that the expansion of a suitable operator $\op O$ in the basis of transitions reads:
+% \be\lb{OperatorTransBasisExpDef1}
+% \op O = \sum_p\sint \dd \alpha\left(
+% \excite{p}{\alpha}\trace{\decay{\alpha}{p}\op O} + \decay{\alpha}{p}\trace{\excite{p}{\alpha}\op O}
+% \right) \;.
+% \ee
+Here we are assuming that the complete $\alpha$-basis is used, so the operator expansion in the basis of transition \eqref{OperatorTransBasisExpDef1} is exact. The effect of
+the adoption of a reduced basis will be analyzed when needed. 
 In order to recast this expansion in a simpler expression it turns out to be useful to define the rank-2 row vectors of the transition basis: 
 \be
 \sbra{p\alpha}{\cdot} \equiv 
@@ -615,7 +670,7 @@ Thanks to this formalism we have that equation \eqref{OperatorTransBasisExpDef1}
 \dbraket{\cdot}{\op O} \;,
 \ee
 where the last equality implicitly define the ulterior compact notation of the ``big-shaped'' vectors in which the summed indexes are omitted.  
-In the same fashion it will be also useful for the subsequent analysis to introduce a ``conjugate'' notation, in which the basis operators are expressed
+In the same fashion it will be also useful for the subsequent analysis to introduce a conjugate notation, in which the basis operators are expressed
 as column vector and the coefficients of the expanded operator as row ones, that is: 
 \be\lb{TransitionBasisConjugateDef1}
 \sket{p\alpha}{\cdot} \equiv 
@@ -625,18 +680,19 @@ as column vector and the coefficients of the expanded operator as row ones, that
 \;,
 \ee
 where the flip in the role of $\op e$ and $\op d$ in \eqref{TransitionBasisConjugateDef1} follows from the properties of excitation and decay operators
-under hermitian-conjugate operation. The expansion of a suitable operator in the transition basis using the conjugate description reads: 
+under hermitian-conjugate operation. The expansion of an operator in the transition basis using the conjugate description reads: 
 \be\lb{OperatorTransBasisConjugateExpDef1}
 \op O = \sum_p\sint \dd \alpha \sbra{p\alpha}{\op O}\sket{p\alpha}{\cdot} = 
 \dbraket{\op O}{\cdot} \;.
 \ee
-
 %\subsubsection{Spectral decomposition of the response density in the transitions basis}
-
-The Liouville equation \eqref{LiouvillianRhopomegaDef3} can be consistently written in the transition basis. Indeed, its r.h.s is explicitly written
-as a commutator with $\dmnot$, while an inspection of the formal definition of the response density and of the Liouville superoperator evidences that
-they both contain a commutator with $\dmnot$. Written in the basis of transitions Liouville equation becomes a linear matrix equation for the rank-2 
-vectors of the coefficients \eqref{OperatorTransitionCoeffDef1} of the operators in its left and right side:
+%The Liouville equation \eqref{LiouvillianRhopomegaDef3} can be consistently written in the transition basis. 
+% Indeed, its r.h.s is explicitly written
+% as a commutator with $\dmnot$, while an inspection of the formal definition of the response density and of the Liouville superoperator evidences that
+% they both contain a commutator with $\dmnot$. Written in the basis of transitions Liouville equation becomes a linear matrix equation for the rank-2 
+% vectors of the coefficients \eqref{OperatorTransitionCoeffDef1} of the operators in its left and right side:
+The Liouville equation \eqref{LiouvillianRhopomegaDef3} can be consistently written in the transition basis where it becomes a linear matrix equation for the 
+rank-2 vectors of the coefficients \eqref{OperatorTransitionCoeffDef1} of the operators in its left and right side, that is:
 \be
 \omega\mat{ \trace{\decay{\alpha}{p}\dm'(\omega)} \\ \trace{\excite{p}{\alpha}\dm'(\omega)}} - 
 \mat{ \trace{\decay{\alpha}{p}\Liouv\dm'(\omega)} \\ \trace{\excite{p}{\alpha}\Liouv\dm'(\omega)}} =
@@ -685,9 +741,14 @@ so equation \eqref{LiouvilleTransBasisDef1} can be inverted:
 \sket{q\beta}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
 \ee
 that can be compactly rewritten by using the index-less notation:
+% \be\lb{RhopExcitationTransBasisDef2}
+% \sket{p\alpha}{\dm'(\omega)} = 
+% \sint\dd E \sket{p\alpha}{E}
+% \frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;.
+% \ee
 \be\lb{RhopExcitationTransBasisDef2}
-\sket{p\alpha}{\dm'(\omega)} = 
-\sint\dd E \sket{p\alpha}{E}
+\dket{\dm'(\omega)} = 
+\sint\dd E \dket{E}
 \frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;.
 \ee
 
