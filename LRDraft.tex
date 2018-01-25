@@ -734,23 +734,23 @@ Once that the eigenvectors are known, the spectral decomposition of the resolven
 \left[\left(\bbomega-\optr{L}\right)^{-1}\right]^{p\alpha}_{q\beta} =\sint\dd E
 \frac{\sket{p\alpha}{E}\sbra{q\beta}{\tilde E}}{\bbomega-E} \;,
 \ee
-so equation \eqref{LiouvilleTransBasisDef1} can be inverted:
-\be\lb{RhopExcitationTransBasisDef1}
-\sket{p\alpha}{\dm'(\omega)} = \sint\dd E \sket{p\alpha}{E}
-\frac{\sum_q \sint \dd \beta\sbra{q\beta}{\tilde E}
-\sket{q\beta}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
-\ee
-that can be compactly rewritten by using the index-less notation:
-% \be\lb{RhopExcitationTransBasisDef2}
-% \sket{p\alpha}{\dm'(\omega)} = 
-% \sint\dd E \sket{p\alpha}{E}
-% \frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;.
+so equation \eqref{LiouvilleTransBasisDef1} can be inverted and we obtain the response density written in basis of transistion, in the form:
+% \be\lb{RhopExcitationTransBasisDef1}
+% \sket{p\alpha}{\dm'(\omega)} = \sint\dd E \sket{p\alpha}{E}
+% \frac{\sum_q \sint \dd \beta\sbra{q\beta}{\tilde E}
+% \sket{q\beta}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
 % \ee
-\be\lb{RhopExcitationTransBasisDef2}
-\dket{\dm'(\omega)} = 
-\sint\dd E \dket{E}
+% that can be compactly rewritten by using the index-less notation:
+\be\lb{RhopExcitationTransBasisDef1}
+\sket{p\alpha}{\dm'(\omega)} = 
+\sint\dd E \sket{p\alpha}{E}
 \frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;.
 \ee
+% \be\lb{RhopExcitationTransBasisDef2}
+% \dket{\dm'(\omega)} = 
+% \sint\dd E \dket{E}
+% \frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;.
+% \ee
 
 \subsubsection{Definition of excitation operators}
 
@@ -790,18 +790,18 @@ whereas the left action on $\op{\tilde E}$ provides:
 E\sum_p \sint \dd \alpha \sbra{p\alpha}{\tilde E} \sket{p\alpha}{\cdot}  =
 E \op{\tilde E} \;.
 \end{align}
-The introduction of the excitation operators allows to provide a complete operator version of equation \eqref{RhopExcitationTransBasisDef2}, that is:
+The introduction of the excitation operators allows to provide a complete operator version of equation \eqref{RhopExcitationTransBasisDef1}, that is:
 \be\lb{RhopExcitationDef1}
 \dm'(\omega) = 
 \sint\dd E \op E
 \frac{\trace{\op{\tilde E}\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
 \ee
-where the algebraic equivalence between the trace written in \eqref{RhopExcitationDef1} and the numerator of \eqref{RhopExcitationTransBasisDef2}
+where the algebraic equivalence between the trace written in \eqref{RhopExcitationDef1} and the numerator of \eqref{RhopExcitationTransBasisDef1}
 can be easily proved.
 
-\subsubsection{Sternheimer equation for excitonic states. Localization argument revisited}
+\subsubsection{Excitation expansion of the fluctuation states. A localization argument for the excited states}
 
-We introduce the \emph{excitonic states} defined via the linear combination of the basis set orthogonal to $\dmnot$ with the
+We introduce the \emph{excited states} defined via the linear combination of the basis set orthogonal to $\dmnot$ with the
 coefficients that appears in \eqref{XYcoeffDef1}, that is:
 \begin{align}\lb{ExcitonicStatesDef1}
 \ket{\phi^E_p} &\equiv \sint \dd \alpha X_{E}^{p \alpha} \ket{\psi(\alpha)} &
@@ -814,6 +814,50 @@ Thanks to these definitions we can express the excitation operators as follows:
 \op E = \sum_p \left( \ket{\phi^E_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^E_p}\right)\;, \qq
 \op {\tilde E} = \sum_p \left( \ket{\psi_p} \tbra{\phi^E_p} + \tket{\chi^E_p}\bra{\psi_p} \right)\;.
 \ee
+Starting from these equation we can derive the excitation expansion of the fluctuation states. Indeed an inspection of formula \eqref{rhoPrimeFluctuationStateDef1}
+show that fluctuation states can be extracted from the response density operator as follows:
+\be
+\ket{f_p(\omega)} = \dm'(\omega)\ket{\psi_p} \;, \qq
+\bra{f_p(-\omega)} = \bra{\psi_p}\dm'(\omega) \;, \nn
+\ee
+so plugging equations \eqref{ExctitationOperatorsDef2} in the formula \eqref{RhopExcitationDef1} and performing these operations we obtain:
+\be\lb{FluctStateExcitationDef1}
+\ket{f_p(\omega)} = \sint\dd E \frac{\trace{\op{\tilde E}\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \ket{\phi^E_p} \;, \qq
+\bra{f_p(-\omega)} = \sint\dd E \bra{\chi^E_p}\frac{\trace{\op{\tilde E}\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} 
+\ee
+
+
+\subsubsection{Excitation expansion of the linear response functional}
+
+We have that:
+\be
+\sket{p\alpha}{\commutator{\op\Phi(\omega)}{\dmnot}} = \sum_q\sint\dd\beta\, \optr{J}^{p\alpha}_{q\beta}
+\sket{q\beta}{\op\Phi(\omega)} \;\;, \;{\rm with} \;\;
+\optr{J}^{p\alpha}_{q\beta} = \delta_{pq}\delta(\alpha-\beta)\mat{1 & 0 \\ 0 & -1}
+\ee
+and the linear response functional \eqref{LinearResponseFunctDef1} can be written as:
+\be
+{\cal R}_{\op O}(\omega) = 
+\sint\dd E \dbraket{\op O}{E}
+\frac{\dbra{\tilde E}\optr{J}\dket{\op\Phi(\omega)}}{\bbomega-E} \;.
+\ee
+
+%\subsubsection{Sternheimer equation for excitonic states. Localization argument revisited}
+\subsubsection{Sternheimer equation for excited states. Localization argument revisited}
+
+% We introduce the \emph{excitonic states} defined via the linear combination of the basis set orthogonal to $\dmnot$ with the
+% coefficients that appears in \eqref{XYcoeffDef1}, that is:
+% \begin{align}\lb{ExcitonicStatesDef1}
+% \ket{\phi^E_p} &\equiv \sint \dd \alpha X_{E}^{p \alpha} \ket{\psi(\alpha)} &
+% \tbra{\phi^E_p} &\equiv \sint \dd \alpha {\tilde X_{E}^{p \alpha}} \bra{\psi(\alpha)} \;, \nn\\
+% \bra{\chi^E_p} &\equiv \sint \dd \alpha  Y_{E}^{p \alpha} \bra{\psi(\alpha)} &
+% \tket{\chi^E_p} &\equiv \sint \dd \alpha {\tilde Y}_{E}^{p\alpha} \ket{\psi(\alpha)} \;.
+% \end{align}
+% Thanks to these definitions we can express the excitation operators as follows:
+% \be\lb{ExctitationOperatorsDef2}
+% \op E = \sum_p \left( \ket{\phi^E_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^E_p}\right)\;, \qq
+% \op {\tilde E} = \sum_p \left( \ket{\psi_p} \tbra{\phi^E_p} + \tket{\chi^E_p}\bra{\psi_p} \right)\;.
+% \ee
 The operator eigenvalue equations \eqref{opEeigenvalueDef1} and \eqref{optildeEeigenvalueDef1} can be translated into a Schroedinger-like equations
 for the excitonic states. 
 
