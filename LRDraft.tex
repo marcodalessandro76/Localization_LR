@@ -55,6 +55,7 @@
 \newcommand{\argument}[1]{\ifthenelse{\isempty{#1}{}}{}{(#1)}}
 \newcommand{\matop}[1]{\mathbf{#1}}
 \newcommand{\optr}[1]{\check #1}
+\newcommand{\opskew}[1]{{\op {#1}}_{\perp}}
 
 % notation for the states
 \newcommand{\tket}[1]{| \tilde #1 \rangle}
@@ -412,10 +413,6 @@ that the coefficients $\brket{\mu}{\psi_p}$ represent a valid discretization of 
 under the hypothesis that the observable $\op O$ acts as a local operator on the occupied orbitals.  
 
 The formal scalar products that express the linear response functional \eqref{LinearResponseFunctDef1} can be evaluated in the same basis introduced above, that is: 
-%For instance the first addend of \eqref{LinearResponseFunctDef2} reads: 
-%\be\lb{LinearResponseFunctDef3}
-%\bra{f_p(-\omega)}\op O\ket{\psi_p} = \sum_\mu \brket{f_p(-\omega)}{\mu}\bra{\mu}\op O\ket{\psi_p} \;.
-%\ee
 \be\lb{LinearResponseFunctDef3}
 {\cal R}_{\op O}(\omega) = 
 \sum_p\sum_\mu\left(\brket{f_p(-\omega)}{\mu}\bra{\mu}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{\mu}\brket{\mu}{f_p(\omega)}\right) \;.
@@ -426,37 +423,7 @@ be satisfied for $\bra{\mu}\op O\ket{\psi_p}$ (and its hermitian conjugates).
 On the contrary, the problem of the reliable reconstruction of the fluctuation states through the sampling of the coefficients $\brket{f_p(-\omega)}{\mu}$ and $\brket{\mu}{f_p(\omega)}$
 turns out to be highly non-trivial, since the behavior of the fluctuation states strongly depends on $\omega$, as will be readily clarified in the next section.
 
-
-%On the contrary, the most interesting point of this discussion concerns with the assessment of the 
-%reliable sampling of the fluctuation states through the coefficients $\brket{f_p(-\omega)}{\mu}$ and $\brket{\mu}{f_p(\omega)}$. The problem turns out to be highly is non-trivial 
-%since the behavior of the fluctuation states strongly depends on $\omega$, as will be readily clarified in the next section.
-
-
-%$\brket{f_p(-\omega)}{\mu}$ and $\brket{\mu}{f_p(\omega)}$ in the domain in which the matrix elements $\bra{\mu}\op O\ket{\psi_p}$ (and its hermitian 
-%conjugates) are not vanishing. 
-%The task of the linear response formalism to provide reliable results for the expectation value of $\op O$ can be reformulated in the problem of finding an accurate and unbiased
-%expression for the coefficients $\brket{f_p(-\omega)}{\mu}$ and $\brket{\mu}{f_p(\omega)}$ in the domain in which the matrix elements $\bra{\mu}\op O\ket{\psi_p}$ (and its hermitian 
-%conjugates) are not vanishing. 
-
-
-% We assume that the ground state problem has been already solved and that the occupied orbitals  introduce a computational basis $\{\ket{\mu}\}$, composed by a \emph{finite}
-% set of functions
-% 
-% Here we are dealing with a linear response problem and 
-
-% The quality of the basis can be evaluated by the requirement that the numerical coefficients appearing in the r.h.s of \eqref{LinearResponseFunctDef3} provide a reliable reconstruction 
-% of the formal scalar product. 
-
-% Here we are assuming that the ground state properties of the unperturbed system have been computed in the same basis introduced above. This means that the 
-% feature of the basis, that for instance for real space basis are given by the grid spacing and number of points (that determines the dimension simulation box), are chosen so that the 
-% coefficients $\brket{\mu}{\psi_p}$ represent a valid discretization of the occupied orbitals. The same can be stated also for the matrix elements $\bra{\mu}\op O\ket{\psi_p}$, by assuming 
-% that $\op O$ acts as a local operator on the occupied orbitals. 
-
-
-% aggiungere un preambolo a quello che segue. Soluzione usando le equazioni di Sternheimer e approccio con le eccitazioni....
-
 \subsection{Sternheimer equations and localization properties of the fluctuation states}
-%\subsection{Localization argument for the fluctuation states}
 \lb{LocalizationFluctuationStates}
 
 Starting from the Liouville equation \eqref{LiouvillianRhopomegaDef3} it is possible to derive a set of equation of motion for the fluctuation states. 
@@ -506,7 +473,7 @@ This argument holds for all the fluctuation states that contribute to the pertur
 the linear response functional is built in terms of localized fluctuation states for $\omega < |\eps_h|$. Instead, in the range $\eps_h|\leq\omega<|\eps_0|$ it contains both
 contributions from local and non-local quantities and, finally is composed only by non-local fluctuation states for $\omega\geq|\eps_0|$. 
 
-\subsubsection{Criterion for the choice of the computational basis} %underlying
+\subsubsection{Criterion for the choice of the computational basis}
 
 The capability of the computational basis to express the results of the linear response can be analyzed using the localization argument previously discussed. 
 The first step needed to address this problem concerns with the evaluation of the reliability of the $\mu$-basis for $\omega=0$, \emph{i.e.} for a perturbing field that does 
@@ -526,7 +493,6 @@ In this case formula \eqref{LinearResponseFunctDef3} provides basis independent 
 $\bra{\mu}\op O\ket{\psi_p}$ are non vanishing. As we shall see through explicit computations this requirement turns out to be quite severe and choices of the basis that provide precise
 results below $|\eps_p|$ fails in the high-$\omega$ regime.  
 
-%\subsection{Excitation operator and the analytic structure of the linear response}
 \subsection{Linear response \emph{via} the construction of the excitation operators}
 
 The linear response presented so far is expressed in functions of the fluctuation states, that essentially describe the modification of the occupied eigenstates of $\hnot$ induced by 
@@ -544,7 +510,6 @@ threshold. This analysis has relevant consequence both under theoretical and com
 excitations in determining the analytic structure of the linear response and it gives us clear indication in the level of refinement of the computational setup needed to obtain reliable results 
 from a linear response calculation. 
 
-%\subsubsection{Definition of the basis of transitions}
 \subsubsection{Explicit sampling of the empty-states subspace}
 
 We now introduce the notion of $\alpha$-basis, that is a set of orthonormal vectors $\{\ket{\psi(\alpha)}\}$ that form a basis in the subspace of the empty-states, \emph{i.e.} in the subspace 
@@ -593,20 +558,6 @@ $C(n_{r\alpha})$ is by construction a positive function with values between 1, a
 is complete. The normalization adopted in \eqref{Cestimator1} ensures that $C(n_{r\alpha})$ is an intensive estimator, so that its value does not depend on the number of occupied
 orbitals of the system. 
 
-
-% We now introduce the notion of \emph{basis of transitions} and identify the operators than can be expanded in such a basis. 
-% 
-% We split the complete
-% set of eigenstates of $\hnot$ in two sets. The first one is composed by the eigenvectors of $\hnot$ in the subspace of the occupied orbitals. The second 
-% one is composed by the remaining eigenvectors, both in the bound and in the continuum region, and its elements are denoted as $\ket{\psi(\alpha)}$, where $\alpha$ 
-% is a multi-index in the sense described in \ref{BasicDef}. The elements of these sets satisfy the following orthonormality relation: 
-% \be\lb{orthonormalityDef1}
-% \brket{\psi(\alpha)}{\psi_p} = \brket{\psi_p}{\psi(\alpha)} = 0 \;, \qq \brket{\psi_p}{\psi_q} = \delta_{pq} \;, \qq
-% \brket{\psi(\alpha)}{\psi(\beta)} = \delta(\alpha-\beta) \;.
-% \ee
-% Obviously, the direct sum of these two sets coincides with the complete set of eigenstates of $\hnot$ and thus 
-% constitute a complete basis. 
-
 \subsubsection{Linear response in the basis of transitions}
 
 The defining equation of the linear response can be reformulated using the explicit sampling of the empty states defined above. The fundamental observation on the basis
@@ -632,26 +583,6 @@ that thanks to \eqref{psiAlphaDef1} satisfy the orthonormality conditions:
 \trace{\excite{p}{\alpha}\excite{q}{\beta}} = \trace{\decay{\alpha}{p}\decay{\beta}{q}} = 0 \;, \qq
 \trace{\excite{p}{\alpha}\decay{\beta}{q}} = \delta_{pq}\delta(\alpha-\beta) \;.
 \ee
-% \vspace{2cm}
-% A generic operator can be decomposed in this basis and its formal expansion contains four distinct contribution of the form $\ketbra{\psi_p}{\psi_q}$, 
-% $\ketbra{\psi(\alpha)}{\psi(\beta)}$, $\ketbra{\psi(\alpha)}{\psi_p}$, $\ketbra{\psi_p}{\psi(\alpha)}$. However an inspection of equations \eqref{rhoPrimeOmegaDef1}
-% and \eqref{LiouvillianRhopomegaDef3} evidences that the relevant operators in the contest of the linear response are expressed as a commutator with $\dmnot$. 
-% For this class of operators the only non vanishing contribution comes from the \emph{transition operators}:
-% \be
-% \excite{p}{\alpha} \equiv \ketbra{\psi(\alpha)}{\psi_p}\;, \qq
-% \decay{\alpha}{p} \equiv \ketbra{\psi_p}{\psi(\alpha)} \;.
-% \ee
-% The orthonormality conditions \eqref{psiAlphaDef1} imply that:
-% \be\lb{transitionOpOrthonormalityDef1}
-% \trace{\excite{p}{\alpha}\excite{q}{\beta}} = \trace{\decay{\alpha}{p}\decay{\beta}{q}} = 0 \;, \qq
-% \trace{\excite{p}{\alpha}\decay{\beta}{q}} = \delta_{pq}\delta(\alpha-\beta) \;,
-% \ee
-% so that the expansion of a suitable operator $\op O$ in the basis of transitions reads:
-% \be\lb{OperatorTransBasisExpDef1}
-% \op O = \sum_p\sint \dd \alpha\left(
-% \excite{p}{\alpha}\trace{\decay{\alpha}{p}\op O} + \decay{\alpha}{p}\trace{\excite{p}{\alpha}\op O}
-% \right) \;.
-% \ee
 Here we are assuming that the complete $\alpha$-basis is used, so the operator expansion in the basis of transition \eqref{OperatorTransBasisExpDef1} is exact. The effect of
 the adoption of a reduced basis will be analyzed when needed. 
 In order to recast this expansion in a simpler expression it turns out to be useful to define the rank-2 row vectors of the transition basis: 
@@ -685,25 +616,23 @@ under hermitian-conjugate operation. The expansion of an operator in the transit
 \op O = \sum_p\sint \dd \alpha \sbra{p\alpha}{\op O}\sket{p\alpha}{\cdot} = 
 \dbraket{\op O}{\cdot} \;.
 \ee
-%\subsubsection{Spectral decomposition of the response density in the transitions basis}
-%The Liouville equation \eqref{LiouvillianRhopomegaDef3} can be consistently written in the transition basis. 
-% Indeed, its r.h.s is explicitly written
-% as a commutator with $\dmnot$, while an inspection of the formal definition of the response density and of the Liouville superoperator evidences that
-% they both contain a commutator with $\dmnot$. Written in the basis of transitions Liouville equation becomes a linear matrix equation for the rank-2 
-% vectors of the coefficients \eqref{OperatorTransitionCoeffDef1} of the operators in its left and right side:
 The Liouville equation \eqref{LiouvillianRhopomegaDef3} can be consistently written in the transition basis where it becomes a linear matrix equation for the 
 rank-2 vectors of the coefficients \eqref{OperatorTransitionCoeffDef1} of the operators in its left and right side, that is:
-\be
+\be\lb{LiouvillianRhopomegaDef4}
 \omega\mat{ \trace{\decay{\alpha}{p}\dm'(\omega)} \\ \trace{\excite{p}{\alpha}\dm'(\omega)}} - 
 \mat{ \trace{\decay{\alpha}{p}\Liouv\dm'(\omega)} \\ \trace{\excite{p}{\alpha}\Liouv\dm'(\omega)}} =
-\mat{ \trace{\decay{\alpha}{p}\commutator{\op\Phi(\omega)}{\dmnot}} \\ \trace{\excite{p}{\alpha}\commutator{\op\Phi(\omega)}{\dmnot}}}
-\;.\nn
+\mat{ \trace{\decay{\alpha}{p}\opskew{\Phi}(\omega)} \\ \trace{\excite{p}{\alpha}\opskew{\Phi}(\omega)}}
+\;,\nn
 \ee
-The second addend in the l.h.s can be further analyzed by writing the transition basis expansion of $\dm'$ inside the traces. Performing this procedure
-we can recast this quantity as the action of a 2-dimensional matrix on the rank-2 vector of the response density. So we have: 
+where we have introduced a compact notation to deal with the commutator of on operator with the unperturbed density: 
+\be
+\opskew{O} = \commutator{\op O}{\dmnot}\;.
+\ee
+The second addend in the l.h.s of \eqref{LiouvillianRhopomegaDef4} can be further analyzed by writing the transition basis expansion of $\dm'$ inside the traces. 
+Performing this procedure we can recast this quantity as the action of a 2-dimensional matrix on the rank-2 vector of the response density. So we have: 
 \be\lb{LiouvilleTransBasisDef1}
 \sum_q\sint\dd\beta \left[\omega\delta_q^p\delta(\alpha-\beta)- \optr{L}^{p \alpha}_{q\beta} \right]\sket{q\beta}{\dm'(\omega)} =
-\sket{p\alpha}{\commutator{\op\Phi(\omega)}{\dmnot}} \;.
+\sket{p\alpha}{\opskew{\Phi}(\omega)} \;.
 \ee
 with:
 \be\lb{LiouvilleMatrixTransBasisDef1}
@@ -713,13 +642,12 @@ with:
 \trace{\excite{p}{\alpha}\, \Liouv\, \decay{\beta}{q}}} \;.
 \ee
 
-\subsubsection{Spectral decomposition of the response density in the transitions basis}
+\subsubsection{Spectral decomposition of the response density in the transitions basis. Definition of excitation operators}
 
-This formulation of the Liouville equation is the starting point for the derivation of the spectral decomposition of the response density operator
-in terms of the eigenvectors if the Liouville operator. 
-The first step in the achievement of this result is provided by the construction of the eigenvectors of the matrix \eqref{LiouvilleMatrixTransBasisDef1}.
-Following the notation previously defined we introduce the rank-2 vectors $\sket{p\alpha}{E}$ and $\sbra{p\alpha}{\tilde E}$ that represent, by definition,
-the right and left eigenvectors $\optr{L}$, respectively, so that:
+The formulation of the Liouville equation in the basis of transitions is the starting point for the derivation of the spectral decomposition of the response density operator
+in terms of the eigenvectors if the Liouville operator. The first step in the achievement of this result is provided by the construction of the eigenvectors of the matrix 
+\eqref{LiouvilleMatrixTransBasisDef1}. Following the notation previously defined we introduce the rank-2 vectors $\sket{p\alpha}{E}$ and $\sbra{p\alpha}{\tilde E}$ that represent, 
+by definition, the right and left eigenvectors $\optr{L}$, respectively, so that:
 \be\lb{LiouvMatrixEigenvectorDef1}
 \sum_q \sint \dd \beta \optr{L}^{p \alpha}_{q\beta} \sket{q \beta}{E} = E \sket{p\alpha}{E} \;, \quad
 \sum_p \sint \dd \alpha \sbra{p\alpha}{\tilde E} \optr{L}^{p \alpha}_{q\beta} = E \sbra{q\beta}{\tilde E}\;.
@@ -734,32 +662,21 @@ Once that the eigenvectors are known, the spectral decomposition of the resolven
 \left[\left(\bbomega-\optr{L}\right)^{-1}\right]^{p\alpha}_{q\beta} =\sint\dd E
 \frac{\sket{p\alpha}{E}\sbra{q\beta}{\tilde E}}{\bbomega-E} \;,
 \ee
-so equation \eqref{LiouvilleTransBasisDef1} can be inverted and we obtain the response density written in basis of transistion, in the form:
-% \be\lb{RhopExcitationTransBasisDef1}
-% \sket{p\alpha}{\dm'(\omega)} = \sint\dd E \sket{p\alpha}{E}
-% \frac{\sum_q \sint \dd \beta\sbra{q\beta}{\tilde E}
-% \sket{q\beta}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
-% \ee
-% that can be compactly rewritten by using the index-less notation:
+so equation \eqref{LiouvilleTransBasisDef1} can be inverted and we obtain the response density written in basis of transition, in the form:
 \be\lb{RhopExcitationTransBasisDef1}
 \sket{p\alpha}{\dm'(\omega)} = 
 \sint\dd E \sket{p\alpha}{E}
-\frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;.
+\frac{\dbraket{\tilde E}{\opskew{\Phi}(\omega)}}{\bbomega-E} \;.
 \ee
-% \be\lb{RhopExcitationTransBasisDef2}
-% \dket{\dm'(\omega)} = 
-% \sint\dd E \dket{E}
-% \frac{\dbraket{\tilde E}{\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;.
-% \ee
-
-\subsubsection{Definition of excitation operators}
-
-We introduce the explicit representation of the eigenvectors op $\optr{L}$:
+%\subsubsection{Definition of excitation operators}
+It is possible to express formula \eqref{RhopExcitationTransBasisDef1} as a true operator equation. First of all we show that the rank-2 vectors $\sket{p\alpha}{E}$ 
+and $\sbra{p\alpha}{\tilde E}$ can be interpreted as the transition basis coefficients of the right and left \emph{eigenstates} of the Liouville superoperator.   
+In order to do so we introduce the explicit representation of the eigenvectors op $\optr{L}$:
 \be\lb{XYcoeffDef1}
 \sket{p\alpha}{E} \equiv \mat{X_E^{p\alpha} \\ Y_E^{p\alpha}} \;, \qq
 \sbra{p\alpha}{\tilde E} \equiv \mat{\tilde X_{E\,p\alpha} & \tilde Y_{E\,p\alpha}} \;,
 \ee
-and on the basis of these elements we define the \emph{excitation operators}:
+and, on the basis of these elements, we define the \emph{excitation operators}:
 \begin{align}\lb{ExctitationOperatorsDef1}
 \op E &\equiv \dbraket{\cdot}{E} = 
 \sum_p \sint \dd \alpha \left(\excite{p}{\alpha} X_E^{p\alpha} + \decay{\alpha}{p} Y_E^{p\alpha}\right) 
@@ -790,14 +707,18 @@ whereas the left action on $\op{\tilde E}$ provides:
 E\sum_p \sint \dd \alpha \sbra{p\alpha}{\tilde E} \sket{p\alpha}{\cdot}  =
 E \op{\tilde E} \;.
 \end{align}
-The introduction of the excitation operators allows to provide a complete operator version of equation \eqref{RhopExcitationTransBasisDef1}, that is:
+The introduction of the excitation operators allows us to provide a complete operator version of equation \eqref{RhopExcitationTransBasisDef1}, that is:
 \be\lb{RhopExcitationDef1}
-\dm'(\omega) = 
+\dm'(\omega) = \dbraket{\cdot}{\dm'(\omega)} =
 \sint\dd E \op E
-\frac{\trace{\op{\tilde E}\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \;,
+\frac{\trace{\op{\tilde E}\opskew{\Phi}(\omega)}}{\bbomega-E} \;,
 \ee
 where the algebraic equivalence between the trace written in \eqref{RhopExcitationDef1} and the numerator of \eqref{RhopExcitationTransBasisDef1}
 can be easily proved.
+
+Thanks to the usage of the basis of transition, we have been able to express the response density as a linear superposition of excitations $\op E$. The perturbing field 
+determines the relative contribution of each excitation through the weighting coefficients in the numerator of \eqref{RhopExcitationDef1}.
+The fundamental question raised in the present paper, namely the ....reliable assessment of the results of the linear response can thus be reformulated in this language. 
 
 \subsubsection{Excitation expansion of the fluctuation states. A localization argument for the excited states}
 
@@ -822,25 +743,10 @@ show that fluctuation states can be extracted from the response density operator
 \ee
 so plugging equations \eqref{ExctitationOperatorsDef2} in the formula \eqref{RhopExcitationDef1} and performing these operations we obtain:
 \be\lb{FluctStateExcitationDef1}
-\ket{f_p(\omega)} = \sint\dd E \frac{\trace{\op{\tilde E}\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} \ket{\phi^E_p} \;, \qq
-\bra{f_p(-\omega)} = \sint\dd E \bra{\chi^E_p}\frac{\trace{\op{\tilde E}\commutator{\op\Phi(\omega)}{\dmnot}}}{\bbomega-E} 
+\ket{f_p(\omega)} = \sint\dd E \frac{\trace{\op{\tilde E}\opskew{\Phi}(\omega)}}{\bbomega-E} \ket{\phi^E_p} \;, \qq
+\bra{f_p(-\omega)} = \sint\dd E \bra{\chi^E_p}\frac{\trace{\op{\tilde E}\opskew{\Phi}(\omega)}}{\bbomega-E} 
 \ee
 
-
-\subsubsection{Excitation expansion of the linear response functional}
-
-We have that:
-\be
-\sket{p\alpha}{\commutator{\op\Phi(\omega)}{\dmnot}} = \sum_q\sint\dd\beta\, \optr{J}^{p\alpha}_{q\beta}
-\sket{q\beta}{\op\Phi(\omega)} \;\;, \;{\rm with} \;\;
-\optr{J}^{p\alpha}_{q\beta} = \delta_{pq}\delta(\alpha-\beta)\mat{1 & 0 \\ 0 & -1}
-\ee
-and the linear response functional \eqref{LinearResponseFunctDef1} can be written as:
-\be
-{\cal R}_{\op O}(\omega) = 
-\sint\dd E \dbraket{\op O}{E}
-\frac{\dbra{\tilde E}\optr{J}\dket{\op\Phi(\omega)}}{\bbomega-E} \;.
-\ee
 
 %\subsubsection{Sternheimer equation for excitonic states. Localization argument revisited}
 \subsubsection{Sternheimer equation for excited states. Localization argument revisited}
@@ -979,7 +885,24 @@ so that:
 \end{align}
 
 
+\subsubsection{Excitation expansion of the linear response functional}
 
+We have that:
+\be
+\sket{p\alpha}{\commutator{\op\Phi(\omega)}{\dmnot}} = \sum_q\sint\dd\beta\, \optr{J}^{p\alpha}_{q\beta}
+\sket{q\beta}{\op\Phi(\omega)} \;\;, \;{\rm with} \;\;
+\optr{J}^{p\alpha}_{q\beta} = \delta_{pq}\delta(\alpha-\beta)\mat{1 & 0 \\ 0 & -1}
+\ee
+and the linear response functional \eqref{LinearResponseFunctDef1} can be written as:
+\be
+{\cal R}_{\op O}(\omega) = 
+\sint\dd E \dbraket{\op O}{E}
+\frac{\dbra{\tilde E}\optr{J}\dket{\op\Phi(\omega)}}{\bbomega-E} \;.
+\ee
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \section{Draft of the paper - old notes}
 % 
@@ -1013,41 +936,6 @@ so that:
 % \end{itemize}
 
 
-% \section{Introduction}
-% 
-% \subsection{How to add Comments}
-% 
-% Comments can be added to your project by clicking on the comment icon in the toolbar above. % * <john.hammersley@gmail.com> 2016-07-03T09:54:16.211Z:
-% %
-% % Here's an example comment!
-% %
-% To reply to a comment, simply click the reply button in the lower right corner of the comment, and you can close them when you're done.
-% 
-% Comments can also be added to the margins of the compiled PDF using the todo command\todo{Here's a comment in the margin!}, as shown in the example on the right. You can also add inline comments:
-% 
-% \todo[inline, color=green!40]{This is an inline comment.}
-% 
-% \subsection{How to add Tables}
-% 
-% Use the table and tabular commands for basic tables --- see Table~\ref{tab:widgets}, for example. 
-% 
-% \begin{table}
-% \centering
-% \begin{tabular}{l|r}
-% Item & Quantity \\\hline
-% Widgets & 42 \\
-% Gadgets & 13
-% \end{tabular}
-% \caption{\label{tab:widgets}An example table.}
-% \end{table}
-% 
-% \subsection{How to add Citations and a References List}
-% 
-% You can upload a \verb|.bib| file containing your BibTeX entries, created with JabRef; or import your \href{https://www.overleaf.com/blog/184}{Mendeley}, CiteULike or Zotero library as a \verb|.bib| file. You can then cite entries from it, like this: \cite{greenwade93}. Just remember to specify a bibliography style, as well as the filename of the \verb|.bib|.
-% 
-% You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
-% 
-% We hope you find Overleaf useful, and please let us know if you have any feedback using the help menu above --- or use the contact form at \url{https://www.overleaf.com/contact}!
 
 %\bibliographystyle{alpha}
 %\bibliography{sample}
