@@ -117,6 +117,37 @@ unoccupied subspace.
 \end{abstract}
 
 \section{Reboot with recent considerations}
+Given a approximate eigenvector $\ket{\psi}$ we approximate its energy by $E=\bra{\psi} \op H \ket{\psi}$.
+This energy is an approximation of the true eigenvalue. We assume that the wavefunction gradient $\ket{g(E)}\equiv \left(\op H -E\right)\ket{\psi}$ indicates the distance from the solution of the Schroedinger Equation (SE) in a complete basis set.
+By imposing the solution of the SE for a better approximation of the wavefunction $\psi + \Delta \psi$
+we should obtain, self-consistently:
+\begin{align}
+\left(E -\op H \right)\ket{\Delta \psi} &= \ket{g(E+ \Delta E)}\;,\\
+\Delta E &= 2 \bra{\psi} \op H \ket{\Delta \psi}\;.
+\end{align}
+From the expression of $\Delta \psi$ we can recalculate another approximation for the wavefunction and, correspondingly, for the eigenvalue.
+By definition, the exact solution is reached only when $\ket{g}=0$, which implies that the norm of $\Delta \psi$ must decrease during the perturbative process.
+
+\textbf{Theorem:} Only the eigenstates with negative energy might have a finite-size correction that can be expressed perturbatvely.
+
+\textbf{Proof}: 
+If we apply this process to estimate the finite-size correction to a numerical solution of the Schroedinger equation, as the eigenvalue should converge faster than the eigenvector, we conclude that the gradient $g$ becomes nonzero only in regions that  should be located far from the potential region. If this is true, at the next iteration the gradient would become $g + \op H \Delta \psi + \mathcal{O}(\Delta E)$.
+Therefore, for having a convergent perturbative process, also the ket $\ket{\Delta \psi}$ solution of the above equation should be localized far from the support of the potential. In other terms, the relation between $g$ and $\Delta \psi$ should be local in space.
+
+The Lippmann-Schwinger relation defines the Dyson series of the resolvent of the Hamiltonian in terms of the Helmholtz Green's function $\op G_0(E)$:
+\be 
+\op G(E) \equiv (E- \op H)^{-1} = \op G_0(E) + \op G_0(E) \op V \op G(E)\;.
+\ee
+We have therefore 
+\be 
+\ket{\Delta \psi} = 
+\sum_{p=0}^\infty \op G_0(E) 
+\left(\op V \op G_0(E)\right)^p \ket{g}\;.
+\ee
+For the properties of the Helmholtz equation, locality in space of $\Delta \psi$ might only be recovered for negative energy values. This equation proves that for positive values of the energy the finite-size corrections will \emph{always} provide fully delocalized corrections: it would be impossible to observe a convergence of the wavefunction in the interior region by simply increasing the size of the simulation domain. 
+If the value of the approximate energy does not become negative during the perturbative process, 
+a modification of the domain boundaries will impact the wavefunction in the entire simulation region. In this case, convergence might only be achieved uniformly and there is no guarantee that a larger domain will provide similar energies.
+$\square$
 \begin{itemize}
 \item Write the excitations as the eigenstates of the Liouvillian:
 \begin{itemize}
