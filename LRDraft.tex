@@ -26,7 +26,8 @@
 \newcommand{\br}{\bar{\bf r}}
 \newcommand{\x}{{\bf x}}
 \newcommand{\eps}{\epsilon}
-\newcommand{\bbomega}{{\bar{\bar\omega}}}
+\newcommand{\bomega}{\bar\omega}
+\newcommand{\bbomega}{\bar{\bomega}}
 \newcommand{\ii}{\mathrm{i}}
 \newcommand{\intdef}[3]{\int_{#1}^{#2} \dd {#3}}
 \newcommand{\intover}[1]{\int_{-\infty}^{+\infty} \dd {#1}}
@@ -97,8 +98,8 @@
 \title{Critical assessment of Linear-Response Excitations in Molecular system\\
 or \\
 On the Localization of the Linear-Response excitations in Open Systems}
-\author[1]{Luigi Genovese}
 \author[2]{Marco D'Alessandro}
+\author[1]{Luigi Genovese}
 \affil[1]{Laboratoire de Simulation Atomistique (LSim), SP2M, INAC, CEA-UJF, 17 Av. des Martyrs,
 38054 Grenoble, France}
 \affil[2]{Istituto di Struttura della Materia-CNR (ISM-CNR), Via del Fosso del Cavaliere 100, 00133 Roma, Italia}
@@ -116,7 +117,39 @@ considered as poles of the dynamical polarizability. This result is a inherent b
 unoccupied subspace.
 \end{abstract}
 
+\section{On the analytic structure linear response susceptibility}
+\begin{itemize}
+\item People want converged quantities related to systems properties. How to obtain them?
+\item FS naturally emerges as the minimal building block for the evaluation of physical quantities in LR formalism . For a given Phi, I need to express O and FS.
+\item We imposing a pertubation of the system, it is easay to see that the FS are also  functional of the Perturbation potential applied on the response function of the system. FS = R Phi for the same omega.
+\item the fundamental objet is therefore R.
+\item[$\Rightarrow$] EoM of FS evidence two distinct regimes of \emph{locality}; 
+below threshold FS are localized quantities and can be expressed explicitly;
+above threshold they behave as plane waves and the only physical meaning is inside the scalar product, which requires bith  the evaluation of $\op \Phi$ and $\op O$.
+\item this fact reflect the physical effect that a low-energy excitation is not able to ionize the molecule.
+\item As by hypothesis we are much more capable to express localized quantities it is therefore likely that it easier to converge LR quantities in the infrared regime. Let us show why this fact happens.
+\item If I have the correct DoF to express the FS as a genuinely localized quantity I have the LR for \emph{any} observable $\op O$. This fact would not be possible above threshold.
+\item The capability of expressing the FS below threshold reflects the capability of expressing the LR kernel. Therefore \emph{the same} localization argument should be reformulated in term of R
+\item Let us discuss how this observations are related to the analytic structure of the LR.
+\item FS are explicitly dependent on the perturbation potential. The LR would be (formally) completely defined in terms of free oscillation of the system (eigenoperators of the Liouvillian).
+\item The FS can be also expressed as a sum over excitations
+%\item As the imaginary part of the FS should be also localized below threshold this implies that also the excitations are localized quantities when E is below threshold
+\item [$\Rightarrow$]Such sum over the excitation must be such as to express a localized quantity below threshold, (at least when applied to localized potentials).
+\item[$\Rightarrow$] In addition, also the excited states undergo two different regimes of locality, but this time their EoM implies \emph{also} conditions on the discreteness of the energies. Above threshold the excitations belong to a \emph{continuum}
+\item Such continuum of excitation is formed by a set of ldelocalized excitations that are nontheless important to express the localized infomration below threshold.
+\item However this implies that \emph{also} the analytic structure of the LR undergo two different regimes.
+%\item The absorption spectra, which are only dependent by the imaginary part of R, are therefore well expressed only for discrete energies
+\item[$\Rightarrow$] We might therefore show that below threshold the analytic structure of the LR is given in terms of localized quantities that are at discrete, observable and physically meaningful energies.
+\item[$\Rightarrow$] The spectral function of the LR, which would be written as a sum of delta, only converges when the ecxitation are dense enough in the continuum sector, wheras convergence in the infrared regimes only requires identification of the discrete excitation energies
+\item There are multiple thresholds, one for any QP energy. The first threshold is the ionization potential.
+\item[$\Rightarrow$] in a computational setup that is able to capture localized information, the analytic structure of the LR can be expressed with arbitrary good convergence \textbf{only} below the first threshold, as localized information it is more easily expressed in computational treatments that are initially performed for the Ground state.
+\item For this reason it is easier to have convergence in the optical properties for energy sector below the first threshold
+\item Above each of the threshold (therefore after the first), there is a continuum of delocalized excited states that have to be expressed if we want to abandon the representation in terms of scalar product between FS and O.
+\item Such representation in terms of O, FS and Phi is still the most convenient to have accurate evaluation of the LR above threshold.
+
+\end{itemize}
 \section{Reboot with recent considerations}
+\subsection{Perturbative approach to finite-size corrections}
 Given a approximate eigenvector $\ket{\psi}$ we approximate its energy by $E=\bra{\psi} \op H \ket{\psi}$.
 This energy is an approximation of the true eigenvalue. We assume that the wavefunction gradient $\ket{g(E)}\equiv \left(\op H -E\right)\ket{\psi}$ indicates the distance from the solution of the Schroedinger Equation (SE) in a complete basis set.
 By imposing the solution of the SE for a better approximation of the wavefunction $\psi + \Delta \psi$
@@ -436,6 +469,100 @@ and consequently the linear response functional can be expressed as:
 {\cal R}_{\op O}(\omega) = 
 \sum_p\left(\bra{f_p(-\omega)}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{f_p(\omega)}\right) \;.
 \ee
+
+\subsection{Spectral representation of Susceptibility Functional}
+The Liouvillian expressed the excitation modes of the system $\op E$.
+A free excitation of the system might therefore be expressed by the operator $\op E$.
+The scalar product between the perturbed state and the excitation $\op E$ is provided by the quantity
+\be
+a_{\Phi \rightarrow E} = \sum_p \bra{\phi_p^E} \op \Phi \ket{\psi_p} = \trace{\op{\tilde E} \op \Phi}
+\ee
+the rate of probability of being into an excited state after the application of a perturbation $\op \Phi$ is therefore
+\begin{multline}
+\sint \dd E\Gamma_{\op\Phi, \op E}(t) = \sint \dd E a_{\Phi \rightarrow E} \cdot a_{E \rightarrow \Phi} = \\=  \sint \dd E \trace{\op \Phi E } \trace{ \op{\tilde E} \op \Phi} \frac{\sin(E t)}{E}
+\simeq \int \dd \omega' \sin(\omega' t) \trace{\op \Phi \sop R(\omega')\op \Phi}
+\end{multline}
+To calculate this rate of probability we need the spectral function of $\sop R(\omega)$.
+
+Taking into account that, for the Kramers-Kronig relation
+\be
+\sop R(\omega)=1+ \frac{1}{\pi}\mathcal P \int \dd \omega' \frac{B(\omega')}{\omega -\omega'} + \ii B(\omega)
+\ee
+where $B$ is a real operator, the Susceptibility functional might be expressed in two ways:
+\begin{itemize}
+\item By considering the eigenvectors of the Liouvillian superoperator:
+\be
+\sop R(\omega) = \sint \dd E \op E \frac{\trace{\op{\tilde E}_\perp \cdot }}{\bbomega -E}
+\ee
+which would lead to the condition
+\begin{align}
+\left(\hnot-\eps_p\right)\ket{\phi^E_p} +\sint \dd\alpha  U\left[\decay{\alpha}{p}; \op E\right] \ket{\psi(\alpha)} &= E\ket{\phi^E_p} \;,\nn \\
+\bra{\chi^E_p}\left(\hnot-\eps_p\right) +\sint \dd\alpha \bra{\psi(\alpha)} U\left[\excite{p}{\alpha}; \op E\right] &= -E\bra{\chi^E_p} \;.
+\end{align}
+In this case we are identifying 
+\be
+B(\omega) = \sint \dd E \op E \trace{\op{\tilde E}_\perp \cdot } \delta(\omega - E)
+\ee
+Such conditions should bring us to the observation:
+\begin{itemize}
+\item The representation in terms of excitation is related to the linear response properties of the 
+system
+\item Excitation energies below threshold are \emph{discrete};
+\item Excitation states above threshold belong to a \emph{continuum} of states and are \emph{delocalized} in space, and they collapse with the incresing of the computational domain;
+\item The absorbtion spectra are therefore expressed in two different regimes: below the ionization threshold, where the excitation are well-defined quantities (discrete energies, localized excited states), and the high-energy range where the only well defined quantity is the spectral function.
+In this regime a \emph{single} excitation lose its physical significance as they belong to a continuum (we are above the ionization energy for a optical excitation)  and are simply \emph{tools} 
+for expressing the action of $\sop B(\omega)$
+\item By watching naively at this representation it seems that to have a converged real part of the polarizability we should have a converged spectral function in a large part of the high energy sector (above threshold). 
+\item When expressing the spectrum in terms of excited states above threshold we approximate the spectral function in terms of a sum of dirac deltas centered at the \emph{single}, ``unphysical'' excitation; we should therefore express a \textbf{density} of excitations which is sufficiently converged, in terms of the smearing function that is used for the expression of the spectral function.
+\item This is more and more difficult to obtain for  increasing of the energy, as the sizes of the computationa domain should be large to ensure a converged density of excitation, which would imply a collapse of the continuum of excited states as written in the above equations.
+\end{itemize}
+\item By considering the fluctuation state
+via the equation
+\be
+{\cal R}_{\op O}(\omega) = 
+2 \sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;.
+\ee
+% {\cal R}_{\op O}(\omega) = 
+%  \ii \sum_p\left(\bra{\psi_p}\op A(\omega)\op Q_0\op O\ket{\psi_p} - \bra{\psi_p}\op O\op Q_0\op A(\omega)\ket{\psi_p}\right) =\\ =
+% \ii \sum_p\left(\bra{\psi_p} \op \Phi(\omega) \op G_0^-(\epsilon_p - \bomega)  \op Q_0 \op O\ket{\psi_p} - 
+% \bra{\psi_p}\op O\op Q_0\op G_0^+(\bomega + \epsilon_p) \op \Phi(\omega) \ket{\psi_p}\right) = \\ 
+% % \ii \int \dd \omega' \sum_p\left(\frac{\bra{\psi_p} \op \Phi(\omega) \op B(\omega')  \op Q_0 \op O\ket{\psi_p}}{\epsilon_p - \bbomega - \omega'} - 
+% % \frac{
+% % \bra{\psi_p}\op O\op Q_0\op B(\omega') \op \Phi(\omega) \ket{\psi_p}}
+% % {\epsilon_p + \bbomega - \omega'}\right) = \\ 
+% \;.
+that will lead to the condition
+\be
+\left(\bbomega+\eps_p -\op T\right)\ket{f_p(\omega)} = \op V\ket{f_p(\omega)} + \op Q_0\left(\op V'(\omega) + \op \Phi(\omega)\right)\ket{\psi_p} \;.
+\ee
+which implies
+\begin{itemize}
+\item Also the fluctuation states and therefore \emph{both} the real and imaginary part of the linear susceptibility may be localized \emph{only} below the energy threshold.
+\item By expressing the FS in term of sum of excitation we obtain \emph{localized wavepackets} written in terms of both localized and delocalized excitation
+\be
+\ket{f_p(\omega)} = \sint\dd E \frac{\trace{\op{\tilde E}\opskew{\Phi}(\omega)}}{\bbomega-E} \ket{\phi^E_p} = \sum_\alpha \braket{\alpha|f_p(\omega)} \ket{\alpha}
+\ee
+\item The description provided by a FS written in a given computational basis is \emph{strictly} equivalent to the one provided by its decomposition in the maximal set of computational excitation.
+\item it seems that \emph{either} I have the description in temrs of excitations, which would prevent to assess the qaulity of the real part of the susceptivity, or I have the fluctuation states that provide correct susceptivity 
+
+\item Below threashold we therefore have the possiblity to express efficiently the fluctuation states instead of the high energy excitations, which would have been needed to express its real part. This would provide a converged and physically meaningful susceptivity (both real and imaginary part) even though the spectral function in the high energy sector will not be converged.
+It appears convenient to write:
+\be
+\sop R(\omega)= \sop C(\omega) - \frac{\ii}{\pi}\mathcal P \int \dd \omega' \frac{\sop C(\omega')-1}{\omega -\omega'}
+\ee
+for the range of $\omega$ for which we are if we are able to write
+\be
+\sop C(\omega) = \mathcal P \sint \dd E   \op E \trace{\op{\tilde E}_\perp \cdot } \frac{1}{\omega -E }\;,
+\ee
+then we would be sure that the spectral function of the susceptivity is correct for energies that belong to the same range, as in this regime the excitation energies are discrete and observable.
+\item The real part of the linear susceptibility has a localized behaviour even though it might be expressed as an integral of delaoclized quantities
+\item If we are interested in expressing quantities which are below ionization threshold we might optimize the computational degrees of freedom by using the corresponding fluctuation states as reference objects. In this case the resultin excitation will be i) such as to produce the desired behaviour on the referecne fluctuation state (example of static polarizability) ii) have a reasonable behaviour for the excitations close to the optimization energy range (observable character of the excited energies). The computational degrees of freedom are likely to express with good quality excitations close to the target energy.
+\item Such minimal basis approach is valid only for energies below threshold: we cannot assess the quality of the fluctuation state above 
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Computational realization of Eq.~\eqref{LinearResponseFunctDef2}}
 Let us further investigate this formula pointing out some of the  computational aspects needed to explicitly perform the scalar products appearing in 
 \eqref{LinearResponseFunctDef2}. 
 We introduce a computational $\mu$-basis, composed by a finite set of $n_\mu$ basis elements $\{\ket{\mu}\}$, and assume that a reliable solution of the ground state problem has 

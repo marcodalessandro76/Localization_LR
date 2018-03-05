@@ -1,0 +1,120 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathtools,braket}
+\usepackage{xifthen}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{authblk}
+
+% notation for standard math
+\renewcommand{\d}{\partial}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\dd}{{\rm d}}
+\renewcommand{\r}{{\bf r}}
+\newcommand{\br}{\bar{\bf r}}
+\newcommand{\x}{{\bf x}}
+\newcommand{\eps}{\epsilon}
+\newcommand{\bomega}{\bar\omega}
+\newcommand{\bbomega}{\bar{\bomega}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\intdef}[3]{\int_{#1}^{#2} \dd {#3}}
+\newcommand{\intover}[1]{\int_{-\infty}^{+\infty} \dd {#1}}
+\newcommand{\sint}{\mathrlap{\displaystyle\int}
+\mathrlap{\textstyle\sum}
+\phantom{\mathrlap{\displaystyle
+\int}\textstyle\sum}}
+
+% notatiotion for equation environments
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\baa}{\begin{align}}
+\newcommand{\eaa}{\end{align}}
+\newcommand{\nn}{\notag}
+\newcommand{\qq}{\qquad}
+\newcommand{\lb}{\label}
+\newcommand{\mat}[1]{\begin{pmatrix} #1\end{pmatrix}}
+
+% notation for the operators
+\newcommand{\op}[1]{\hat {#1}}
+\newcommand{\sop}[1]{\op{\op {#1}}}
+\newcommand{\commutator}[2]{\left[ {#1} , {#2} \right]}
+\newcommand{\trace}[1]{\mathrm{tr}\left(#1\right)}
+\newcommand{\argument}[1]{\ifthenelse{\isempty{#1}{}}{}{(#1)}}
+\newcommand{\matop}[1]{\mathbf{#1}}
+\newcommand{\optr}[1]{\check #1}
+\newcommand{\opskew}[1]{{\op {#1}}_{\perp}}
+
+% notation for the states
+\newcommand{\tket}[1]{| \tilde #1 \rangle}
+\newcommand{\tbra}[1]{\langle \tilde #1 |}
+\newcommand{\brket}[2]{\langle  #1 | #2 \rangle} %standard braket
+\newcommand{\tbraket}[2]{\langle \tilde #1 | #2 \rangle}
+\newcommand{\ketbra}[2]{| #1 \rangle \langle #2 |}
+\newcommand{\tketbra}[2]{| #1 \rangle \langle \tilde #2 |}
+\newcommand{\sket}[2]{| #2)^{#1}}
+\newcommand{\sbra}[2]{( #2|_{#1}}
+\newcommand{\sketor}[2]{| #2]^{#1}}
+\newcommand{\sbraor}[2]{[ #2|_{#1}}
+\newcommand{\sbraket}[2]{\braket{\op{#1} | \op{#2}}}
+\newcommand{\dket}[1]{\Bigl| #1 \Bigr)}
+\newcommand{\dbra}[1]{\Bigl(#1 \Bigr|}
+\newcommand{\dbraket}[2]{\Bigl(#1 \Bigl| #2 \Bigr)}
+\newcommand{\dketor}[1]{\Bigl| #1 \Bigr]}
+\newcommand{\dbraor}[1]{\Bigl[#1 \Bigr|}
+\newcommand{\hket}[1]{| #1 ]}
+\newcommand{\hbra}[1]{[ #1 |}
+\newcommand{\hbraket}[2]{[#1 | #2 ]}
+
+% special operators
+\newcommand{\dmnot}{\op{\rho}_0}
+\newcommand{\dm}{\op{\rho}}
+\newcommand{\hnot}{\op{H}_0}
+\newcommand{\hone}[1]{\op{H}_1\argument{#1}}
+\newcommand{\transition}[1]{\op T_{#1}}
+\newcommand{\excite}[2]{\op e_{{#1}{#2}}}
+\newcommand{\decay}[2]{\op d_{{#1}{#2}}}
+\newcommand{\Liouv}{\sop{\mathcal L}}
+\newcommand{\Liouvnot}{\sop{\mathcal L_0}}
+\newcommand{\coupl}{\sop{\mathcal K}}
+\newcommand{\honetmp}[1][]{\op{H_1}\argument{#1}} 
+\newcommand{\identity}{\op{\mathbb I}}
+\newcommand{\rmat}[1]{\optr R}
+
+\title{On the analytic structure of linear response susceptibility in open systems}
+\author[2]{Marco D'Alessandro}
+\author[1]{Luigi Genovese}
+\affil[1]{Laboratoire de Simulation Atomistique (LSim), SP2M, INAC, CEA-UJF, 17 Av. des Martyrs,
+38054 Grenoble, France}
+\affil[2]{Istituto di Struttura della Materia-CNR (ISM-CNR), Via del Fosso del Cavaliere 100, 00133 Roma, Italia}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+By performing linear-response (LR)-TDDFT calculation of molecular systems within a highly complete real-space basis set, we analyze how the behavior of the dynamical 
+polarizability is influenced by the discretization conditions of the computational treatment.
+We show that optical excitations of energy below the LR ionization potential behave as observable, localized quantities, that can be studied with high precision, 
+provided an adequate level of completeness. We then present indicators that can help to quantify such potential observable property of an excitation, that can be evaluated 
+in any discretization scheme. Under this light, we also show that excitation energies above ionization threshold do not exhibit such observable features and \emph{cannot} be 
+considered as poles of the dynamical polarizability. This result is a inherent behavior of the system's Liouvillian, and does not depend on computational treatment of the 
+unoccupied subspace.
+\end{abstract}
+
+\section{Introduction}
+
+
+\end{document}
