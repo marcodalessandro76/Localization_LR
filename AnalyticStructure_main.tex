@@ -1,22 +1,15 @@
-\documentclass[a4paper]{article}
+\documentclass[reprint,aps,prb]{revtex4-1}
 
 %% Language and font encodings
 \usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
-\usepackage[T1]{fontenc}
-
-%% Sets page size and margins
-\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[T1]{fontenc}
 
 %% Useful packages
-\usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
 \usepackage{mathtools,braket}
 \usepackage{xifthen}
-\usepackage[colorinlistoftodos]{todonotes}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-\usepackage{authblk}
 
 % notation for standard math
 \renewcommand{\d}{\partial}
@@ -94,15 +87,20 @@
 \newcommand{\identity}{\op{\mathbb I}}
 \newcommand{\rmat}[1]{\optr R}
 
-\title{On the analytic structure of linear response susceptibility in open systems}
-\author[2]{Marco D'Alessandro}
-\author[1]{Luigi Genovese}
-\affil[1]{Laboratoire de Simulation Atomistique (LSim), SP2M, INAC, CEA-UJF, 17 Av. des Martyrs,
-38054 Grenoble, France}
-\affil[2]{Istituto di Struttura della Materia-CNR (ISM-CNR), Via del Fosso del Cavaliere 100, 00133 Roma, Italia}
 
 \begin{document}
-\maketitle
+
+%\preprint{APS/123-QED}
+
+\title{On the analytic structure of the linear response susceptibility in open systems}
+
+\author{Luigi Genovese}
+\affiliation{Laboratoire de Simulation Atomistique (LSim), SP2M, INAC, CEA-UJF, 17 Av. des Martyrs,
+38054 Grenoble, France}
+\author{Marco D'Alessandro}%
+\affiliation{Istituto di Struttura della Materia-CNR (ISM-CNR), Via del Fosso del Cavaliere 100, 00133 Roma, Italia}
+
+\date{\today}
 
 \begin{abstract}
 By performing linear-response (LR)-TDDFT calculation of molecular systems within a highly complete real-space basis set, we analyze how the behavior of the dynamical 
@@ -114,7 +112,85 @@ considered as poles of the dynamical polarizability. This result is a inherent b
 unoccupied subspace.
 \end{abstract}
 
+%\pacs{Valid PACS appear here}
+\maketitle
+
 \section{Introduction}
 
+.....
+
+\section{Theory}
+
+In the framework of the linear response formalism one is typically interested in computing the \emph{linear response functional}:
+\be\lb{LinearResponseFunctDef1}
+{\cal R}_{\op O}(\omega) = \trace{\dm'(\omega)\op O} \;,
+\ee
+that represents the perturbation-induced modification of the expectation value of an observable $\op O$\footnote{For a sake of concreteness, we are limiting our considerations 
+to observables that do not explicitly depend on time}. Here $\dm'(\omega)$ is the \emph{response density operator} that describes the $\omega$-dependent modification of the density 
+operator induced by the perturbation.
+
+\subsection{Basic equation for the linear response formalism for electronic excitations}
+
+The linear response formalism can be effectively applied to the analysis of the electronic excitations of molecular and condensed-matter systems, described by the (density-dependent) 
+ground-state hermitian Hamiltonian $\hnot$, coupled to an external perturbation described by the perturbing field $\op\Phi(\omega)$. The $\omega$ structure of $\op\Phi(\omega)$ codifies both 
+the intrinsic time dependence of the perturbation and the switching-on procedure, \emph{e.g.} adiabatic or sudden limit protocols. 
+
+The response density is expressed as the first-order variation of ground state density
+\be\label{rhodef1}
+\dmnot = \sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}  \;,
+\ee
+where $\{\psi_p\}$ denote the occupied states, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with energy lower than the Fermi level.
+By considering the linear order time evolution of these states in presence of the perturbation we can express the response density in the $\omega$ domain as follows:
+\be\lb{rhoPrimeOmegaDef1}
+\dm'(\omega) = \ii \commutator{\dmnot}{\op A(\omega)} \;,
+\ee
+where $\op A(\omega)$ is a sum of two terms, both written as a triple convolution with the retarded/advanced Green functions $\op G_0^{\pm}$ of the unperturbed Hamiltonian:
+\be
+\op A(\omega) = \frac{1}{2\pi} \int_{-\infty}^\infty  \dd \omega'
+\op G_0^+(\omega') \left(\op \Phi(\omega)+\op V'(\omega)\right) \op G_0^-(\omega'-\omega)\;. \nn
+\ee
+The presence of the second addend is due to the density dependence of the unperturbed Hamiltonian and describes the perturbation induced by the variation of $\hnot$ under the
+action of the perturbing field. In the linear response regime this quantity can be expressed as the functional derivatives of $\hnot$ with respect to the density kernel 
+(evaluated at $\dm=\dmnot$) times the value of the induced density modification, that is:
+\be\label{VpDef1}
+\op V'(\omega)= 
+\int \dd \r \dd \r' \frac{\delta\hnot}{\delta \rho_0(\r,\r')}
+\trace{\dm'(\omega) \ket{\r} \bra{\r'}} \;.
+\ee
+
+\subsection{Fluctuation states. A localization argument for the linear response functional}
+
+We start this analysis by deriving an ulterior expression of the response density operator in the frequency space. We consider equation \eqref{rhoPrimeOmegaDef1} and observe that, for any 
+operator $\op O$, we may write:  
+\be
+\commutator{\dmnot}{\op O} = \dmnot \op O \op Q_0 - \op Q_0 \op O \dmnot\;,
+\ee
+where $\op Q_0= \identity - \dmnot$ is the projection operator in the subspace orthogonal to $\dmnot$. So, thanks to this relation we have that:
+\be
+\dm'(\omega) = \ii\sum_p\left(\ketbra{\psi_p}{\psi_p}\op A(\omega)\op Q_0 - \op Q_0\op A(\omega)\ketbra{\psi_p}{\psi_p}\right) \;.
+\ee
+This equation suggests us to define the \emph{fluctuation states}:
+\be\lb{fluctuationStateDef1}
+\ket{f_p(\omega)} \doteq -\ii\op Q_0\op A(\omega)\ket{\psi_p} \;, \quad
+\bra{f_p(\omega)} \doteq \bra{\psi_p}\ii\op A(-\omega)\op Q_0 \;,
+\ee
+where the $\omega$ dependence of the bra is consistent with hermitian conjugation property of the Fourier transform of a hermitian operator. Fluctuation states are, by 
+definition, orthogonal to the occupied eigenstates of $\hnot$, so that:
+\be
+\brket{f_p(\omega)}{\psi_q} = \brket{\psi_q}{f_p(\omega)} = 0 \;, \forall \, p,q,\omega \;.
+\ee
+The response density written in terms of the fluctuation states reads:
+\be\lb{rhoPrimeFluctuationStateDef1}
+\dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;,
+\ee
+and consequently the linear response functional can be expressed as:
+\be\lb{LinearResponseFunctDef2}
+{\cal R}_{\op O}(\omega) = 
+\sum_p\left(\bra{f_p(-\omega)}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{f_p(\omega)}\right) \;.
+\ee
+
+
+
+\bibliography{Analytic_biblio}
 
 \end{document}
