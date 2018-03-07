@@ -103,12 +103,17 @@
 \date{\today}
 
 \begin{abstract}
-By performing linear-response (LR)-TDDFT calculation of molecular systems within a highly complete real-space basis set, we analyze how the behavior of the dynamical 
-polarizability is influenced by the discretization conditions of the computational treatment.
-We show that optical excitations of energy below the LR ionization potential behave as observable, localized quantities, that can be studied with high precision, 
-provided an adequate level of completeness. We then present indicators that can help to quantify such potential observable property of an excitation, that can be evaluated 
-in any discretization scheme. Under this light, we also show that excitation energies above ionization threshold do not exhibit such observable features and \emph{cannot} be 
-considered as poles of the dynamical polarizability. This result is a inherent behavior of the system's Liouvillian, and does not depend on computational treatment of the 
+We analyze how the fundamental equations which govern the linear response properties of a quantum system are influenced by the presence of open boundaries.
+In particular we focus our attention on linear-response (LR)-TDDFT calculation of molecular systems. We show that optical excitations of energy below the LR ionization potential 
+behave as observable, localized quantities, that can be computationally calculated with high precision, provided an adequate level of completeness.
+Above this energy threshold, the analytic structure of the susceptibility functional might be separated in two sectors: one can still be described in terms of observable excitation 
+with discrete energies, that can be captured within computational setups tailored for localized states. However such excitations are embedded in a continuum of excited states 
+that, on the contrary, behave as plane waves and cannot be described efficiently by the same computational techniques. Such excitations do not exhibit observable features and 
+\emph{cannot} be considered as poles of the dynamical polarizability. Nonetheless, the contribution of such continuum of excitation reveals to be of paramount importance even 
+for expressing LR quantities in the infrared regime like for example static polarizability.
+This is particularly evident for small molecules; we show how these considerations might be influenced by the size of molecular system.
+We then present indicators that can help to quantify such potential observable property of an excitation, that can be evaluated 
+in any discretization scheme.  This result is a inherent behavior of the system's Liouvillian, and does not depend on computational treatment of the 
 unoccupied subspace.
 \end{abstract}
 
@@ -121,34 +126,83 @@ unoccupied subspace.
 
 \section{Theory}
 
-In the framework of the linear response formalism one is typically interested in computing the \emph{linear response functional}:
+Linear response can be effectively applied to the analysis of the electronic excitations in molecular and condensed-matter systems. In this framework one consider a system 
+described by the Hamiltonian $\hnot$ and assume that the ground-state density $\dmnot$ has been provided. Linear response formalism allows us to evaluate the modification 
+of the expectation value of a generic observable induced by a time-dependent perturbation acting on the system. This quantity, written in the frequency domain, can be expressed 
+through the evaluation of the \emph{linear response functional}:
 \be\lb{LinearResponseFunctDef1}
 {\cal R}_{\op O}(\omega) = \trace{\dm'(\omega)\op O} \;,
 \ee
-that represents the perturbation-induced modification of the expectation value of an observable $\op O$\footnote{For a sake of concreteness, we are limiting our considerations 
-to observables that do not explicitly depend on time}. Here $\dm'(\omega)$ is the \emph{response density operator} that describes the $\omega$-dependent modification of the density 
-operator induced by the perturbation.
+where the operator $\op O$ represents the observable\footnote{For a sake of concreteness, we are limiting our considerations to observables that do not explicitly depend on time} 
+under inspection and the \emph{response density operator} $\dm'(\omega)$ codifies the perturbation induced modification of the ground-state density.
 
-\subsection{Basic equation for the linear response formalism for electronic excitations}
+The analysis presented in this section is devoted to a critical review of the fundamental equations at the basis of the response density in the linear response framework.    
+The aim of this process is to....
 
-The linear response formalism can be effectively applied to the analysis of the electronic excitations of molecular and condensed-matter systems, described by the (density-dependent) 
-ground-state hermitian Hamiltonian $\hnot$, coupled to an external perturbation described by the perturbing field $\op\Phi(\omega)$. The $\omega$ structure of $\op\Phi(\omega)$ codifies both 
-the intrinsic time dependence of the perturbation and the switching-on procedure, \emph{e.g.} adiabatic or sudden limit protocols. 
+%the construction of two different representations of the response density operator... 
 
-The response density is expressed as the first-order variation of ground state density
+\subsection{Fluctuation states. A localization argument for the response density}
+
+The response density operator is expressed as the first-order variation of ground state density
 \be\label{rhodef1}
 \dmnot = \sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}  \;,
 \ee
-where $\{\psi_p\}$ denote the occupied states, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with energy lower than the Fermi level.
-By considering the linear order time evolution of these states in presence of the perturbation we can express the response density in the $\omega$ domain as follows:
-\be\lb{rhoPrimeOmegaDef1}
-\dm'(\omega) = \ii \commutator{\dmnot}{\op A(\omega)} \;,
+where $\{\ket{\psi_p}\}$ denote the occupied states, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with energy $\eps_p$ lower than the Fermi level.
+By considering the linear order time evolution of these states in presence of the perturbation we can derive the equation of motion of the response density in the form of 
+a quantum Liouville equation \cite{baroni2008}. This procedure suggests us to introduce an explicit representation of the response density in terms of a set of 
+$\omega$-dependent \emph{fluctuation states} $\{\ket{f_p(\omega)}\}$, as follows: 
+\be\lb{rhoPrimeFluctuationStateDef1}
+\dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;.
 \ee
-where $\op A(\omega)$ is a sum of two terms, both written as a triple convolution with the retarded/advanced Green functions $\op G_0^{\pm}$ of the unperturbed Hamiltonian:
+An analysis of the Liouville equation for the response density written in this fashion evidences that fluctuation states are orthogonal to the occupied eigenstates 
+of $\hnot$ and satisfy the following equation of motion:
+\be\lb{fluctuationStateEqMotion1}
+\left[\bbomega - (\hnot-\eps_p)\right]\ket{f_p(\omega)} = \op Q_0(\op V'(\omega) + \op \Phi(\omega))\ket{\psi_p} \;.
+\ee
+
+breve commento su sternheimer e significato lato destro equazione
+
+\vspace{1cm}
+Much more interestingly for the main topic of the present discussion, and regardless from the detailed strategy of their solutions, equations \eqref{fluctuationStateEqMotion1} 
+allow us to present a \emph{localization argument} for the fluctuation states. We discuss this point for the right vectors, \emph{i.e.} for the first line of \eqref{fluctuationStateEqMotion1}, 
+but the same argument holds also for the left ones. We split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term, so that the equation of motion 
+for $\ket{f_p(\omega)}$ written in the coordinate representation has the formal structure of an inhomogeneous Helmholtz equation:
 \be
-\op A(\omega) = \frac{1}{2\pi} \int_{-\infty}^\infty  \dd \omega'
-\op G_0^+(\omega') \left(\op \Phi(\omega)+\op V'(\omega)\right) \op G_0^-(\omega'-\omega)\;. \nn
+\left(k^2_p(\omega)+\ii\eta + \nabla^2\right)f_p(\omega,\r) = s(\omega,\r) \;\;,
 \ee
+where $k^2_p(\omega) = 2(\omega+\eps_p)$ and we have formally recognized a \emph{source} term of the form:
+\be
+s(\omega,\r) =  \bra{\r}\op V\ket{f_p(\omega)} + \bra{\r}\op Q_0(\op V'(\omega) + \op \Phi(\omega))\ket{\psi_p} 
+\ee
+The solution of this equation admits an integral representation in the form:
+\be\lb{fluctuationStateIntEq1}
+f_p(\omega,\r) = \int \dd\r' g_H(\r-\r')s(\r') \;,
+\ee
+where $g_H(\r)$ is the Green function of the Helmholtz operator in three dimensions. This integral representation allows us to assess the localization character 
+of the fluctuation states, \emph{i.e.} the behavior of $f_p(\omega,\r)$ when $\r$ becomes large. Indeed, assuming that the support of the source term is compact
+we have that, for $\r$ outside the domain in which the integrand of \eqref{fluctuationStateIntEq1} is not vanishing, the leading contribution of the fluctuation states
+is given by:
+\be\lb{fluctuationStateIntEq2}
+f_p(\omega,\r) \sim \frac{e^{\ii \sqrt{k^2_p(\omega)+\ii\eta} |\r|}}{|\r|} \simeq 
+e^{-\frac{\eta}{2}|\r|} \frac{e^{\ii \sqrt{k^2_p(\omega)} |\r|}}{|\r|} \;.
+\ee
+We observe that the presence of the regularization parameter $\eta$ ensures a (slow) asymptotic convergence to zero, nonetheless the qualitative $\r$-dependence of the fluctuation 
+states is determined by the sign of $k^2_p(\omega)$. In particular equation \eqref{fluctuationStateIntEq2} describes an exponential damping for $\omega < |\eps_p|$ and an oscillating 
+power law behavior for $\omega \geq |\eps_p|$.
+This argument holds for all the fluctuation states that contribute to the perturbation-induced expectation value \eqref{LinearResponseFunctDef1}, so we conclude that
+the linear response functional is built in terms of localized fluctuation states for $\omega < |\eps_h|$. Instead, in the range $\eps_h|\leq\omega<|\eps_0|$ it contains both
+contributions from local and non-local quantities and, finally is composed only by non-local fluctuation states for $\omega\geq|\eps_0|$. 
+
+\subsection{Excitation operators. A spectral decomposition representation for the response density}
+
+..........
+
+\subsection{Comments. The analytic structure of the linear response susceptibility}
+
+...........
+
+\subsection{...da togliere.......}
+
 The presence of the second addend is due to the density dependence of the unperturbed Hamiltonian and describes the perturbation induced by the variation of $\hnot$ under the
 action of the perturbing field. In the linear response regime this quantity can be expressed as the functional derivatives of $\hnot$ with respect to the density kernel 
 (evaluated at $\dm=\dmnot$) times the value of the induced density modification, that is:
@@ -158,36 +212,81 @@ action of the perturbing field. In the linear response regime this quantity can 
 \trace{\dm'(\omega) \ket{\r} \bra{\r'}} \;.
 \ee
 
-\subsection{Fluctuation states. A localization argument for the linear response functional}
 
-We start this analysis by deriving an ulterior expression of the response density operator in the frequency space. We consider equation \eqref{rhoPrimeOmegaDef1} and observe that, for any 
-operator $\op O$, we may write:  
-\be
-\commutator{\dmnot}{\op O} = \dmnot \op O \op Q_0 - \op Q_0 \op O \dmnot\;,
-\ee
-where $\op Q_0= \identity - \dmnot$ is the projection operator in the subspace orthogonal to $\dmnot$. So, thanks to this relation we have that:
-\be
-\dm'(\omega) = \ii\sum_p\left(\ketbra{\psi_p}{\psi_p}\op A(\omega)\op Q_0 - \op Q_0\op A(\omega)\ketbra{\psi_p}{\psi_p}\right) \;.
-\ee
-This equation suggests us to define the \emph{fluctuation states}:
-\be\lb{fluctuationStateDef1}
-\ket{f_p(\omega)} \doteq -\ii\op Q_0\op A(\omega)\ket{\psi_p} \;, \quad
-\bra{f_p(\omega)} \doteq \bra{\psi_p}\ii\op A(-\omega)\op Q_0 \;,
-\ee
-where the $\omega$ dependence of the bra is consistent with hermitian conjugation property of the Fourier transform of a hermitian operator. Fluctuation states are, by 
-definition, orthogonal to the occupied eigenstates of $\hnot$, so that:
-\be
-\brket{f_p(\omega)}{\psi_q} = \brket{\psi_q}{f_p(\omega)} = 0 \;, \forall \, p,q,\omega \;.
-\ee
-The response density written in terms of the fluctuation states reads:
-\be\lb{rhoPrimeFluctuationStateDef1}
-\dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;,
-\ee
-and consequently the linear response functional can be expressed as:
-\be\lb{LinearResponseFunctDef2}
-{\cal R}_{\op O}(\omega) = 
-\sum_p\left(\bra{f_p(-\omega)}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{f_p(\omega)}\right) \;.
-\ee
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% In the framework of the linear response formalism one is typically interested in computing the \emph{linear response functional}:
+% \be\lb{LinearResponseFunctDef1}
+% {\cal R}_{\op O}(\omega) = \trace{\dm'(\omega)\op O} \;,
+% \ee
+% that represents the perturbation-induced modification of the expectation value of an observable $\op O$\footnote{For a sake of concreteness, we are limiting our considerations 
+% to observables that do not explicitly depend on time}. Here $\dm'(\omega)$ is the \emph{response density operator} that describes the $\omega$-dependent modification of the density 
+% operator induced by the perturbation.
+% 
+% \subsection{Basic equations for the linear response formalism for electronic excitations}
+% 
+% The linear response formalism can be effectively applied to the analysis of the electronic excitations of molecular and condensed-matter systems, described by the (density-dependent) 
+% ground-state hermitian Hamiltonian $\hnot$, coupled to an external perturbation described by the perturbing field $\op\Phi(\omega)$. The $\omega$ structure of $\op\Phi(\omega)$ codifies both 
+% the intrinsic time dependence of the perturbation and the switching-on procedure, \emph{e.g.} adiabatic or sudden limit protocols. 
+% 
+% The response density is expressed as the first-order variation of ground state density
+% \be\label{rhodef1}
+% \dmnot = \sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}  \;,
+% \ee
+% where $\{\psi_p\}$ denote the occupied states, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with energy lower than the Fermi level.
+% By considering the linear order time evolution of these states in presence of the perturbation we can express the response density in the $\omega$ domain as follows:
+% \be\lb{rhoPrimeOmegaDef1}
+% \dm'(\omega) = \ii \commutator{\dmnot}{\op A(\omega)} \;,
+% \ee
+% where $\op A(\omega)$ is a sum of two terms, both written as a triple convolution with the retarded/advanced Green functions $\op G_0^{\pm}$ of the unperturbed Hamiltonian:
+% \be
+% \op A(\omega) = \frac{1}{2\pi} \int_{-\infty}^\infty  \dd \omega'
+% \op G_0^+(\omega') \left(\op \Phi(\omega)+\op V'(\omega)\right) \op G_0^-(\omega'-\omega)\;. \nn
+% \ee
+% The presence of the second addend is due to the density dependence of the unperturbed Hamiltonian and describes the perturbation induced by the variation of $\hnot$ under the
+% action of the perturbing field. In the linear response regime this quantity can be expressed as the functional derivatives of $\hnot$ with respect to the density kernel 
+% (evaluated at $\dm=\dmnot$) times the value of the induced density modification, that is:
+% \be\label{VpDef1}
+% \op V'(\omega)= 
+% \int \dd \r \dd \r' \frac{\delta\hnot}{\delta \rho_0(\r,\r')}
+% \trace{\dm'(\omega) \ket{\r} \bra{\r'}} \;.
+% \ee
+% 
+% \subsection{Fluctuation states. A localization argument for the linear response functional}
+% 
+% We start this analysis by deriving an ulterior expression of the response density operator in the frequency space. We consider equation \eqref{rhoPrimeOmegaDef1} and observe that, for any 
+% operator $\op O$, we may write:  
+% \be
+% \commutator{\dmnot}{\op O} = \dmnot \op O \op Q_0 - \op Q_0 \op O \dmnot\;,
+% \ee
+% where $\op Q_0= \identity - \dmnot$ is the projection operator in the subspace orthogonal to $\dmnot$. So, thanks to this relation we have that:
+% \be
+% \dm'(\omega) = \ii\sum_p\left(\ketbra{\psi_p}{\psi_p}\op A(\omega)\op Q_0 - \op Q_0\op A(\omega)\ketbra{\psi_p}{\psi_p}\right) \;.
+% \ee
+% This equation suggests us to define the \emph{fluctuation states}:
+% \be\lb{fluctuationStateDef1}
+% \ket{f_p(\omega)} \doteq -\ii\op Q_0\op A(\omega)\ket{\psi_p} \;, \quad
+% \bra{f_p(\omega)} \doteq \bra{\psi_p}\ii\op A(-\omega)\op Q_0 \;,
+% \ee
+% where the $\omega$ dependence of the bra is consistent with hermitian conjugation property of the Fourier transform of a hermitian operator. Fluctuation states are, by 
+% definition, orthogonal to the occupied eigenstates of $\hnot$, so that:
+% \be
+% \brket{f_p(\omega)}{\psi_q} = \brket{\psi_q}{f_p(\omega)} = 0 \;, \forall \, p,q,\omega \;.
+% \ee
+% The response density written in terms of the fluctuation states reads:
+% \be\lb{rhoPrimeFluctuationStateDef1}
+% \dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;,
+% \ee
+% and consequently the linear response functional can be expressed as:
+% \be\lb{LinearResponseFunctDef2}
+% {\cal R}_{\op O}(\omega) = 
+% \sum_p\left(\bra{f_p(-\omega)}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{f_p(\omega)}\right) \;.
+% \ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 
 
