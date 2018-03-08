@@ -169,9 +169,9 @@ The interesting aspect of equations \eqref{fluctuationStateEqMotion1} in the per
 \emph{localization argument} for the fluctuation states. To clarify this statement we split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential 
 $\op V$ term and solve \eqref{fluctuationStateEqMotion1} in the form of a self-consistent inhomogeneous Helmholtz equation by writing:
 \be
-\ket{f_p(\omega)} = \op G_H(\omega)\ket{s(\omega)} \;,
+\ket{f_p(\omega)} = \op G_H(\omega+\epsilon_p)\ket{s(\omega)} \;,
 \ee
-where we have introduced the Green function of the Helmholtz operator $\op G_H(\omega) = (k^2_p(\omega)-\op T)^{-1}$ with $k^2_p(\omega) = (\omega+\eps_p)$,
+where we have introduced the Green function of the Helmholtz operator $\op G_H(\omega) = (\omega-\op T)^{-1}$, % with $k^2_p(\omega) = (\omega+\eps_p)$,
 and the \emph{source term} is given by:
 \be
 \ket{s(\omega)} =  \op V\ket{f_p(\omega)} + \op Q_0(\op V'(\omega) + \op \Phi(\omega))\ket{\psi_p} \;.\nn
@@ -186,15 +186,14 @@ For open boundary conditions in three dimensions, the kernel of $\op G_H(\omega)
 % \right. \;,
 % \ee
 \be\lb{HelmholtzKernelDef1}
-G_H(\omega,\r) = \frac{1}{4\pi} \left\{ 
-\begin{matrix}
-\frac{e^{-2k_p(\omega)|\r|}}{|\r|} \;,\; {\textrm for} \; \omega \leq |\eps_p| \\ 
-\frac{e^{2\ii k_p(\omega)|\r|}}{|\r|} \;,\; {\textrm for} \; \omega > |\eps_p|
-\end{matrix}
-\right. \;,
+\bra{\r'} \op G_H(k^2) \ket\r = \frac{1}{4\pi} \begin{cases}
+\frac{e^{-2k|\r - \r' |}}{|\r- \r' |} \;,\; & {\textrm for}\; k < 0\; \\ 
+\frac{e^{2\ii k |\r-\r' |}}{|\r-\r' |} \;, & {\textrm for} \; k > 0
+\end{cases}
 \ee
-and the $\r$-representation of the fluctuation states $f_p(\omega,\r)$ is expressed through a convolution integral between the kernel \eqref{HelmholtzKernelDef1} and
-$\brket{\r}{s(\omega)}$. An inspection of the structure of \eqref{HelmholtzKernelDef1} evidences that, for each value of $p$, there exist a threshold value $\omega = |\eps_p|$, 
+%and the $\r$-representation of the fluctuation states $f_p(\omega,\r)$ is expressed through a convolution integral between the kernel \eqref{HelmholtzKernelDef1} and
+%$\brket{\r}{s(\omega)}$.
+An inspection of the structure of \eqref{HelmholtzKernelDef1} evidences that, for each value of $p$, there exist a threshold value $\omega = |\eps_p|$, 
 which govern the localization properties of the corresponding fluctuation state. Indeed, for $\omega > |\eps_p|$,  $G_H(\omega,\r)$ behaves as a spherical wave and its
 convolution with the source term always give raises to a $f_p(\omega,\r)$ delocalized in the whole accessible space. On the contrary, for values of $\omega$ below the threshold,
 $G_H(\omega,\r)$ contains an exponential damping factor and the localization features of $f_p(\omega,\r)$ are determined by the spatial behavior of the source term.  
