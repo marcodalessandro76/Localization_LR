@@ -155,13 +155,15 @@ $\omega$-dependent \emph{fluctuation states} $\{\ket{f_p(\omega)}\}$, as follows
 \be\lb{rhoPrimeFluctuationStateDef1}
 \dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;.
 \ee
-An analysis of the Liouville equation for the response density written in this fashion evidences that fluctuation states are orthogonal to the occupied eigenstates 
-of $\hnot$ and their equations of motion are written in the form of a modified Sternheimer equation \cite{mahan1980}:
+Fluctuation states are, by construction, orthogonal to the occupied eigenstates of $\hnot$. Moreover, an analysis of the Liouville equation for the response density written in this fashion
+evidences that their equations of motion are written in the form of a modified Sternheimer equation \cite{mahan1980}:
+%An analysis of the Liouville equation for the response density written in this fashion evidences that fluctuation states are orthogonal to the occupied eigenstates 
+%of $\hnot$ and their equations of motion are written in the form of a modified Sternheimer equation \cite{mahan1980}:
 \be\lb{fluctuationStateEqMotion1}
 \left[\omega - (\hnot-\eps_p)\right]\ket{f_p(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'(\omega))\ket{\psi_p} \;,
 \ee
-where $\op Q_0=\identity-\dmnot$ is the projector in the subspace orthogonal to the occupied states and the operator $\op V'(\omega)$ is a perturbing term due to the density-dependence 
-of $\hnot$. %the unperturbed Hamiltonian. 
+where $\op Q_0=\identity-\dmnot$ is the projector in the subspace orthogonal to the occupied states of $\hnot$ and the operator $\op V'(\omega)$ is a perturbing term due to the density-dependence 
+of the unperturbed Hamiltonian. %$\hnot$. %the unperturbed Hamiltonian. 
 %and describes the perturbation induced by the variation of $\hnot$ under the action of the perturbing field.
 %The  r.h.s of \eqref{fluctuationStateEqMotion1} expresses the complete perturbing potential
 
@@ -186,17 +188,32 @@ For open boundary conditions in three dimensions, the kernel of $\op G_H(\omega)
 % \right. \;,
 % \ee
 \be\lb{HelmholtzKernelDef1}
-\bra{\r'} \op G_H(k^2) \ket\r = \frac{1}{4\pi} \begin{cases}
-\frac{e^{-2k|\r - \r' |}}{|\r- \r' |} \;,\; & {\textrm for}\; k < 0\; \\ 
+\bra{\r} \op G_H(k^2) \ket{\r'} = \frac{1}{4\pi} \begin{cases}
+\frac{e^{2k|\r - \r' |}}{|\r- \r' |} \;,\; & {\textrm for}\; k < 0\; \\ 
 \frac{e^{2\ii k |\r-\r' |}}{|\r-\r' |} \;, & {\textrm for} \; k > 0
-\end{cases}
+\end{cases} \;,
 \ee
-%and the $\r$-representation of the fluctuation states $f_p(\omega,\r)$ is expressed through a convolution integral between the kernel \eqref{HelmholtzKernelDef1} and
-%$\brket{\r}{s(\omega)}$.
+and the $\r$-representation of the fluctuation states $f_p(\omega,\r)$ is expressed through a convolution integral between the kernel \eqref{HelmholtzKernelDef1} and
+$\brket{\r'}{s(\omega)}$.
 An inspection of the structure of \eqref{HelmholtzKernelDef1} evidences that, for each value of $p$, there exist a threshold value $\omega = |\eps_p|$, 
-which govern the localization properties of the corresponding fluctuation state. Indeed, for $\omega > |\eps_p|$,  $G_H(\omega,\r)$ behaves as a spherical wave and its
+which govern the localization properties of the corresponding fluctuation state. Indeed, for $\omega > |\eps_p|$,  $G_H(\omega)$ behaves as a spherical wave and its
 convolution with the source term always give raises to a $f_p(\omega,\r)$ delocalized in the whole accessible space. On the contrary, for values of $\omega$ below the threshold,
-$G_H(\omega,\r)$ contains an exponential damping factor and the localization features of $f_p(\omega,\r)$ are determined by the spatial behavior of the source term.  
+the kernel contains an exponential damping factor and the localization features of $f_p(\omega,\r)$ are determined by the spatial behavior of the source term.  
+
+\vspace{0.3cm}
+\noindent{TODO: Add comment to support the localization below threshold}. Two possible way. First way, use the fact that the $\ket{f_p(0)}$ is the nothing but the $p$-\emph{th} 
+eigenstate of the perturbed Hamiltonian with perturbing field $\op\Phi(0)$. The localization of $\ket{f_p(0)}$ can be explicitly checked by solving the ground-state problem for
+this Hamiltonian. How to extended to finite values of $\omega$ below threshold? Second way. Try and iterative solution of the self-consistent Helmholtz equation (below threshold) 
+starting from a localized guess for the fluctuation state. Then state something about the the fact that is reasonable to believe that (for a proper choice of the perturbing field)
+the operators appearing in the source term keep its support compact. If we are able to state this in a appropriate way the localization argument below threshold hold. In my opinion
+this way is better.
+\vspace{0.3cm}
+
+The linear response functional can be expressed as:
+\be\lb{LinearResponseFunctDef2}
+{\cal R}_{\op O}(\omega) = 
+\sum_p\left(\bra{f_p(-\omega)}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{f_p(\omega)}\right) \;.
+\ee
 
 This argument holds for all the fluctuation states that contribute to the perturbation-induced expectation value \eqref{LinearResponseFunctDef1}, so we conclude that
 the linear response functional is built in terms of localized fluctuation states for $\omega < |\eps_h|$. Instead, in the range $\eps_h|\leq\omega<|\eps_0|$ it contains both
@@ -204,7 +221,8 @@ contributions from local and non-local quantities and, finally is composed only 
 
 Comment of the reliability of the scalar product of the linear response functional.
 
-Numerical example (convergence below threshold of the Benzene spectrum computed in different computational setups).
+\vspace{0.3cm}
+\noindent{TODO: Numerical example (convergence below threshold of the Benzene spectrum computed in different computational setup).}
 
 
 
