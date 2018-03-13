@@ -131,11 +131,16 @@ described by the Hamiltonian $\hnot$ and assume that the ground-state density $\
 of the expectation value of a generic observable induced by a time-dependent perturbing field acting on the system. This quantity, written in the frequency domain, can be expressed 
 through the evaluation of the \emph{linear response functional}:
 \be\lb{LinearResponseFunctDef1}
-{\cal R}_{\op O}(\omega) = \trace{\dm'(\omega)\op O} \;,
+\braket{\delta\op O}(\omega) = \trace{\dm'(\omega)\op O} \;,
 \ee
 where the operator $\op O$ represents the observable\footnote{For a sake of concreteness, we are limiting our considerations to observables that do not explicitly depend on time} 
 under inspection. The modification of the ground-state density induced by the perturbation is expressed by the \emph{response density operator} $\dm'(\omega)$ that, in the linear 
-response regime, is a linear function of the perturbing field $\op\Phi(\omega)$.
+response regime, is a linear function of the perturbing field $\op\Phi(\omega)$. For this reason it is possible to define the \emph{susceptibility} superoperator, as follows:
+\be\lb{SusceptibilityDef1}
+\dm'(\omega) = \sop{{\cal R}}(\omega) \op\Phi(\omega) \;. 
+\ee
+Susceptibility describes an intrinsic feature of the unperturbed system and determines its response to \emph{any} perturbations, in the linear response regime.
+%ndependent from the specific perturbation that acts on the system and codifies the fundamental aspects which determine the response of the system. % is the fundamental object at the basis of 
 
 The analysis presented in this section is devoted to a critical review of the fundamental equations which define the response density operator in the linear response regime.    
 The aim of this process is to....
@@ -144,12 +149,15 @@ The aim of this process is to....
 
 \subsection{Fluctuation states. A (de-)localization argument for the response density}
 
-The response density operator is expressed as the first-order variation of ground state density $\dmnot = \sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}$
+The response density operator is expressed as the first-order variation of ground state density $\sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}$,
 %\be\label{rhodef1}
 %\dmnot = \sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}  \;,
 %\ee
 where the set $\{\ket{\psi_p}\}$ denote the occupied states, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with energy $\eps_p$ lower than the Fermi level.
-By considering the linear order time evolution of these states in presence of the perturbation we can derive the equation of motion of the response density in the form of 
+Using this notation we denote the energy of the HOMO level as $\eps_h$ and identify the value of the first ionization potential with $|\eps_h|$. 
+In what follows we will assume that the set of states $\{\ket{\psi_p}\}$ are real functions, when project in the $\r$-representation.  
+
+By considering the linear order time evolution of the eigenstates of $\hnot$ in presence of the perturbation we can derive the equation of motion of the response density in the form of 
 a quantum Liouville equation (for example see \cite{baroni2008}). This procedure suggests us to introduce an explicit representation of the response density in terms of a set of 
 $\omega$-dependent \emph{fluctuation states} $\{\ket{f_p(\omega)}\}$, as follows: 
 \be\lb{rhoPrimeFluctuationStateDef1}
@@ -196,34 +204,42 @@ For open boundary conditions in three dimensions, the kernel of $\op G_H(\omega)
 and the $\r$-representation of the fluctuation states $f_p(\omega,\r)$ is expressed through a convolution integral between the kernel \eqref{HelmholtzKernelDef1} and
 $\brket{\r'}{s(\omega)}$.
 An inspection of the structure of \eqref{HelmholtzKernelDef1} evidences that, for each value of $p$, there exist a threshold value $\omega = |\eps_p|$, 
-which govern the localization properties of the corresponding fluctuation state. Indeed, for $\omega > |\eps_p|$,  $G_H(\omega)$ behaves as a spherical wave and its
+which govern the localization properties of the corresponding fluctuation state. Indeed, for $\omega > |\eps_p|$,  $\op G_H(\omega)$ behaves as a spherical wave and its
 convolution with the source term always give raises to a $f_p(\omega,\r)$ delocalized in the whole accessible space. On the contrary, for values of $\omega$ below the threshold,
-the kernel contains an exponential damping factor and the localization features of $f_p(\omega,\r)$ are determined by the spatial behavior of the source term.  
+the kernel contains an exponential damping factor and %the localization features of $f_p(\omega,\r)$ are determined by the spatial behavior of the source term.  
+$f_p(\omega,\r)$ exhibit a bound-state behavior in the long range.   
 
-\vspace{0.3cm}
-\noindent{TODO: Add comment to support the localization below threshold}. Two possible way. First way, use the fact that the $\ket{f_p(0)}$ is the nothing but the $p$-\emph{th} 
-eigenstate of the perturbed Hamiltonian with perturbing field $\op\Phi(0)$. The localization of $\ket{f_p(0)}$ can be explicitly checked by solving the ground-state problem for
-this Hamiltonian. How to extended to finite values of $\omega$ below threshold? Second way. Try and iterative solution of the self-consistent Helmholtz equation (below threshold) 
-starting from a localized guess for the fluctuation state. Then state something about the the fact that is reasonable to believe that (for a proper choice of the perturbing field)
-the operators appearing in the source term keep its support compact. If we are able to state this in a appropriate way the localization argument below threshold hold. In my opinion
-this way is better.
-\vspace{0.3cm}
+% \vspace{0.3cm}
+% \noindent{TODO: Add comment to support the localization below threshold}. Two possible way. First way, use the fact that the $\ket{f_p(0)}$ is the nothing but the $p$-\emph{th} 
+% eigenstate of the perturbed Hamiltonian with perturbing field $\op\Phi(0)$. The localization of $\ket{f_p(0)}$ can be explicitly checked by solving the ground-state problem for
+% this Hamiltonian. How to extended to finite values of $\omega$ below threshold? Second way. Try and iterative solution of the self-consistent Helmholtz equation (below threshold) 
+% starting from a localized guess for the fluctuation state. Then state something about the the fact that is reasonable to believe that (for a proper choice of the perturbing field)
+% the operators appearing in the source term keep its support compact. If we are able to state this in a appropriate way the localization argument below threshold hold. In my opinion
+% this way is better.
+% \vspace{0.3cm}
 
-The linear response functional can be expressed as:
+% The knowledge of the long range behavior of the fluctuation states allows us to perform an assessment on the reliability of the evaluation of the linear response functional 
+% \eqref{LinearResponseFunctDef1}. To elaborate this statement we make usage of the fluctuation states representation of the response density \eqref{rhoPrimeFluctuationStateDef1}, 
+% so that:
+% The knowledge of the long range behavior of the fluctuation states allows us to assess the spatial localization properties of the basic objects relevant in the contest of the 
+% linear response. In particular, making usage of the fluctuation states representation of the response density \eqref{rhoPrimeFluctuationStateDef1}, we can express the linear 
+% response functional \eqref{LinearResponseFunctDef1} as follows: 
+This analysis allows us to comprehend that the spatial localization features of the building blocks relevant for the linear response depend critically on $\omega$. 
+Indeed, the fluctuation states representation of the response density \eqref{rhoPrimeFluctuationStateDef1} implies that
 \be\lb{LinearResponseFunctDef2}
-{\cal R}_{\op O}(\omega) = 
-\sum_p\left(\bra{f_p(-\omega)}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{f_p(\omega)}\right) \;.
+\braket{\delta\op O}(\omega) = 2\sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;,
 \ee
+so we can identify two different regimes, depending on the value of $\omega$. In the first one, realized for $\omega<|\eps_h|$, all the terms contributing to \eqref{LinearResponseFunctDef2} 
+are expressed in terms of genuinely localized wave functions, while in the second one, for $\omega>|\eps_h|$, fluctuation states start behaving as unbound wave functions. 
+%and the scalar products appearing in \eqref{LinearResponseFunctDef2} are only regularized by the long range behavior of the $\ket{\psi_p}$.
+This fact implies that a computational setup has different chances of providing a reliable assessment of the linear response functional \eqref{LinearResponseFunctDef2} depending
+to the value of $\omega$. 
+This observation has relevant consequence on the capability of a computational setup to provide a reliable assessment of the linear response functional....  
 
-This argument holds for all the fluctuation states that contribute to the perturbation-induced expectation value \eqref{LinearResponseFunctDef1}, so we conclude that
-the linear response functional is built in terms of localized fluctuation states for $\omega < |\eps_h|$. Instead, in the range $\eps_h|\leq\omega<|\eps_0|$ it contains both
-contributions from local and non-local quantities and, finally is composed only by non-local fluctuation states for $\omega\geq|\eps_0|$. 
 
-Comment of the reliability of the scalar product of the linear response functional.
 
 \vspace{0.3cm}
 \noindent{TODO: Numerical example (convergence below threshold of the Benzene spectrum computed in different computational setup).}
-
 
 
 \subsection{Excitation operators. A spectral decomposition representation for the response density}
@@ -232,7 +248,7 @@ Inizio a mettere le formule da usare...forse...
 
 Liouville equation:
 \be\lb{LiouvillianRhopomegaDef1}
-\left(\bbomega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot}\;,\;\; 
+\left(\omega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot}\;,\;\; 
 \Liouv = \Liouvnot + \coupl \;.
 \ee
 % by introducing the \emph{coupling}
