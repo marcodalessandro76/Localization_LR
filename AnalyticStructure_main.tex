@@ -224,12 +224,38 @@ $f_p(\omega,\r)$ exhibit a bound-state behavior in the long range.
 % The knowledge of the long range behavior of the fluctuation states allows us to assess the spatial localization properties of the basic objects relevant in the contest of the 
 % linear response. In particular, making usage of the fluctuation states representation of the response density \eqref{rhoPrimeFluctuationStateDef1}, we can express the linear 
 % response functional \eqref{LinearResponseFunctDef1} as follows: 
-This analysis allows us to comprehend that the spatial localization features of the building blocks relevant for the linear response depend critically on $\omega$. 
-Indeed, the fluctuation states representation of the response density \eqref{rhoPrimeFluctuationStateDef1} implies that
+% This analysis indicates that the task of providing a reliable assessment of the linear response functional present a different level of complexity   .
+% Using the representation of the response density \eqref{rhoPrimeFluctuationStateDef1}, we can express the linear response functional as
+% \be\lb{LinearResponseFunctDef2}
+% \braket{\delta\op O}(\omega) = 2\sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;.
+% \ee
+This analysis allows us to determine the spatial localization features of the building blocks\footnote{This consideration holds for the class of observables that produces a localized state 
+$\bra{\psi_p}\op O$ when acts on a bound eigenstate of $\hnot$} relevant for the linear response.  
+%and provides indications on the da alcune indicazioni sulla difficoltà di ottenere una reliable evaluation of the linear response functional. %change in function of $\omega$. 
+Indeed, using the fluctuation states representation of the response density, we can express the linear response functional \eqref{LinearResponseFunctDef1} as
+%Indeed, the fluctuation states representation of the response density \eqref{rhoPrimeFluctuationStateDef1} implies that
 \be\lb{LinearResponseFunctDef2}
-\braket{\delta\op O}(\omega) = 2\sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;,
+\braket{\delta\op O}(\omega) = 2\sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;.
 \ee
-so we can identify two different regimes, depending on the value of $\omega$. In the first one, realized for $\omega<|\eps_h|$, all the terms contributing to \eqref{LinearResponseFunctDef2} 
+An inspection of \eqref{LinearResponseFunctDef2} evidences that we can identify two different regimes, depending on the value of $\omega$. In the first regime, realized for $\omega<|\eps_h|$, 
+the linear response is formulated in terms of genuinely quantities, each of which possess a physical cut-off radius. In this case it is possible to evaluate of the scalar products of 
+\eqref{LinearResponseFunctDef2} using a finite computational domain and the long range behavior of both $\{\ket{f_p(\omega)}\}$ and $\{\bra{\psi_p}\op O\}$ ensures that the result is not 
+affected by the specific choice of the domain. This is an argument in favor of the reliable evaluation of the linear response functional in the low-$\omega$ regime.    
+%is reasonable to expect that the result of () should be independent
+%from the computation domain used to evaluate the scalar products,  choosing a finite computational
+%domain to perform the scalar products of \eqref{LinearResponseFunctDef2} does not affect the result, provided that the degrees of freedom included are able to contain the waist of the elements
+%considered. 
+
+scegliendo un dominio computazionale
+finito per eseguire i prodotti scalari espressi nella \eqref{LinearResponseFunctDef2}, i risultati ottenuti siano indipendenti dalla particolare scelta eseguita a patto che i gradi di libertà
+utilizzati permettano di contenere la taglia degli oggetti considerati.
+
+
+sia possibile ottenere una valutazione
+affidabile della risposta lineare eseguendo i prodotti scalari espressi nella \eqref{LinearResponseFunctDef2}  in un dominio computazione finito in grado di contenere i building blocks a reliable evaluation
+of \eqref{LinearResponseFunctDef2} can be provided if the building elements are computed in a finite domain which contains the cut.off
+
+\vspace{1cm}
 are expressed in terms of genuinely localized wave functions, while in the second one, for $\omega>|\eps_h|$, fluctuation states start behaving as unbound wave functions. 
 %and the scalar products appearing in \eqref{LinearResponseFunctDef2} are only regularized by the long range behavior of the $\ket{\psi_p}$.
 This fact implies that a computational setup has different chances of providing a reliable assessment of the linear response functional \eqref{LinearResponseFunctDef2} depending
