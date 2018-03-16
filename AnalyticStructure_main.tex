@@ -122,7 +122,17 @@ unoccupied subspace.
 
 \section{Introduction}
 
-.....
+State something about the assessment of physical reliability for a ground state calculation. Some comment on the setup independence of the results. Introduce the correspondence
+between localization properties and observable behavior or physicality. State the, at the present days, similar consideration for the results of linear response are still 
+missing...
+
+The basic motivation at the basis of the analysis discussed in this paper is to address to following question: which are the requirement that a computational setup has to
+satisfy in order to be able to provide physical results for a linear response calculation? Here with physical we meant that they depend only on the features of the system under
+inspection and on the perturbation acting on it. Physical results are unaffected by computational parameters, like the dimension of the computational domain or the nature of
+the basis set used to perform the calculations. 
+
+To answer to this question we investigate the properties of the susceptibility, which represents the fundamental object in the contest of linear response. 
+
 
 \section{Theory}
 
@@ -248,31 +258,42 @@ visible in the for values of $\omega$ that exceed the threshold value.
 \noindent{TODO: Numerical example (convergence below threshold of the Benzene spectrum computed in different computational setup).}
 \vspace{0.3cm}
 
-This analysis, carried out starting from the representation of the linear response functional in terms of fluctuation states, evidences some general properties of the linear response. 
-In the next sections we will reformulate an analogous procedure directly looking at the susceptibility. This analysis lead us to the core of the paper, namely the description of the
-analytical structure of the linear response susceptibility. 
+%This analysis, carried out starting from the representation of the linear response functional in terms of fluctuation states, evidences some general properties of the linear response. 
+%In the next sections we will reformulate an analogous procedure directly looking at the susceptibility. This analysis lead us to the core of the paper, namely the description of the
+%analytical structure of the linear response susceptibility. 
 
 \subsection{Excitation operators. A spectral decomposition representation for the response density}
 
-Inizio a mettere le formule da usare...forse...
+The analysis carried out starting from the representation of the linear response functional in terms of fluctuation states, has evidenced some general properties of the linear response
+for open systems. In particular, by analyzing the asymptotic behavior of fluctuation states in long range limit, we have showed that they exhibit a bound-state character in the regime  
+$\omega<|\eps_h|$. consequently we have argued that the linear response functional, in the same $\omega$ range, provides a setup-independent result with a modest computational effort. 
 
-Liouville equation:
+Now we reformulate an analogous analysis looking at the susceptibility superoperator, implicit defined through \eqref{SusceptibilityDef1}. This approach leads to the concept of \emph{excitation 
+operators}, defined through a self-consistent operator eigenvalue equation. Excitations behave as singularity of the susceptibility operator and their knowledge provides a deeper insight 
+into the analytic structure of the linear response. 
+
+The starting point of this analysis is represented by the Liouville equation for the response density operator:
 \be\lb{LiouvillianRhopomegaDef1}
-\left(\omega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot}\;,\;\; 
-\Liouv = \Liouvnot + \coupl \;.
+\left(\omega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot} \;.
 \ee
-% by introducing the \emph{coupling}
-% superoperator:
-% \be\lb{couplingSopDef1}
-% \coupl = 
-% \int \dd \r \dd \r' \commutator{\frac{\delta\hnot}{\delta \rho_0(\r,\r')}}{\dmnot}
-% \trace{\cdot \ket{\r} \bra{\r'}} \;,
-% \ee
-Excitation operators as eigenstates of the Liouvillian:
-\be
+Using the spectral decomposition of the resolvent of the Liouvillian we have:
+\be\lb{RhopExcitationDef1}
+\sop{{\cal R}}(\omega) \cdot   =
+\sint\dd E \, \op E
+\frac{\trace{\opskew{\tilde E}\cdot}}{\omega-E} \;,
+\ee
+with $\opskew{O} = \commutator{\op O}{\dmnot}$. 
+Excitation operators as eigenstates of the Liouvillian (keep left and right different or not?):
+\be\lb{ExcitationOperatorsDef1}
 \Liouv \op E = E \op E \;, \qq
  \op{\tilde E} \Liouv = E \op{\tilde E}
 \ee
+We can express excitation operators as follows:
+\begin{align}\lb{ExcitationOperatorsDef2}
+\op E &= \sum_p \left( \ket{\phi^E_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^E_p}\right)\;, \nn \\
+\op {\tilde E} &= \sum_p \left( \ket{\psi_p} \tbra{\phi^E_p} + \tket{\chi^E_p}\bra{\psi_p} \right)\;.
+\end{align}
+
 
 \subsection{Comments. The analytic structure of the linear response susceptibility}
 
