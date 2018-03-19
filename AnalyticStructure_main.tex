@@ -122,6 +122,42 @@ unoccupied subspace.
 
 \section{Introduction}
 
+The subject of the present investigation concerns with the study of isolated molecular-like systems subjected to a time-dependent perturbation in the linear response regime.
+
+The ground state properties of these systems are described within the standard DFT approach in which (valence) electrons are distributed on the Kohn-Sham orbitals. The stability of
+the ground state and the localized nature of the system ensures that the KS description of occupied states is represented by a discrete set of wave functions that becomes arbitrary 
+small far apart from a compact region around the system's atoms. This behavior indicates that a (finite) basis set will provide a reliable description of the ground state properties 
+if it is able to sample a computational domain which contains the natural sizes of the occupied orbitals\cite{boffi2016}. %Results discussed in \cite{boffi2016} confirm this statement. 
+
+The same arguments cannot be rigidly extended to the case in which an external time-dependent field starts acting on the system. Indeed, the perturbation drives the system out 
+from the equilibrium and the electrons sample a wider region of the state space, that will contains orbitals of both negative (bound) and positive (unbound) energies. Unbound orbitals 
+form a continuum of states in the true system with open boundaries, and the introduction of a finite computational domain has the effects of introducing a fictitious level discretization
+\cite{boffi2016}.   
+
+%In this case the relevant physical quantities are the perturbation-induced
+%modification of the expectation values of the observable.  one is not dealing with a ground state property and 
+
+
+The perturbation induces a modification on the ground state density and, choosing the
+eigenstates of the unperturbed KS Hamiltonian as a natural basis, one has to include also the virtual (unoccupied) states to described the perturbed density. Virtual states of
+positive energy constitute a continuum...
+
+Sebbene non ci sia necessità di usare gli autostati di KS per campionare lo spazio ortogonale a quello in cui si esprime la densità imperturbata, questo argomento solleva un potenziale
+problema: quale è la scelta di una basis set idonea per costruire la risposta lineare in modo affidabile?
+
+%a natural criterion for the choice of 
+
+
+
+
+%This fact indicates that a computation basis that is able to sample a finite domain around the molecule will provide an unbiased estimate of ground states properties 
+
+
+%This fact has also important consequences when one analyzes the effects of a finite computational domain on the reliable evaluation of the system's properties. 
+
+
+\vspace{1cm}
+
 State something about the assessment of physical reliability for a ground state calculation. Some comment on the setup independence of the results. Introduce the correspondence
 between localization properties and observable behavior or physicality. State the, at the present days, similar consideration for the results of linear response are still 
 missing...
@@ -264,9 +300,9 @@ visible in the for values of $\omega$ that exceed the threshold value.
 
 \subsection{Excitation operators. A spectral decomposition representation for the response density}
 
-The analysis carried out starting from the representation of the linear response functional in terms of fluctuation states, has evidenced some general properties of the linear response
+The analysis carried out starting from the representation of the linear response functional in terms of fluctuation states has evidenced some general properties of the linear response
 for open systems. In particular, by analyzing the asymptotic behavior of fluctuation states in long range limit, we have showed that they exhibit a bound-state character in the regime  
-$\omega<|\eps_h|$. consequently we have argued that the linear response functional, in the same $\omega$ range, provides a setup-independent result with a modest computational effort. 
+$\omega<|\eps_h|$. Consequently we have argued that the linear response functional, in the same $\omega$ range, provides a setup-independent result with a modest computational effort. 
 
 Now we reformulate an analogous analysis looking at the susceptibility superoperator, implicit defined through \eqref{SusceptibilityDef1}. This approach leads to the concept of \emph{excitation 
 operators}, defined through a self-consistent operator eigenvalue equation. Excitations behave as singularity of the susceptibility operator and their knowledge provides a deeper insight 
