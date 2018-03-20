@@ -122,28 +122,58 @@ unoccupied subspace.
 
 \section{Introduction}
 
-The subject of the present investigation concerns with the study of isolated molecular-like systems subjected to a time-dependent perturbation in the linear response regime.
+The subject of the present investigation concerns with the study of isolated molecular-like systems subjected to a time-dependent perturbation. % in the linear response regime.
+This problem can be tackled within the contest of the time-dependent density functional theory (TD-DFT)\cite{runge1984,onida2002}, that allows one to establish the time-dependent 
+Kohn-Sham (KS) equations that determine the evolution of the one-particle properties of the system with respect to time. We focus our attention to the linear response regime (LR) 
+in which the theory can be conveniently expressed in the frequency domain and the time-dependent KS equation are reformulated as a quantum Liouville equation for the response 
+density operator. Different computational approaches have been developed in literature\cite{baroni2008,hubener2014,brabec2015}, principally with the aim of producing efficient algorithms 
+for the evaluation of the physical observables. These methods differ both for the procedure adopted to solve the Liouville equation (explicit diagonalization, self-consistent Sternheimer 
+equation, Lanczos chain-like procedure, etc.) and both for the choice of the basis set employed to perform the calculations. Nonetheless, in all the cases one is a dealing with a finite 
+basis set that, unavoidably, gives rise to a limited computational domain. It is then meaningful to try to understand under which extent and for which type of observables the artificial 
+truncation of the natural open boundaries condition could produce observable effects on the physical quantities computed in the LR. 
 
-The ground state properties of these systems are described within the standard DFT approach in which (valence) electrons are distributed on the Kohn-Sham orbitals. The stability of
-the ground state and the localized nature of the system ensures that the KS description of occupied states is represented by a discrete set of wave functions that becomes arbitrary 
-small far apart from a compact region around the system's atoms. This behavior indicates that a (finite) basis set will provide a reliable description of the ground state properties 
-if it is able to sample a computational domain which contains the natural sizes of the occupied orbitals\cite{boffi2016}. %Results discussed in \cite{boffi2016} confirm this statement. 
+A preliminary answer of this question can be formulated by considering results \cite{boffi2016}, that establish a clear correspondence between the orbital localization character, and 
+the independence of its properties (\emph{e.g.} energy) with respect to the basis set. It is shown that (localized) orbitals with a bound-state behavior in the long range 
+constitute a genuine discrete set and a finite basis is able to provide a reliable description of these states if the sampled domain contains their natural sizes. On the contrary, 
+unbound (delocalized) orbitals form a continuum of states in the true system with open boundaries. For these class of objects the presence finite computational domain has a deeper 
+impact since introduces a fictitious discretization of the energy levels. Furthermore, all the energies of the unbound orbitals scale to zero as long as the computational domain is 
+increased.  
+
+First of all it is useful to discuss the property of the ground state under this perspective. 
+Indeed, it is well known that the stability of the ground state and the localized nature of a molecular-like system ensures that the KS description of occupied states is represented 
+by a discrete set of wave functions that approaches to zero far apart from a compact region around the system's atoms. This behavior indicates that a (finite) basis set will provide 
+a reliable description of the ground state properties if it is able to sample a computational domain which contains the natural sizes of the occupied orbitals\cite{boffi2016}.
+
+% A preliminary answer of this question can be formulated by considering results derived in \cite{boffi2016}, concerning the basis dependence of occupied and virtual molecular orbitals.   
+% First of all it is useful to discuss the property of the ground state under this perspective. 
+% Indeed, it is well known that the stability of the ground state and the localized nature of a molecular-like system ensures that the KS description of occupied states is represented 
+% by a discrete set of wave functions that approaches to zero far apart from a compact region around the system's atoms. This behavior indicates that a (finite) basis set will provide 
+% a reliable description of the ground state properties 
+% if it is able to sample a computational domain which contains the natural sizes of the occupied orbitals\cite{boffi2016}.
 
 The same arguments cannot be rigidly extended to the case in which an external time-dependent field starts acting on the system. Indeed, the perturbation drives the system out 
-from the equilibrium and the electrons sample a wider region of the state space, that will contains orbitals of both negative (bound) and positive (unbound) energies. Unbound orbitals 
-form a continuum of states in the true system with open boundaries, and the introduction of a finite computational domain has the effects of introducing a fictitious level discretization
-\cite{boffi2016}.   
+from the equilibrium and the electrons sample a wider region of the state space, that will contains orbitals of both negative (bound) and positive (unbound) energies. 
+% Unbound orbitals 
+% form a continuum of states in the true system with open boundaries, and the introduction of a finite computational domain has the effects of introducing a fictitious level discretization
+% \cite{boffi2016}.   
 
 %In this case the relevant physical quantities are the perturbation-induced
 %modification of the expectation values of the observable.  one is not dealing with a ground state property and 
 
+% A preliminary answer of this question can be formulated by considering results derived in \cite{boffi2016}, concerning the basis dependence of occupied and virtual molecular orbitals.   
+% Indeed, the ground state properties of molecular-like systems are described within the standard DFT approach in which electrons are distributed on the Kohn-Sham orbitals. The stability of
+% the ground state and the localized nature of the system ensures that the KS description of occupied states is represented by a discrete set of wave functions that approaches to zero  
+% far apart from a compact region around the system's atoms. This behavior indicates that a (finite) basis set will provide a reliable description of the ground state properties 
+% if it is able to sample a computational domain which contains the natural sizes of the occupied orbitals\cite{boffi2016}.
 
-The perturbation induces a modification on the ground state density and, choosing the
-eigenstates of the unperturbed KS Hamiltonian as a natural basis, one has to include also the virtual (unoccupied) states to described the perturbed density. Virtual states of
-positive energy constitute a continuum...
 
-Sebbene non ci sia necessità di usare gli autostati di KS per campionare lo spazio ortogonale a quello in cui si esprime la densità imperturbata, questo argomento solleva un potenziale
-problema: quale è la scelta di una basis set idonea per costruire la risposta lineare in modo affidabile?
+
+% The perturbation induces a modification on the ground state density and, choosing the
+% eigenstates of the unperturbed KS Hamiltonian as a natural basis, one has to include also the virtual (unoccupied) states to described the perturbed density. Virtual states of
+% positive energy constitute a continuum...
+
+% Sebbene non ci sia necessità di usare gli autostati di KS per campionare lo spazio ortogonale a quello in cui si esprime la densità imperturbata, questo argomento solleva un potenziale
+% problema: quale è la scelta di una basis set idonea per costruire la risposta lineare in modo affidabile?
 
 %a natural criterion for the choice of 
 
@@ -158,9 +188,9 @@ problema: quale è la scelta di una basis set idonea per costruire la risposta l
 
 \vspace{1cm}
 
-State something about the assessment of physical reliability for a ground state calculation. Some comment on the setup independence of the results. Introduce the correspondence
-between localization properties and observable behavior or physicality. State the, at the present days, similar consideration for the results of linear response are still 
-missing...
+% State something about the assessment of physical reliability for a ground state calculation. Some comment on the setup independence of the results. Introduce the correspondence
+% between localization properties and observable behavior or physicality. State the, at the present days, similar consideration for the results of linear response are still 
+% missing...
 
 The basic motivation at the basis of the analysis discussed in this paper is to address to following question: which are the requirement that a computational setup has to
 satisfy in order to be able to provide physical results for a linear response calculation? Here with physical we meant that they depend only on the features of the system under
