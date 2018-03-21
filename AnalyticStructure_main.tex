@@ -1,11 +1,11 @@
 \documentclass[reprint,aps,prb]{revtex4-1}
 
-%% Language and font encodings
+% Language and font encodings
 \usepackage[english]{babel}
 %\usepackage[utf8x]{inputenc}
 %\usepackage[T1]{fontenc}
 
-%% Useful packages
+% Useful packages
 \usepackage{graphicx}
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
 \usepackage{mathtools,braket}
@@ -124,85 +124,44 @@ unoccupied subspace.
 
 The subject of the present investigation concerns with the study of isolated molecular-like systems subjected to a time-dependent perturbation. % in the linear response regime.
 This problem can be tackled within the contest of the time-dependent density functional theory (TD-DFT)\cite{runge1984,onida2002}, that allows one to establish the time-dependent 
-Kohn-Sham (KS) equations that determine the evolution of the one-particle properties of the system with respect to time. We focus our attention to the linear response regime (LR) 
-in which the theory can be conveniently expressed in the frequency domain and the time-dependent KS equation are reformulated as a quantum Liouville equation for the response 
-density operator. Different computational approaches have been developed in literature\cite{baroni2008,hubener2014,brabec2015}, principally with the aim of producing efficient algorithms 
-for the evaluation of the physical observables. These methods differ both for the procedure adopted to solve the Liouville equation (explicit diagonalization, self-consistent Sternheimer 
-equation, Lanczos chain-like procedure, etc.) and both for the choice of the basis set employed to perform the calculations. Nonetheless, in all the cases one is a dealing with a finite 
-basis set that, unavoidably, gives rise to a limited computational domain. It is then meaningful to try to understand under which extent and for which type of observables the artificial 
-truncation of the natural open boundaries condition could produce observable effects on the physical quantities computed in the LR. 
+Kohn-Sham (KS) equations which determine the evolution of the one-particle properties of the system with respect to time. 
 
-A preliminary answer of this question can be formulated by considering results \cite{boffi2016}, that establish a clear correspondence between the orbital localization character, and 
-the independence of its properties (\emph{e.g.} energy) with respect to the basis set. It is shown that (localized) orbitals with a bound-state behavior in the long range 
-constitute a genuine discrete set and a finite basis is able to provide a reliable description of these states if the sampled domain contains their natural sizes. On the contrary, 
-unbound (delocalized) orbitals form a continuum of states in the true system with open boundaries. For these class of objects the presence finite computational domain has a deeper 
-impact since introduces a fictitious discretization of the energy levels. Furthermore, all the energies of the unbound orbitals scale to zero as long as the computational domain is 
-increased.  
+We focus our attention to the linear response regime (LR) in which the theory can be conveniently expressed in the frequency domain and the time-dependent KS equation are reformulated 
+as a quantum Liouville equation for the response density operator. Different computational approaches have been developed in literature\cite{baroni2008,hubener2014,brabec2015}, principally 
+with the aim of producing efficient algorithms for the evaluation of the physical observables. These methods differ both for the procedure adopted to solve the Liouville equation 
+(explicit diagonalization, self-consistent Sternheimer equation, Lanczos chain-like procedure, etc.) and both for the choice of the basis set employed to perform the calculations. 
+Nonetheless, in all the cases one is a dealing with a finite basis set that, unavoidably, gives rise to a limited computational domain. It is then meaningful to try to understand under 
+which extent the computational-induced truncation of the natural open boundaries condition could produce observable effects on the physical quantities computed in the LR. 
 
-First of all it is useful to discuss the property of the ground state under this perspective. 
-Indeed, it is well known that the stability of the ground state and the localized nature of a molecular-like system ensures that the KS description of occupied states is represented 
-by a discrete set of wave functions that approaches to zero far apart from a compact region around the system's atoms. This behavior indicates that a (finite) basis set will provide 
-a reliable description of the ground state properties if it is able to sample a computational domain which contains the natural sizes of the occupied orbitals\cite{boffi2016}.
+A preliminary understanding of this problem can be achieved thanks to the results reported in\cite{boffi2016}. The authors of this paper discuss the effects of a finite basis set on the 
+occupied and virtual orbitals of a molecular system and establish a clear correspondence between the orbital localization character, and the independence of its properties (\emph{e.g.} energy) 
+with respect to the basis set. It is shown that (localized) orbitals with a bound-state behavior in the long range constitute a genuine discrete set and a finite basis is 
+able to provide a reliable description of these states if the sampled domain contains their natural sizes. On the contrary, unbound (delocalized) orbitals form a continuum of states in the 
+true system with open boundaries. For these class of objects the presence of a finite computational domain has a deeper impact since introduces a fictitious discretization of the energy levels. 
+Furthermore, the energies of the unbound orbitals are not stable with respect to a change of the size of the computational domain and approach to zero as long as it is increased.  
 
-% A preliminary answer of this question can be formulated by considering results derived in \cite{boffi2016}, concerning the basis dependence of occupied and virtual molecular orbitals.   
+In this paper we aim to reach a deeper understanding of the possible effects of a finite computational basis set on the LR regime in open systems. To achieve this task we try to
+reformulate the relation between localization properties and basis independence for the main actors of the LR formalism. We present a discussion based on a double level analysis. First, 
+we propose a localization argument directly based on the inspection of the response density operator. Then, we move to a deeper level and investigate the properties of the susceptibility 
+functional, which represents the fundamental object in the contest of the linear response. Pursuing this approach we are naturally led to investigate the localization properties of excitation 
+operators, that in turn emerge as the resonant channel of the spectral decomposition of the susceptibility. In this way we establish a direct relation between the concept of basis independence 
+and the analytic structure of the linear response susceptibility.
+
 % First of all it is useful to discuss the property of the ground state under this perspective. 
 % Indeed, it is well known that the stability of the ground state and the localized nature of a molecular-like system ensures that the KS description of occupied states is represented 
 % by a discrete set of wave functions that approaches to zero far apart from a compact region around the system's atoms. This behavior indicates that a (finite) basis set will provide 
-% a reliable description of the ground state properties 
-% if it is able to sample a computational domain which contains the natural sizes of the occupied orbitals\cite{boffi2016}.
-
-The same arguments cannot be rigidly extended to the case in which an external time-dependent field starts acting on the system. Indeed, the perturbation drives the system out 
-from the equilibrium and the electrons sample a wider region of the state space, that will contains orbitals of both negative (bound) and positive (unbound) energies. 
-% Unbound orbitals 
-% form a continuum of states in the true system with open boundaries, and the introduction of a finite computational domain has the effects of introducing a fictitious level discretization
-% \cite{boffi2016}.   
-
-%In this case the relevant physical quantities are the perturbation-induced
-%modification of the expectation values of the observable.  one is not dealing with a ground state property and 
-
-% A preliminary answer of this question can be formulated by considering results derived in \cite{boffi2016}, concerning the basis dependence of occupied and virtual molecular orbitals.   
-% Indeed, the ground state properties of molecular-like systems are described within the standard DFT approach in which electrons are distributed on the Kohn-Sham orbitals. The stability of
-% the ground state and the localized nature of the system ensures that the KS description of occupied states is represented by a discrete set of wave functions that approaches to zero  
-% far apart from a compact region around the system's atoms. This behavior indicates that a (finite) basis set will provide a reliable description of the ground state properties 
-% if it is able to sample a computational domain which contains the natural sizes of the occupied orbitals\cite{boffi2016}.
-
-
-
-% The perturbation induces a modification on the ground state density and, choosing the
-% eigenstates of the unperturbed KS Hamiltonian as a natural basis, one has to include also the virtual (unoccupied) states to described the perturbed density. Virtual states of
-% positive energy constitute a continuum...
-
-% Sebbene non ci sia necessità di usare gli autostati di KS per campionare lo spazio ortogonale a quello in cui si esprime la densità imperturbata, questo argomento solleva un potenziale
-% problema: quale è la scelta di una basis set idonea per costruire la risposta lineare in modo affidabile?
-
-%a natural criterion for the choice of 
-
-
-
-
-%This fact indicates that a computation basis that is able to sample a finite domain around the molecule will provide an unbiased estimate of ground states properties 
-
-
-%This fact has also important consequences when one analyzes the effects of a finite computational domain on the reliable evaluation of the system's properties. 
-
-
-\vspace{1cm}
-
-% State something about the assessment of physical reliability for a ground state calculation. Some comment on the setup independence of the results. Introduce the correspondence
-% between localization properties and observable behavior or physicality. State the, at the present days, similar consideration for the results of linear response are still 
-% missing...
-
-The basic motivation at the basis of the analysis discussed in this paper is to address to following question: which are the requirement that a computational setup has to
-satisfy in order to be able to provide physical results for a linear response calculation? Here with physical we meant that they depend only on the features of the system under
-inspection and on the perturbation acting on it. Physical results are unaffected by computational parameters, like the dimension of the computational domain or the nature of
-the basis set used to perform the calculations. 
-
-To answer to this question we investigate the properties of the susceptibility, which represents the fundamental object in the contest of linear response. 
-
+% a reliable description of the ground state properties if it is able to sample a computational domain which contains the natural sizes of the occupied orbitals\cite{boffi2016}.
+% The same arguments cannot be rigidly extended to the case in which an external time-dependent field starts acting on the system. Indeed, the perturbation drives the system out 
+% from the equilibrium and the electrons sample a wider region of the state space, that will contains orbitals of both negative (bound) and positive (unbound) energies. 
 
 \section{Theory}
 
-Linear response can be effectively applied to the analysis of the electronic excitations in molecular and condensed-matter systems. In this framework one consider a system 
+In this section we review the fundamental equations which govern the behavior of an open quantum system in the linear response regime. Our analysis starts with a brief description of 
+the notation adopted in the paper. Then we move on the analysis of the response density and of the excitation operators, with the aim to establish their localization character. 
+
+%The analysis presented in this section is devoted to a critical review of the fundamental equations which define the response density operator in the linear response regime.    
+
+Linear response can be effectively applied to the analysis of the electronic excitations in molecular systems. In this framework one consider a system 
 described by the Hamiltonian $\hnot$ and assume that the ground-state density $\dmnot$ has been provided. Linear response formalism allows us to evaluate the modification 
 of the expectation value of a generic observable induced by a time-dependent perturbing field acting on the system. This quantity, written in the frequency domain, can be expressed 
 through the evaluation of the \emph{linear response functional}:
@@ -217,12 +176,7 @@ response regime, is a linear function of the perturbing field $\op\Phi(\omega)$.
 \ee
 Susceptibility describes an intrinsic feature of the unperturbed system and determines its response to \emph{any} perturbations, in the linear response regime.
 
-The analysis presented in this section is devoted to a critical review of the fundamental equations which define the response density operator in the linear response regime.    
-The aim of this process is to....
-
-%the construction of two different representations of the response density operator... 
-
-\subsection{Fluctuation states. A (de-)localization argument for the response density}
+\subsection{Fluctuation states. A localization argument for the response density}
 
 The response density operator is expressed as the first-order variation of ground state density $\sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}$, where the set $\{\ket{\psi_p}\}$ denote the 
 occupied states, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with energy $\eps_p$ lower than the Fermi level. Using this notation we denote the energy of the HOMO level 
@@ -246,7 +200,7 @@ density-dependence of the unperturbed Hamiltonian.
 The interesting aspect of equations \eqref{fluctuationStateEqMotion1} in the perspective of the present analysis is that they allow us to present a \emph{localization argument} 
 for the fluctuation states. To clarify this statement we split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term and solve \eqref{fluctuationStateEqMotion1} 
 in the form of a self-consistent inhomogeneous Helmholtz equation by writing:
-\be
+\be\lb{rhoPrimeFluctuationStateDef2}
 \ket{f_p(\omega)} = \op G_H(\omega+\epsilon_p)\ket{s(\omega)} \;,
 \ee
 where we have introduced the Green function of the Helmholtz operator $\op G_H(\omega) = (\omega-\op T)^{-1}$, % with $k^2_p(\omega) = (\omega+\eps_p)$,
@@ -255,25 +209,18 @@ and the \emph{source term} is given by:
 \ket{s(\omega)} =  \op V\ket{f_p(\omega)} + \op Q_0(\op V'(\omega) + \op \Phi(\omega))\ket{\psi_p} \;.\nn
 \ee
 For open boundary conditions in three dimensions, the kernel of $\op G_H(\omega)$ in the coordinate representation reads: 
-% \be\lb{HelmholtzKernelDef1}
-% \bra{\r}\op G_H(\omega)\ket{\r'} = \frac{1}{4\pi} \left\{ 
-% \begin{matrix}
-% \frac{e^{-2k_p(\omega)|\r-\r'|}}{|\r-\r'|} \;,\; {\textrm for} \; \omega \leq |\eps_p| \\ 
-% \frac{e^{\ii k_p(\omega)|\r-\r'|}}{|\r-\r'|} \;,\; {\textrm for} \; \omega > |\eps_p|
-% \end{matrix}
-% \right. \;,
-% \ee
 \be\lb{HelmholtzKernelDef1}
 \bra{\r} \op G_H(\omega) \ket{\r'} = \frac{1}{4\pi} \begin{cases}
-\frac{e^{2k|\r - \r' |}}{|\r- \r' |} \;,\; & {\textrm for}\; k^2 = \omega  < 0\; \\ 
-\frac{e^{2\ii k |\r-\r' |}}{|\r-\r' |} \;, & {\textrm for} \; k^2 = \omega > 0
+\frac{e^{-\alpha|\r - \r' |}}{|\r- \r' |} \;,\; & {\textrm for}\; \omega  < 0\; \\ 
+\frac{e^{\ii \alpha |\r-\r' |}}{|\r-\r' |} \;, & {\textrm for} \; \omega \geq 0
 \end{cases} \;,
 \ee
-and the $\r$-representation of the fluctuation states $f_p(\omega,\r)$ is expressed through a convolution integral between the kernel \eqref{HelmholtzKernelDef1} and
-$\brket{\r'}{s(\omega)}$.
-An inspection of the structure of \eqref{HelmholtzKernelDef1} evidences that, for each value of $p$, there exist a threshold value $\omega = |\eps_p|$, 
-which govern the localization properties of the corresponding fluctuation state. Indeed, for $\omega > |\eps_p|$,  $\op G_H(\omega)$ behaves as a spherical wave and its
-convolution with the source term always give raises to a $f_p(\omega,\r)$ delocalized in the whole accessible space. On the contrary, for values of $\omega$ below the threshold,
+where $\alpha = \sqrt{2|\omega|}$. 
+
+The localization character of fluctuation states can be determined by looking at the long range behavior of \eqref{rhoPrimeFluctuationStateDef2}, projected in the $\r$-representation.
+An inspection of the structure of \eqref{HelmholtzKernelDef1} evidences that, for each value of $p$, there exist a threshold value $\omega = |\eps_p|$, which govern the localization 
+properties of the corresponding fluctuation state. Indeed, for $\omega > |\eps_p|$,  $\op G_H(\omega)$ behaves as a spherical wave and its convolution with the source term  gives 
+raise to a $f_p(\omega,\r)$ delocalized in the whole accessible space. On the contrary, for values of $\omega$ below the threshold,
 the kernel contains an exponential damping factor and $f_p(\omega,\r)$ exhibit a bound-state behavior in the long range.   
 
 % \vspace{0.3cm}
@@ -328,7 +275,7 @@ visible in the for values of $\omega$ that exceed the threshold value.
 %In the next sections we will reformulate an analogous procedure directly looking at the susceptibility. This analysis lead us to the core of the paper, namely the description of the
 %analytical structure of the linear response susceptibility. 
 
-\subsection{Excitation operators. A spectral decomposition representation for the response density}
+\subsection{Excitation operators. Spectral decomposition of the susceptibility functional}
 
 The analysis carried out starting from the representation of the linear response functional in terms of fluctuation states has evidenced some general properties of the linear response
 for open systems. In particular, by analyzing the asymptotic behavior of fluctuation states in long range limit, we have showed that they exhibit a bound-state character in the regime  
