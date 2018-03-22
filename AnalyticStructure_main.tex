@@ -93,6 +93,7 @@
 %\preprint{APS/123-QED}
 
 \title{On the analytic structure of the linear response susceptibility in open systems}
+%\title{Effects of the basis set on the linear response for open systems}
 
 \author{Luigi Genovese}
 \affiliation{Laboratoire de Simulation Atomistique (LSim), SP2M, INAC, CEA-UJF, 17 Av. des Martyrs,
@@ -156,10 +157,10 @@ and the analytic structure of the linear response susceptibility.
 
 \section{Theory}
 
-In this section we review the fundamental equations which govern the behavior of an open quantum system in the linear response regime. Our analysis starts with a brief description of 
-the notation adopted in the paper. Then we move on the analysis of the response density and of the excitation operators, with the aim to establish their localization character. 
-
-%The analysis presented in this section is devoted to a critical review of the fundamental equations which define the response density operator in the linear response regime.    
+In this section we review the fundamental equations that govern the properties of an open quantum system in the linear response regime. We assume that our calculations are carried 
+out within a highly complete real-space basis set that provides a precise description of the system in a finite computational domain. The purpose of the analysis is to determine the 
+asymptotic behavior of the main building blocks of the LR in the long range. Then we discuss the relation between localization properties and dependence of the results of LR from the 
+specific choice of the basis set and, in particular, from the dimension of the computation  domain. 
 
 Linear response can be effectively applied to the analysis of the electronic excitations in molecular systems. In this framework one consider a system 
 described by the Hamiltonian $\hnot$ and assume that the ground-state density $\dmnot$ has been provided. Linear response formalism allows us to evaluate the modification 
@@ -189,21 +190,21 @@ $\omega$-dependent \emph{fluctuation states} $\{\ket{f_p(\omega)}\}$, as follows
 \be\lb{rhoPrimeFluctuationStateDef1}
 \dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;.
 \ee
-Fluctuation states are, by construction, orthogonal to the occupied eigenstates of $\hnot$. Moreover, an analysis of the Liouville equation for the response density written in this 
-fashion evidences that their equations of motion are written in the form of a modified Sternheimer equation \cite{mahan1980}:
+Fluctuation states are, by construction, orthogonal to the occupied eigenstates of $\hnot$. An analysis of the Liouville equation for the response density written in this fashion evidences 
+that their equations of motion are written in the form of a modified Sternheimer equation \cite{mahan1980}:
 \be\lb{fluctuationStateEqMotion1}
 \left[\omega - (\hnot-\eps_p)\right]\ket{f_p(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'(\omega))\ket{\psi_p} \;,
 \ee
 where $\op Q_0=\identity-\dmnot$ is the projector in the subspace orthogonal to the occupied states of $\hnot$ and the operator $\op V'(\omega)$ is a perturbing term due to the 
 density-dependence of the unperturbed Hamiltonian.
 
-The interesting aspect of equations \eqref{fluctuationStateEqMotion1} in the perspective of the present analysis is that they allow us to present a \emph{localization argument} 
-for the fluctuation states. To clarify this statement we split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term and solve \eqref{fluctuationStateEqMotion1} 
-in the form of a self-consistent inhomogeneous Helmholtz equation by writing:
+The interesting aspect of equations \eqref{fluctuationStateEqMotion1} in the perspective of the present analysis is that they allow us to present a localization argument for the fluctuation 
+states. To clarify this statement we split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term and solve \eqref{fluctuationStateEqMotion1} in the form 
+of a self-consistent inhomogeneous Helmholtz equation by writing:
 \be\lb{rhoPrimeFluctuationStateDef2}
 \ket{f_p(\omega)} = \op G_H(\omega+\epsilon_p)\ket{s(\omega)} \;,
 \ee
-where we have introduced the Green function of the Helmholtz operator $\op G_H(\omega) = (\omega-\op T)^{-1}$, % with $k^2_p(\omega) = (\omega+\eps_p)$,
+where we have introduced the Green function of the Helmholtz operator $\op G_H(\omega) = (\omega-\op T)^{-1}$,
 and the \emph{source term} is given by:
 \be
 \ket{s(\omega)} =  \op V\ket{f_p(\omega)} + \op Q_0(\op V'(\omega) + \op \Phi(\omega))\ket{\psi_p} \;.\nn
@@ -220,7 +221,7 @@ where $\alpha = \sqrt{2|\omega|}$.
 The localization character of fluctuation states can be determined by looking at the long range behavior of \eqref{rhoPrimeFluctuationStateDef2}, projected in the $\r$-representation.
 An inspection of the structure of \eqref{HelmholtzKernelDef1} evidences that, for each value of $p$, there exist a threshold value $\omega = |\eps_p|$, which govern the localization 
 properties of the corresponding fluctuation state. Indeed, for $\omega > |\eps_p|$,  $\op G_H(\omega)$ behaves as a spherical wave and its convolution with the source term  gives 
-raise to a $f_p(\omega,\r)$ delocalized in the whole accessible space. On the contrary, for values of $\omega$ below the threshold,
+raise to a $f_p(\omega,\r)$ delocalized in the whole accessible space. On the contrary, for values of $\omega < |\eps_p|$, % below the threshold,
 the kernel contains an exponential damping factor and $f_p(\omega,\r)$ exhibit a bound-state behavior in the long range.   
 
 % \vspace{0.3cm}
@@ -232,29 +233,20 @@ the kernel contains an exponential damping factor and $f_p(\omega,\r)$ exhibit a
 % this way is better.
 % \vspace{0.3cm}
 
-% The knowledge of the long range behavior of the fluctuation states allows us to perform an assessment on the reliability of the evaluation of the linear response functional 
-% \eqref{LinearResponseFunctDef1}. To elaborate this statement we make usage of the fluctuation states representation of the response density \eqref{rhoPrimeFluctuationStateDef1}, 
-% so that:
-% The knowledge of the long range behavior of the fluctuation states allows us to assess the spatial localization properties of the basic objects relevant in the contest of the 
-% linear response. In particular, making usage of the fluctuation states representation of the response density \eqref{rhoPrimeFluctuationStateDef1}, we can express the linear 
-% response functional \eqref{LinearResponseFunctDef1} as follows: 
-% This analysis indicates that the task of providing a reliable assessment of the linear response functional present a different level of complexity   .
-% Using the representation of the response density \eqref{rhoPrimeFluctuationStateDef1}, we can express the linear response functional as
-% \be\lb{LinearResponseFunctDef2}
-% \braket{\delta\op O}(\omega) = 2\sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;.
-% \ee
-This argument can be easily extended to the linear response functional and allows us to determine the spatial localization features of the building blocks relevant for the linear response.  
-Indeed, the fluctuation states representation of the response density \eqref{rhoPrimeFluctuationStateDef1} implies that
+The localization properties of fluctuation states allows us to assess the reliability of the linear response functional computed using the given basis set. Indeed, writing the response 
+density in terms of fluctuation states implies that 
 \be\lb{LinearResponseFunctDef2}
-\braket{\delta\op O}(\omega) = 2\sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;.
+\braket{\delta\op O}(\omega) = 2\sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;,
 \ee
-An inspection of \eqref{LinearResponseFunctDef2} evidences that we can identify two different regimes, on the basis of the value of $\omega$. The first one, which we will refer to as the
-\emph{below threshold regime}, is realized for $\omega<|\eps_h|$. In this case the linear response functional is expressed in terms of genuinely localized quantities\footnote{This consideration 
-holds for the class of observables for which $\bra{\psi_p}\op O$ is a localized state  with bound-state behavior in the long range}, each of which possesses a physical cut-off radius. 
-Due to this behavior, the computational effort needed to provide a reliable evaluation of \eqref{LinearResponseFunctDef2} is determined by the capability of the chosen computational setup to 
-express bound-state like wave functions, in a analogous fashion of a ground state calculation. 
+so the computation of the linear response functional passes through the evaluation of the scalar products indicated in \eqref{LinearResponseFunctDef2}. 
+We observe that there exists two distinct regimes, on the basis of value of $\omega$. The first one, which we will refer to as the \emph{below threshold regime}, is realized when $\omega$ 
+is lower than the ionization potential $|\eps_h|$. In this case all the fluctuation states are below their threshold level and equation \eqref{LinearResponseFunctDef2} is expressed in terms 
+of genuinely localized quantities\footnote{This consideration holds for the class of observables for which $\bra{\psi_p}\op O$ is a localized state  with bound-state behavior in the long 
+range}, each of which possesses a physical cut-off radius.
+Due to this behavior we can affirm that given basis provides a reliable evaluation of \eqref{LinearResponseFunctDef2} if the chosen computational domain is suitable to express the
+bound-state like fluctuation states, in a analogous fashion of a ground state calculation. 
 
-On the contrary, the evaluation of the linear response functional can be much more demanding in the \emph{above threshold regime}, realized for $\omega>|\eps_h|$, in which fluctuation 
+On the contrary, the computation of the linear response functional can be much more demanding in the \emph{above threshold regime}, realized for $\omega>|\eps_h|$, in which fluctuation 
 states start behaving as unbound wave functions. In this case a computational description of fluctuation states is only meaningful in weak sense, \emph{i.e} inside the scalar products of 
 \eqref{LinearResponseFunctDef2}, where the bound state character of $\{\bra{\psi_p}\op O\}$ behave as a regulator. This observation indicates that, above threshold, a computational setup 
 provides a reliable assessment of \eqref{LinearResponseFunctDef2} only if it is able to express an unbiased description of the fluctuation states in the support of $\{\bra{\psi_p}\op O\}$. 
