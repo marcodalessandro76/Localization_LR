@@ -162,10 +162,10 @@ out within a highly complete real-space basis set that provides a precise descri
 asymptotic behavior of the main building blocks of the LR in the long range. Then we discuss the relation between localization properties and dependence of the results of LR from the 
 specific choice of the basis set and, in particular, from the dimension of the computation  domain. 
 
-Linear response can be effectively applied to the analysis of the electronic excitations in molecular systems. In this framework one consider a system 
-described by the Hamiltonian $\hnot$ and assume that the ground-state density $\dmnot$ has been provided. Linear response formalism allows us to evaluate the modification 
-of the expectation value of a generic observable induced by a time-dependent perturbing field acting on the system. This quantity, written in the frequency domain, can be expressed 
-through the evaluation of the \emph{linear response functional}
+Linear response can be effectively applied to the analysis of the electronic excitations in molecular systems. In this framework one consider a system described by the Hamiltonian 
+$\hnot$ and assume that the ground-state density $\dmnot$ has been provided. The linear response formalism allows us to evaluate the modification of the expectation value of a generic 
+observable induced by a time-dependent perturbing field acting on the system. This quantity, written in the frequency domain, can be expressed through the evaluation of the 
+\emph{linear response functional}
 \be\lb{LinearResponseFunctDef1}
 \braket{\delta\op O}(\omega) = \trace{\dm'(\omega)\op O} \;.
 \ee
@@ -176,9 +176,9 @@ through the evaluation of the \emph{linear response functional}
 % \dm'(\omega) = \sop{{\cal R}}(\omega) \op\Phi(\omega) \;. 
 % \ee
 % Susceptibility describes an intrinsic feature of the unperturbed system and determines its response to \emph{any} perturbations, in the linear response regime.
-Here $\op O$ represents the observable\footnote{For a sake of concreteness, we are limiting our considerations to observables that do not explicitly depend on time} 
-under inspection while the \emph{response density operator} $\dm'(\omega)$ describes the modification of the ground-state density induced by the perturbation. In the contest
-of the linear response this object satisfies an equation of motion written in the form of a quantum Liouville operator (for example see \cite{baroni2008}),
+Here $\op O$ represents the observable\footnote{For a sake of concreteness, we are limiting our considerations to observables that do not explicitly depend on time} under inspection 
+while the \emph{response density operator} $\dm'(\omega)$ describes the modification of the ground-state density induced by the perturbation. In the contest of the linear response 
+the response satisfies an equation of motion written in the form of a quantum Liouville operator (for example see \cite{baroni2008}),
 \be\lb{LiouvillianRhopomegaDef1}
 \left(\omega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot} \;,
 \ee
@@ -188,7 +188,7 @@ and $\op\Phi(\omega)$ represents the perturbing field acting on the system.
 
 The response density operator is expressed as the first-order variation of ground state density $\sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}$, where the set $\{\ket{\psi_p}\}$ denote the 
 occupied states, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with energy $\eps_p$ lower than the Fermi level. Using this notation we denote the energy of the HOMO level 
-as $\eps_h$ and identify the value of the first ionization potential with $|\eps_h|$. In what follows we will assume that the set of states $\{\ket{\psi_p}\}$ are desbribe by real 
+as $\eps_h$ and identify the value of the first ionization potential with $|\eps_h|$. In what follows we will assume that the set of states $\{\ket{\psi_p}\}$ are described by real 
 functions, when projected in the $\r$-representation.  
 
 % By considering the linear order time evolution of the eigenstates of $\hnot$ in presence of the perturbation we can derive the equation of motion of the response density in the form of 
@@ -216,17 +216,13 @@ response density as follows
 \dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;,
 \ee
 where we have defined the set of $\omega$-dependent \emph{fluctuation states} $\{\ket{f_p(\omega)}\}$, that span the empty subspace of $\hnot$. 
-%Fluctuation states are, by construction, orthogonal to the occupied eigenstates of $\hnot$.
-%derive the equation of motion of the response density in the form of a quantum Liouville equation (for example see \cite{baroni2008}). 
 An analysis of the Liouville equation \eqref{LiouvillianRhopomegaDef1} for the response density written in this fashion evidences that the equations of motion of fluctuation states are 
-written as a modified Sternheimer equations \cite{mahan1980}. The first-order Hamiltonian contains, apart from the perturbing field, a further term $\op V'[\dm']$ due to the density-dependence 
-of $\hnot$, and the equations read
+written as a modified Sternheimer equations \cite{mahan1980}
 \be\lb{fluctuationStateEqMotion1}
-%\left[\omega - (\hnot-\eps_p)\right]\ket{f_p(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'(\omega))\ket{\psi_p} \;,
-\left[\omega - (\hnot-\eps_p)\right]\ket{f_p(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'[\dm'])\ket{\psi_p} \;.
+\left[\omega - (\hnot-\eps_p)\right]\ket{f_p(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'[\dm'])\ket{\psi_p} \;,
 \ee
-%where $\op Q_0=\identity-\dmnot$ is the projector in the subspace orthogonal to the occupied states of $\hnot$ and t
-%and the operator $\op V'[\dm']$ described the further perturbing term due to the density-dependence of $\hnot$. % the unperturbed Hamiltonian.
+and we observe that the first-order Hamiltonian contains, apart from the perturbing field, a further term $\op V'[\dm']$ due to the density-dependence of $\hnot$.
+
 The interesting aspect of these equations in the perspective of the present analysis is that they allow us to present a localization argument for the fluctuation 
 states. To clarify this statement we split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term and solve \eqref{fluctuationStateEqMotion1} in the form 
 of a self-consistent inhomogeneous Helmholtz equation by writing:
@@ -280,9 +276,9 @@ states start behaving as unbound wave functions. In this case a computational de
 \eqref{LinearResponseFunctDef2}, where the bound state character of $\{\bra{\psi_p}\op O\}$ behave as a regulator. This observation indicates that, above threshold, a computational setup 
 provides a reliable assessment of \eqref{LinearResponseFunctDef2} only if it is able to express an unbiased description of the fluctuation states in the support of $\{\bra{\psi_p}\op O\}$. 
 
-As an explicit example in support of these arguments we compare the absorption spectrum of a $CO$ molecule computed in three distinct real-space basis set, which differs for the 
-dimension of the computational domain. Results evidences that the curves are almost coincident in the below threshold regime, whereas the effect of the computational setup are clearly
-visible in the for values of $\omega$ that exceed the threshold value. 
+As an explicit example in support of these arguments we compare the absorption spectrum of a $CO$ molecule computed in three distinct real-space basis set, which differs for the dimension of 
+the computational domain. Results reported in figure \ref{co_spectrum} evidences that the curves are almost coincident in the below threshold regime, whereas the effect of the computational 
+setup are clearly visible in the for values of $\omega$ that exceed the threshold value. 
 
 % This fact implies that a computational setup has different chances of providing a reliable assessment of the linear response functional \eqref{LinearResponseFunctDef2} depending
 % to the value of $\omega$. 
@@ -290,96 +286,125 @@ visible in the for values of $\omega$ that exceed the threshold value.
 
 \begin{figure}
 \includegraphics[scale=0.56]{co_spectrum.eps}
-\caption{\label{fig1}(Color online) Convergence below threshold of the $CO$ spectrum computed in different computational setup.}
+\caption{\label{co_spectrum}(Color online) Convergence below threshold of the $CO$ spectrum computed in different computational setup.}
 \end{figure}
 
 %This analysis, carried out starting from the representation of the linear response functional in terms of fluctuation states, evidences some general properties of the linear response. 
 %In the next sections we will reformulate an analogous procedure directly looking at the susceptibility. This analysis lead us to the core of the paper, namely the description of the
 %analytical structure of the linear response susceptibility. 
 
-\subsection{Excitation operators. Spectral decomposition of the susceptibility functional}
+\subsection{Excitation operators. The analytic structure of the susceptibility functional} %Spectral decomposition of the susceptibility functional}
 
-The analysis carried out starting from the representation of the linear response functional in terms of fluctuation states has evidenced some general properties of the linear response
-for open systems. In particular, by analyzing the asymptotic behavior of fluctuation states in long range limit, we have showed that they exhibit a bound-state character in the regime  
-$\omega<|\eps_h|$. Consequently we have argued that the linear response functional, in the same $\omega$ range, provides a setup-independent result with a modest computational effort. 
-
-In the linear 
-response regime, is a linear function of the perturbing field $\op\Phi(\omega)$. For this reason it is possible to define the \emph{susceptibility} superoperator, as follows:
+The localization properties of the response density can be reformulated in terms of the \emph{susceptibility functional}, implicitly defined trough the operator equation  
 \be\lb{SusceptibilityDef1}
 \dm'(\omega) = \sop{{\cal R}}(\omega) \op\Phi(\omega) \;. 
 \ee
-Susceptibility describes an intrinsic feature of the unperturbed system and determines its response to \emph{any} perturbations, in the linear response regime.
+The main advantage of this approach relies on the fact that the susceptibility describes an intrinsic feature of the unperturbed system and its knowledge determines the LR properties 
+independently from the specific choice of the perturbing field.
 
-Now we reformulate an analogous analysis looking at the susceptibility superoperator, implicit defined through \eqref{SusceptibilityDef1}. This approach leads to the concept of \emph{excitation 
-operators}, defined through a self-consistent operator eigenvalue equation. Excitations behave as singularity of the susceptibility operator and their knowledge provides a deeper insight 
-into the analytic structure of the linear response. 
+The analysis is based on the spectral decomposition of the Liouville equation \eqref{LiouvillianRhopomegaDef1} and the make usage of the \emph{excitation operators}, defined through the 
+operator eigenvalue equation
+\be\lb{ExcitationOperatorsDef1}
+\Liouv \op E = E \op E \;, %\qq \op{\tilde E} \Liouv = E \op{\tilde E}
+\ee
+with the normalization condition $\trace{\op E\op E'} = \delta(E-E')$.
+%\be
+%\trace{\op E\op E'} = \delta(E-E') \;. \nn
+%\ee
+The properties of the Liouvillian superoperator (see appendix?) imply that excitations are transverse operators so that $\op E = \dmnot\op E\op Q_0 + \op Q_0\op E\dmnot$. 
+This condition allows us to introduce a dyadic representation of excitations as follows
+\be\lb{ExcitationOperatorsDef2}
+\op E = \sum_p \left( \ket{\phi^E_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^E_p}\right)\;, 
+\ee
+where the \emph{excited states} $\ket{\phi^E_p}$ and $\bra{\chi^E_p}$ span the domain of $\op Q_0$, \emph{i.e} the empty subspace of $\hnot$. The eigenvalue condition \eqref{ExcitationOperatorsDef1} 
+can thus be recasted in the form of a Sternheimer-like equations for the excited states
+\begin{align}
+\left(\hnot - \eps_p\right) \ket{\phi_p^E} + \op Q_0 \op V'[\op E] \ket{\psi_p} &= E \ket{\phi_p^E} \;, \\
+\bra{\chi_p^E}\left(\hnot - \eps_p\right) + \bra{\psi_p}\op V'[\op E]\op Q_0   &= -\bra{\chi_p^E} E  \;, \nn
+\end{align}
+and the orthonormalization condition of the excitation operators is expressed as 
+\be
+\sum_p \left(\braket{\phi_p^E | \phi_p^{E'}} + \braket{\chi_p^E | \chi_p^{E'}}\right) = \delta(E-E') \;. \nn
+\ee
+
+
+
+\vspace{1cm}
+
+% Now we reformulate an analogous analysis looking at the susceptibility superoperator, implicit defined through \eqref{SusceptibilityDef1}. This approach leads to the concept of \emph{excitation 
+% operators}, defined through a self-consistent operator eigenvalue equation. Excitations behave as singularity of the susceptibility operator and their knowledge provides a deeper insight 
+% into the analytic structure of the linear response. 
 
 Using the spectral decomposition of the resolvent of the Liouvillian we have:
 \be\lb{RhopExcitationDef1}
 \sop{{\cal R}}(\omega) \cdot   =
-\sint\dd E \, \op E
+\left(\sum_E + \int\dd E   \right) \op E
 \frac{\trace{\opskew{\tilde E}\cdot}}{\omega-E} \;,
 \ee
 with $\opskew{O} = \commutator{\op O}{\dmnot}$. 
-Excitation operators as eigenstates of the Liouvillian (keep left and right different or not?):
-\be\lb{ExcitationOperatorsDef1}
-\Liouv \op E = E \op E \;, %\qq \op{\tilde E} \Liouv = E \op{\tilde E}
-\ee
-with the normalization condition $\trace{\op E\op E'} = \delta(E-E')$. 
-We can express excitation operators as follows:
-% \begin{align}\lb{ExcitationOperatorsDef2}
-% \op E &= \sum_p \left( \ket{\phi^E_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^E_p}\right)\;, \nn \\
-% \op {\tilde E} &= \sum_p \left( \ket{\psi_p} \tbra{\phi^E_p} + \tket{\chi^E_p}\bra{\psi_p} \right)\;.
-% \end{align}
-\be\lb{ExcitationOperatorsDef2}
-\op E = \sum_p \left( \ket{\phi^E_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^E_p}\right)\;, 
-\ee
-We should therefore have
-\begin{align}
-\left(\hnot - \eps_p\right) \ket{\phi_p^E} + \op Q_0 \op V'[\op E] \ket{\psi_p} &= E \ket{\phi_p^E} \;, \\
-\left(\hnot - \eps_p\right)\ket{\chi_p^E} + \op Q_0 \op V'[\op E] \ket{\psi_p} &= -E \ket{\chi_p^E} \;.
-\end{align}
-And the orthonormalization of the excitation operators is translated as: 
-\be
-\sum_p \left(\braket{\phi_p^E | \phi_p^{E'}} + \braket{\chi_p^E | \chi_p^{E'}}\right) = \delta(E-E')
-\ee
 
 \begin{figure}
-
 \begin{tikzpicture}[scale=0.8]
 % axes
 \draw[->] (0,0) -- (8,0); %node[below] {$x$};
 \draw[->] (0,0) -- (0,6); %node[left] {$y$};
-]
-\draw[dashed,thin,color=gray] (0,5) -- (2,5);
-\draw (2,5) -- (8,5);
-\draw[dashed,thin,color=gray] (0,3) -- (4,3);
-\draw (4,3) -- (8,3);
-\draw[dashed,thin,color=gray] (0,1) -- (6,1);
-\draw (6,1) -- (8,1);
-
+% orizontal lines
+\draw[dashed,thick,color=gray] (0,5) -- (2,5);
+\draw[very thick](2,5) -- (8,5);
+\draw[dashed,thick,color=gray] (0,3) -- (4,3);
+\draw[very thick] (4,3) -- (8,3);
+\draw[dashed,thick,color=gray] (0,1) -- (6,1);
+\draw[very thick] (6,1) -- (8,1);
+% vertical lines
 \draw[dashed,very thin,color=black] (2,0) -- (2,5);
 \draw[dashed,very thin,color=black] (4,0) -- (4,3);
 \draw[dashed,very thin,color=black] (6,0) -- (6,1);
+% threshold levels labels
+\node[left] at (0,5) {$h$};
+\node[left] at (0,3) {$i$};
+\node[left] at (0,1) {$1$};
+\node[below] at (2,0){$|\eps_h|$};
+\node[below] at (4,0){$|\eps_i|$};
+\node[below] at (6,0){$|\eps_1|$};
+\node[below] at (4,-0.5) {Excitation energy};
+% bars at thresholds
+%\foreach \Point in {(2,5),(4,3),(6,1)}{
+%   \node at \Point {{\textbar}};%$\times$};
+%}
+\draw [very thick] (2,4.9) -- (2,5.1);
+\draw [very thick] (4,2.9) -- (4,3.1);
+\draw [very thick] (6,0.9) -- (6,1.1);
 
-%\draw (0,1) -- (3,1);
+% dotted vertical lines
+\draw[dotted,thick,color=black] (-0.2,3.6) -- (-0.2,4.4);
+\draw[dotted,thick,color=black] (-0.2,1.6) -- (-0.2,2.4);
 
-% Draw axes
-%\draw [<->,thick] (0,5) node (yaxis) [above] {$y$}
-%    |- (5,0) node (xaxis) [below] {energy};
+% discrete excitations
+\foreach \Point in {(0.5,5),(1.0,5),(1.8,5),(0.8,3),(1.3,3),(1.8,3),(2.4,3),(2.8,3),(3.4,3),(3.8,3),(0.7,1),(1.5,1),(1.9,1),(2.6,1),(2.9,1),(3.5,1),(4.1,1),(4.7,1),(5.7,1)}{
+    \node at \Point {\textbullet};
+}
+
+
 
 
 \end{tikzpicture}
+\caption{\label{ExcitationLandscape} Excitation landscape.}
+\end{figure}
 
-\caption{\label{fig2}Excitation landscape.}
-\end{figure}1
 
+%\subsection{Comments. The analytic structure of the linear response susceptibility}
+%
+%...........
 
-\subsection{Comments. The analytic structure of the linear response susceptibility}
+\section{Applications}
 
 ...........
 
+\section{Comments and conclusions}
 
+The analysis carried out starting from the representation of the linear response functional in terms of fluctuation states has evidenced some general properties of the linear response
+for open systems. In particular, by analyzing the asymptotic behavior of fluctuation states in long range limit, we have showed that they exhibit a bound-state character in the regime  
+$\omega<|\eps_h|$. Consequently we have argued that the linear response functional, in the same $\omega$ range, provides a setup-independent result with a modest computational effort... 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
