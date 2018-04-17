@@ -280,14 +280,11 @@ setup are clearly visible for values of $\omega$ that exceed the threshold value
 
 The study of the localization properties of the LR functional, formerly discussed through the inspection of the response density operator, can be reformulated in terms of the 
 \emph{susceptibility functional}, defined trough the operator equation  
-%The localization properties of the response density can be reformulated in terms of the \emph{susceptibility functional}, implicitly defined trough the operator equation  
 \be\lb{SusceptibilityDef1}
 \dm'(\omega) = \sop{{\cal R}}(\omega) \op\Phi(\omega) \;. 
 \ee
-This reformulation of the problem has the advantage of providing some general information on the nature of the excitation spectrum of the system. Results achieved in this way thus 
-describes an intrinsic feature of the system and determine the properties of the LR independently from the specific choice of the perturbing field. 
-%The main advantage of this approach relies on the fact that the susceptibility describes an intrinsic feature of the unperturbed system and its knowledge determines the LR properties 
-%independently from the specific choice of the perturbing field.
+This reformulation of the problem has the advantage of providing general information on the nature of the excitation spectrum. Results achieved in this way thus describes an intrinsic 
+feature of the system under inspection and determine the properties of the LR independently from the specific choice of the perturbing field. 
 
 The analysis is based on the spectral decomposition of the Liouville equation \eqref{LiouvillianRhopomegaDef1} and the make usage of the \emph{excitation operators}, defined through the 
 left and right action eigenvalue equations 
@@ -306,12 +303,8 @@ operators so that $\op E = \dmnot\op E\op Q_0 + \op Q_0\op E\dmnot$. This condit
 \end{align}
 where both the \emph{excited states} $\ket{\phi^E_p}$, $\bra{\tilde\chi^E_p}$ and their conjugates span the empty subspace of $\hnot$. 
 
-We restrict our analysis assuming that a set of hypothesis commonly realized in DFT holds (symmetry of the transition basis, specify better? see appendix?). 
-%In this case excitation eigenvalues come in pair. It is possible to show that and if a couple of left and right eigenstates satisfy \eqref{ExcitationOperatorsDef1} with energy $E$ 
-%than their transpose %$(\op E,\op{\tilde E})$ $(\op E^t,\op{\tilde E}^t)$ 
-%are eigenstates of the same equations with eigenvalue $-E$. 
-Equations \eqref{ExcitationOperatorsDef1} can be recasted in the form of a Sternheimer-like equations for the excited states. 
-In particular, the left action eigenvalue equation provides   
+We restrict our analysis assuming that a set of hypothesis commonly realized in DFT holds (symmetry of the transition basis, specify better? see appendix?). Equations 
+\eqref{ExcitationOperatorsDef1} can be recasted in the form of a Sternheimer-like equations for the excited states. In particular, the left action eigenvalue equation provides   
 \begin{align}\lb{ExcitationOperatorsDef3}
 &\left[E-(\hnot - \eps_p)\right] \ket{\phi_p^E} = \op Q_0 \op V'[\op E] \ket{\psi_p} \;, \nn\\
 &\left[-E-(\hnot - \eps_p)\right]\ket{\tilde\chi_p^E} = \op Q_0\op V'[\op E^t]\ket{\psi_p}  \;, 
@@ -338,25 +331,18 @@ the corresponding energy levels\footnote{Sternheimer equations represent the fir
 We conclude that all the states $\ket{\tilde\chi^E_p}$ and the $\ket{\phi^E_p}$ with $E$ below the threshold value constitute a genuine \emph{discrete} set, while the ones in the unbound 
 energy range behaves as generalized eigenvectors associated to a continuum spectrum. 
 
-%To complete the analysis we have to take into account the orthonormalization constraints \eqref{ExcitedStateOrthNormDef1}. Sternheimer equations \eqref{ExcitationOperatorsDef3} are the 
-%first order expansion of a set of Hamiltonian eigenvalue equations.  
-%Moreover, there is a further consequence due to the orthonormalization condition \eqref{ExcitedStateOrthNormDef1}.
-%There is however a novel aspect which did not emerged in the analysis of fluctuation states and is 
-%To understand this point we observe that Sternheimer equations \eqref{ExcitationOperatorsDef3} are the first order expansion of a set of Hamiltonian eigenvalue equations. It is well known 
-%that the normalization constraints have the effect of determining the quantization of accessible energy levels for bound-state solutions. 
+The structure of the excitation spectrum follows from the properties of the excited states described above. To clarify this point we consider a value of $E$ for which equations 
+\eqref{ExcitationOperatorsDef1} admit a solution and, consequently, equations \eqref{ExcitationOperatorsDef3} possess a solution where \emph{at least} one of the excited states is non vanishing. 
+According to \eqref{ExcitationOperatorsDef2}, $\op E$ is expressed in terms of these states and we denote with $p=p_m$ the label of the non vanishing $\ket{\phi^E_p}$ state with the highest value 
+of $|\eps_p|$. From the previous considerations it emerge that if $E<|\eps_{p_m}|$ \emph{all} the excited states that contribute to the dyadic representation of the excitation operator possess a 
+bound-state like behavior. Excitations of this type thus represent localized quantities and the associated eigenvalue are discrete. On the contrary, for $E>|\eps_{p_m}|$, excitations have a 
+delocalized character and the corresponding eigenvalues belong to a continuum of accessible values.
 
-This considerations allows us to determine the structure of the excitations spectrum. To achieve this result we assume to have solved the equations \eqref{ExcitedStateOrthNormDef1} for a 
-value of $E$. 
-
-%Given an excitation operator in the form \eqref{ExcitationOperatorsDef2}
-
-%and essentially evidence that there exists two distinct sectors of the exctiation spectrum. The first one is composed by
-%localized excitations built in terms of excited states below their threshold level. This set has a finite number of elements.    
-
-
-% Now we reformulate an analogous analysis looking at the susceptibility superoperator, implicit defined through \eqref{SusceptibilityDef1}. This approach leads to the concept of \emph{excitation 
-% operators}, defined through a self-consistent operator eigenvalue equation. Excitations behave as singularity of the susceptibility operator and their knowledge provides a deeper insight 
-% into the analytic structure of the linear response. 
+The typical structure of the excitation spectrum is represented in figure \ref{ExcitationLandscape}. 
+Excitations are separated into two categories (add comment on the observable character of localized excitations). 
+The plot evidences that below the first ionization energy $|\eps_h|$ the spectrum is purely composed by a discrete set of localized excitations. Instead, in the intermediate energy interval that extends 
+from $|\eps_h|$ to the absolute value of the deepest occupied orbital, the discrete sector of the spectrum is embedded in a continuum of excitations delocalized in the whole accessible space. Lastly,
+for energies higher than $|\eps_1|$ only delocalized excitations are present. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[t]
@@ -376,13 +362,13 @@ value of $E$.
 \draw[dashed,very thin,color=black] (4,0) -- (4,3);
 \draw[dashed,very thin,color=black] (6,0) -- (6,1);
 % % threshold levels labels
-\node[left] at (0,5) {$l_h$};
-\node[left] at (0,3) {$l_i$};
-\node[left] at (0,1) {$l_1$};
+\node[left] at (0,5) {$p_h$};
+\node[left] at (0,3) {$p_i$};
+\node[left] at (0,1) {$p_1$};
 \node[below] at (2,0){$|\eps_h|$};
 \node[below] at (4,0){$|\eps_i|$};
 \node[below] at (6,0){$|\eps_1|$};
-\node[below] at (4,-0.5) {Excitation energy};
+\node[below] at (4,-0.5) {excitation energy};
 % bars at thresholds
 %\foreach \Point in {(2,5),(4,3),(6,1)}{
 %   \node at \Point {{\textbar}};%$\times$};
@@ -398,23 +384,34 @@ value of $E$.
     \node at \Point {\textbullet};
 }
 \end{tikzpicture}
-\caption{\label{ExcitationLandscape} Excitation landscape.}
+\caption{\label{ExcitationLandscape} Excitation landscape. Excitation are split in horizontal line according to the threshold levels $p_m$. Filled bullet refers to localized
+excitations whereas the tick black lines describe delocalized excitation with a continuum spectrum.}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Using the spectral decomposition of the resolvent of the Liouvillian we have
+The knowledge of the excitations spectrum allows us to expand the LR susceptibility in terms of excitations. Indeed we can make usage of the spectral decomposition of the resolvent
+of the Liouvillian. This procedure allows us to formally solve the Liouville equation \eqref{LiouvillianRhopomegaDef1} and we have 
+%Using the spectral decomposition of the resolvent of the Liouvillian we have
 \be\lb{RhopExcitationDef1}
 \sop{{\cal R}}(\omega) \cdot   =
 \left(\sum_E + \int\dd E   \right) \op E \,
 \frac{\trace{\commutator{\dmnot}{\op{\tilde E}}\cdot}}{\omega-E} \;.
-\ee
-%with $\opskew{O} = \commutator{\op O}{\dmnot}$. 
+\ee 
 
-%\subsection{Comments. The analytic structure of the linear response susceptibility}
-%
-%...........
+% Now we reformulate an analogous analysis looking at the susceptibility superoperator, implicit defined through \eqref{SusceptibilityDef1}. This approach leads to the concept of \emph{excitation 
+% operators}, defined through a self-consistent operator eigenvalue equation. Excitations behave as singularity of the susceptibility operator and their knowledge provides a deeper insight 
+% into the analytic structure of the linear response. 
+
+\subsection{Comments. Physical meaning of the excitation spectrum}
+
+True poles vs spectral function....
 
 \section{Applications}
+
+% \begin{figure}{h}
+% \includegraphics[scale=0.56]{c6h6_excitationLandscape.eps}
+% \caption{\label{c6h6_excLand}(Color online) Excitation landscape of $C_6H_6$.}
+% \end{figure}
 
 
 \section{Comments and conclusions}
