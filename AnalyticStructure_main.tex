@@ -1,4 +1,4 @@
-\documentclass[reprint,aps,prl]{revtex4-1}
+\documentclass[reprint,aps,prb]{revtex4-1}
 
 % Language and font encodings
 \usepackage[english]{babel}
@@ -185,7 +185,7 @@ density satisfies an equation of motion written in the form of a quantum Liouvil
 where $\op\Phi(\omega)$ represents the perturbing field acting on the system. 
 
 \subsection{Fluctuation states. A localization argument for the response density}
-\lb{FluctuationState}
+\label{FluctuationState}
 
 The response density operator is expressed as the first-order variation of ground state density $\sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}$, where the set $\{\ket{\psi_p}\}$ denote the 
 occupied states, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with energy $\eps_p$ lower than the Fermi level. Using this notation we denote the energy of the HOMO level 
@@ -326,38 +326,24 @@ of $\op G_H$ (see eq. \eqref{HelmholtzKernelDef1}) we observe that the Helmholtz
 As a consequence all the $\ket{\tilde\chi^E_p}$ states exhibit a bound-state behavior in the long range. Instead, the asymptotic character of $\op G_H(E+\eps_p)$ depends from $E$ and we can 
 identify the threshold value $E=|\eps_p|$ in terms of which $\ket{\phi^E_p}$ changes from a bound-state like behavior to a delocalized spherical-wave like character.  
 Furthermore, the orthonormalization conditions \eqref{ExcitedStateOrthNormDef1} act as a ulterior constraint for the bound-state solutions and have the effect of determining the quantization of 
-the corresponding energy levels\footnote{Sternheimer equations represent the first order expansion of a set of Hamiltonian eigenvalue equations. Consequently the properties of their solution...}.
+the corresponding energy levels \footnote{Sternheimer equations represent the first order expansion of a set of Hamiltonian eigenvalue equations. Consequently the properties of their solution...}.
 We conclude that all the states $\ket{\tilde\chi^E_p}$ and the $\ket{\phi^E_p}$ with $E$ below the threshold value constitute a genuine \emph{discrete} set, while the ones in the unbound 
 energy range behaves as generalized eigenvectors associated to a continuum spectrum. 
 
 The structure of the excitation spectrum follows from the properties of the excited states described above. To clarify this point we consider a value of $E$ that satisfies equations
 \eqref{ExcitationOperatorsDef1}. In correspondence of this values equations \eqref{ExcitationOperatorsDef3} possess a solution in which \emph{at least} one of the excited states 
-is not zero. We denote with $p=p_m$ the label of the $\ket{\phi^E_p}$  with the highest value of $|\eps_p|$ among the ones that contribute to \eqref{ExcitationOperatorsDef2}. From the previous 
+is not zero. We denote with $p=p_m$ the label of the $\ket{\phi^E_p}$  with the highest value of $|\eps_p|$, among the ones that contribute to \eqref{ExcitationOperatorsDef2}. From the previous 
 considerations it emerge that if $E<|\eps_{p_m}|$ \emph{all} the excited states in the dyadic representation of the excitation operator possess a bound-state like behavior. Excitations 
 of this type thus represent localized quantities and the associated eigenvalue are discrete. On the contrary, for $E>|\eps_{p_m}|$ some (or all) of the excited states in the dyadic representation
 of the excitation behave as generalized eigenvectors and the corresponding eigenvalue belong to a continuum of accessible values.
 
-This analysis evidences that the spectrum of the excitation operators contains two distinct sectors. The first one is composed by a (finite) set of localized excitation with associated discrete 
-eigenvalues. Extending the results of \cite{boffi2016} to the equation of motion of \eqref{ExcitationOperatorsDef3} we conclude that the elements of this category behave as \emph{observables} 
-quantities and the associated excitation energies have a true physical meaning, independently from the computational setup used for their representation. Conversely, the second sector is made by 
-a dense set of delocalized excitations with a continuum spectrum. The elements of this set behaves as the unbound virtual orbitals analyzed in \cite{boffi2016}.... 
-
-The knowledge of the excitations spectrum allows us to expand the LR susceptibility in terms of excitations. Indeed we can make usage of the spectral decomposition of the resolvent
-of the Liouvillian. This procedure allows us to formally solve the Liouville equation \eqref{LiouvillianRhopomegaDef1} and we have 
-\be\lb{RhopExcitationDef1}
-\sop{{\cal R}}(\omega) \cdot   =
-\left(\sum_E + \int\dd E   \right) \op E \,
-\frac{\trace{\commutator{\dmnot}{\op{\tilde E}}\cdot}}{\omega-E} \;.
-\ee 
-
-The typical structure of the excitation spectrum is represented in figure \ref{ExcitationLandscape}. 
-Excitations are separated into two categories. 
-The plot evidences that below the first ionization energy $|\eps_h|$ the spectrum is purely composed by a discrete set of localized excitations. Instead, in the intermediate energy interval that extends 
-from $|\eps_h|$ to the absolute value of the deepest occupied orbital, the discrete sector of the spectrum is embedded in a continuum of excitations delocalized in the whole accessible space. Lastly,
-for energies higher than $|\eps_1|$ only delocalized excitations are present. 
+% This analysis reveals that the excitations spectrum is composed by two distinct sectors. The first one is realized by the (finite) set of localized excitation with associated discrete eigenvalues. 
+% Extending the results of \cite{boffi2016} to the equation of motion of \eqref{ExcitationOperatorsDef3} we conclude that the elements of this category behave as \emph{observables} 
+% quantities and the associated excitation energies have a true physical meaning, independently from the computational setup used for their representation. Conversely, the second sector is made by 
+% a dense set of delocalized excitations with a continuum spectrum. The elements of this set behaves as the unbound virtual orbitals analyzed in \cite{boffi2016}.... 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
+\begin{figure}[t]
 \begin{tikzpicture}[scale=0.78]
 % axes
 \draw[->] (0,0) -- (8,0); 
@@ -400,6 +386,29 @@ for energies higher than $|\eps_1|$ only delocalized excitations are present.
 excitations whereas the tick black lines describe delocalized excitation with a continuum spectrum.}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This analysis reveals that the excitations spectrum is composed by two distinct sectors. The first one is realized by the (finite) set of localized excitations with discrete eigenvalues. Extending 
+the results achieved in \cite{boffi2016} for the KS virtual orbitals, to the equations for excited states \eqref{ExcitationOperatorsDef3}, we conclude that localized excitations behave as 
+\emph{observable} quantities and the associated energies possess an absolute meaning, which should not depend from the computational setup used for their representation. 
+The second sector contains the dense set of delocalized excitations with an associated continuum spectrum. These excitations behave as the unbound virtual orbitals analyzed in \cite{boffi2016} and 
+are deeply affected by the computational setup used to represent them. In particular, the presence of a finite computational domain implies a fictitious discretization of the excitation levels and 
+the associated spectrum exhibit an explicit dependence from the size of the domain. Excitations belonging to this sector thus lose their physical meaning and have to be only understood as a tool to 
+express the spectral decomposition of the Liouvillian superoperator. 
+
+The typical structure of the excitation spectrum is depicted in figure \ref{ExcitationLandscape}. The plot evidences that below the first ionization energy $|\eps_h|$ only localized excitations contribute
+to the spectrum. Conversely, in the intermediate energy interval that extends from $|\eps_h|$ to the absolute value of the deepest occupied orbital, the elements belonging to the discrete sector are embedded 
+in a continuum of delocalized excitations. Lastly, for energies higher than $|\eps_1|$ only delocalized excitations are present. 
+
+The introduction of the excitation operators allows us to express the susceptibility functional \eqref{SusceptibilityDef1} through the spectral decomposition of the resolvent of the 
+Liouvillian. Pursuing this procedure provides:
+%The knowledge of the excitations spectrum allows us to expand the LR susceptibility in terms of excitations. Indeed we can make usage of the spectral decomposition of the resolvent
+%of the Liouvillian. This procedure allows us to formally solve the Liouville equation \eqref{LiouvillianRhopomegaDef1} and we have 
+\be\lb{RhopExcitationDef1}
+\sop{{\cal R}}(\omega) \cdot   =
+\left(\sum_E + \int\dd E   \right) \op E \,
+\frac{\trace{\commutator{\dmnot}{\op{\tilde E}}\cdot}}{\omega-E} \;,
+\ee 
+where we have divided the two sectors in the sum. 
+
 
 % Now we reformulate an analogous analysis looking at the susceptibility superoperator, implicit defined through \eqref{SusceptibilityDef1}. This approach leads to the concept of \emph{excitation 
 % operators}, defined through a self-consistent operator eigenvalue equation. Excitations behave as singularity of the susceptibility operator and their knowledge provides a deeper insight 
@@ -407,16 +416,25 @@ excitations whereas the tick black lines describe delocalized excitation with a 
 
 \subsection{Discrete poles and spectral function. Physical meaning of the excitation spectrum} %{Comments. Physical meaning of the excitation spectrum}
 
-True poles vs spectral function....
+We can express the fluctuation states in terms of the susceptibility functional
+\be\lb{FluctuationStateExcitationDef1}
+\ket{f_p(\omega)}   =
+\left(\sum_E + \int\dd E   \right) 
+\frac{\trace{\commutator{\dmnot}{\op{\tilde E}}\op\Phi(\omega)}}{\omega-E} \ket{\phi^E_p} \;. \nn
+\ee 
+This relation clarifies the role of the excitations in the spectral decomposition. We know from the analysis of section \ref{FluctuationState} that fluctuation states are localized
+up to $\omega=|\eps_h|$. 
 
-\section{Applications}
+
+\section{Criterion for a reliable sampling of the excitation operators} %Applications 
 
 Discuss the criterion for a good choice of the basis of transition. Computation of the statical polarizability in the LR formalism compared to the reference value
-obtained through a finite difference method. 
+obtained through a finite difference method. Remark the importance of using a systematic basis, only in this way the convergence of the statical polarizability turns out to 
+be a meaningful criterion for the evaluation of the basis that sample the empty state space. Refer to the paper of....
 
 \subsection{Results for the benzene molecule}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \includegraphics[scale=0.56]{c6h6_excitationLandscape.eps}
 \caption{\label{c6h6_excLand}(Color online) Excitation landscape of $C_6H_6$.}
 \end{figure}
