@@ -303,7 +303,7 @@ operators so that $\op E = \dmnot\op E\op Q_0 + \op Q_0\op E\dmnot$. This condit
 where both the \emph{excited states} $\ket{\phi^E_p}$, $\bra{\tilde\chi^E_p}$ and their conjugates span the empty subspace of $\hnot$. 
 
 We restrict our analysis assuming that a set of hypothesis commonly realized in DFT holds (symmetry of the transition basis, specify better? see appendix?). Equations 
-\eqref{ExcitationOperatorsDef1} can be recasted in the form of a Sternheimer-like equations for the excited states. In particular, the left action eigenvalue equation provides   
+\eqref{ExcitationOperatorsDef1} can be recasted in the form of a Sternheimer-like equations for the excited states. In particular, the left action eigenvalues equations provide   
 \begin{align}\lb{ExcitationOperatorsDef3}
 &\left[E-(\hnot - \eps_p)\right] \ket{\phi_p^E} = \op Q_0 \op V'[\op E] \ket{\psi_p} \;, \nn\\
 &\left[-E-(\hnot - \eps_p)\right]\ket{\tilde\chi_p^E} = \op Q_0\op V'[\op E^t]\ket{\psi_p}  \;, 
@@ -393,7 +393,7 @@ express the spectral decomposition of the Liouvillian superoperator.
 
 The typical structure of the excitations landscape is depicted in figure \ref{ExcitationLandscape}. The plot evidences that below the first ionization energy $|\eps_h|$ only localized excitations are 
 present. Conversely, in the intermediate energy interval that extends from $|\eps_h|$ to the absolute value of the deepest occupied orbital, the elements belonging to the discrete sector are embedded 
-in a continuum of delocalized excitations. Lastly, for energies higher than $|\eps_1|$ only delocalized excitations are present. 
+in a continuum of delocalized excitations. Lastly, for energies higher than $|\eps_1|$ the excitations landscape takes contributions only from the delocalized sector. 
 
 The introduction of the excitation operators allows us to express the susceptibility functional \eqref{SusceptibilityDef1} through the spectral decomposition of the resolvent of the 
 Liouvillian. Pursuing this procedure provides:
@@ -404,7 +404,10 @@ Liouvillian. Pursuing this procedure provides:
 \left(\sum_E + \int\dd E   \right) \op E \,
 \frac{\trace{\commutator{\dmnot}{\op{\tilde E}}\cdot}}{\omega-E} \;,
 \ee 
-where we have divided the two sectors in the sum. 
+%where we have divided the two sectors in the sum. 
+where we have explicitly separated the contributions of the localized and continuous excitations in the spectral decomposition \eqref{RhopExcitationDef1}. 
+The elements of the first sector correspond to the \emph{true poles} of the susceptibility while the others can be interpreted only in terms of the spectral function. 
+
 
 %Excitations behave as singularity of the susceptibility operator and their knowledge provides a deeper insight into the analytic structure of the linear response. 
 
