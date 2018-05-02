@@ -169,13 +169,6 @@ observable induced by a time-dependent perturbing field acting on the system. Th
 \be\lb{LinearResponseFunctDef1}
 \braket{\delta\op O}(\omega) = \trace{\dm'(\omega)\op O} \;.
 \ee
-% where $\op O$ represents the observable\footnote{For a sake of concreteness, we are limiting our considerations to observables that do not explicitly depend on time} 
-% under inspection. The modification of the ground-state density induced by the perturbation is expressed by the \emph{response density operator} $\dm'(\omega)$ that, in the linear 
-% response regime, is a linear function of the perturbing field $\op\Phi(\omega)$. For this reason it is possible to define the \emph{susceptibility} superoperator, as follows:
-% \be\lb{SusceptibilityDef1}
-% \dm'(\omega) = \sop{{\cal R}}(\omega) \op\Phi(\omega) \;. 
-% \ee
-% Susceptibility describes an intrinsic feature of the unperturbed system and determines its response to \emph{any} perturbations, in the linear response regime.
 Here $\op O$ represents the observable\footnote{For a sake of concreteness, we are limiting our considerations to observables that do not explicitly depend on time} under inspection 
 while the \emph{response density operator} $\dm'(\omega)$ describes the modification of the ground-state density induced by the perturbation. In the contest of the LR the response 
 density satisfies an equation of motion written in the form of a quantum Liouville operator (for example see \cite{baroni2008}),
@@ -404,28 +397,48 @@ Liouvillian. Pursuing this procedure provides:
 \left(\sum_E + \int\dd E   \right) \op E \,
 \frac{\trace{\commutator{\dmnot}{\op{\tilde E}}\cdot}}{\omega-E} \;,
 \ee 
-%where we have divided the two sectors in the sum. 
-where we have explicitly separated the contributions of the localized and continuous excitations in the spectral decomposition \eqref{RhopExcitationDef1}. 
-The elements of the first sector correspond to the \emph{true poles} of the susceptibility while the others can be interpreted only in terms of the spectral function. 
+where we have explicitly separated the contributions of the localized and continuous excitations in the spectral decomposition \eqref{RhopExcitationDef1}. The elements of the first sector 
+correspond to \emph{true poles} of the susceptibility while the others can be interpreted only in terms of the spectral function. 
 
-
-%Excitations behave as singularity of the susceptibility operator and their knowledge provides a deeper insight into the analytic structure of the linear response. 
-
-\subsection{Discrete poles and spectral function. Physical meaning of the excitation spectrum} %{Comments. Physical meaning of the excitation spectrum}
-
-The analysis discussed above has evidenced that there exists both localized and delocalized excitations. While the role of the former is quite unambigous 
-We can express the fluctuation states in terms of the susceptibility functional
+Lastly, we establish a link between the fluctuation states and excitation operators based description of the LR. Indeed, thanks to the defining equation \eqref{SusceptibilityDef1} we can 
+easily express the excitations expansion of fluctuation states as follows 
 \be\lb{FluctuationStateExcitationDef1}
 \ket{f_p(\omega)}   =
 \left(\sum_E + \int\dd E   \right) 
 %\frac{\trace{\commutator{\dmnot}{\op{\tilde E}}\op\Phi(\omega)}}{\omega-E} \ket{\phi^E_p} \;. \nn
 \frac{t_\Phi(E)}{\omega-E} \ket{\phi^E_p} \;,
 \ee 
-with $t_\Phi(E)=\trace{\commutator{\dmnot}{\op{\tilde E}}\op\Phi(\omega)}$.
-This relation clarifies the role of the excitations in the spectral decomposition. We know from the analysis of section \ref{FluctuationState} that fluctuation states are localized
-up to $\omega=|\eps_h|$. 
+with $t_\Phi(E)=\trace{\commutator{\dmnot}{\op{\tilde E}}\op\Phi(\omega)}$. 
+%This formula shows that, for each value of $\omega$, both the sectors of the excitations spectrum contribute to the fluctuation state. 
+Thanks to the analysis presented in section \ref{FluctuationState} we know that fluctuation states possess a localized behavior up to $\omega=|\eps_h|$, so we conclude that 
+below this energy threshold the continuum sector of the excitation spectrum is able to resum in a localized way.  
 
-\section{Criterion for a reliable sampling of the excitation operators} %Applications 
+
+%Excitations behave as singularity of the susceptibility operator and their knowledge provides a deeper insight into the analytic structure of the linear response. 
+
+%\subsection{Discrete poles and spectral function. Physical meaning of the excitation spectrum} %{Comments. Physical meaning of the excitation spectrum}
+
+% The analysis discussed above has evidenced that there exists both localized and delocalized excitations. While the role of the former is quite unambigous 
+% We can express the 
+% \be\lb{FluctuationStateExcitationDef1}
+% \ket{f_p(\omega)}   =
+% \left(\sum_E + \int\dd E   \right) 
+% %\frac{\trace{\commutator{\dmnot}{\op{\tilde E}}\op\Phi(\omega)}}{\omega-E} \ket{\phi^E_p} \;. \nn
+% \frac{t_\Phi(E)}{\omega-E} \ket{\phi^E_p} \;,
+% \ee 
+% with $t_\Phi(E)=\trace{\commutator{\dmnot}{\op{\tilde E}}\op\Phi(\omega)}$.
+% This relation clarifies the role of the excitations in the spectral decomposition. We know from the analysis of section \ref{FluctuationState} that fluctuation states are localized
+% up to $\omega=|\eps_h|$. 
+
+\section{Quality indicator for the numerical convergence of the LR}   %{Criterion for a reliable sampling of the excitation operators}
+
+From the theoretical analysis of the previous section we can made two statements:
+\begin{itemize}
+ \item Fluctuation states, which constitute the building blocks of the response density, have a bound state-like character up to $\omega=|\eps_h|$ and behave as unbound delocalized
+ wave functions for higher values of $\omega$. 
+ \item The excitation landscape is composed of two sectors with distinct properties. One made of a discrete set of localized excitations 
+\end{itemize}
+
 
 Discuss the criterion for a good choice of the basis of transition. Computation of the statical polarizability in the LR formalism compared to the reference value
 obtained through a finite difference method. Remark the importance of using a systematic basis, only in this way the convergence of the statical polarizability turns out to 
