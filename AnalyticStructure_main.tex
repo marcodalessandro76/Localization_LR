@@ -436,13 +436,43 @@ From the theoretical analysis of the previous section we can made two statements
 \begin{itemize}
  \item Fluctuation states, which constitute the building blocks of the response density, have a bound state-like character up to $\omega=|\eps_h|$ and behave as unbound delocalized
  wave functions for higher values of $\omega$. 
- \item The excitation landscape is composed of two sectors with distinct properties. One made of a discrete set of localized excitations 
+ \item The excitation landscape is composed of two sectors with distinct properties. The elements of the first one behave as localized, observable quantities and contribute as discrete 
+ poles to the spectral decomposition of the susceptibility functional. The second sector contains a continuum of delocalized excitations which represents a tool to provide
+ an effective representation of the spectral function. 
 \end{itemize}
+The topic to be discussed in this section is the following: on the basis of these statements can we define some indicator to evaluate the reliability of a linear response calculations? And, 
+if so, up to which energy threshold can we assume that our computations do converge?
+
+The first element of this discussion is the introduction of the computational basis $\{\mu\}$ used to perform the DFT calculations subjacent to the LR analysis. This basis is composed by a 
+finite set of elements (state something about the systematic character the basis? comment on the finite dimension of the computational domain?) that are chosen to ensure an unbiased description 
+of the ground state properties of the system. 
+
+FIRST QUESTION: The usage of the $\{\mu\}$ basis allows us to obtain a reliable evaluation of the perturbation induced modification of an observable? 
+The answer of this question is based on the analysis of equation \eqref{LinearResponseFunctDef2} and has been partially provided in section \ref{FluctuationState} (move that material in this section?). 
+We can complete the answer by observing that $\ket{f_p(0)}$ can be obtained through a ground state calculation with the explicit time independent perturbation added to the system. So we can perform
+a check on the goodness of the basis in this case as in a ground state calculation. Then use the localization argument of the fluctuation states to extend this reliability of the result up to
+$\omega=|\eps_p|$. 
+
+SO TO SUMMARIZE: below the threshold the numerical convergence is regulated by the localization of the fluctuation states, in this range we can assess the reliability of the results provided by
+the $\{\mu\}$ basis by looking at the basis-independence of the fluctuation states at $\omega=0$. Above the threshold the convergence can be reached due to the localized nature of 
+$\bra{\psi_p}\op O$, in this case the computational setup provides reliable results if guarantees the unbiased reconstruction of fluctuation states in the support of $\bra{\psi_p}\op O$. 
+In this range there is no a priori indicator of the goodness of the results. 
+
+%\vspace{0.3cm}
+\subsection{Choice of the $\alpha$-basis. Statical polarizability-driven criterion revised}
+
+The previous considerations regard the relation between the localization properties of the fluctuation states and the possibility of having a quality indicator for the goodness of the $\{\mu\}$ 
+basis. Now we aim to extend/reformulate the question of the numerical convergence to the case in which the excitation-based representation of the LR is adopted.
+
+The construction of the excitation operators requires the explicit sampling of the empty state subspace. Definition of the $\{\alpha\}$-basis: choose the empty eigenstates of the KS Hamiltonian as a 
+basis-set to express the excited state $\ket{\phi^E_p},\bra{\tilde\chi^E_p}$ and their duals. The elements $\{\alpha\}$-basis are expressed in the $\{\mu\}$-basis: since the $\{\mu\}$-basis is finite 
+dimensional so it is also the $\{\alpha\}$-basis. Excitation index becomes discrete and the basis provide a partial sampling of the continuum sector of the excitation landscape.   
 
 
-Discuss the criterion for a good choice of the basis of transition. Computation of the statical polarizability in the LR formalism compared to the reference value
-obtained through a finite difference method. Remark the importance of using a systematic basis, only in this way the convergence of the statical polarizability turns out to 
-be a meaningful criterion for the evaluation of the basis that sample the empty state space. Refer to the paper of....
+
+% Discuss the criterion for a good choice of the basis of transition. Computation of the statical polarizability in the LR formalism compared to the reference value obtained through a finite 
+% difference method. Remark the importance of using a systematic basis, only in this way the convergence of the statical polarizability turns out to be a meaningful criterion for the evaluation 
+% of the basis that sample the empty state space. Refer to the paper of....
 
 \subsection{Results for the benzene molecule}
 
