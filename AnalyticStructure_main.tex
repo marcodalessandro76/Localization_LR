@@ -187,20 +187,20 @@ Linear response can be effectively applied to the analysis of the electronic exc
 the ground-state density $\dmnot$ has been provided. The linear response formalism allows us to evaluate the modification of the expectation value of a generic observable induced by a 
 time-dependent perturbing field acting on the system. This quantity, written in the frequency domain, can be expressed through the evaluation of the \emph{linear response functional}
 \be\lb{LinearResponseFunctDef1}
-\braket{\delta\op O}(\omega) = \trace{\dm'(\omega)\op O} \;.
+\braket{\delta\op O}(\omega) = \trace{\dm'(\omega)\op O} \;,
 \ee
-Here $\op O$ represents the observable\footnote{For a sake of concreteness, we are limiting our considerations to observables that do not explicitly depend on time} under inspection 
-while the \emph{response density operator} $\dm'(\omega)$ describes the modification of the ground-state density induced by the perturbation. In the contest of the LR the response 
-density satisfies an equation of motion written in the form of a quantum Liouville operator (for example see \cite{baroni2008})
-\be\lb{LiouvillianRhopomegaDef1}
-\left(\omega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot} \;,
-\ee
-where $\op\Phi(\omega)$ represents the perturbing field. 
+where $\op O$ represents the observable\footnote{For a sake of concreteness, we are limiting our considerations to observables that do not explicitly depend on time} under inspection 
+and we have introduced the \emph{response density operator} $\dm'(\omega)$ that codifies the modification of the ground-state density induced by the perturbation. 
 
-The purpose of the present analysis is to determine the asymptotic behavior of the main building blocks of the LR in the long range, \emph{i.e.} outside the support domain of the potential. 
+The main objective of this section is to investigate the structure of the building blocks needed to express the response density operator. In particular, we are interested in clarifying 
+the behavior of the main actors of the LR in the long range, \emph{i.e.} outside from the support domain of the potential. 
+%Due to this analysis we aim to be able to understand if the objects we are dealing with behave as bound-state like functions or if 
+%This analysis allows us to establish comprehension of the type of objects one is dealing with when performing a LR calculation and 
+
+%in determining the long range behavior, \emph{i.e.} outside the support domain of the potential. This analysis  
 %Then we discuss the relation between localization properties and dependence of the results of LR from the specific choice of the basis set and, in particular, from the dimension of the computation domain. 
+%asymptotic behavior of the main building blocks of the LR in the 
 
-%\subsection{Solution of the Schroedinger equation for open systems}
 \subsection{Long range behavior of the eigenvalue solution of the Schroedinger equation}
 \label{SEopenSystem}
 
@@ -208,7 +208,7 @@ As a preliminary step for the forthcoming discussion we present a simple argumen
 $\op H\ket{\psi}=\eps\ket{\psi}$. The main aims of this analysis, apart from reproducing the well known behavior of the wave functions, is to introduce some tools and setting up notations and 
 terminology that will we widely used in the rest of the paper. 
 
-The argument procedes by splitting the Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term. Since we are dealing with molecular-like systems $\op V$ has a compact support when 
+The argument proceeds by splitting the Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term. Since we are dealing with molecular-like systems $\op V$ has a compact support when 
 projected in the $\r$-representation. We can formally solve the SE as an inhomogeneous Helmholtz equation by writing
 \be\lb{SEHelmholtz1}
 \ket{\psi} = \op G_H(\eps)\ket{\op V\psi}\;,
@@ -257,10 +257,14 @@ occupied states, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with 
 as $\eps_h$ and identify the value of the first ionization potential with $|\eps_h|$. In what follows we will assume that the set of states $\{\ket{\psi_p}\}$ are described by real 
 functions, when projected in the $\r$-representation.  
 
-The inspection of the linear order time evolution of the eigenstates of $\hnot$ evidence that the response density acts as a transition operator, linking the occupied and empty subspaces 
-of $\hnot$, and satisfies the \emph{transverse} condition  
+In the contest of the LR the response density satisfies an equation of motion written in the form of a quantum Liouville operator (for example see \cite{baroni2008})
+\be\lb{LiouvillianRhopomegaDef1}
+\left(\omega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot} \;,
+\ee
+where $\op\Phi(\omega)$ represents the perturbing field. The inspection of the linear order time evolution of the eigenstates of $\hnot$ evidence that the response density acts as a transition 
+operator, linking the occupied and empty subspaces of $\hnot$, and satisfies the \emph{transverse} condition  
 \be\lb{RhopTransverseDef1}
-\dm' = \dm_{\perp} \doteq \dmnot\dm'\op Q_0 + \op Q_0\dm'\dmnot
+\dm' = \dm_{\perp} \doteq \dmnot\dm'\op Q_0 + \op Q_0\dm'\dmnot \;,
 \ee
 where $\op Q_0=\identity-\dmnot$ is the projector in the subspace orthogonal to the occupied states of $\hnot$. Due to this fact it is possible to introduce an explicit representation of the 
 response density as follows 
@@ -379,7 +383,7 @@ operators so that $\op E_a = \dmnot\op E_a\op Q_0 + \op Q_0\op E_a\dmnot$. This 
 \op E_a &= \sum_p \left( \ket{\phi^a_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^a_p}\right)\;, \nn \\
 \op{\tilde E}_a = \commutator{\dmnot}{\op E^t_a} &= \sum_p \left( \ket{\psi_p}\bra{\phi^a_p} - \ket{\chi^a_p} \bra{\psi_p}\right)\;,
 \end{align}
-where the \emph{excited states} $\ket{\phi^E_p}$, $\bra{\chi^E_p}$ span the empty subspace of $\hnot$. 
+where we have defined the \emph{excited states} $\ket{\phi^a_p}$ and $\bra{\chi^a_p}$ that, by construction, are orthogonal to the occupied orbitals of $\hnot$. 
 
 We restrict our analysis assuming that a set of hypothesis commonly realized in DFT holds (symmetry of the transition basis, specify better? see appendix?). Equations 
 \eqref{ExcitationOperatorsDef1} can be recasted in the form of a Sternheimer-like equations for the excited states, that is   
@@ -479,6 +483,21 @@ Susceptibility written as
 \frac{2\trace{\op W_a \cdot}}{\omega^2-\Omega_a^2} \;,
 \ee 
 with $\op W_a = \frac{1}{\sqrt{2}}(\op E_a + \op E_a^t)$. 
+We have explicitly separated the contributions of the localized and continuous excitations in the spectral decomposition \eqref{RhopExcitationDef2}. 
+The elements of the first sector 
+correspond to \emph{true poles} of the susceptibility while the others can be interpreted only in terms of the spectral function. 
+
+\subsubsection*{Results of this section}
+
+From the theoretical analysis of the previous section we can made two statements:
+\begin{itemize}
+ \item Fluctuation states, which constitute the building blocks of the response density, have a bound state-like character up to $\omega=|\eps_h|$ and behave as unbound delocalized
+ wave functions for higher values of $\omega$. 
+ \item The excitation landscape is composed of two sectors with distinct properties. The elements of the first one behave as localized, observable quantities and contribute as discrete 
+ poles to the spectral decomposition of the susceptibility functional. The second sector contains a continuum of delocalized excitations which represents a tool to provide
+ an effective representation of the spectral function. 
+\end{itemize}
+
 % The introduction of the excitation operators allows us to express the susceptibility functional \eqref{SusceptibilityDef1} through the spectral decomposition of the resolvent of the 
 % Liouvillian. Pursuing this procedure provides:
 % \be\lb{RhopExcitationDef1}
@@ -523,14 +542,14 @@ with $\op W_a = \frac{1}{\sqrt{2}}(\op E_a + \op E_a^t)$.
 %\section{Quality indicator for the numerical convergence of the LR}   %{Criterion for a reliable sampling of the excitation operators}
 \section{Criterion of computational reliability for the numerical convergence of the LR}
 
-From the theoretical analysis of the previous section we can made two statements:
-\begin{itemize}
- \item Fluctuation states, which constitute the building blocks of the response density, have a bound state-like character up to $\omega=|\eps_h|$ and behave as unbound delocalized
- wave functions for higher values of $\omega$. 
- \item The excitation landscape is composed of two sectors with distinct properties. The elements of the first one behave as localized, observable quantities and contribute as discrete 
- poles to the spectral decomposition of the susceptibility functional. The second sector contains a continuum of delocalized excitations which represents a tool to provide
- an effective representation of the spectral function. 
-\end{itemize}
+% From the theoretical analysis of the previous section we can made two statements:
+% \begin{itemize}
+%  \item Fluctuation states, which constitute the building blocks of the response density, have a bound state-like character up to $\omega=|\eps_h|$ and behave as unbound delocalized
+%  wave functions for higher values of $\omega$. 
+%  \item The excitation landscape is composed of two sectors with distinct properties. The elements of the first one behave as localized, observable quantities and contribute as discrete 
+%  poles to the spectral decomposition of the susceptibility functional. The second sector contains a continuum of delocalized excitations which represents a tool to provide
+%  an effective representation of the spectral function. 
+% \end{itemize}
 The topic to be discussed in this section is the following: on the basis of these statements can we define some indicator to evaluate the reliability of a linear response calculations? And, 
 if so, up to which energy threshold can we assume that our computations do converge?
 
@@ -600,6 +619,31 @@ express the spectral decomposition of the Liouvillian superoperator.
 \label{C6H6_exc}
 \end{figure}
 
+\begin{figure}[ht]
+\includegraphics[scale=0.56]{c6h6_excitationLandscape.eps}
+\caption{\label{c6h6_excLand}(Color online) Excitation landscape of $C_6H_6$.}
+\end{figure}
+
+\subsection{Fluctuation state and excitations}
+
+Express the fluctuation state in terms of excitation using the relation $\ket{f_p(\omega)} = \dm'(\omega)\ket{\psi_p}$ and using formula \eqref{SusceptibilityDef1} to express the excitation
+expansion of the response density. Due to this procedure we obtain
+\be\lb{FSExcitationDef1}
+\ket{f_p(\omega)}   = \left(\sum_a + \int\dd a   \right) \ket{w_p^a} \,
+\frac{\bra{\psi_p}\op\Phi(\omega)\ket{w_p^a}}{\omega^2-\Omega_a^2} \;,
+\ee 
+with $\ket{w_p^a}=\ket{\phi_p^a}+\ket{\chi_p^a}$. 
+Show the convergence of the statical polarizability of the $CO$ in function of the number of excitations. Write formula
+\be\lb{AlphaExcitationDef1}
+\alpha_{xx} =  \left(\sum_a + \int\dd a   \right) 2 \,
+\frac{\left[\trace{\op W_a \op X}\right]^2}{\Omega_a^2} \;,
+\ee 
+and add the plot that show the convergence rate of the statical polarizability to the reference (finite difference) value in functions of the number of excitations. The plot evidence that the
+continuum sector of the excitation spectrum is 
+\begin{figure}
+\includegraphics[scale=0.56]{CO_alphaX_isto.eps}
+\caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability of the $CO$ molecule w.r.t the number of excitations.}
+\end{figure}
 
 % \subsection{Choice of the $\alpha$-basis. Statical polarizability-driven criterion revised}
 % 
@@ -618,12 +662,7 @@ express the spectral decomposition of the Liouvillian superoperator.
 % difference method. Remark the importance of using a systematic basis, only in this way the convergence of the statical polarizability turns out to be a meaningful criterion for the evaluation 
 % of the basis that sample the empty state space. Refer to the paper of....
 
-%\subsection{Results for the benzene molecule}
 
-\begin{figure}[ht]
-\includegraphics[scale=0.56]{c6h6_excitationLandscape.eps}
-\caption{\label{c6h6_excLand}(Color online) Excitation landscape of $C_6H_6$.}
-\end{figure}
 
 \section{Comments and conclusions}
 
