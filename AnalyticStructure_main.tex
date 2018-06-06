@@ -122,32 +122,88 @@ unoccupied subspace.
 \maketitle
 
 \section{Introduction}
+Since the days of their foundations, disciplines like Computational Physics or Quantum Chemistry always had to deal with the problem of the 
+computational reliability of the results. More specifically, a computational result may be considered as reliable for various reasons.
+It might be, for example, in agreement with some previously existing data that the employed computational model is susceptible to reproduce.
+The model itself can in this way be classified as ``accurate''; it may then be employed to extract, \textit{in silico},
+other quantities that might be then used to \emph{predict} or \emph{interpret} experimental data.
+Another concept of reliability is the concept of  ``precision'', which is more focused to the actual results
+that a given computational model provides for a specific set of quantities, regardless of their potential agreement with 
+experimental data. The aim of precise computational approach is to reduce the \emph{computational} uncertanties
+of quantities extracted out of a well-defined model, and provide reference results, to which other computer codes
+employing the same model can be compared.
 
-The subject of the present investigation concerns with the study of isolated molecular-like systems subjected to a time-dependent perturbation. % in the linear response regime.
-This problem can be tackled within the contest of the time-dependent density functional theory (TD-DFT) \cite{runge1984,onida2002}, that allows one to establish the time-dependent 
-Kohn-Sham (KS) equations which determine the evolution of the one-particle properties of the system with respect to time. 
+A recent, remarkable exemple of precision-driven initiative is provided by the DeltaCodes project~\cite{deltaTest2016},
+where a grassroot community of code-owners struggled to extract well-defined computational results in the context of 
+Density Functional Theory (DFT) calculations. Ground-State quantum mechanical quantities as Lattice constants and bulk modulus of 
+elementary crystals extracted from different codes were compared with each other, with the objective of reducing the uncertanties 
+on such data, and in some sense, to define a \emph{calibration} procedure for a Solid-State Physics computer code. 
+Any other code able to extract the same quantites with the same approximations might be compared with the 
+results of the community in order to assess its computational reliability.
 
-We focus our attention to the linear response regime (LR) in which the theory can be conveniently expressed in the frequency domain and the time-dependent KS equation are reformulated 
-as a quantum Liouville equation for the response density operator. Different computational approaches have been developed in literature \cite{baroni2008,hubener2014,brabec2015}, principally 
-with the aim of producing efficient algorithms for the evaluation of the physical observables. These methods differ both for the procedure adopted to solve the Liouville equation 
-(explicit diagonalization, self-consistent Sternheimer equation, Lanczos chain-like procedure, etc.) and both for the choice of the basis set employed to perform the calculations. 
-Nonetheless, in all the cases one is a dealing with a finite basis set that, unavoidably, gives rise to a limited computational domain. 
-It is then meaningful to try to understand under 
-which extent the computational-induced truncation of the natural open boundaries condition could produce observable effects on the physical quantities computed in the LR. 
+For a theoretical approach that is based on numerical calculations, for which no analytic reference solution exists, 
+reducing the computational uncertainty is the only possible way to shed light on the predictivity power of the
+model. In other terms, the ``accuracy'' of a result with respect to experimental data may be reliably quantified
+only when the computational uncertainty is guaranteed to be significantly lower than the found discrepancy.
+For communities like DFT, such a ``calibration'' of computer codes among each other is a discipline that is still in its infancy;
+the DeltaCodes initiative and the foundations of DFT are separated in time by more than 50 years, and the computational
+model employed in the comparison (the Perdew-Burke-Erzerhof functional~\cite{PBE}) has been introduced more than 20 years ago.
 
-A preliminary understanding of this problem can be achieved thanks to the results reported in \cite{boffi2016}. The authors of this paper discuss the effects of a finite basis set on the 
-occupied and virtual orbitals of a molecular system and establish a clear correspondence between the orbital localization character, and the independence of its properties (\emph{e.g.} energy) 
-with respect to the basis set. It is shown that (localized) orbitals with a bound-state behavior in the long range constitute a genuine discrete set and a finite basis is 
-able to provide a reliable description of these states if the sampled domain contains their natural sizes. On the contrary, unbound (delocalized) orbitals form a continuum of states in the 
-true system with open boundaries. For these class of objects the presence of a finite computational domain has a deeper impact since introduces a fictitious discretization of the energy levels. 
-Furthermore, the energies of the unbound orbitals are not stable with respect to a change of the size of the computational domain and approach to zero as long as it is increased.  
+The problem is even more stringent for calculations that refer to quantities \emph{beyond} ground state, like
+for instance the time-dependent density functional theory (TDDFT) \cite{casida1995,runge1984,onida2002},
+from which quantities like optical excitations or polarizability tensors
+of a given system might be studied and put in relation with experimental data.
+Here also, a plethora of computational approaches exist, that employ different numerical formalism and
+basis sets, and it will be of great importance to identify quantities that can be ``measured'' in a given model, to assess
+and quantify their computational uncertainty.
 
-In this paper we aim to reach a deeper understanding of the possible effects of a finite computational basis set on the LR regime in open systems. To achieve this task we try to
-reformulate the relation between localization properties and basis independence for the main actors of the LR formalism. We present a discussion based on a double level analysis. First, 
-we propose a localization argument directly based on the inspection of the response density operator. Then, we move to a deeper level and investigate the properties of the susceptibility 
-functional, which represents the fundamental object in the contest of the linear response. Pursuing this approach we are naturally led to investigate the localization properties of excitation 
-operators, that in turn emerge as the resonant channel of the spectral decomposition of the susceptibility. In this way we establish a direct relation between the concept of basis independence 
-and the analytic structure of the linear response susceptibility.
+Moreover, wheareas for Ground-State calculations the quantities are relatively easy to identify and extract,
+TD-DFT and more generally, linear-response calculation present a further difficulty, which is the problem
+of \emph{numerical} convergence. In other terms, beyond ground state, 
+the absence of tools like the variational theorem imposes us to focus on \emph{well-defined} quantites,
+and to study the conditions under which numerical convergence of the results can be achieved.
+
+In this paper, we focus our attention to Linear-Response treatments of \emph{molecular} systems, 
+in particular referring to LR-TDDFT calculation. We will investigate the impact that 
+\emph{open} (i.e. Isolated) Boundary Conditions (BC) that have to be imposed to the system will have on the numerical convergence of LR quantites.
+In particular, we will discuss the interplay between the numerical convergence of LR quantities and the \emph{locality}
+of the related objects.
+In order to do this, we perform analytic considerations on the equations beyond LR treatment,
+which will help us identifying how to distinguish -- \textit{a priori} -- quantities that are susceptible to be 
+compared among different treatments, as they are \emph{intrinsically} associated to localized objects,
+from quantities that \emph{explicitly} depend of the the employed computational treatment.
+
+Our consideration will allso reveal useful for the understanding of the \emph{analytic structure} of LR quantities like
+the linear susceptibility of the system (i.e. the \emph{reducible} polarizability).
+Altough we refer, as anticipated, to TDDFT models, such considerations might also be transposed to Many-Body Perturbation Theory
+approaches, in the context Quasi-Particle equations.
+
+
+% The subject of the present investigation concerns with the study of isolated molecular-like systems subjected to a time-dependent perturbation. % in the linear response regime.
+% This problem can be tackled within the contest of the time-dependent density functional theory (TD-DFT) \cite{runge1984,onida2002}, that allows one to establish the time-dependent 
+% Kohn-Sham (KS) equations which determine the evolution of the one-particle properties of the system with respect to time. 
+% 
+% We focus our attention to the linear response regime (LR) in which the theory can be conveniently expressed in the frequency domain and the time-dependent KS equation are reformulated 
+% as a quantum Liouville equation for the response density operator. Different computational approaches have been developed in literature \cite{baroni2008,hubener2014,brabec2015}, principally 
+% with the aim of producing efficient algorithms for the evaluation of the physical observables. These methods differ both for the procedure adopted to solve the Liouville equation 
+% (explicit diagonalization, self-consistent Sternheimer equation, Lanczos chain-like procedure, etc.) and both for the choice of the basis set employed to perform the calculations. 
+% Nonetheless, in all the cases one is a dealing with a finite basis set that, unavoidably, gives rise to a limited computational domain. 
+% It is then meaningful to try to understand under 
+% which extent the computational-induced truncation of the natural open boundaries condition could produce observable effects on the physical quantities computed in the LR. 
+% 
+% A preliminary understanding of this problem can be achieved thanks to the results reported in \cite{boffi2016}. The authors of this paper discuss the effects of a finite basis set on the 
+% occupied and virtual orbitals of a molecular system and establish a clear correspondence between the orbital localization character, and the independence of its properties (\emph{e.g.} energy) 
+% with respect to the basis set. It is shown that (localized) orbitals with a bound-state behavior in the long range constitute a genuine discrete set and a finite basis is 
+% able to provide a reliable description of these states if the sampled domain contains their natural sizes. On the contrary, unbound (delocalized) orbitals form a continuum of states in the 
+% true system with open boundaries. For these class of objects the presence of a finite computational domain has a deeper impact since introduces a fictitious discretization of the energy levels. 
+% Furthermore, the energies of the unbound orbitals are not stable with respect to a change of the size of the computational domain and approach to zero as long as it is increased.  
+% 
+% In this paper we aim to reach a deeper understanding of the possible effects of a finite computational basis set on the LR regime in open systems. To achieve this task we try to
+% reformulate the relation between localization properties and basis independence for the main actors of the LR formalism. We present a discussion based on a double level analysis. First, 
+% we propose a localization argument directly based on the inspection of the response density operator. Then, we move to a deeper level and investigate the properties of the susceptibility 
+% functional, which represents the fundamental object in the contest of the linear response. Pursuing this approach we are naturally led to investigate the localization properties of excitation 
+% operators, that in turn emerge as the resonant channel of the spectral decomposition of the susceptibility. In this way we establish a direct relation between the concept of basis independence 
+% and the analytic structure of the linear response susceptibility.
 
 % First of all it is useful to discuss the property of the ground state under this perspective. 
 % Indeed, it is well known that the stability of the ground state and the localized nature of a molecular-like system ensures that the KS description of occupied states is represented 
