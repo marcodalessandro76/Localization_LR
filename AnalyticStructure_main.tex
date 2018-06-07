@@ -727,9 +727,69 @@ for open systems. In particular, by analyzing the asymptotic behavior of fluctua
 $\omega<|\eps_h|$. Consequently we have argued that the linear response functional, in the same $\omega$ range, provides a setup-independent result with a modest computational effort... 
 
 \appendix
-\section{Eigenvalue equations of the Liouvillian superoperator}
+\section{Left and right action of the Liouvillian superoperator}
 
-Derive the equations of motion for the excited states. Discussion of the effects of various supplementary conditions...
+% The Liouvillian superoperator for self-consistent systems is expressed as the sum of the unperturbed part plus a coupling term due the density dependence of the ground-state Hamiltonian.
+% Its left action reads
+% \begin{align}\lb{LiouvillianLeftActionDef1}
+% \Liouv\op O &= \commutator{\hnot}{O} + \commutator{\op V'[\op O]}{\dmnot}  = \nn \\
+% &=  \commutator{\hnot}{O} + \op Q_0\op V'[\op O]\dmnot - \dmnot\op V'[\op O]\op Q_0 \;
+% \end{align}
+% thanks to the equivalence $\commutator{\dmnot}{\op O} = \dmnot \op O \op Q_0 - \op Q_0 \op O \dmnot$. 
+% It is also useful to define the scalar coupling kernel $U$
+% \be
+% U\left[\op O; \op O'\right] \equiv  \int \dd \r \dd \r' \trace{\op O \frac{\delta \hnot }{\delta \rho_0(\r,\r')}
+% } \trace{\op O' \ket{\r} \bra{\r'}} \;, \nn
+% \ee
+% that allows us to express $\op V'[\op O]$ as:
+% \be\lb{VpDef1}
+% \op V'[\op O]= 
+% \int \dd \r \dd \r' U\left[\ketbra{\r}{\r'};\op O\right] \ketbra{\r'}{\r}\;.
+% \ee
+% The right action of $\Liouv$ can be assessed through the equivalence $\trace{\op O'(\Liouv\op O)} = \trace{(\op O'\Liouv)\op O}$ and provides:
+% \be
+% \op O\Liouv = -\commutator{\hnot}{\op O} + \int \dd\r\dd\r'
+% U\left[\commutator{\dmnot}{\op O};\ketbra{\r'}{\r}\right]\ketbra{\r}{\r'} \;. \nn
+% \ee
+% Using the symmetry of the coupling kernel we have
+% \begin{align}%\lb{LiouvillianRightActionDef1}
+% \op O\Liouv &= -\commutator{\hnot}{\op O} + \nn \\ 
+% &+ \dmnot\op V'\left[\commutator{{\dmnot}}{\op O}\right]\op Q_0 + \op Q_0\op V'\left[\commutator{\dmnot}{\op O}\right]\dmnot 
+% \end{align}
+
+
+The Liouvillian superoperator $\Liouv$ for self-consistent systems is expressed as the sum of the unperturbed part plus a coupling term due
+the density dependence of the ground-state Hamiltonian. The left action of these terms reads, respectively
+\be\lb{LiouZeroDef1}
+\Liouvnot \op O = \commutator{\hnot}{O} \;,
+\ee
+and
+\be\lb{CouplDef1}
+\coupl\op O = \commutator{\op V'[\op O]}{\dmnot}  = \op Q_0\op V'[\op O]\dmnot - \dmnot\op V'[\op O]\op Q_0 \;.
+\ee
+Here $\op V'$ can be conveniently expressed by defining the \emph{scalar coupling kernel}
+\be
+U\left[\op O; \op O'\right] \equiv  \int \dd \r \dd \r' \trace{\op O \frac{\delta \hnot }{\delta \rho_0(\r,\r')}
+} \trace{\op O' \ket{\r} \bra{\r'}} \;, \nn
+\ee
+on the basis of which
+\be\lb{VpDef1}
+\op V'[\op O]= 
+\int \dd \r \dd \r' U\left[\ketbra{\r}{\r'};\op O\right] \ketbra{\r'}{\r}\;.
+\ee
+In view of building the spectral decomposition we are interested in finding both the left and right eigenstates of $\Liouv$.   
+The right action of $\Liouv$ can be assessed through the equivalence $\trace{\op O'(\Liouv\op O)} = \trace{(\op O'\Liouv)\op O}$, so that:
+\be
+\op O\Liouv = -\commutator{\hnot}{\op O} + \int \dd\r\dd\r'
+U\left[\commutator{\dmnot}{\op O};\ketbra{\r'}{\r}\right]\ketbra{\r}{\r'} \;. \nn
+\ee
+In the cases relevant for the present analysis the coupling kernel is symmetric with respect to the exchange of its arguments so
+\begin{align}\lb{LiouvillianRightActionDef1}
+\op O\Liouv &= -\commutator{\hnot}{\op O} + V'\left[\commutator{{\dmnot}}{\op O}\right] = -\commutator{\hnot}{\op O} + \nn \\ 
+&+ \dmnot\op V'\left[\commutator{{\dmnot}}{\op O}\right]\op Q_0 + \op Q_0\op V'\left[\commutator{\dmnot}{\op O}\right]\dmnot \;, 
+\end{align}
+where in the last equivalence we have made usage of the transverse property of the coupling superoperator. Formula \eqref{LiouZeroDef1},\eqref{CouplDef1}
+and \eqref{LiouvillianRightActionDef1} are the starting point for the solution of the eigenvalues equations \eqref{ExcitationOperatorsDef1}. 
 
 \section{Casida equations}
 
