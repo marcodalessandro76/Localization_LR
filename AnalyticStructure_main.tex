@@ -212,28 +212,7 @@ approaches, in the context Quasi-Particle equations.
 % The same arguments cannot be rigidly extended to the case in which an external time-dependent field starts acting on the system. Indeed, the perturbation drives the system out 
 % from the equilibrium and the electrons sample a wider region of the state space, that will contains orbitals of both negative (bound) and positive (unbound) energies. 
 
-%\section{Theory}
 \section{Localization properties of the linear response actors in open systems}
-
-% We start by reviewing review the fundamental equations that govern the properties of an open quantum system in the linear response regime. We assume that our calculations are carried 
-% out within a highly complete real-space basis set that provides a precise description of the system in a finite computational domain. The purpose of the analysis is to determine the 
-% asymptotic behavior of the main building blocks of the LR in the long range. Then we discuss the relation between localization properties and dependence of the results of LR from the 
-% specific choice of the basis set and, in particular, from the dimension of the computation  domain. 
-% 
-% Linear response can be effectively applied to the analysis of the electronic excitations in molecular systems. In this framework one consider a system described by the Hamiltonian 
-% $\hnot$ and assume that the ground-state density $\dmnot$ has been provided. The linear response formalism allows us to evaluate the modification of the expectation value of a generic 
-% observable induced by a time-dependent perturbing field acting on the system. This quantity, written in the frequency domain, can be expressed through the evaluation of the 
-% \emph{linear response functional}
-% \be\lb{LinearResponseFunctDef1}
-% \braket{\delta\op O}(\omega) = \trace{\dm'(\omega)\op O} \;.
-% \ee
-% Here $\op O$ represents the observable\footnote{For a sake of concreteness, we are limiting our considerations to observables that do not explicitly depend on time} under inspection 
-% while the \emph{response density operator} $\dm'(\omega)$ describes the modification of the ground-state density induced by the perturbation. In the contest of the LR the response 
-% density satisfies an equation of motion written in the form of a quantum Liouville operator (for example see \cite{baroni2008}),
-% \be\lb{LiouvillianRhopomegaDef1}
-% \left(\omega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot} \;,
-% \ee
-% where $\op\Phi(\omega)$ represents the perturbing field acting on the system. 
 
 In this section we review the fundamental equations that govern the linear response regime of molecular-like systems in vacuum. Due to their intrinsic nature, this class of systems is 
 characterized by a potential energy localized in a finite region around system's atoms and free boundary conditions proper of the open systems are adopted, so the wave function is in 
@@ -250,12 +229,7 @@ and we have introduced the \emph{response density operator} $\dm'(\omega)$ that 
 
 The main objective of this section is to investigate the structure of the building blocks needed to express the response density operator. In particular, we are interested in clarifying 
 the behavior of the main actors of the LR in the long range, \emph{i.e.} outside from the support domain of the potential. 
-%Due to this analysis we aim to be able to understand if the objects we are dealing with behave as bound-state like functions or if 
-%This analysis allows us to establish comprehension of the type of objects one is dealing with when performing a LR calculation and 
 
-%in determining the long range behavior, \emph{i.e.} outside the support domain of the potential. This analysis  
-%Then we discuss the relation between localization properties and dependence of the results of LR from the specific choice of the basis set and, in particular, from the dimension of the computation domain. 
-%asymptotic behavior of the main building blocks of the LR in the 
 
 \subsection{Long range behavior of the eigenvalue solution of the Schroedinger equation}
 \label{SEopenSystem}
@@ -293,18 +267,6 @@ true system with open boundaries. For these class of objects the presence of a f
 Furthermore, the energies of the unbound orbitals are not stable with respect to a change of the size of the computational domain and approach to zero as long as it is increased.  
 
 
-% It is then meaningful to try to understand under 
-% which extent the computational-induced truncation of the natural open boundaries condition could produce observable effects on the physical quantities computed in the LR. 
-% A preliminary understanding of this problem can be achieved thanks to the results reported in \cite{boffi2016}. The authors of this paper discuss the effects of a finite basis set on the 
-% occupied and virtual orbitals of a molecular system and establish a clear correspondence between the orbital localization character, and the independence of its properties (\emph{e.g.} energy) 
-% with respect to the basis set. It is shown that (localized) orbitals with a bound-state behavior in the long range constitute a genuine discrete set and a finite basis is 
-% able to provide a reliable description of these states if the sampled domain contains their natural sizes. On the contrary, unbound (delocalized) orbitals form a continuum of states in the 
-% true system with open boundaries. For these class of objects the presence of a finite computational domain has a deeper impact since introduces a fictitious discretization of the energy levels. 
-% Furthermore, the energies of the unbound orbitals are not stable with respect to a change of the size of the computational domain and approach to zero as long as it is increased.  
-
-
-
-
 \subsection{Fluctuation states. A localization argument for the response density}
 \label{FluctuationState}
 
@@ -335,9 +297,15 @@ written as a modified Sternheimer equations \cite{mahan1980}
 \ee
 and we observe that the first-order Hamiltonian contains, apart from the perturbing field, a further term $\op V'[\dm']$ due to the density-dependence of $\hnot$.
 
-The interesting aspect of these equations in the perspective of the present analysis is that they allow us to present a localization argument for the fluctuation states using a procedure  
-analogous to the one depicted in section \ref{SEopenSystem}. So we split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term and express the solution of 
-\eqref{fluctuationStateEqMotion1} in the form of a self-consistent inhomogeneous Helmholtz equation
+\begin{figure}[t]
+\includegraphics[scale=0.56]{CO_alpha+D0_vsBoxSize.eps}
+\caption{\label{co_alphaStatic}(Color online) Convergence of the statical polarizability of the $CO$ with respect to the size of the computational domain.}
+\end{figure}
+
+% The interesting aspect of these equations in the perspective of the present analysis is that they allow us to present a localization argument for the fluctuation states using a procedure  
+% analogous to the one depicted in section \ref{SEopenSystem}. So we split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term and express the solution of 
+% \eqref{fluctuationStateEqMotion1} in the form of a self-consistent inhomogeneous Helmholtz equation
+The solution of equation \eqref{fluctuationStateEqMotion1} can be casted in the form of a self-consistent inhomogeneous Helmholtz equation
 \be\lb{rhoPrimeFluctuationStateDef2}
 \ket{f_p(\omega)} = \op G_H(\omega+\epsilon_p)\ket{s(\omega)} \;,
 \ee
@@ -345,67 +313,26 @@ where in this case the source term contains further addend apart from the unpert
 \be
 \ket{s(\omega)} =  \op V\ket{f_p(\omega)} + \op Q_0(\op V'(\omega) + \op \Phi(\omega))\ket{\psi_p} \;.\nn
 \ee
-% For open boundary conditions in three dimensions, the kernel of $\op G_H(\omega)$ in the coordinate representation reads: 
-% \be\lb{HelmholtzKernelDef1}
-% \bra{\r} \op G_H(\omega) \ket{\r'} = \frac{1}{4\pi} \begin{cases}
-% \frac{e^{-\alpha|\r - \r' |}}{|\r- \r' |} \;,\; & {\textrm for}\; \omega  < 0\; \\ 
-% \frac{e^{\ii \alpha |\r-\r' |}}{|\r-\r' |} \;, & {\textrm for} \; \omega \geq 0
-% \end{cases} \;,
-% \ee
-% where $\alpha = \sqrt{2|\omega|}$. 
-The localization character of fluctuation states can be determined by looking at the long range behavior of \eqref{rhoPrimeFluctuationStateDef2}.
-In this case it emerges that, for each value of $p$, the value $\omega = |\eps_p|$ represents the threshold level that govern the localization properties of the corresponding 
-fluctuation state. Indeed, for $\omega > |\eps_p|$,  $\op G_H(\omega)$ acts as a spherical wave kernel and  gives raise to a $f_p(\omega,\r)$ delocalized in the whole accessible space,
+The localization character of fluctuation states can be assessed by following the same argument discussed in section \ref{SEopenSystem} for the eigenstates of the SE. In this case 
+the source term depends also from the perturbation added to the system so this analysis applies only to the class of perturbing field for which $\ket{\op\Phi\psi_p}$ is localized, when projected
+in the $\r$-representation. 
+It emerges that, for each choice of $p$, the value $\omega = |\eps_p|$ represents the threshold level that govern the localization properties of the corresponding 
+fluctuation state. For $\omega > |\eps_p|$,  the Helmholtz kernel behaves as a spherical wave and  gives raise to a $f_p(\omega,\r)$ delocalized in the whole accessible space,
 whereas for $\omega < |\eps_p|$ the kernel contains an exponential damping factor and $f_p(\omega,\r)$ exhibit a bound-state behavior in the long range.   
 
-% \vspace{0.3cm}
-% \noindent{TODO: Add comment to support the localization below threshold}. Two possible way. First way, use the fact that the $\ket{f_p(0)}$ is the nothing but the $p$-\emph{th} 
-% eigenstate of the perturbed Hamiltonian with perturbing field $\op\Phi(0)$. The localization of $\ket{f_p(0)}$ can be explicitly checked by solving the ground-state problem for
-% this Hamiltonian. How to extended to finite values of $\omega$ below threshold? Second way. Try and iterative solution of the self-consistent Helmholtz equation (below threshold) 
-% starting from a localized guess for the fluctuation state. Then state something about the the fact that is reasonable to believe that (for a proper choice of the perturbing field)
-% the operators appearing in the source term keep its support compact. If we are able to state this in a appropriate way the localization argument below threshold hold. In my opinion
-% this way is better.
-% \vspace{0.3cm}
+A direct confirmation of the localization character of fluctuation states at $\omega=0$ can be achieved through a ground-state calculation. Indeed, $\ket{f_p(\omega)}$ are nothing but the 
+perturbed KS eigenstates projected out from the domain of $\dmnot$, so for a constant perturbation $\op\Phi_s$ it turns out that $\ket{f_p(0)} = \op Q_0\ket{\psi_p^{\Phi_s}}$. The perturbed KS 
+states $\ket{\psi_p^{\Phi_s}}$ can be computed (beyond LR) by performing a DFT ground-state computation in which the constant perturbing field is added to the external potential and the 
+spatial extension of the fluctuation states can be directly measured. 
+The results of this procedure for a $CO$ molecule subjected to a static electric field are reported in figure \ref{co_alphaStatic}. The local character of the fluctuation states at $\omega=0$ is 
+probed by verifying the convergence of the statical polarizability versus the size of the computational domain used to express the fluctuation states. The convergence rate is compared with the 
+one of the static dipole of the molecule computed at zero external field. The plots evidence that the typical sizes of $\ket{f_p(0)}$ are analogous to the ones of the unperturbed KS orbitals. 
 
-% The localization properties of fluctuation states allows us to assess the reliability of the linear response functional computed using the given basis set. Indeed, writing the response 
-% density in terms of fluctuation states implies that 
-% \be\lb{LinearResponseFunctDef2}
-% \braket{\delta\op O}(\omega) = 2\sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;,
-% \ee
-% so the computation of the linear response functional passes through the evaluation of the scalar products indicated in \eqref{LinearResponseFunctDef2}. We observe that there exists two 
-% distinct regimes, on the basis of value of $\omega$. The first one, which we will refer to as the \emph{below threshold regime}, is realized when $\omega$ is lower than the ionization 
-% potential $|\eps_h|$. In this case all the fluctuation states are below their threshold level and equation \eqref{LinearResponseFunctDef2} is expressed in terms of genuinely localized 
-% quantities\footnote{This consideration holds for the class of observables for which $\bra{\psi_p}\op O$ is a localized state  with bound-state behavior in the long range}, each of which 
-% possesses a physical cut-off radius. Due to this behavior we can affirm that given basis provides a reliable evaluation of \eqref{LinearResponseFunctDef2} if the chosen computational domain 
-% is suitable to express the bound-state like fluctuation states, in a analogous fashion of a ground state calculation. 
-% 
-% On the contrary, the computation of the linear response functional can be much more demanding in the \emph{above threshold regime}, realized for $\omega>|\eps_h|$, in which fluctuation 
-% states start behaving as unbound wave functions. In this case a computational description of fluctuation states is only meaningful in weak sense, \emph{i.e} inside the scalar products of 
-% \eqref{LinearResponseFunctDef2}, where the bound state character of $\{\bra{\psi_p}\op O\}$ behave as a regulator. This observation indicates that, above threshold, a computational setup 
-% provides a reliable assessment of \eqref{LinearResponseFunctDef2} only if it is able to express an unbiased description of the fluctuation states in the support of $\{\bra{\psi_p}\op O\}$. 
-% 
-% As an explicit example in support of these arguments we compare the absorption spectrum of a $CO$ molecule computed in three distinct real-space basis set, which differs for the dimension of 
-% the computational domain. Results reported in figure \ref{co_spectrum} evidences that the curves are almost coincident in the below threshold regime, whereas the effect of the computational 
-% setup are clearly visible for values of $\omega$ that exceed the threshold value. 
-% 
-% % This fact implies that a computational setup has different chances of providing a reliable assessment of the linear response functional \eqref{LinearResponseFunctDef2} depending
-% % to the value of $\omega$. 
-% % This observation has relevant consequence on the capability of a computational setup to provide a reliable assessment of the linear response functional....  
-% 
-% \begin{figure}
-% \includegraphics[scale=0.56]{co_spectrum.eps}
-% \caption{\label{co_spectrum}(Color online) Convergence below threshold of the $CO$ spectrum computed in different computational setup.}
-% \end{figure}
+\emph{(Tweet)} The analysis described in this section has shown that the building blocks of the response density $\{\ket{f_p(\omega)}\}$ possess the same long-range properties of the bound KS
+orbitals for $\omega < |\eps_p|$, while behave as unbound states for values of $\omega$ above the threshold levels. In the next section we will discuss the implication of the existence of these
+two distinct regimes on the numerical convergence of the observables computed within the LR framework. Before doing this we propose an analogous analysis with the aim to understand the localization 
+properties of the excitation-based description of the LR.
 
-\vspace{0.3cm}
-TODO: identify fluctuation states at $\omega=0$ as the $\op Q_0$ projection of the KS occupied orbitals of the system with the static perturbation explicitly added to the unperturbed Hamiltonian.
-Evidence the localized character of $f_p(0,\r)$ through the convergence of the value of the statical polarizability w.r.t the dimension of the box. Comment the result of figure \ref{co_alphaStatic}.   
-Insert citation of \cite{mahan1980}. 
-
-\begin{figure}
-\includegraphics[scale=0.56]{CO_alpha+D0_vsBoxSize.eps}
-\caption{\label{co_alphaStatic}(Color online) Convergence of the statical polarizability of the $CO$ with respect to the size of the computational domain.}
-\end{figure}
 
 \subsection{Excitation operators. The analytic structure of the susceptibility functional} %The spectrum of the Liouville superoperator
 
@@ -426,23 +353,19 @@ together with the operator orthonormalization condition %$\trace{\op{\tilde E}\o
 \be\lb{orthoExcitatioOpDef1}
 \trace{\op{\tilde E}_a\op E_b} = \delta_{ab}
 \ee
-The introduction of the excitation operators allows us to express the spectral decomposition of the resolvent of the Liouvillian so that:
-\be\lb{RhopExcitationDef1}
-\sop{{\cal \chi}}(\omega) \cdot   = \sum_{\{a\}} \op E_{a} \,
-\frac{\trace{\commutator{\dmnot}{\op{\tilde E}_a}\cdot}}{\omega-\Omega_a} \;.
-\ee 
-The analysis presented in this section aims to clarify the meaning of the formal sum over excitation expressed in \eqref{RhopExcitationDef1} (discrete sum? integral over a continuum?).   
-
-The properties of the Liouvillian superoperator (see appendix?) imply that excitations are transverse 
-operators so that $\op E_a = \dmnot\op E_a\op Q_0 + \op Q_0\op E_a\dmnot$. This condition allows us to introduce a dyadic representation of excitations as follows
+Excitations are transverse operators so that $\op E_a = \dmnot\op E_a\op Q_0 + \op Q_0\op E_a\dmnot$ and can be expressed through a dyadic representation as follows
 \begin{align}\lb{ExcitationOperatorsDef2}
 \op E_a &= \sum_p \left( \ket{\phi^a_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^a_p}\right)\;, \nn \\
 \op{\tilde E}_a = \commutator{\dmnot}{\op E^t_a} &= \sum_p \left( \ket{\psi_p}\bra{\phi^a_p} - \ket{\chi^a_p} \bra{\psi_p}\right)\;,
 \end{align}
-where we have defined the \emph{excited states} $\ket{\phi^a_p}$ and $\bra{\chi^a_p}$ that, by construction, are orthogonal to the occupied orbitals of $\hnot$. 
-
-We restrict our analysis assuming that a set of hypothesis commonly realized in DFT holds (symmetry of the transition basis, specify better? see appendix?). Equations 
-\eqref{ExcitationOperatorsDef1} can be recasted in the form of a Sternheimer-like equations for the excited states, that is   
+where we have defined the \emph{excited states} $\ket{\phi^a_p}$ and $\bra{\chi^a_p}$ that, by construction, are orthogonal to the occupied orbitals of $\hnot$. We observe that
+right eigenvalues of $\Liouv$ can be written in terms of the left ones due to the properties of the Liouvillian described in appendix \ref{LiouvillianAction}. 
+The introduction of the excitation operators allows us to express the spectral decomposition of the resolvent of the Liouvillian so that:
+\be\lb{RhopExcitationDef1}
+\sop{{\cal \chi}}(\omega) \cdot   = \sum_{\{a\}} \op E_{a} \,
+\frac{\trace{\op E_a^t\cdot}}{\omega-\Omega_a} \;.
+\ee 
+Equations \eqref{ExcitationOperatorsDef1} can be recasted in the form of a Sternheimer-like equations for the excited states, that is   
 \begin{align}\lb{ExcitationOperatorsDef3}
 &\left[\Omega_a-(\hnot - \eps_p)\right] \ket{\phi_p^a} = \op Q_0 \op V'[\op E_a] \ket{\psi_p} \;, \nn\\
 &\left[-\Omega_a-(\hnot - \eps_p)\right]\ket{\chi_p^a} = \op Q_0\op V'[\op E^t_a]\ket{\psi_p}  \;, 
@@ -451,8 +374,18 @@ and the orthonormalization condition \eqref{orthoExcitatioOpDef1} implies %among
 \be\lb{ExcitedStateOrthNormDef1}
 \sum_p \left(\brket{\phi_p^a}{\phi_p^b} - \brket{\chi_p^b}{\chi_p^a}\right) = \delta_{ab} \;. 
 \ee
-Equations \eqref{ExcitationOperatorsDef3} allows us to present a localization argument for the excited states using the same procedure adopted for fluctuation states in 
-section \ref{FluctuationState}. Pursing this strategy we present a formal solution of \eqref{ExcitationOperatorsDef3} as follows 
+%The analysis presented in this section aims to clarify the meaning of the formal sum over excitation expressed in \eqref{RhopExcitationDef1} (discrete sum? integral over a continuum?).   
+% We restrict our analysis assuming that a set of hypothesis commonly realized in DFT holds (symmetry of the transition basis, specify better? see appendix?). Equations 
+% \eqref{ExcitationOperatorsDef1} can be recasted in the form of a Sternheimer-like equations for the excited states, that is   
+% \begin{align}\lb{ExcitationOperatorsDef3}
+% &\left[\Omega_a-(\hnot - \eps_p)\right] \ket{\phi_p^a} = \op Q_0 \op V'[\op E_a] \ket{\psi_p} \;, \nn\\
+% &\left[-\Omega_a-(\hnot - \eps_p)\right]\ket{\chi_p^a} = \op Q_0\op V'[\op E^t_a]\ket{\psi_p}  \;, 
+% \end{align}
+% and the orthonormalization condition \eqref{orthoExcitatioOpDef1} implies %among the excitation operators is expressed as 
+% \be\lb{ExcitedStateOrthNormDef1}
+% \sum_p \left(\brket{\phi_p^a}{\phi_p^b} - \brket{\chi_p^b}{\chi_p^a}\right) = \delta_{ab} \;. 
+% \ee
+Once again we present a formal solution of \eqref{ExcitationOperatorsDef3} as follows 
 \begin{align}
 &\ket{\phi^a_p} = \op G_H(\Omega_a+\eps_p)\ket{s_{\phi}} \;, \nn \\
 &\ket{\chi^a_p} = \op G_H(-\Omega_a+\eps_p)\ket{s_{\chi}} \;,
@@ -543,16 +476,16 @@ We have explicitly separated the contributions of the localized and continuous e
 The elements of the first sector 
 correspond to \emph{true poles} of the susceptibility while the others can be interpreted only in terms of the spectral function. 
 
-\subsubsection*{Results of this section}
-
-From the theoretical analysis of the previous section we can made two statements:
-\begin{itemize}
- \item Fluctuation states, which constitute the building blocks of the response density, have a bound state-like character up to $\omega=|\eps_h|$ and behave as unbound delocalized
- wave functions for higher values of $\omega$. 
- \item The excitation landscape is composed of two sectors with distinct properties. The elements of the first one behave as localized, observable quantities and contribute as discrete 
- poles to the spectral decomposition of the susceptibility functional. The second sector contains a continuum of delocalized excitations which represents a tool to provide
- an effective representation of the spectral function. 
-\end{itemize}
+% \subsubsection*{Results of this section}
+% 
+% From the theoretical analysis of the previous section we can made two statements:
+% \begin{itemize}
+%  \item Fluctuation states, which constitute the building blocks of the response density, have a bound state-like character up to $\omega=|\eps_h|$ and behave as unbound delocalized
+%  wave functions for higher values of $\omega$. 
+%  \item The excitation landscape is composed of two sectors with distinct properties. The elements of the first one behave as localized, observable quantities and contribute as discrete 
+%  poles to the spectral decomposition of the susceptibility functional. The second sector contains a continuum of delocalized excitations which represents a tool to provide
+%  an effective representation of the spectral function. 
+% \end{itemize}
 
 % The introduction of the excitation operators allows us to express the susceptibility functional \eqref{SusceptibilityDef1} through the spectral decomposition of the resolvent of the 
 % Liouvillian. Pursuing this procedure provides:
@@ -713,13 +646,6 @@ continuum sector of the excitation spectrum is
 % of freedom. Excitation index becomes discrete and the basis provide a partial sampling of the continuum sector of the excitation landscape.    
 
 
-
-% Discuss the criterion for a good choice of the basis of transition. Computation of the statical polarizability in the LR formalism compared to the reference value obtained through a finite 
-% difference method. Remark the importance of using a systematic basis, only in this way the convergence of the statical polarizability turns out to be a meaningful criterion for the evaluation 
-% of the basis that sample the empty state space. Refer to the paper of....
-
-
-
 \section{Comments and conclusions}
 
 The analysis carried out starting from the representation of the linear response functional in terms of fluctuation states has evidenced some general properties of the linear response
@@ -727,39 +653,10 @@ for open systems. In particular, by analyzing the asymptotic behavior of fluctua
 $\omega<|\eps_h|$. Consequently we have argued that the linear response functional, in the same $\omega$ range, provides a setup-independent result with a modest computational effort... 
 
 \appendix
-\section{Left and right action of the Liouvillian superoperator}
+\section{Left and right action of the Liouvillian superoperator}\lb{LiouvillianAction}
 
-% The Liouvillian superoperator for self-consistent systems is expressed as the sum of the unperturbed part plus a coupling term due the density dependence of the ground-state Hamiltonian.
-% Its left action reads
-% \begin{align}\lb{LiouvillianLeftActionDef1}
-% \Liouv\op O &= \commutator{\hnot}{O} + \commutator{\op V'[\op O]}{\dmnot}  = \nn \\
-% &=  \commutator{\hnot}{O} + \op Q_0\op V'[\op O]\dmnot - \dmnot\op V'[\op O]\op Q_0 \;
-% \end{align}
-% thanks to the equivalence $\commutator{\dmnot}{\op O} = \dmnot \op O \op Q_0 - \op Q_0 \op O \dmnot$. 
-% It is also useful to define the scalar coupling kernel $U$
-% \be
-% U\left[\op O; \op O'\right] \equiv  \int \dd \r \dd \r' \trace{\op O \frac{\delta \hnot }{\delta \rho_0(\r,\r')}
-% } \trace{\op O' \ket{\r} \bra{\r'}} \;, \nn
-% \ee
-% that allows us to express $\op V'[\op O]$ as:
-% \be\lb{VpDef1}
-% \op V'[\op O]= 
-% \int \dd \r \dd \r' U\left[\ketbra{\r}{\r'};\op O\right] \ketbra{\r'}{\r}\;.
-% \ee
-% The right action of $\Liouv$ can be assessed through the equivalence $\trace{\op O'(\Liouv\op O)} = \trace{(\op O'\Liouv)\op O}$ and provides:
-% \be
-% \op O\Liouv = -\commutator{\hnot}{\op O} + \int \dd\r\dd\r'
-% U\left[\commutator{\dmnot}{\op O};\ketbra{\r'}{\r}\right]\ketbra{\r}{\r'} \;. \nn
-% \ee
-% Using the symmetry of the coupling kernel we have
-% \begin{align}%\lb{LiouvillianRightActionDef1}
-% \op O\Liouv &= -\commutator{\hnot}{\op O} + \nn \\ 
-% &+ \dmnot\op V'\left[\commutator{{\dmnot}}{\op O}\right]\op Q_0 + \op Q_0\op V'\left[\commutator{\dmnot}{\op O}\right]\dmnot 
-% \end{align}
-
-
-The Liouvillian superoperator $\Liouv$ for self-consistent systems is expressed as the sum of the unperturbed part plus a coupling term due
-the density dependence of the ground-state Hamiltonian. The left action of these terms reads, respectively
+The Liouvillian superoperator $\Liouv$ for self-consistent systems is expressed as the sum of the unperturbed part plus a coupling term. The left action of these 
+terms reads, respectively
 \be\lb{LiouZeroDef1}
 \Liouvnot \op O = \commutator{\hnot}{O} \;,
 \ee
@@ -767,7 +664,8 @@ and
 \be\lb{CouplDef1}
 \coupl\op O = \commutator{\op V'[\op O]}{\dmnot}  = \op Q_0\op V'[\op O]\dmnot - \dmnot\op V'[\op O]\op Q_0 \;.
 \ee
-Here $\op V'$ can be conveniently expressed by defining the \emph{scalar coupling kernel}
+$\op V'$ expresses the perturbation induced by the density dependence on ground state Hamiltonian and can be conveniently expressed by defining the 
+\emph{scalar coupling kernel}
 \be
 U\left[\op O; \op O'\right] \equiv  \int \dd \r \dd \r' \trace{\op O \frac{\delta \hnot }{\delta \rho_0(\r,\r')}
 } \trace{\op O' \ket{\r} \bra{\r'}} \;, \nn
@@ -783,13 +681,14 @@ The right action of $\Liouv$ can be assessed through the equivalence $\trace{\op
 \op O\Liouv = -\commutator{\hnot}{\op O} + \int \dd\r\dd\r'
 U\left[\commutator{\dmnot}{\op O};\ketbra{\r'}{\r}\right]\ketbra{\r}{\r'} \;. \nn
 \ee
-In the cases relevant for the present analysis the coupling kernel is symmetric with respect to the exchange of its arguments so
+In the cases relevant for the present analysis the coupling kernel is symmetric with respect to the exchange of its arguments so also the right action of the 
+Liouvillian is expressed in terms of $\op V'$, as follows
 \begin{align}\lb{LiouvillianRightActionDef1}
 \op O\Liouv &= -\commutator{\hnot}{\op O} + V'\left[\commutator{{\dmnot}}{\op O}\right] = -\commutator{\hnot}{\op O} + \nn \\ 
-&+ \dmnot\op V'\left[\commutator{{\dmnot}}{\op O}\right]\op Q_0 + \op Q_0\op V'\left[\commutator{\dmnot}{\op O}\right]\dmnot \;, 
+&+ \dmnot\op V'\left[\commutator{{\dmnot}}{\op O}\right]\op Q_0 + \op Q_0\op V'\left[\commutator{\dmnot}{\op O}\right]\dmnot \;.
 \end{align}
-where in the last equivalence we have made usage of the transverse property of the coupling superoperator. Formula \eqref{LiouZeroDef1},\eqref{CouplDef1}
-and \eqref{LiouvillianRightActionDef1} are the starting point for the solution of the eigenvalues equations \eqref{ExcitationOperatorsDef1}. 
+In the last equivalence we have made usage of the transverse property (see equation \eqref{RhopTransverseDef1}) of the coupling superoperator. Formula 
+\eqref{LiouZeroDef1},\eqref{CouplDef1} and \eqref{LiouvillianRightActionDef1} are the starting point for the solution of the eigenvalues equations \eqref{ExcitationOperatorsDef1}. 
 
 \section{Casida equations}
 
