@@ -157,26 +157,29 @@ Here also, a plethora of computational approaches exist, that employ different n
 basis sets, and it will be of great importance to identify quantities that can be ``measured'' in a given model, to assess
 and quantify their computational uncertainty.
 
-Moreover, wheareas for Ground-State calculations the quantities are relatively easy to identify and extract,
-TD-DFT and more generally, linear-response calculation present a further difficulty, which is the problem
-of \emph{numerical} convergence. In other terms, beyond ground state, 
-the absence of tools like the variational theorem imposes us to focus on \emph{well-defined} quantites,
-and to study the conditions under which numerical convergence of the results can be achieved.
-
 In this paper, we focus our attention to Linear-Response treatments of \emph{molecular} systems, 
 in particular referring to LR-TDDFT calculation. We will investigate the impact that 
-\emph{open} (i.e. Isolated) Boundary Conditions (BC) that have to be imposed to the system will have on the numerical convergence of LR quantites.
-In particular, we will discuss the interplay between the numerical convergence of LR quantities and the \emph{locality}
-of the related objects.
-In order to do this, we perform analytic considerations on the equations beyond LR treatment,
-which will help us identifying how to distinguish -- \textit{a priori} -- quantities that are susceptible to be 
-compared among different treatments, as they are \emph{intrinsically} associated to localized objects,
-from quantities that \emph{explicitly} depend of the the employed computational treatment.
+\emph{open} (i.e. Isolated) Boundary Conditions (BC) that have to be imposed to the system will have on the computational evaluation of LR quantites.
+In order to do this, we perform analytic considerations on the equations beyond LR treatment.
+Such considerations will enable us to distinguish quantities that \textit{a priori} can be compared among different treatments - and therefore tested for reproducibility - 
+from others that would \emph{explicitly} depend of the the employed computational treatment. 
+In particular, we will discuss the interplay between reproducible LR quantities and the \emph{locality} of the related objects.
+% In order to do this, we perform analytic considerations on the equations beyond LR treatment,
+% which will help us identifying how to distinguish -- \textit{a priori} -- quantities that are susceptible to be 
+% compared among different treatments, as they are \emph{intrinsically} associated to localized objects,
+% from quantities that \emph{explicitly} depend of the the employed computational treatment.
 
-Our consideration will allso reveal useful for the understanding of the \emph{analytic structure} of LR quantities like
+Our considerations will also reveal useful for the understanding of the \emph{analytic structure} of LR quantities like
 the linear susceptibility of the system (i.e. the \emph{reducible} polarizability).
 Altough we refer, as anticipated, to TDDFT models, such considerations might also be transposed to Many-Body Perturbation Theory
 approaches, in the context Quasi-Particle equations.
+
+% Moreover, wheareas for Ground-State calculations the quantities are relatively easy to identify and extract,
+% TD-DFT and more generally, linear-response calculation present a further difficulty, which is the problem
+% of \emph{numerical} convergence. In other terms, beyond ground state, 
+% the absence of tools like the variational theorem imposes us to focus on \emph{well-defined} quantites,
+% and to study the conditions under which numerical convergence of the results can be achieved.
+
 
 
 % The subject of the present investigation concerns with the study of isolated molecular-like systems subjected to a time-dependent perturbation. % in the linear response regime.
@@ -215,6 +218,83 @@ approaches, in the context Quasi-Particle equations.
 %\section{Theory}
 \section{Localization properties of the linear response actors in open systems}
 
+Let us start our discussion by revisting the impact that the Isolated BC have on the 
+solutions of the time-independent Schr\"odinger Equation.
+We here present well-known concepts of elementary quantum mechanics, under a perspective that
+will turn out to be very useful in the forthcoming considerations about linear-response quantities.
+
+\subsection{Long range behavior of the eigenvalue solution of the Schroedinger equation}
+\label{SEopenSystem}
+Consider a (one-body) wavefunction $\ket{\psi}$ solution of the equation
+$\op H\ket{\psi}=\eps\ket{\psi}$, where we split the Hamiltonian operator into the sum of
+a kinetic $\op T$ and a potential $\op V \equiv \op H - \op T$ term.
+In view of analysing the impact of the BC, it is instructive to transform 
+the Schroedinger Equation in a \emph{scattering} problem, by writing
+\be\lb{SEHelmholtz1}
+\ket{\psi} = \op G_H(\eps)\ket{\op V\psi}\;,
+\ee
+where we have introduced the Green function of the Helmholtz operator $\op G_H(\eps) = (\eps-\op T)^{-1}$,
+resolvent of the free-particle hamltonian $H_s \equiv \op T$.
+
+When describing the Ground State of a molecule, we suppose that the potential operator, even if non-local,
+is associated to real-space elements $\bra{\r} \op V \ket{\r'}$ that can be considered as nonzero only on a
+bounded domain. In other terms, a molecule can be associated to a ``scatterer'' that has a \emph{finite} 
+spatial extension; if a state $\ket{\psi}$ is localized, it will be the same for the ket $\ket{\op V \psi}$, though 
+perhaps in a larger region.
+For a computational treatment of the problem, this property is fundamental in the 
+choice of the numerical treatment; we know that basis functions that are tailored to express asymptotically vanishing 
+wavefunctions are better suited for the solution of the problem.
+
+This fact is made apparent by the expression of 
+the kernel of $\op G_H(\eps)$ in the coordinate representation. 
+When dealing with Isolated BC, it is easy to see that the solution of Eq.~\eqref{SEHelmholtz1}
+can be expressed by:
+\be\lb{HelmholtzKernelDef1}
+\bra{\r} \op G_H(\eps) \ket{\r'} = \frac{1}{4\pi} \begin{cases}
+\frac{e^{-\alpha|\r - \r' |}}{|\r- \r' |} \;,\; & {\textrm for}\; \eps  < 0\; \\ 
+\frac{e^{\ii \alpha |\r-\r' |}}{|\r-\r' |} \;, & {\textrm for} \; \eps \geq 0
+\end{cases} \;,
+\ee
+where $\alpha = \sqrt{2|\eps|}$. 
+
+From the above expressions we can see that, \emph{for molecular systems},
+the value $\epsilon=0$
+represents a \emph{threshold}~\footnote{The threshold value in general should correspond to asymptotic value of the potential at infinity.} 
+energy that separates two different classes of solutions.
+Negative-energy solutions are \emph{localized}, i.e. they exhibit bound-state behaviour far away from the scatterer.
+These are \emph{bound} states and, by means of their normalizability, they are associated to \emph{discrete}, well-defined energies.
+The bound states can be of course labelled by quantum numbers that are defined by the properties of the scatterer, namely the
+symmetries of the potential $\op V$.
+In a computational discretization of the Schroedinger equation, such states can be in principle expressed with arbitrary precision, 
+provided that the numerical treatment offers the adequate level of completeness. 
+Being discrete and well-identified, the bound-state energies are a property of the molecule and can be associated to \emph{observable}
+quantities. The values of their energies can be compared among different treatments and it is in principle possible to
+provide reference results on them.
+
+
+On the other hand, positive energy solutions behave differently. 
+Even though the potential is localized, their positive energy makes them behave 
+as spherical waves and its convolution with the source term  gives raise to a delocalized wavefunction $\psi(\r)$ 
+in the whole accessible space.
+As they cannot be normalized they belong to the essential spectrum of the hamiltonian operator and form a \emph{continuum} of states.
+Thanks to the Lippman-Schwinger relation of Eq.~\eqref{SEHelmholtz1} they can be put in bijection with the eigenstates of the 
+free-particle hamiltonian $\op H_s$. We may say that their quantum numbers are determined by the Laplacian operator, 
+regardless of the particular features of the potential.
+
+It is easy to see from these concepts that a computational treatment that is tailored for the discretization of bound states
+will not be effective for continuum states, due to the different long-range asymptotic behaviour - which in turn is a clear consequence of the 
+BC of the problem. In a numerical treatment, states with $\epsilon > 0$ will have a value of their energy that will \emph{always}
+depend on the computational setup.
+
+A direct numerical evidence of this problem has been discussed in \cite{boffi2016}. The authors of this paper analyze the effects of a finite basis set on the 
+occupied and virtual orbitals of a molecular system and establish a clear correspondence between the orbital localization character, and the independence of its properties (\emph{e.g.} energy) 
+with respect to the basis set. It is shown that (localized) orbitals with a bound-state behavior in the long range constitute a genuine discrete set and a finite basis is 
+able to provide a reliable description of these states if the sampled domain contains their natural sizes. On the contrary, unbound (delocalized) orbitals form a continuum of states in the 
+true system with open boundaries. For these class of objects the presence of a finite computational domain has a deeper impact since introduces a fictitious discretization of the energy levels. 
+Furthermore, the energies of the unbound orbitals are not stable with respect to a change of the size of the computational domain and approach to zero as long as it is increased.  
+
+
+
 % We start by reviewing review the fundamental equations that govern the properties of an open quantum system in the linear response regime. We assume that our calculations are carried 
 % out within a highly complete real-space basis set that provides a precise description of the system in a finite computational domain. The purpose of the analysis is to determine the 
 % asymptotic behavior of the main building blocks of the LR in the long range. Then we discuss the relation between localization properties and dependence of the results of LR from the 
@@ -235,9 +315,9 @@ approaches, in the context Quasi-Particle equations.
 % \ee
 % where $\op\Phi(\omega)$ represents the perturbing field acting on the system. 
 
-In this section we review the fundamental equations that govern the linear response regime of molecular-like systems in vacuum. Due to their intrinsic nature, this class of systems is 
-characterized by a potential energy localized in a finite region around system's atoms and free boundary conditions proper of the open systems are adopted, so the wave function is in 
-principle free to explore the whole space.  
+% In this section we review the fundamental equations that govern the linear response regime of molecular-like systems in vacuum. Due to their intrinsic nature, this class of systems is 
+% characterized by a potential energy localized in a finite region around system's atoms and free boundary conditions proper of the open systems are adopted, so the wave function is in 
+% principle free to explore the whole space.  
 
 Linear response can be effectively applied to the analysis of the electronic excitations in open systems. In this framework one consider the unperturbed Hamiltonian $\hnot$ and assume that 
 the ground-state density $\dmnot$ has been provided. The linear response formalism allows us to evaluate the modification of the expectation value of a generic observable induced by a 
@@ -257,40 +337,33 @@ the behavior of the main actors of the LR in the long range, \emph{i.e.} outside
 %Then we discuss the relation between localization properties and dependence of the results of LR from the specific choice of the basis set and, in particular, from the dimension of the computation domain. 
 %asymptotic behavior of the main building blocks of the LR in the 
 
-\subsection{Long range behavior of the eigenvalue solution of the Schroedinger equation}
-\label{SEopenSystem}
 
-As a preliminary step for the forthcoming discussion we present a simple argument that allows us to determine the asymptotic character of the eigenvalue solution of the Schroedinger equation (SE) 
-$\op H\ket{\psi}=\eps\ket{\psi}$. The main aims of this analysis, apart from reproducing the well known behavior of the wave functions, is to introduce some tools and setting up notations and 
-terminology that will we widely used in the rest of the paper. 
 
-The argument proceeds by splitting the Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term. Since we are dealing with molecular-like systems $\op V$ has a compact support when 
-projected in the $\r$-representation. We can formally solve the SE as an inhomogeneous Helmholtz equation by writing
-\be\lb{SEHelmholtz1}
-\ket{\psi} = \op G_H(\eps)\ket{\op V\psi}\;,
-\ee
-where we have introduced the Green function of the Helmholtz operator $\op G_H(\eps) = (\eps-\op T)^{-1}$. We observe that, due to the properties of $\op V$, the \emph{source term} $\ket{\op V\psi}$ 
-of equation \eqref{SEHelmholtz1} is localized in space and, for open boundary conditions in three dimensions, the kernel of $\op G_H(\eps)$ in the coordinate representation reads: 
-\be\lb{HelmholtzKernelDef1}
-\bra{\r} \op G_H(\eps) \ket{\r'} = \frac{1}{4\pi} \begin{cases}
-\frac{e^{-\alpha|\r - \r' |}}{|\r- \r' |} \;,\; & {\textrm for}\; \eps  < 0\; \\ 
-\frac{e^{\ii \alpha |\r-\r' |}}{|\r-\r' |} \;, & {\textrm for} \; \eps \geq 0
-\end{cases} \;,
-\ee
-where $\alpha = \sqrt{2|\eps|}$. 
-This representation of the eigenvalues solution of the SE evidences that the value $\eps=0$ represents the threshold level that determines the asymptotic character of the wave functions. 
-Indeed, for $\eps > 0$,  $\op G_H(\eps)$ behaves as a spherical wave and its convolution with the source term  gives raise to a $\psi(\r)$ delocalized in the whole accessible space. Instead, 
-for values of $\eps < 0$, the kernel contains an exponential damping factor and the associated wave functions exhibit a bound-state behavior in the long range. Finally, we observe that the 
-square-integrability and the continuity of the wave function and its derivatives poses further constrains responsible for the discretization of the energy spectrum for bound-states.  
-
-The different asymptotic behavior of the wave functions has a deep impact on the possible computational induced error obtained when this quantities are evaluated using a (finite) computational
-setup. 
-A direct numerical evidence of this problem has been discussed in \cite{boffi2016}. The authors of this paper analyze the effects of a finite basis set on the 
-occupied and virtual orbitals of a molecular system and establish a clear correspondence between the orbital localization character, and the independence of its properties (\emph{e.g.} energy) 
-with respect to the basis set. It is shown that (localized) orbitals with a bound-state behavior in the long range constitute a genuine discrete set and a finite basis is 
-able to provide a reliable description of these states if the sampled domain contains their natural sizes. On the contrary, unbound (delocalized) orbitals form a continuum of states in the 
-true system with open boundaries. For these class of objects the presence of a finite computational domain has a deeper impact since introduces a fictitious discretization of the energy levels. 
-Furthermore, the energies of the unbound orbitals are not stable with respect to a change of the size of the computational domain and approach to zero as long as it is increased.  
+% As a preliminary step for the forthcoming discussion we present a simple argument that allows us to determine the asymptotic character of the eigenvalue solution of the Schroedinger equation (SE) 
+% $\op H\ket{\psi}=\eps\ket{\psi}$. The main aims of this analysis, apart from reproducing the well known behavior of the wave functions, is to introduce some tools and setting up notations and 
+% terminology that will we widely used in the rest of the paper. 
+% 
+% The argument proceeds by splitting the Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term. Since we are dealing with molecular-like systems $\op V$ has a compact support when 
+% projected in the $\r$-representation. We can formally solve the SE as an inhomogeneous Helmholtz equation by writing
+% \be\lb{SEHelmholtz1}
+% \ket{\psi} = \op G_H(\eps)\ket{\op V\psi}\;,
+% \ee
+% where we have introduced the Green function of the Helmholtz operator $\op G_H(\eps) = (\eps-\op T)^{-1}$. We observe that, due to the properties of $\op V$, the \emph{source term} $\ket{\op V\psi}$ 
+% of equation \eqref{SEHelmholtz1} is localized in space and, for open boundary conditions in three dimensions, the kernel of $\op G_H(\eps)$ in the coordinate representation reads: 
+% \be\lb{HelmholtzKernelDef1}
+% \bra{\r} \op G_H(\eps) \ket{\r'} = \frac{1}{4\pi} \begin{cases}
+% \frac{e^{-\alpha|\r - \r' |}}{|\r- \r' |} \;,\; & {\textrm for}\; \eps  < 0\; \\ 
+% \frac{e^{\ii \alpha |\r-\r' |}}{|\r-\r' |} \;, & {\textrm for} \; \eps \geq 0
+% \end{cases} \;,
+% \ee
+% where $\alpha = \sqrt{2|\eps|}$. 
+% This representation of the eigenvalues solution of the SE evidences that the value $\eps=0$ represents the threshold level that determines the asymptotic character of the wave functions. 
+% Indeed, for $\eps > 0$,  $\op G_H(\eps)$ behaves as a spherical wave and its convolution with the source term  gives raise to a $\psi(\r)$ delocalized in the whole accessible space. Instead, 
+% for values of $\eps < 0$, the kernel contains an exponential damping factor and the associated wave functions exhibit a bound-state behavior in the long range. Finally, we observe that the 
+% square-integrability and the continuity of the wave function and its derivatives poses further constrains responsible for the discretization of the energy spectrum for bound-states.  
+% 
+% The different asymptotic behavior of the wave functions has a deep impact on the possible computational induced error obtained when this quantities are evaluated using a (finite) computational
+% setup. 
 
 
 % It is then meaningful to try to understand under 
