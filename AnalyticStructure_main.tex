@@ -293,22 +293,30 @@ true system with open boundaries. For these class of objects the presence of a f
 Furthermore, the energies of the unbound orbitals are not stable with respect to a change of the size of the computational domain and approach to zero as long as it is increased.  
 
 
+\subsection{Fluctuation states. A localization argument for the response density}
+It is evident that the arguments presented in the above section have a limited interest for the study
+of Ground State quantities of molecules. By definition, all these quantities can be expressed as a 
+functional which \emph{entirely} depends on bound states. As an illustration it is sufficient to recall
+the Hohenberg-Kohn theorem that states that the Ground-State (GS) energy is a functional of the GS
+charge density $\dmnot$. For molecular systems that are electronically stable (i.e. no anionic or metastable configurations),
+such quantity is localized, in the sense of the above section. Stated otherwise, 
+\emph{there is no need to express efficiently any portion of the continuum spectrum} to have a reliable GS treatment of molecules.
 
-% In this section we review the fundamental equations that govern the linear response regime of molecular-like systems in vacuum. Due to their intrinsic nature, this class of systems is 
-% characterized by a potential energy localized in a finite region around system's atoms and free boundary conditions proper of the open systems are adopted, so the wave function is in 
-% principle free to explore the whole space.  
-
-Linear response can be effectively applied to the analysis of the electronic excitations in open systems. In this framework one consider the unperturbed Hamiltonian $\hnot$ and assume that 
-the ground-state density $\dmnot$ has been provided. The linear response formalism allows us to evaluate the modification of the expectation value of a generic observable induced by a 
-time-dependent perturbing field acting on the system. This quantity, written in the frequency domain, can be expressed through the evaluation of the \emph{linear response functional}
+Let us now inspect the case of LR calculations.
+%Linear response can be effectively applied to the analysis of the electronic excitations in open systems.
+In this framework one consider the unperturbed Hamiltonian $\hnot$ and assume that 
+the GS density $\dmnot$ is accessible and expressed in a given computational treatment. 
+The linear response formalism allows us to evaluate the modification of the expectation value of a generic observable induced by a 
+time (or frequency)-dependent perturbing field $\op\Phi(\omega)$ acting on the system. 
+This quantity, written in the frequency domain, can be expressed through the evaluation of the \emph{linear response functional}
 \be\lb{LinearResponseFunctDef1}
-\braket{\delta\op O}(\omega) = \trace{\dm'(\omega)\op O} \;,
+\braket{\delta\op O}_\Phi(\omega) = \trace{\dm'_\Phi(\omega)\op O} \;,
 \ee
 where $\op O$ represents the observable\footnote{For a sake of concreteness, we are limiting our considerations to observables that do not explicitly depend on time} under inspection 
-and we have introduced the \emph{response density operator} $\dm'(\omega)$ that codifies the modification of the ground-state density induced by the perturbation. 
+and we have introduced the \emph{response density operator} $\dm'_\Phi(\omega)$ that codifies the modification of $\dmnot$ induced by the perturbation $\op\Phi(\omega)$. 
 
-The main objective of this section is to investigate the structure of the building blocks needed to express the response density operator. In particular, we are interested in clarifying 
-the behavior of the main actors of the LR in the long range, \emph{i.e.} outside from the support domain of the potential. 
+%The main objective of this section is to investigate the structure of the building blocks needed to express the response density operator. In particular, we are interested in clarifying 
+%the behavior of the main actors of the LR in the long range, \emph{i.e.} outside from the support domain of the potential. 
 
 
 
@@ -340,33 +348,36 @@ the behavior of the main actors of the LR in the long range, \emph{i.e.} outside
 % setup. 
 
 
-\subsection{Fluctuation states. A localization argument for the response density}
+
 \label{FluctuationState}
 
-The response density operator is expressed as the first-order variation of ground state density $\sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}$, where the set $\{\ket{\psi_p}\}$ denote the 
-occupied states, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with energy $\eps_p$ lower than the Fermi level. Using this notation we denote the energy of the HOMO level 
-as $\eps_h$ and identify the value of the first ionization potential with $|\eps_h|$. In what follows we will assume that the set of states $\{\ket{\psi_p}\}$ are described by real 
-functions, when projected in the $\r$-representation.  
+The response density operator is expressed as the first-order variation of $\dmnot=\sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}$, where the set $\{\ket{\psi_p}\}$ denote the 
+occupied states, \emph{i.e} the subset of the bound eigenstates\footnote{In what follows we will assume that the set of states $\{\ket{\psi_p}\}$ are described by real 
+functions, when projected in the $\r$-representation.} of $\hnot$ with energy $\eps_p$ lower than the Fermi level. Using this notation we denote the energy of the HOMO level 
+as $\eps_h$ and identify the value of the first ionization potential with $|\eps_h|$. 
 
 In the contest of the LR the response density satisfies an equation of motion written in the form of a quantum Liouville operator (for example see \cite{baroni2008})
 \be\lb{LiouvillianRhopomegaDef1}
 \left(\omega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot} \;,
 \ee
-where $\op\Phi(\omega)$ represents the perturbing field. The inspection of the linear order time evolution of the eigenstates of $\hnot$ evidence that the response density acts as a transition 
+where $\op\Phi(\omega)$ represents the perturbing field. 
+The inspection of the linear order time evolution of the eigenstates of $\hnot$ evidence that the response density acts as a transition 
 operator, linking the occupied and empty subspaces of $\hnot$, and satisfies the \emph{transverse} condition  
 \be\lb{RhopTransverseDef1}
 \dm' = \dm_{\perp} \doteq \dmnot\dm'\op Q_0 + \op Q_0\dm'\dmnot \;,
 \ee
-where $\op Q_0=\identity-\dmnot$ is the projector in the subspace orthogonal to the occupied states of $\hnot$. Due to this fact it is possible to introduce an explicit representation of the 
-response density as follows 
+where $\op Q_0=\identity-\dmnot$ is the projector in the subspace orthogonal to the occupied states of $\hnot$. 
+Due to this fact we can introduce an explicit representation of the 
+response density parametrized as
 \be\lb{rhoPrimeFluctuationStateDef1}
-\dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;.
+\dm'_\Phi(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p^\Phi(-\omega)} + \ketbra{f_p^\Phi(\omega)}{\psi_p}\right) \;.
 \ee
-Here we have defined the set of $\omega$-dependent \emph{fluctuation states} $\{\ket{f_p(\omega)}\}$, that span the empty subspace of $\hnot$. 
+Here we have introduced the set of $\omega$-dependent \emph{fluctuation states} $\{\ket{f_p^\Phi(\omega)}\}$, 
+that have values in the \emph{unoccupied} subspace of $\hnot$. 
 An analysis of the Liouville equation \eqref{LiouvillianRhopomegaDef1} for the response density written in this fashion evidences that the equations of motion of fluctuation states are 
 written as a modified Sternheimer equations \cite{mahan1980}
 \be\lb{fluctuationStateEqMotion1}
-\left[\omega - (\hnot-\eps_p)\right]\ket{f_p(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'[\dm'])\ket{\psi_p} \;,
+\left[\omega - (\hnot-\eps_p)\right]\ket{f_p^\Phi(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'[\dm'])\ket{\psi_p} \;,
 \ee
 and we observe that the first-order Hamiltonian contains, apart from the perturbing field, a further term $\op V'[\dm']$ due to the density-dependence of $\hnot$.
 
@@ -378,17 +389,22 @@ and we observe that the first-order Hamiltonian contains, apart from the perturb
 % The interesting aspect of these equations in the perspective of the present analysis is that they allow us to present a localization argument for the fluctuation states using a procedure  
 % analogous to the one depicted in section \ref{SEopenSystem}. So we split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term and express the solution of 
 % \eqref{fluctuationStateEqMotion1} in the form of a self-consistent inhomogeneous Helmholtz equation
-The solution of equation \eqref{fluctuationStateEqMotion1} can be casted in the form of a self-consistent inhomogeneous Helmholtz equation
+It is easy to see that the solution of equation \eqref{fluctuationStateEqMotion1} can be casted in the form of
+a set of scattering problems:
+%a self-consistent inhomogeneous Helmholtz equation
 \be\lb{rhoPrimeFluctuationStateDef2}
-\ket{f_p(\omega)} = \op G_H(\omega+\epsilon_p)\ket{s(\omega)} \;,
+\ket{f_p^\Phi(\omega)} = \op G_H(\omega+\epsilon_p)\ket{s_p^\Phi(\omega)} \;,
 \ee
-where in this case the source term contains further addend apart from the unperturbed potential and reads:
+with:%here in this case the source term contains further addend apart from the unperturbed potential and reads:
 \be
-\ket{s(\omega)} =  \op V\ket{f_p(\omega)} + \op Q_0(\op V'(\omega) + \op \Phi(\omega))\ket{\psi_p} \;.\nn
+\ket{s_p^\Phi(\omega)} =  \op V\ket{f_p^\Phi(\omega)} + \op Q_0(\op V'(\omega) + \op \Phi(\omega))\ket{\psi_p} \;.\nn
 \ee
-The localization character of fluctuation states can be assessed by following the same argument discussed in section \ref{SEopenSystem} for the eigenstates of the SE. In this case 
-the source term depends also from the perturbation added to the system so this analysis applies only to the class of perturbing field for which $\ket{\op\Phi\psi_p}$ is localized, when projected
-in the $\r$-representation. 
+As a stringent hypothesis, 
+let us now assume that the operator $\op Q_0(\op V'(\omega) + \op \Phi(\omega))$ is, line $\op V$ nonzero on a bounded real-space domain.
+%The localization character of fluctuation states can be assessed by following the same argument discussed in section \ref{SEopenSystem} for the eigenstates of the SE. In this case 
+%the source term depends also from the perturbation added to the system so this analysis applies only to the class 
+%of perturbing field for which $\ket{\op\Phi\psi_p}$ is localized, when projected
+%in the $\r$-representation. 
 It emerges that, for each choice of $p$, the value $\omega = |\eps_p|$ represents the threshold level that govern the localization properties of the corresponding 
 fluctuation state. For $\omega > |\eps_p|$,  the Helmholtz kernel behaves as a spherical wave and  gives raise to a $f_p(\omega,\r)$ delocalized in the whole accessible space,
 whereas for $\omega < |\eps_p|$ the kernel contains an exponential damping factor and $f_p(\omega,\r)$ exhibit a bound-state behavior in the long range.   
