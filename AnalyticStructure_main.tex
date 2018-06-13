@@ -358,13 +358,13 @@ as $\eps_h$ and identify the value of the first ionization potential with $|\eps
 
 In the contest of the LR the response density satisfies an equation of motion written in the form of a quantum Liouville operator (for example see \cite{baroni2008})
 \be\lb{LiouvillianRhopomegaDef1}
-\left(\omega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot} \;,
+\left(\omega - \Liouv\right) \dm'_\Phi(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot} \;,
 \ee
 where $\op\Phi(\omega)$ represents the perturbing field. 
 The inspection of the linear order time evolution of the eigenstates of $\hnot$ evidence that the response density acts as a transition 
 operator, linking the occupied and empty subspaces of $\hnot$, and satisfies the \emph{transverse} condition  
 \be\lb{RhopTransverseDef1}
-\dm' = \dm_{\perp} \doteq \dmnot\dm'\op Q_0 + \op Q_0\dm'\dmnot \;,
+\dm'_\Phi = \dm_{\perp} \doteq \dmnot\dm'_\Phi\op Q_0 + \op Q_0\dm'_\Phi\dmnot \;,
 \ee
 where $\op Q_0=\identity-\dmnot$ is the projector in the subspace orthogonal to the occupied states of $\hnot$. 
 Due to this fact we can introduce an explicit representation of the 
@@ -445,33 +445,68 @@ the size of the computational domain used to express the fluctuation states. The
 one of the static dipole of the molecule computed at zero external field. 
 The plots evidence that the typical sizes of $\ket{f_p(0)}$ are analogous to the ones of the unperturbed KS orbitals. 
 
-\emph{(Tweet)} The analysis described in this section has shown that the building blocks of the response density $\{\ket{f_p(\omega)}\}$ possess the same long-range properties of the bound KS
-orbitals for $\omega < |\eps_p|$, while behave as unbound states for values of $\omega$ above the threshold levels. In the next section we will discuss the implication of the existence of these
-two distinct regimes on the numerical convergence of the observables computed within the LR framework. Before doing this we propose an analogous analysis with the aim to understand the localization 
-properties of the excitation-based description of the LR.
-
 \subsection{Strong and weak convergence}
 
-The localization properties of fluctuation states allows us to assess the reliability of the linear response functional computed using the given basis set. Indeed, writing the response 
+The analysis described above has shown that the building blocks of the response density $\{\ket{f_p(\omega)}\}$ 
+are susceptible to exhibit bound-state long-range behaviour \emph{only} when $\omega < |\eps_p|$, 
+while they behave as unbound states for values of $\omega$ above the threshold levels.
+
+This fact has interesting implication in the evaluation of LR quantities.
+%
+% In the next section we will discuss the implication of the existence of these
+% two distinct regimes on the numerical convergence of the observables computed within the LR framework. 
+% Before doing this we propose an analogous analysis with the aim to understand the localization 
+% properties of the excitation-based description of the LR.
+% 
+% The localization properties of fluctuation states allows us to assess the reliability of the linear response functional
+% computed using the given basis set. 
+%
+Indeed, writing the response 
 density in terms of fluctuation states implies that 
 \be\lb{LinearResponseFunctDef2}
-\braket{\delta\op O}(\omega) = 2\sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;,
+\braket{\delta\op O}_\Phi(\omega) = 2\mathrm{Re} \left(\sum_p \bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}\right) \;.
 \ee
-so the computation of the linear response functional passes through the evaluation of the scalar products indicated in \eqref{LinearResponseFunctDef2}. We observe that there exists two 
-distinct regimes, on the basis of value of $\omega$. The first one, which we will refer to as the \emph{below threshold regime}, is realized when $\omega$ is lower than the ionization 
-potential $|\eps_h|$. In this case all the fluctuation states are below their threshold level and equation \eqref{LinearResponseFunctDef2} is expressed in terms of genuinely localized 
-quantities\footnote{This consideration holds for the class of observables for which $\bra{\psi_p}\op O$ is a localized state  with bound-state behavior in the long range}, each of which 
-possesses a physical cut-off radius. Due to this behavior we can affirm that given basis provides a reliable evaluation of \eqref{LinearResponseFunctDef2} if the chosen computational domain 
-is suitable to express the bound-state like fluctuation states, in a analogous fashion of a ground state calculation. 
+%so the computation of the linear response functional passes through the evaluation of the scalar products indicated in \eqref{LinearResponseFunctDef2}.
+Let us suppose that also the observable of interest $\op O$ exhibit the locality properties of the potentials $ \op V$, $\op \Phi$, $\op V'$.
+Once again, it would be enough to consider a local operator for this condition to be met.
+We observe that there exists two 
+distinct regimes, on the basis of value of $\omega$. 
+The first one, which we will refer to as the \emph{below threshold} regime, is realized when
+$\omega$ is lower than the ionization potential $|\eps_h|$.
+In this case all the fluctuation states are below their threshold level and equation \eqref{LinearResponseFunctDef2} 
+is expressed in terms of genuinely localized 
+quantities. The quantities $\braket{\psi_p \op O| f_p^\Phi(\omega)}$, 
+being scalr products of bound-state-like objects, may thus be evaluated with computational setup that
+are similar to the ones usually employed for GS calculations.
+This consideration proves why, when a given computer code employs established GS numerical techniques, 
+\emph{it is much easier to converge LR quantities for $\omega$ below threshold}.
+The convergence in this regime is ``strong'', in the sense that the basis functions employed are able to express
+wit arbitrary precision \emph{both} the states $\ket{\op O \psi_p}$ and $\ket{f_p^\Phi(\omega)}$.
+
+
+% , each of which 
+% possesses a physical cut-off radius. Due to this behavior we can affirm that given basis provides a reliable evaluation of \eqref{LinearResponseFunctDef2} if the chosen computational domain 
+% is suitable to express the bound-state like fluctuation states, in a analogous fashion of a ground state calculation. 
 
 On the contrary, the computation of the linear response functional can be much more demanding in the \emph{above threshold regime}, realized for $\omega>|\eps_h|$, in which fluctuation 
-states start behaving as unbound wave functions. In this case a computational description of fluctuation states is only meaningful in weak sense, \emph{i.e} inside the scalar products of 
-\eqref{LinearResponseFunctDef2}, where the bound state character of $\{\bra{\psi_p}\op O\}$ behave as a regulator. This observation indicates that, above threshold, a computational setup 
-provides a reliable assessment of \eqref{LinearResponseFunctDef2} only if it is able to express an unbiased description of the fluctuation states in the support of $\{\bra{\psi_p}\op O\}$. 
+states start behaving as unbound wave functions. In this case a computational description of fluctuation states is only meaningful in ``weak'' sense,
+\emph{i.e.} inside the scalar products of 
+\eqref{LinearResponseFunctDef2}. 
+In this case $\ket{f_p^\Phi(\omega)}$ is a unbound, delocalized function, and 
+the bound state character of $\{\bra{\psi_p}\op O\}$ behave as a regulator. 
+In this regime \emph{only} the scalar products of Eq.~\eqref{LinearResponseFunctDef2} can be evaluated in a localized domain.
+This observation indicates that, above threshold, a computational setup 
+provides a reliable assessment of \eqref{LinearResponseFunctDef2} only if it is able to express an
+unbiased description of the fluctuation states in the support of $\{\bra{\psi_p}\op O\}$.
+The non-vanishing spherical-wave behaviour in the long range of $\ket{f_p^\Phi(\omega)}$ is therefore responsible
+of this convergence difficulties, especially for high frequencies.
 
-As an explicit example in support of these arguments we compare the absorption spectrum of a $CO$ molecule computed in three distinct real-space basis set, which differs for the dimension of 
-the computational domain. Results reported in figure \ref{co_spectrum} evidences that the curves are almost coincident in the below threshold regime, whereas the effect of the computational 
-setup are clearly visible for values of $\omega$ that exceed the threshold value. 
+As an explicit example in support of these arguments we compare the absorption spectrum of a $CO$ molecule computed in 
+three distinct real-space computational setups, which differs for the dimension of 
+the computational domain. Results reported in figure \ref{co_spectrum} evidences that the curves are almost coincident in the below threshold regime,
+whereas the effect of the computational setup are clearly visible for values of $\omega$ that exceed the threshold value.
+For these ultraviolet regions, convergence might be reached for domains of much larger sizes than what presented here~\cite{baroni2008},
+which are more than sufficient below threshold.
 
 \begin{figure}
 \includegraphics[scale=0.56]{co_spectrum.eps}
