@@ -215,7 +215,7 @@ approaches, in the context Quasi-Particle equations.
 % The same arguments cannot be rigidly extended to the case in which an external time-dependent field starts acting on the system. Indeed, the perturbation drives the system out 
 % from the equilibrium and the electrons sample a wider region of the state space, that will contains orbitals of both negative (bound) and positive (unbound) energies. 
 
-\section{Localization properties of the linear response actors in open systems}
+%\section{Localization properties of the linear response actors in open systems}
 
 Let us start our discussion by revisting the impact that the Isolated BC have on the 
 solutions of the time-independent Schr\"odinger Equation.
@@ -293,7 +293,7 @@ true system with open boundaries. For these class of objects the presence of a f
 Furthermore, the energies of the unbound orbitals are not stable with respect to a change of the size of the computational domain and approach to zero as long as it is increased.  
 
 
-\subsection{Fluctuation states. A localization argument for the response density}
+\section{Fluctuation states. A localization argument for the response density}
 It is evident that the arguments presented in the above section have a limited interest for the study
 of Ground State quantities of molecules. By definition, all these quantities can be expressed as a 
 functional which \emph{entirely} depends on bound states. As an illustration it is sufficient to recall
@@ -450,8 +450,36 @@ orbitals for $\omega < |\eps_p|$, while behave as unbound states for values of $
 two distinct regimes on the numerical convergence of the observables computed within the LR framework. Before doing this we propose an analogous analysis with the aim to understand the localization 
 properties of the excitation-based description of the LR.
 
+\subsection{Strong and weak convergence}
 
-\subsection{Excitation operators. The analytic structure of the susceptibility functional}
+The localization properties of fluctuation states allows us to assess the reliability of the linear response functional computed using the given basis set. Indeed, writing the response 
+density in terms of fluctuation states implies that 
+\be\lb{LinearResponseFunctDef2}
+\braket{\delta\op O}(\omega) = 2\sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;,
+\ee
+so the computation of the linear response functional passes through the evaluation of the scalar products indicated in \eqref{LinearResponseFunctDef2}. We observe that there exists two 
+distinct regimes, on the basis of value of $\omega$. The first one, which we will refer to as the \emph{below threshold regime}, is realized when $\omega$ is lower than the ionization 
+potential $|\eps_h|$. In this case all the fluctuation states are below their threshold level and equation \eqref{LinearResponseFunctDef2} is expressed in terms of genuinely localized 
+quantities\footnote{This consideration holds for the class of observables for which $\bra{\psi_p}\op O$ is a localized state  with bound-state behavior in the long range}, each of which 
+possesses a physical cut-off radius. Due to this behavior we can affirm that given basis provides a reliable evaluation of \eqref{LinearResponseFunctDef2} if the chosen computational domain 
+is suitable to express the bound-state like fluctuation states, in a analogous fashion of a ground state calculation. 
+
+On the contrary, the computation of the linear response functional can be much more demanding in the \emph{above threshold regime}, realized for $\omega>|\eps_h|$, in which fluctuation 
+states start behaving as unbound wave functions. In this case a computational description of fluctuation states is only meaningful in weak sense, \emph{i.e} inside the scalar products of 
+\eqref{LinearResponseFunctDef2}, where the bound state character of $\{\bra{\psi_p}\op O\}$ behave as a regulator. This observation indicates that, above threshold, a computational setup 
+provides a reliable assessment of \eqref{LinearResponseFunctDef2} only if it is able to express an unbiased description of the fluctuation states in the support of $\{\bra{\psi_p}\op O\}$. 
+
+As an explicit example in support of these arguments we compare the absorption spectrum of a $CO$ molecule computed in three distinct real-space basis set, which differs for the dimension of 
+the computational domain. Results reported in figure \ref{co_spectrum} evidences that the curves are almost coincident in the below threshold regime, whereas the effect of the computational 
+setup are clearly visible for values of $\omega$ that exceed the threshold value. 
+
+\begin{figure}
+\includegraphics[scale=0.56]{co_spectrum.eps}
+\caption{\label{co_spectrum}(Color online) Convergence below threshold of the $CO$ spectrum computed in different computational setup.}
+\end{figure}
+
+
+\section{Excitation operators. The analytic structure of the susceptibility functional}
 
 The study of the localization properties of the LR functional, formerly discussed through the inspection of the response density operator, can be reformulated in terms of the 
 \emph{susceptibility functional}, defined trough the operator equation  
@@ -623,61 +651,6 @@ and have to be understood as a tool to express the spectral decomposition of the
 % up to $\omega=|\eps_h|$. 
 
 %\section{Quality indicator for the numerical convergence of the LR}   %{Criterion for a reliable sampling of the excitation operators}
-\section{Criterion of computational reliability for the numerical convergence of the LR}
-
-% From the theoretical analysis of the previous section we can made two statements:
-% \begin{itemize}
-%  \item Fluctuation states, which constitute the building blocks of the response density, have a bound state-like character up to $\omega=|\eps_h|$ and behave as unbound delocalized
-%  wave functions for higher values of $\omega$. 
-%  \item The excitation landscape is composed of two sectors with distinct properties. The elements of the first one behave as localized, observable quantities and contribute as discrete 
-%  poles to the spectral decomposition of the susceptibility functional. The second sector contains a continuum of delocalized excitations which represents a tool to provide
-%  an effective representation of the spectral function. 
-% \end{itemize}
-The topic to be discussed in this section is the following: on the basis of these statements can we define some indicator to evaluate the reliability of a linear response calculations? And, 
-if so, up to which energy threshold can we assume that our computations do converge?
-
-The first element of this discussion is the introduction of the computational basis, made of $n_\mu$ basis functions $\{\mu\}$, used to perform the DFT calculations subjacent to the LR analysis. 
-The properties of the $\mu$-basis (state something about the systematic character the basis? comment on the finite dimension of the computational domain?) are chosen to ensure an unbiased description 
-of the ground state properties of the system. 
-
-FIRST QUESTION: The usage of the $\mu$-basis allows us to obtain a reliable evaluation of the perturbation induced modification of an observable? 
-The answer of this question is based on the analysis of equation \eqref{LinearResponseFunctDef2} and has been partially provided in section \ref{FluctuationState} (move that material in this section?). 
-We can complete the answer by observing that $\ket{f_p(0)}$ can be obtained through a ground state calculation with the explicit time independent perturbation added to the system. So we can perform
-a check on the goodness of the basis in this case as in a ground state calculation. Then use the localization argument of the fluctuation states to extend the reliability of the result up to
-$\omega=|\eps_p|$. 
-
-SO TO SUMMARIZE: below the threshold the numerical convergence is regulated by the localization of the fluctuation states, in this range we can assess the reliability of the results provided by
-the $\mu$-basis by looking at the basis-independence of the fluctuation states at $\omega=0$. Above the threshold the convergence can be reached due to the localized nature of $\bra{\psi_p}\op O$, 
-in this case the computational setup provides reliable results if it guarantees the unbiased reconstruction of fluctuation states in the support of $\bra{\psi_p}\op O$. In this range there is no a 
-priori indicator of the goodness of the results. 
-
-\subsection{Strong and weak convergence}
-
-The localization properties of fluctuation states allows us to assess the reliability of the linear response functional computed using the given basis set. Indeed, writing the response 
-density in terms of fluctuation states implies that 
-\be\lb{LinearResponseFunctDef2}
-\braket{\delta\op O}(\omega) = 2\sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;,
-\ee
-so the computation of the linear response functional passes through the evaluation of the scalar products indicated in \eqref{LinearResponseFunctDef2}. We observe that there exists two 
-distinct regimes, on the basis of value of $\omega$. The first one, which we will refer to as the \emph{below threshold regime}, is realized when $\omega$ is lower than the ionization 
-potential $|\eps_h|$. In this case all the fluctuation states are below their threshold level and equation \eqref{LinearResponseFunctDef2} is expressed in terms of genuinely localized 
-quantities\footnote{This consideration holds for the class of observables for which $\bra{\psi_p}\op O$ is a localized state  with bound-state behavior in the long range}, each of which 
-possesses a physical cut-off radius. Due to this behavior we can affirm that given basis provides a reliable evaluation of \eqref{LinearResponseFunctDef2} if the chosen computational domain 
-is suitable to express the bound-state like fluctuation states, in a analogous fashion of a ground state calculation. 
-
-On the contrary, the computation of the linear response functional can be much more demanding in the \emph{above threshold regime}, realized for $\omega>|\eps_h|$, in which fluctuation 
-states start behaving as unbound wave functions. In this case a computational description of fluctuation states is only meaningful in weak sense, \emph{i.e} inside the scalar products of 
-\eqref{LinearResponseFunctDef2}, where the bound state character of $\{\bra{\psi_p}\op O\}$ behave as a regulator. This observation indicates that, above threshold, a computational setup 
-provides a reliable assessment of \eqref{LinearResponseFunctDef2} only if it is able to express an unbiased description of the fluctuation states in the support of $\{\bra{\psi_p}\op O\}$. 
-
-As an explicit example in support of these arguments we compare the absorption spectrum of a $CO$ molecule computed in three distinct real-space basis set, which differs for the dimension of 
-the computational domain. Results reported in figure \ref{co_spectrum} evidences that the curves are almost coincident in the below threshold regime, whereas the effect of the computational 
-setup are clearly visible for values of $\omega$ that exceed the threshold value. 
-
-\begin{figure}
-\includegraphics[scale=0.56]{co_spectrum.eps}
-\caption{\label{co_spectrum}(Color online) Convergence below threshold of the $CO$ spectrum computed in different computational setup.}
-\end{figure}
 
 \subsection{Stability and convergence of the excitation spectrum}
 
@@ -706,6 +679,34 @@ express the spectral decomposition of the Liouvillian superoperator.
 \includegraphics[scale=0.56]{c6h6_excitationLandscape.eps}
 \caption{\label{c6h6_excLand}(Color online) Excitation landscape of $C_6H_6$.}
 \end{figure}
+\section{Criterion of computational reliability for the numerical convergence of the LR}
+
+% From the theoretical analysis of the previous section we can made two statements:
+% \begin{itemize}
+%  \item Fluctuation states, which constitute the building blocks of the response density, have a bound state-like character up to $\omega=|\eps_h|$ and behave as unbound delocalized
+%  wave functions for higher values of $\omega$. 
+%  \item The excitation landscape is composed of two sectors with distinct properties. The elements of the first one behave as localized, observable quantities and contribute as discrete 
+%  poles to the spectral decomposition of the susceptibility functional. The second sector contains a continuum of delocalized excitations which represents a tool to provide
+%  an effective representation of the spectral function. 
+% \end{itemize}
+The topic to be discussed in this section is the following: on the basis of these statements can we define some indicator to evaluate the reliability of a linear response calculations? And, 
+if so, up to which energy threshold can we assume that our computations do converge?
+
+The first element of this discussion is the introduction of the computational basis, made of $n_\mu$ basis functions $\{\mu\}$, used to perform the DFT calculations subjacent to the LR analysis. 
+The properties of the $\mu$-basis (state something about the systematic character the basis? comment on the finite dimension of the computational domain?) are chosen to ensure an unbiased description 
+of the ground state properties of the system. 
+
+FIRST QUESTION: The usage of the $\mu$-basis allows us to obtain a reliable evaluation of the perturbation induced modification of an observable? 
+The answer of this question is based on the analysis of equation \eqref{LinearResponseFunctDef2} and has been partially provided in section \ref{FluctuationState} (move that material in this section?). 
+We can complete the answer by observing that $\ket{f_p(0)}$ can be obtained through a ground state calculation with the explicit time independent perturbation added to the system. So we can perform
+a check on the goodness of the basis in this case as in a ground state calculation. Then use the localization argument of the fluctuation states to extend the reliability of the result up to
+$\omega=|\eps_p|$. 
+
+SO TO SUMMARIZE: below the threshold the numerical convergence is regulated by the localization of the fluctuation states, in this range we can assess the reliability of the results provided by
+the $\mu$-basis by looking at the basis-independence of the fluctuation states at $\omega=0$. Above the threshold the convergence can be reached due to the localized nature of $\bra{\psi_p}\op O$, 
+in this case the computational setup provides reliable results if it guarantees the unbiased reconstruction of fluctuation states in the support of $\bra{\psi_p}\op O$. In this range there is no a 
+priori indicator of the goodness of the results. 
+
 
 \subsection{Fluctuation state and excitations}
 
@@ -740,7 +741,7 @@ continuum sector of the excitation spectrum is
 % of freedom. Excitation index becomes discrete and the basis provide a partial sampling of the continuum sector of the excitation landscape.    
 
 
-\section{Comments and conclusions}
+\subsection{Comments and conclusions}
 
 The analysis carried out starting from the representation of the linear response functional in terms of fluctuation states has evidenced some general properties of the linear response
 for open systems. In particular, by analyzing the asymptotic behavior of fluctuation states in long range limit, we have showed that they exhibit a bound-state character in the regime  
