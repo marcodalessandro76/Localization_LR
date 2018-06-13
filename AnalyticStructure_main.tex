@@ -282,12 +282,15 @@ regardless of the particular features of the potential.
 
 It is easy to see from these concepts that a computational treatment that is tailored for the discretization of bound states
 will not be effective for continuum states, due to the different long-range asymptotic behaviour - which in turn is a clear consequence of the 
-BC of the problem. In a numerical treatment, states with $\epsilon > 0$ will have a value of their energy that will \emph{always}
+BC of the problem. In a numerical treatment, discretizing the problem with a \emph{finite}
+number of degrees of freedom, we will only have acces to \emph{pseudo-} continuum states,
+whose energy values and density of states will depend on the representation of the kinetic operator
+in the basis set. As a consequence, numerical eigenstates with $\epsilon > 0$ will have a value of their energy that will \emph{always}
 depend on the computational setup.
 
 A direct numerical evidence of this problem has been discussed in \cite{boffi2016}. The authors of this paper analyze the effects of a finite basis set on the 
-occupied and virtual orbitals of a molecular system and establish a clear correspondence between the orbital localization character, and the independence of its properties (\emph{e.g.} energy) 
-with respect to the basis set. It is shown that (localized) orbitals with a bound-state behavior in the long range constitute a genuine discrete set and a finite basis is 
+occupied and virtual orbitals of a molecular system and establish a clear correspondence between the orbital localization character, 
+and the independence of its energy with respect to the basis set. It is shown that (localized) orbitals with a bound-state behavior in the long range constitute a genuine discrete set and a finite basis is 
 able to provide a reliable description of these states if the sampled domain contains their natural sizes. On the contrary, unbound (delocalized) orbitals form a continuum of states in the 
 true system with open boundaries. For these class of objects the presence of a finite computational domain has a deeper impact since introduces a fictitious discretization of the energy levels. 
 Furthermore, the energies of the unbound orbitals are not stable with respect to a change of the size of the computational domain and approach to zero as long as it is increased.  
@@ -377,15 +380,10 @@ that have values in the \emph{unoccupied} subspace of $\hnot$.
 An analysis of the Liouville equation \eqref{LiouvillianRhopomegaDef1} for the response density written in this fashion evidences that the equations of motion of fluctuation states are 
 written as a modified Sternheimer equation~\cite{mahan1980}
 \be\lb{fluctuationStateEqMotion1}
-\left[\omega - (\hnot-\eps_p)\right]\ket{f_p^\Phi(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'[\dm'_\Phi])\ket{\psi_p} \;,
+\left[\omega - (\hnot-\eps_p)\right]\ket{f_p^\Phi(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'[\dm'_\Phi](\omega))\ket{\psi_p} \;,
 \ee
-and we observe that the first-order Hamiltonian contains, apart from the perturbing field, a further term $\op V'[\dm'_\Phi]$ due to the density-dependence of $\hnot$.
-
-\begin{figure}[t]
-\includegraphics[scale=0.56]{CO_alpha+D0_vsBoxSize.eps}
-\caption{\label{co_alphaStatic}(Color online) Convergence of the statical polarizability of the $CO$ with respect to the size of the computational domain.}
-\end{figure}
-
+and we observe that the first-order Hamiltonian contains, 
+apart from the perturbing field, a further term $\op V'[\dm'_\Phi]$ due to the density-dependence of $\hnot$.
 % The interesting aspect of these equations in the perspective of the present analysis is that they allow us to present a localization argument for the fluctuation states using a procedure  
 % analogous to the one depicted in section \ref{SEopenSystem}. So we split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term and express the solution of 
 % \eqref{fluctuationStateEqMotion1} in the form of a self-consistent inhomogeneous Helmholtz equation
@@ -393,46 +391,53 @@ It is easy to see that the solution of equation \eqref{fluctuationStateEqMotion1
 a set of scattering problems:
 %a self-consistent inhomogeneous Helmholtz equation
 \be\lb{rhoPrimeFluctuationStateDef2}
-\ket{f_p^\Phi(\omega)} = \op G_H(\omega+\epsilon_p)\ket{s_p^\Phi(\omega)} \;,
+\ket{f_p^\Phi(\omega)} = \op G_H(\omega+\epsilon_p)\left(\op V\ket{f_p^\Phi(\omega)} + \ket{s_p^\Phi(\omega)} \right)\;,
 \ee
-with:%here in this case the source term contains further addend apart from the unperturbed potential and reads:
-\be
-\ket{s_p^\Phi(\omega)} =  \op V\ket{f_p^\Phi(\omega)} + \op Q_0(\op V'(\omega) + \op \Phi(\omega))\ket{\psi_p} \;.\nn
-\ee
+with%:here in this case the source term contains further addend apart from the unperturbed potential and reads:
+$%\be
+\ket{s_p^\Phi(\omega)} = \op Q_0(\op V'[\dm'_\Phi](\omega) + \op \Phi(\omega))\ket{\psi_p}
+$. %\ee
+
+It can be seen that for each choice of $p$, the value $\omega = |\eps_p|$ represents the threshold level 
+that govern the localization properties of the corresponding 
+fluctuation state.
 As a \emph{stringent} hypothesis, 
-let us now assume that the operator $\op Q_0(\op V'(\omega) + \op \Phi(\omega))$ is, like $\op V$ such that its action
-can be restricted (if suitable) on a bounded real-space domain.
+let us now assume that the ket $\ket{s_p^\Phi(\omega)}$ is localized, namely its evaluation can be
+restricted (if suitable) on a bounded real-space domain.
 %The localization character of fluctuation states can be assessed by following the same argument discussed in section \ref{SEopenSystem} for the eigenstates of the SE. In this case 
 %the source term depends also from the perturbation added to the system so this analysis applies only to the class 
 %of perturbing field for which $\ket{\op\Phi\psi_p}$ is localized, when projected
   %in the $\r$-representation. 
-It can be seen that for each choice of $p$, the value $\omega = |\eps_p|$ represents the threshold level 
-that govern the localization properties of the corresponding 
-fluctuation state. Even when the above locality argument holds true, for $\omega > |\eps_p|$, 
+Even when such locality argument holds true, for $\omega > |\eps_p|$, 
 the Helmholtz kernel behaves as a spherical wave and  gives raise to a $f_p(\omega,\r)$ which is \emph{delocalized} in the entire real-space domain.
 Such delocalization is an intrinsic consequence of the value of $\omega$, and it does not depend on the particular
 choice of the operators.
 Only for $\omega < |\eps_p|$ the kernel contains an exponential damping factor and $f_p(\omega,\r)$ \emph{may} 
-exhibit a bound-state behavior in the long range, once again provided that the above locality arguments on $\op V'$ and $\Phi$ are valid.
+exhibit a bound-state behavior in the long range, once again provided that the above locality arguments on $\ket{s_p^\Phi(\omega)}$ 
+-- hence on $\op V'$ and $\Phi$ -- are valid.
 
 Such locality property of the fluctuation state can be directly confirmed for static perturbations at $\omega=0$.
 Let us consider a static perturbing operator $\op\Phi_s$ that can be restricted to a finite domain. 
-Any local operator, like e.g. a static electric field in the direction $\vec F$, $\Phi_s(\r) = -\vec F \cdot \r$, would satisfy such property.
+Any local operator, like e.g. a static electric field in the direction $\mathbf F$, $\Phi_s(\r) = -\mathbf F \cdot \r$, would satisfy such property.
 We consider the perturbed hamiltonian $\hnot[\rho_{\Phi_s}] + \Phi_s$, where we indicate with $\rho_{\Phi_s}$ the GS density of the
-perturbed system. We assume that the perturbation strength ($|\vec F|$ in the above exemple) is sufficiently small to be consistent with a LR 
+perturbed system. We assume that the perturbation strength ($F$ in the above exemple) is sufficiently small to be consistent with a LR 
 treatment of the problem. 
 In this case, the occupied eigenfunction $\ket{\psi_p^{\Phi_s}}$ of the perturbed hamiltonian 
 can be extracted with traditional GS techniques, as by the hypothesis of Eq.~\eqref{SEHelmholtz1},
 they would exhibit bound-state behaviour.\footnote{The fulfilling of Eq.~\eqref{SEHelmholtz1} for energies below threshold
 is not \textit{per se} a guarantee of a localized $\ket{\psi}$. With such equation we demonstrate that, \emph{in the case when} a localized
 solution exists, this cannot be found for energies above threshold.}
+\begin{figure}[t]
+\includegraphics[scale=0.56]{CO_alpha+D0_vsBoxSize.eps}
+\caption{\label{co_alphaStatic}(Color online) Convergence of the statical polarizability of the $CO$ with respect to the size of the computational domain.}
+\end{figure}
 
-It is then easy to see that the fluctuation state at $\omega=0$ can be expressed
+From the linearized Schroedinger Equation of the perturbed problem, it is easy to see that the fluctuation state at $\omega=0$ can be expressed
 in terms of the corresponding bound state of the perturbed Hamiltonian, i.e.
 $\ket{f_p^{\Phi_s}(0)} \simeq \op Q_0 \ket{\psi_p^{\Phi_s}}$.
 For any value of $p$, the locality of the $\ket{f_p^{\Phi_s}(0)}$ therefore directly stems from the
 bound-state behaviour of $\ket{\psi_p^{\Phi_s}}$. As $\omega=0$ is by hypothesis 
-lower than $|\eps_p|$ this is consistent with the above observation.
+lower than $|\eps_p|$, this is consistent with the above considerations.
 
 % A direct confirmation of the localization character of fluctuation states at $\omega=0$ can be achieved through a ground-state calculation. Indeed, $\ket{f_p(\omega)}$ are nothing but the 
 % perturbed KS eigenstates projected out from the domain of $\dmnot$, so for a constant perturbation $\op\Phi_s$ it turns out that $\ket{f_p(0)} = \op Q_0\ket{\psi_p^{\Phi_s}}$. The perturbed KS 
@@ -480,8 +485,10 @@ being scalr products of bound-state-like objects, may thus be evaluated with com
 are similar to the ones usually employed for GS calculations.
 This consideration proves why, when a given computer code employs established GS numerical techniques, 
 \emph{it is much easier to converge LR quantities for $\omega$ below threshold}.
-The convergence in this regime is ``strong'', in the sense that the basis functions employed are able to express
-wit arbitrary precision \emph{both} the states $\ket{\op O \psi_p}$ and $\ket{f_p^\Phi(\omega)}$.
+The convergence in this regime is ``strong'', in the sense that the basis functions employed are able to express 
+with arbitrary precision \emph{both} the states $\ket{\op O \psi_p}$ and $\ket{f_p^\Phi(\omega)}$.
+This is of course true even when the above states are only implicitly expressed by the employed LR treatment,
+ as e.g. in the case of Krylov spaces generated from the states $\ket{\op\Phi(\omega) \psi_p}$ (see.e.g. \cite{baroni2008,linlinKPM}).
 
 
 % , each of which 
@@ -506,7 +513,7 @@ three distinct real-space computational setups, which differs for the dimension 
 the computational domain. Results reported in figure \ref{co_spectrum} evidences that the curves are almost coincident in the below threshold regime,
 whereas the effect of the computational setup are clearly visible for values of $\omega$ that exceed the threshold value.
 For these ultraviolet regions, convergence might be reached for domains of much larger sizes than what presented here~\cite{baroni2008},
-which are more than sufficient below threshold.
+which in turn reveal more than sufficient below threshold.
 
 \begin{figure}
 \includegraphics[scale=0.56]{co_spectrum.eps}
