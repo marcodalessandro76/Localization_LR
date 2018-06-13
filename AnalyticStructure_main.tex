@@ -129,16 +129,16 @@ The model itself can in this way be classified as ``accurate''; it may then be e
 other quantities that might be then used to \emph{predict} or \emph{interpret} experimental data.
 Another concept of reliability is the concept of  ``precision'', which is more focused to the actual results
 that a given computational model provides for a specific set of quantities, regardless of their potential agreement with 
-experimental data. The aim of precise computational approach is to reduce the \emph{computational} uncertanties
+experimental data. The aim of precise computational approach is to reduce the \emph{computational} uncertainties
 of quantities extracted out of a well-defined model, and provide reference results, to which other computer codes
 employing the same model can be compared.
 
-A recent, remarkable exemple of precision-driven initiative is provided by the DeltaCodes project~\cite{deltaTest2016},
+A recent, remarkable example of precision-driven initiative is provided by the DeltaCodes project~\cite{deltaTest2016},
 where a grassroot community of code-owners struggled to extract well-defined computational results in the context of 
 Density Functional Theory (DFT) calculations. Ground-State quantum mechanical quantities as Lattice constants and bulk modulus of 
-elementary crystals extracted from different codes were compared with each other, with the objective of reducing the uncertanties 
+elementary crystals extracted from different codes were compared with each other, with the objective of reducing the uncertainties 
 on such data, and in some sense, to define a \emph{calibration} procedure for a Solid-State Physics computer code. 
-Any other code able to extract the same quantites with the same approximations might be compared with the 
+Any other code able to extract the same quantities with the same approximations might be compared with the 
 results of the community in order to assess its computational reliability.
 
 For a theoretical approach that is based on numerical calculations, for which no analytic reference solution exists, 
@@ -171,7 +171,7 @@ In particular, we will discuss the interplay between reproducible LR quantities 
 
 Our considerations will also reveal useful for the understanding of the \emph{analytic structure} of LR quantities like
 the linear susceptibility of the system (i.e. the \emph{reducible} polarizability).
-Altough we refer, as anticipated, to TDDFT models, such considerations might also be transposed to Many-Body Perturbation Theory
+Although we refer, as anticipated, to TDDFT models, such considerations might also be transposed to Many-Body Perturbation Theory
 approaches, in the context Quasi-Particle equations.
 
 % Moreover, wheareas for Ground-State calculations the quantities are relatively easy to identify and extract,
@@ -217,7 +217,7 @@ approaches, in the context Quasi-Particle equations.
 
 \section{Localization properties of the linear response actors in open systems}
 
-Let us start our discussion by revisting the impact that the Isolated BC have on the 
+Let us start our discussion by revisiting the impact that the Isolated BC have on the 
 solutions of the time-independent Schr\"odinger Equation.
 We here present well-known concepts of elementary quantum mechanics, under a perspective that
 will turn out to be very useful in the forthcoming considerations about linear-response quantities.
@@ -580,6 +580,14 @@ and have to be understood as a tool to express the spectral decomposition of the
 
 %\section{Quality indicator for the numerical convergence of the LR}   %{Criterion for a reliable sampling of the excitation operators}
 \section{Criterion of computational reliability for the numerical convergence of the LR}
+
+From the analysis discussed in the previous section it emerges that the general treatment of the LR for open systems \emph{requires} to deal with delocalized
+objects. In facts, either if one choose the fluctuation states' formalism, or the ``sum over excitations'' (SOE) approach, it turns out that the main building blocks
+beyond a specific energetic threshold have an unbound behavior in the long range. 
+On the basis of this consideration is then reasonable to try to understand if a computational setup tailored to deal with the ground state problem is idoneous to provide
+reliable results for the LR. 
+
+\vspace{0.3cm}
 
 % From the theoretical analysis of the previous section we can made two statements:
 % \begin{itemize}
