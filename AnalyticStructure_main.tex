@@ -236,7 +236,7 @@ where we have introduced the Green function of the Helmholtz operator $\op G_H(\
 resolvent of the free-particle hamltonian $H_s \equiv \op T$.
 
 When describing the Ground State of a molecule, we suppose that the potential operator, even if non-local,
-is associated to real-space elements $\bra{\r} \op V \ket{\r'}$ that can be considered as nonzero only on a
+can be effectively restricted on wavefunctions that can be considered as nonzero only on a
 bounded domain. In other terms, a molecule can be associated to a ``scatterer'' that has a \emph{finite} 
 spatial extension; if a state $\ket{\psi}$ is localized, it will be the same for the ket $\ket{\op V \psi}$, though 
 perhaps in a larger region.
@@ -353,7 +353,7 @@ and we have introduced the \emph{response density operator} $\dm'_\Phi(\omega)$ 
 
 The response density operator is expressed as the first-order variation of $\dmnot=\sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}$, where the set $\{\ket{\psi_p}\}$ denote the 
 occupied states, \emph{i.e} the subset of the bound eigenstates\footnote{In what follows we will assume that the set of states $\{\ket{\psi_p}\}$ are described by real 
-functions, when projected in the $\r$-representation.} of $\hnot$ with energy $\eps_p$ lower than the Fermi level. Using this notation we denote the energy of the HOMO level 
+functions, when projected in the $\r$-representation.} of $\hnot$ with (negative) energy $\eps_p$ lower than the Fermi level. Using this notation we denote the energy of the HOMO level 
 as $\eps_h$ and identify the value of the first ionization potential with $|\eps_h|$. 
 
 In the contest of the LR the response density satisfies an equation of motion written in the form of a quantum Liouville operator (for example see \cite{baroni2008})
@@ -375,11 +375,11 @@ response density parametrized as
 Here we have introduced the set of $\omega$-dependent \emph{fluctuation states} $\{\ket{f_p^\Phi(\omega)}\}$, 
 that have values in the \emph{unoccupied} subspace of $\hnot$. 
 An analysis of the Liouville equation \eqref{LiouvillianRhopomegaDef1} for the response density written in this fashion evidences that the equations of motion of fluctuation states are 
-written as a modified Sternheimer equations \cite{mahan1980}
+written as a modified Sternheimer equation~\cite{mahan1980}
 \be\lb{fluctuationStateEqMotion1}
-\left[\omega - (\hnot-\eps_p)\right]\ket{f_p^\Phi(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'[\dm'])\ket{\psi_p} \;,
+\left[\omega - (\hnot-\eps_p)\right]\ket{f_p^\Phi(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'[\dm'_\Phi])\ket{\psi_p} \;,
 \ee
-and we observe that the first-order Hamiltonian contains, apart from the perturbing field, a further term $\op V'[\dm']$ due to the density-dependence of $\hnot$.
+and we observe that the first-order Hamiltonian contains, apart from the perturbing field, a further term $\op V'[\dm'_\Phi]$ due to the density-dependence of $\hnot$.
 
 \begin{figure}[t]
 \includegraphics[scale=0.56]{CO_alpha+D0_vsBoxSize.eps}
@@ -400,8 +400,8 @@ with:%here in this case the source term contains further addend apart from the u
 \ket{s_p^\Phi(\omega)} =  \op V\ket{f_p^\Phi(\omega)} + \op Q_0(\op V'(\omega) + \op \Phi(\omega))\ket{\psi_p} \;.\nn
 \ee
 As a \emph{stringent} hypothesis, 
-let us now assume that the operator $\op Q_0(\op V'(\omega) + \op \Phi(\omega))$ is, like $\op V$, localized, i.e. nonzero \emph{only}
-on a bounded real-space domain.
+let us now assume that the operator $\op Q_0(\op V'(\omega) + \op \Phi(\omega))$ is, like $\op V$ such that its action
+can be restricted (if suitable) on a bounded real-space domain.
 %The localization character of fluctuation states can be assessed by following the same argument discussed in section \ref{SEopenSystem} for the eigenstates of the SE. In this case 
 %the source term depends also from the perturbation added to the system so this analysis applies only to the class 
 %of perturbing field for which $\ket{\op\Phi\psi_p}$ is localized, when projected
@@ -409,17 +409,41 @@ on a bounded real-space domain.
 It can be seen that for each choice of $p$, the value $\omega = |\eps_p|$ represents the threshold level 
 that govern the localization properties of the corresponding 
 fluctuation state. Even when the above locality argument holds true, for $\omega > |\eps_p|$, 
-the Helmholtz kernel behaves as a spherical wave and  gives raise to a $f_p(\omega,\r)$ which is \emph{delocalized} in the whole accessible space.
+the Helmholtz kernel behaves as a spherical wave and  gives raise to a $f_p(\omega,\r)$ which is \emph{delocalized} in the entire real-space domain.
+Such delocalization is an intrinsic consequence of the value of $\omega$, and it does not depend on the particular
+choice of the operators.
 Only for $\omega < |\eps_p|$ the kernel contains an exponential damping factor and $f_p(\omega,\r)$ \emph{may} 
 exhibit a bound-state behavior in the long range, once again provided that the above locality arguments on $\op V'$ and $\Phi$ are valid.
 
-A direct confirmation of the localization character of fluctuation states at $\omega=0$ can be achieved through a ground-state calculation. Indeed, $\ket{f_p(\omega)}$ are nothing but the 
-perturbed KS eigenstates projected out from the domain of $\dmnot$, so for a constant perturbation $\op\Phi_s$ it turns out that $\ket{f_p(0)} = \op Q_0\ket{\psi_p^{\Phi_s}}$. The perturbed KS 
-states $\ket{\psi_p^{\Phi_s}}$ can be computed (beyond LR) by performing a DFT ground-state computation in which the constant perturbing field is added to the external potential and the 
-spatial extension of the fluctuation states can be directly measured. 
-The results of this procedure for a $CO$ molecule subjected to a static electric field are reported in figure \ref{co_alphaStatic}. The local character of the fluctuation states at $\omega=0$ is 
-probed by verifying the convergence of the statical polarizability versus the size of the computational domain used to express the fluctuation states. The convergence rate is compared with the 
-one of the static dipole of the molecule computed at zero external field. The plots evidence that the typical sizes of $\ket{f_p(0)}$ are analogous to the ones of the unperturbed KS orbitals. 
+Such locality property of the fluctuation state can be directly confirmed for static perturbations at $\omega=0$.
+Let us consider a static perturbing operator $\op\Phi_s$ that can be restricted to a finite domain. 
+Any local operator, like e.g. a static electric field in the direction $\vec F$, $\Phi_s(\r) = -\vec F \cdot \r$, would satisfy such property.
+We consider the perturbed hamiltonian $\hnot[\rho_{\Phi_s}] + \Phi_s$, where we indicate with $\rho_{\Phi_s}$ the GS density of the
+perturbed system. We assume that the perturbation strength ($|\vec F|$ in the above exemple) is sufficiently small to be consistent with a LR 
+treatment of the problem. 
+In this case, the occupied eigenfunction $\ket{\psi_p^{\Phi_s}}$ of the perturbed hamiltonian 
+can be extracted with traditional GS techniques, as by the hypothesis of Eq.~\eqref{SEHelmholtz1},
+they would exhibit bound-state behaviour.\footnote{The fulfilling of Eq.~\eqref{SEHelmholtz1} for energies below threshold
+is not \textit{per se} a guarantee of a localized $\ket{\psi}$. With such equation we demonstrate that, \emph{in the case when} a localized
+solution exists, this cannot be found for energies above threshold.}
+
+It is then easy to see that the fluctuation state at $\omega=0$ can be expressed
+in terms of the corresponding bound state of the perturbed Hamiltonian, i.e.
+$\ket{f_p^{\Phi_s}(0)} \simeq \op Q_0 \ket{\psi_p^{\Phi_s}}$.
+For any value of $p$, the locality of the $\ket{f_p^{\Phi_s}(0)}$ therefore directly stems from the
+bound-state behaviour of $\ket{\psi_p^{\Phi_s}}$. As $\omega=0$ is by hypothesis 
+lower than $|\eps_p|$ this is consistent with the above observation.
+
+% A direct confirmation of the localization character of fluctuation states at $\omega=0$ can be achieved through a ground-state calculation. Indeed, $\ket{f_p(\omega)}$ are nothing but the 
+% perturbed KS eigenstates projected out from the domain of $\dmnot$, so for a constant perturbation $\op\Phi_s$ it turns out that $\ket{f_p(0)} = \op Q_0\ket{\psi_p^{\Phi_s}}$. The perturbed KS 
+% states $\ket{\psi_p^{\Phi_s}}$ can be computed (beyond LR) by performing a DFT ground-state computation in which the constant perturbing field is added to the external potential and the 
+% spatial extension of the fluctuation states can be directly measured. 
+In Fig.~\eqref{co_alphaStatic} illustrate this procedure for a $CO$ molecule 
+perturbed by a static electric field. The local character of the fluctuation states at $\omega=0$ is 
+probed by verifying the convergence of the statical polarizability versus 
+the size of the computational domain used to express the fluctuation states. The convergence rate is compared with the 
+one of the static dipole of the molecule computed at zero external field. 
+The plots evidence that the typical sizes of $\ket{f_p(0)}$ are analogous to the ones of the unperturbed KS orbitals. 
 
 \emph{(Tweet)} The analysis described in this section has shown that the building blocks of the response density $\{\ket{f_p(\omega)}\}$ possess the same long-range properties of the bound KS
 orbitals for $\omega < |\eps_p|$, while behave as unbound states for values of $\omega$ above the threshold levels. In the next section we will discuss the implication of the existence of these
