@@ -825,7 +825,7 @@ and
 \ee
 where $\op V'$ expresses the perturbation induced by the density dependence on ground state Hamiltonian and can be conveniently expressed by defining the 
 \emph{scalar coupling kernel}
-\be
+\be\lb{CouplingKernelDef1}
 U\left[\op O; \op O'\right] \equiv  \int \dd \r \dd \r' \trace{\op O \frac{\delta \hnot }{\delta \rho_0(\r,\r')}
 } \trace{\op O' \ket{\r} \bra{\r'}} \;, \nn
 \ee
@@ -851,7 +851,72 @@ In the last equivalence we have made usage of the transverse property (see equat
 
 \section{Casida equations}
 
-From the equations of motion for the excited states to the Casida equations...
+% We show that Casida equations are equivalent to the operator eigenvalue equations \eqref{ExcitationOperatorsDef1} when an explicit basis $\{\ket{\eta}\}$ for the empty states subspace is used,
+% so that $\op Q_0 = \sum_{\eta}\ketbra{\eta}{\eta}$. Operators $\op O$ satisfying the transverse condition $\op O = \op O_{\perp}$ (see eq. \eqref{RhopTransverseDef1}) can be represented as 
+% follows
+% \be\lb{OperatorTransBasisExpDef1}
+% \op O = \sum_{p\eta}\left(
+% \excite{p}{\eta}\trace{\decay{\eta}{p}\op O} + \decay{\eta}{p}\trace{\excite{p}{\eta}\op O}
+% \right) \;,
+% \ee
+% where the \emph{transition operators} $\excite{p}{\eta} \equiv \ketbra{\eta}{\psi_p}$ and $\decay{\eta}{p} \equiv \ketbra{\psi_p}{\eta}$
+% are normalized as follows
+% \be
+% \trace{\excite{p}{\eta}\excite{q}{\rho}} = \trace{\decay{\eta}{p}\decay{\rho}{q}} = 0 \;, \quad
+% \trace{\excite{p}{\eta}\decay{\rho}{q}} = \delta_{pq}\delta_{\eta\rho} \;. \nonumber
+% \ee
+% Expanding equations \eqref{ExcitationOperatorsDef1} in the basis of transitions provides a matrix equation for the coefficients of the expansion. In particular from the left action equation
+% one has
+% \be
+% \sum_{q\rho}\mat{\trace{\decay{\alpha}{p}\, \sop{\mathcal L}\, \excite{q}{\beta}} &
+% \trace{\decay{\alpha}{p}\, \sop{\mathcal L}\, \decay{\beta}{q}} \\
+% \trace{\excite{p}{\alpha}\, \sop{\mathcal L}\, \excite{q}{\beta}} &
+% \trace{\excite{p}{\alpha}\, \sop{\mathcal L}\, \decay{\beta}{q}}}
+% \mat{X_a^{p\eta} \\ Y_a^{p\eta}} = \Omega_a \mat{X_a^{p\eta} \\ Y_a^{p\eta}}
+% \ee
+
+We show that Casida equations are equivalent to the equations of motion for the excited states \eqref{ExcitationOperatorsDef3}. To this scope we introduce an explicit basis $\{\ket{\eta}\}$
+in the subspace of empty states so that both $\ket{\phi^a_p}$ and $\bra{\chi^a_p}$ can be represented as
+\be
+\ket{\phi^a_p} = \sum_\eta X^a_{p\eta}\ket{\eta} \;, \q
+\bra{\chi^a_p} = \sum_\eta}\bra{\eta}Y^a_{p\eta} \;.
+\ee
+Plugging this expansion into equations \eqref{ExcitationOperatorsDef3} and projecting on a arbitrary element $\ket{\rho}$ of the basis provides a linear systems of equations for the coefficients
+$X^a_{p\eta}$ and $Y^a_{p\eta}$, namely
+\begin{align}
+ \sum_\eta(H_{0\rho\eta}-\eps_p\delta_{\rho\eta})X^a_{p\eta} + \bra{\rho}\op V'[\op E_a]\ket{\psi_p} &= \Omega_a X^a_{p\rho} \;, \nn \\
+ -\sum_\eta (H_{0\eta\rho}-\eps_p\delta_{\rho\eta})Y^a_{p\eta} - \bra{\psi_p}\op V'[\op E_a]\ket{\rho}& = \Omega_a Y^a_{p\rho} \;. \nn
+\end{align}
+Using this basis, excitation operators are expressed as a linear combination of transition operators $\excite{p}{\eta} \equiv \ketbra{\eta}{\psi_p}$ and $\decay{\eta}{p} \equiv \ketbra{\psi_p}{\eta}$,
+as follows
+\be\lb{ExcitationOpBasisTransition1}
+\op E_a = \sum_{p\eta}\excite{p}{\eta}X^a_{p\eta}+\decay{\eta}{p}Y^a_{p\eta} \;.
+\ee
+The contribution of the coupling operator in the equations of motion of excited states can expressed by means of the coupling kernel \eqref{CouplingKernelDef1} as
+\begin{align}
+& \bra{\rho}\op V'[\op E_a]\ket{\psi_p} = \sum_{q\eta}\left(U[\decay{\rho}{p};\excite{q}{\eta}]X^a_{q\eta} + U[\decay{\rho}{p};\decay{\eta}{q}]Y^a_{q\eta}\right) \;,\nn \\
+& \bra{\psi_p}\op V'[\op E_a]\ket{\rho} = \sum_{q\eta}\left(U[\excite{p}{\rho};\excite{q}{\eta}]X^a_{q\eta} + U[\excite{p}{\rho};\decay{\eta}{q}]Y^a_{q\eta}\right) \;, \nn
+\end{align}
+and so equations \eqref{ExcitationOperatorsDef3} can be recasted in matrix form
+\be\lb{ExcitationMatrixEq1}
+\sum_{q\eta}\mat{F_{p\rho}^{q\eta} &  D_{p\rho}^{q\eta}  \\
+- E_{p\rho}^{q\eta} & - G_{p\rho}^{q\eta} }
+\mat{X^a_{q\eta} \\ Y^a_{q\eta}} = \Omega_a \mat{X^a_{p\rho} \\ Y^a_{p\rho}}
+\ee
+where
+\begin{align}
+& F_{p\rho}^{q\eta} = (H_{0\rho\eta}-\eps_p\delta_{\rho\eta})\delta_{pq} + U[\decay{\rho}{p};\excite{q}{\eta}] \;,\nn \\
+& D_{p\rho}^{q\eta} = U[\decay{\rho}{p};\decay{\eta}{q}] \;,\nn \\
+& E_{p\rho}^{q\eta} = U[\excite{p}{\rho};\excite{q}{\eta}] \;,\nn \\
+& G_{p\rho}^{q\eta} = (H_{0\eta\rho}-\eps_p\delta_{\rho\eta})\delta_{pq} + U[\excite{p}{\rho};\decay{\eta}{q}] \;. \nn
+\end{align}
+Finally, exploiting the symmetry properties of both the unperturbed Hamiltonian and of the coupling kernel it follows that $F=G$ and $D=E$ so that equations
+\eqref{ExcitationMatrixEq1} reduce to the usual formulation of the Casida equations in the basis of transitions. 
+
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
