@@ -233,7 +233,7 @@ the Schroedinger Equation in a \emph{scattering} problem, by writing
 \ket{\psi} = \op G_H(\eps)\ket{\op V\psi}\;,
 \ee
 where we have introduced the Green function of the Helmholtz operator $\op G_H(\eps) = (\eps-\op T)^{-1}$,
-resolvent of the free-particle hamltonian $H_s \equiv \op T$.
+resolvent of the free-particle Hamiltonian $H_s \equiv \op T$.
 
 When describing the Ground State of a molecule, we suppose that the potential operator, even if non-local,
 can be effectively restricted on wavefunctions that can be considered as nonzero only on a
@@ -283,7 +283,7 @@ regardless of the particular features of the potential.
 It is easy to see from these concepts that a computational treatment that is tailored for the discretization of bound states
 will not be effective for continuum states, due to the different long-range asymptotic behaviour - which in turn is a clear consequence of the 
 BC of the problem. In a numerical treatment, discretizing the problem with a \emph{finite}
-number of degrees of freedom, we will only have acces to \emph{pseudo-} continuum states,
+number of degrees of freedom, we will only have access to \emph{pseudo-} continuum states,
 whose energy values and density of states will depend on the representation of the kinetic operator
 in the basis set. As a consequence, numerical eigenstates with $\epsilon > 0$ will have a value of their energy that will \emph{always}
 depend on the computational setup.
@@ -420,11 +420,11 @@ Such locality property of the fluctuation state can be directly confirmed for st
 Let us consider a static perturbing operator $\op\Phi_s$ that can be restricted to a finite domain. 
 Any local operator, like e.g. a static electric field in the direction $\mathbf F$, $\Phi_s(\r) = -\mathbf F \cdot \r$, would satisfy such property.
 We consider the perturbed hamiltonian $\hnot[\rho_{\Phi_s}] + \Phi_s$, where we indicate with $\rho_{\Phi_s}$ the GS density of the
-perturbed system. We assume that the perturbation strength ($F$ in the above exemple) is sufficiently small to be consistent with a LR 
+perturbed system. We assume that the perturbation strength ($F$ in the above example) is sufficiently small to be consistent with a LR 
 treatment of the problem. 
 In this case, the occupied eigenfunction $\ket{\psi_p^{\Phi_s}}$ of the perturbed hamiltonian 
 can be extracted with traditional GS techniques, as by the hypothesis of Eq.~\eqref{SEHelmholtz1},
-they would exhibit bound-state behaviour.\footnote{The fulfilling of Eq.~\eqref{SEHelmholtz1} for energies below threshold
+they would exhibit bound-state behavior.\footnote{The fulfilling of Eq.~\eqref{SEHelmholtz1} for energies below threshold
 is not \textit{per se} a guarantee of a localized $\ket{\psi}$. With such equation we demonstrate that, \emph{in the case when} a localized
 solution exists, this cannot be found for energies above threshold.}
 \begin{figure}[t]
@@ -436,7 +436,7 @@ From the linearized Schroedinger Equation of the perturbed problem, it is easy t
 in terms of the corresponding bound state of the perturbed Hamiltonian, i.e.
 $\ket{f_p^{\Phi_s}(0)} \simeq \op Q_0 \ket{\psi_p^{\Phi_s}}$.
 For any value of $p$, the locality of the $\ket{f_p^{\Phi_s}(0)}$ therefore directly stems from the
-bound-state behaviour of $\ket{\psi_p^{\Phi_s}}$. As $\omega=0$ is by hypothesis 
+bound-state behavior of $\ket{\psi_p^{\Phi_s}}$. As $\omega=0$ is by hypothesis 
 lower than $|\eps_p|$, this is consistent with the above considerations.
 
 % A direct confirmation of the localization character of fluctuation states at $\omega=0$ can be achieved through a ground-state calculation. Indeed, $\ket{f_p(\omega)}$ are nothing but the 
@@ -453,7 +453,7 @@ The plots evidence that the typical sizes of $\ket{f_p(0)}$ are analogous to the
 \subsection{Strong and weak convergence}
 
 The analysis described above has shown that the building blocks of the response density $\{\ket{f_p(\omega)}\}$ 
-are susceptible to exhibit bound-state long-range behaviour \emph{only} when $\omega < |\eps_p|$, 
+are susceptible to exhibit bound-state long-range behavior \emph{only} when $\omega < |\eps_p|$, 
 while they behave as unbound states for values of $\omega$ above the threshold levels.
 
 This fact has interesting implication in the evaluation of LR quantities.
@@ -488,7 +488,7 @@ This consideration proves why, when a given computer code employs established GS
 The convergence in this regime is ``strong'', in the sense that the basis functions employed enable to express 
 with arbitrary precision \emph{both} the states $\ket{\op O \psi_p}$ and $\ket{f_p^\Phi(\omega)}$.
 This is of course true even when the above states are only implicitly expressed by the employed LR treatment,
- as e.g. in the case of Krylov spaces generated from the states $\ket{\op\Phi(\omega) \psi_p}$ (see.e.g. \cite{baroni2008,linlinKPM}).
+ as e.g. in the case of Krylov spaces generated from the states $\ket{\op\Phi(\omega) \psi_p}$ \cite{baroni2006,baroni2008,linlinKPM}.
 
 
 % , each of which 
@@ -506,7 +506,7 @@ In this context, the bound state character of $\{\bra{\psi_p}\op O\}$ behave as 
 This observation indicates that, above threshold, a computational setup 
 provides a reliable assessment of \eqref{LinearResponseFunctDef2} only if it is able (even implicitly) to express an
 unbiased description of the fluctuation states in the support of $\{\bra{\psi_p}\op O\}$.
-The non-vanishing spherical-wave behaviour in the long range of $\ket{f_p^\Phi(\omega)}$ is therefore responsible
+The non-vanishing spherical-wave behavior in the long range of $\ket{f_p^\Phi(\omega)}$ is therefore responsible
 of this convergence difficulties, especially for high frequencies.
 
 As an explicit example in support of these arguments we compare the absorption spectrum of a $CO$ molecule computed in 
@@ -864,7 +864,7 @@ and
 \ee
 where $\op V'$ expresses the perturbation induced by the density dependence on ground state Hamiltonian and can be conveniently expressed by defining the 
 \emph{scalar coupling kernel}
-\be
+\be\lb{CouplingKernelDef1}
 U\left[\op O; \op O'\right] \equiv  \int \dd \r \dd \r' \trace{\op O \frac{\delta \hnot }{\delta \rho_0(\r,\r')}
 } \trace{\op O' \ket{\r} \bra{\r'}} \;, \nn
 \ee
@@ -890,7 +890,72 @@ In the last equivalence we have made usage of the transverse property (see equat
 
 \section{Casida equations}
 
-From the equations of motion for the excited states to the Casida equations...
+% We show that Casida equations are equivalent to the operator eigenvalue equations \eqref{ExcitationOperatorsDef1} when an explicit basis $\{\ket{\eta}\}$ for the empty states subspace is used,
+% so that $\op Q_0 = \sum_{\eta}\ketbra{\eta}{\eta}$. Operators $\op O$ satisfying the transverse condition $\op O = \op O_{\perp}$ (see eq. \eqref{RhopTransverseDef1}) can be represented as 
+% follows
+% \be\lb{OperatorTransBasisExpDef1}
+% \op O = \sum_{p\eta}\left(
+% \excite{p}{\eta}\trace{\decay{\eta}{p}\op O} + \decay{\eta}{p}\trace{\excite{p}{\eta}\op O}
+% \right) \;,
+% \ee
+% where the \emph{transition operators} $\excite{p}{\eta} \equiv \ketbra{\eta}{\psi_p}$ and $\decay{\eta}{p} \equiv \ketbra{\psi_p}{\eta}$
+% are normalized as follows
+% \be
+% \trace{\excite{p}{\eta}\excite{q}{\rho}} = \trace{\decay{\eta}{p}\decay{\rho}{q}} = 0 \;, \quad
+% \trace{\excite{p}{\eta}\decay{\rho}{q}} = \delta_{pq}\delta_{\eta\rho} \;. \nonumber
+% \ee
+% Expanding equations \eqref{ExcitationOperatorsDef1} in the basis of transitions provides a matrix equation for the coefficients of the expansion. In particular from the left action equation
+% one has
+% \be
+% \sum_{q\rho}\mat{\trace{\decay{\alpha}{p}\, \sop{\mathcal L}\, \excite{q}{\beta}} &
+% \trace{\decay{\alpha}{p}\, \sop{\mathcal L}\, \decay{\beta}{q}} \\
+% \trace{\excite{p}{\alpha}\, \sop{\mathcal L}\, \excite{q}{\beta}} &
+% \trace{\excite{p}{\alpha}\, \sop{\mathcal L}\, \decay{\beta}{q}}}
+% \mat{X_a^{p\eta} \\ Y_a^{p\eta}} = \Omega_a \mat{X_a^{p\eta} \\ Y_a^{p\eta}}
+% \ee
+
+We show that Casida equations are equivalent to the equations of motion for the excited states \eqref{ExcitationOperatorsDef3}. To this scope we introduce an explicit basis $\{\ket{\eta}\}$
+in the subspace of empty states so that both $\ket{\phi^a_p}$ and $\bra{\chi^a_p}$ can be represented as
+\be
+\ket{\phi^a_p} = \sum_\eta X^a_{p\eta}\ket{\eta} \;, \qq
+\bra{\chi^a_p} = \sum_\eta\bra{\eta}Y^a_{p\eta} \;.
+\ee
+Plugging this expansion into equations \eqref{ExcitationOperatorsDef3} and projecting on a arbitrary element $\ket{\rho}$ of the basis provides a linear systems of equations for the coefficients
+$X^a_{p\eta}$ and $Y^a_{p\eta}$, namely
+\begin{align}
+ \sum_\eta(H_{0\rho\eta}-\eps_p\delta_{\rho\eta})X^a_{p\eta} + \bra{\rho}\op V'[\op E_a]\ket{\psi_p} &= \Omega_a X^a_{p\rho} \;, \nn \\
+ -\sum_\eta (H_{0\eta\rho}-\eps_p\delta_{\rho\eta})Y^a_{p\eta} - \bra{\psi_p}\op V'[\op E_a]\ket{\rho}& = \Omega_a Y^a_{p\rho} \;. \nn
+\end{align}
+Using this basis, excitation operators are expressed as a linear combination of transition operators $\excite{p}{\eta} \equiv \ketbra{\eta}{\psi_p}$ and $\decay{\eta}{p} \equiv \ketbra{\psi_p}{\eta}$,
+as follows
+\be\lb{ExcitationOpBasisTransition1}
+\op E_a = \sum_{p\eta}\excite{p}{\eta}X^a_{p\eta}+\decay{\eta}{p}Y^a_{p\eta} \;.
+\ee
+The contribution of the coupling operator in the equations of motion of excited states can expressed by means of the coupling kernel \eqref{CouplingKernelDef1} as
+\begin{align}
+& \bra{\rho}\op V'[\op E_a]\ket{\psi_p} = \sum_{q\eta}\left(U[\decay{\rho}{p};\excite{q}{\eta}]X^a_{q\eta} + U[\decay{\rho}{p};\decay{\eta}{q}]Y^a_{q\eta}\right) \;,\nn \\
+& \bra{\psi_p}\op V'[\op E_a]\ket{\rho} = \sum_{q\eta}\left(U[\excite{p}{\rho};\excite{q}{\eta}]X^a_{q\eta} + U[\excite{p}{\rho};\decay{\eta}{q}]Y^a_{q\eta}\right) \;, \nn
+\end{align}
+and so equations \eqref{ExcitationOperatorsDef3} can be recasted in matrix form
+\be\lb{ExcitationMatrixEq1}
+\sum_{q\eta}\mat{F_{p\rho}^{q\eta} &  D_{p\rho}^{q\eta}  \\
+- E_{p\rho}^{q\eta} & - G_{p\rho}^{q\eta} }
+\mat{X^a_{q\eta} \\ Y^a_{q\eta}} = \Omega_a \mat{X^a_{p\rho} \\ Y^a_{p\rho}}
+\ee
+where
+\begin{align}
+& F_{p\rho}^{q\eta} = (H_{0\rho\eta}-\eps_p\delta_{\rho\eta})\delta_{pq} + U[\decay{\rho}{p};\excite{q}{\eta}] \;,\nn \\
+& D_{p\rho}^{q\eta} = U[\decay{\rho}{p};\decay{\eta}{q}] \;,\nn \\
+& E_{p\rho}^{q\eta} = U[\excite{p}{\rho};\excite{q}{\eta}] \;,\nn \\
+& G_{p\rho}^{q\eta} = (H_{0\eta\rho}-\eps_p\delta_{\rho\eta})\delta_{pq} + U[\excite{p}{\rho};\decay{\eta}{q}] \;. \nn
+\end{align}
+Finally, exploiting the symmetry properties of both the unperturbed Hamiltonian and of the coupling kernel it follows that $F=G$ and $D=E$ so that equations
+\eqref{ExcitationMatrixEq1} reduce to the usual formulation of the Casida equations in the basis of transitions. 
+
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
