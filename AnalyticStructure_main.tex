@@ -485,7 +485,7 @@ being scalr products of bound-state-like objects, may thus be evaluated with com
 are similar to the ones usually employed for GS calculations.
 This consideration proves why, when a given computer code employs established GS numerical techniques, 
 \emph{it is much easier to converge LR quantities for $\omega$ below threshold}.
-The convergence in this regime is ``strong'', in the sense that the basis functions employed are able to express 
+The convergence in this regime is ``strong'', in the sense that the basis functions employed enable to express 
 with arbitrary precision \emph{both} the states $\ket{\op O \psi_p}$ and $\ket{f_p^\Phi(\omega)}$.
 This is of course true even when the above states are only implicitly expressed by the employed LR treatment,
  as e.g. in the case of Krylov spaces generated from the states $\ket{\op\Phi(\omega) \psi_p}$ (see.e.g. \cite{baroni2008,linlinKPM}).
@@ -499,11 +499,12 @@ On the contrary, the computation of the linear response functional can be much m
 states start behaving as unbound wave functions. In this case a computational description of fluctuation states is only meaningful in ``weak'' sense,
 \emph{i.e.} inside the scalar products of 
 \eqref{LinearResponseFunctDef2}. 
-In this case $\ket{f_p^\Phi(\omega)}$ is a unbound, delocalized function, and 
-the bound state character of $\{\bra{\psi_p}\op O\}$ behave as a regulator. 
-In this regime \emph{only} the scalar products of Eq.~\eqref{LinearResponseFunctDef2} can be evaluated in a localized domain.
+In this case $\ket{f_p^\Phi(\omega)}$ is a unbound, delocalized function; a numerical treatment tailored for localized
+functions will \emph{never} be able to discretise such function with arbitrary accuracy.  
+In this context, the bound state character of $\{\bra{\psi_p}\op O\}$ behave as a regulator:
+\emph{only} the scalar products of Eq.~\eqref{LinearResponseFunctDef2} can be evaluated in a localized domain.
 This observation indicates that, above threshold, a computational setup 
-provides a reliable assessment of \eqref{LinearResponseFunctDef2} only if it is able to express an
+provides a reliable assessment of \eqref{LinearResponseFunctDef2} only if it is able (even implicitly) to express an
 unbiased description of the fluctuation states in the support of $\{\bra{\psi_p}\op O\}$.
 The non-vanishing spherical-wave behaviour in the long range of $\ket{f_p^\Phi(\omega)}$ is therefore responsible
 of this convergence difficulties, especially for high frequencies.
@@ -520,19 +521,29 @@ which in turn reveal more than sufficient below threshold.
 \caption{\label{co_spectrum}(Color online) Convergence below threshold of the $CO$ spectrum computed in different computational setup.}
 \end{figure}
 
+Such concept of threshold has an evident physical interpretation: for energies in a range higher than the ionization potential,
+localized and delocalized states might be coupled by the perturbation. Obtaining convergence of the observable quantities at these energies is therefore much more challenging if one employs 
+numerical techniques which were originally tailored for GS calculations.
 
 \section{Excitation operators. The analytic structure of the susceptibility functional}
 
-The study of the localization properties of the LR functional, formerly discussed through the inspection of the response density operator, can be reformulated in terms of the 
-\emph{susceptibility functional}, defined trough the operator equation  
-\be\lb{SusceptibilityDef1}
-\dm'(\omega) = \sop{{\cal \chi}}(\omega) \op\Phi(\omega) \;. 
-\ee
-This alternative formulation of the problem has the advantage of providing general information on the nature of the excitation spectrum. Results achieved in this way thus describes an intrinsic 
-feature of the system under inspection and determine the properties of the LR independently from the specific choice of the perturbing field. 
+In view of reproducibility, the scalar product of Eq.~\eqref{LinearResponseFunctDef1}, defining the observable fluctuation, may be compared among various numerical treatments.
+However, even though directly related to experimental results, such quantity is not by itself a property of the molecule, as it is a function of $\omega$ which explicitly depends on the perturbation operator $\op \Phi$, not to mention 
+the target observable $\op O$. We may consider only the fluctuation state, but it is still a $\op \Phi$-dependent wavefunction, that may be local and with a well-defined normalization only for $\omega$ below the ionization threshold.
+Comparing fluctuation states among diverse numerical treatments would be a challenging task.
 
-The analysis is based on the spectral decomposition of the Liouville equation \eqref{LiouvillianRhopomegaDef1} and the make usage of the \emph{excitation operators}, defined through the 
-left and right action eigenvalue equations 
+It is therefore much more interesting to concentrate on LR quantities that are
+defined independently on the perturbing operators and target observables.
+This can be achieved by studying the 
+\emph{susceptibility functional}, defined implicitly trough the operator equation  
+\be\lb{SusceptibilityDef1}
+\dm'(\omega) = \left(\omega -\mathcal L \right)^{-1} \commutator{\op \Phi(\omega)}{\dmnot} = \sop{{\cal \chi}}(\omega) \op\Phi(\omega) \;. 
+\ee
+%This alternative formulation of the problem has the advantage of providing general information on the nature of the excitation spectrum. Results achieved in this way thus describes an intrinsic 
+%feature of the system under inspection and determine the properties of the LR independently from the specific choice of the perturbing field. 
+The susceptivity (super)operator $\cal \chi(\omega)$ is therfore closely related to the resolvent of the Liouvillian of Eq.~\eqref{LiouvillianRhopomegaDef1}, which is completely defined 
+from the molecule hamiltonian $\hnot[\dm]$.
+The ``excitation modes''  of the molecule are defined through the \emph{excitation operators}, satisfying
 \be\lb{ExcitationOperatorsDef1}
 \Liouv \op E_a = \Omega_a \op E_a \qq \op{\tilde E}_a \Liouv = \Omega_a \op{\tilde E}_a \;,
 \ee
@@ -540,38 +551,66 @@ together with the operator orthonormalization condition %$\trace{\op{\tilde E}\o
 \be\lb{orthoExcitatioOpDef1}
 \trace{\op{\tilde E}_a\op E_b} = \delta_{ab} \;.
 \ee
-Excitations are transverse operators so that $\op E_a = \dmnot\op E_a\op Q_0 + \op Q_0\op E_a\dmnot$ and can be expressed through a dyadic representation as follows
-\begin{align}\lb{ExcitationOperatorsDef2}
-\op E_a &= \sum_p \left( \ket{\phi^a_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^a_p}\right)\;, \nn \\
-\op{\tilde E}_a = \commutator{\dmnot}{\op E^t_a} &= \sum_p \left( \ket{\psi_p}\bra{\phi^a_p} - \ket{\chi^a_p} \bra{\psi_p}\right)\;,
-\end{align}
-where we have defined the \emph{excited states} $\ket{\phi^a_p}$ and $\bra{\chi^a_p}$ that, by construction, are orthogonal to the occupied orbitals of $\hnot$. 
-% We observe that right eigenvalues of $\Liouv$ can be written in terms of the left ones due to the properties of the Liouvillian described in appendix \ref{LiouvillianAction}. 
-% The introduction of the excitation operators allows us to express the spectral decomposition of the resolvent of the Liouvillian so that:
-% \be\lb{RhopExcitationDef1}
-% \sop{{\cal \chi}}(\omega) \cdot   = \sum_{\{a\}} \op E_{a} \,
-% \frac{\trace{\op E_a^t\cdot}}{\omega-\Omega_a} \;.
-% \ee 
-By applying equations \eqref{LiouZeroDef1},\eqref{CouplDef1} and \eqref{LiouvillianRightActionDef1} presented in appendix \ref{LiouvillianAction} to the dyadic representations of the excitation 
-operators, it emerges that equations \eqref{ExcitationOperatorsDef1} can be recasted in the form of a Sternheimer-like equations for the excited states 
-\begin{align}\lb{ExcitationOperatorsDef3}
-&\left[\Omega_a-(\hnot - \eps_p)\right] \ket{\phi_p^a} = \op Q_0 \op V'[\op E_a] \ket{\psi_p} \;, \nn\\
-&\left[-\Omega_a-(\hnot - \eps_p)\right]\ket{\chi_p^a} = \op Q_0\op V'[\op E^t_a]\ket{\psi_p}  \;, 
-\end{align}
-and the orthonormalization condition \eqref{orthoExcitatioOpDef1} implies 
+The excitations defined in that way may be considered as a basis of the operators that satisfy the transverse condition as per 
+Eq.~\eqref{RhopTransverseDef1}, and enable us to express the suscpeptivity as a spectral decomposition:
+\be\lb{RhopExcitationDef1}
+\sop{{\cal \chi}}(\omega) \cdot   = \sum_{\{a\}} \op E_{a} \,
+\frac{\trace{\commutator{\op{\tilde E}_a}{\dmnot}\cdot}}{\omega-\Omega_a} \;.
+\ee 
+
+Being themselves transverse operators, we may parametrize the excitations by employing  
+the \emph{excited states} $\ket{\phi^a_p}$ and $\bra{\chi^a_p}$ that, by construction, are orthogonal to the occupied orbitals
+$\psi_p$ and satisfy the normalization condition % and the orthonormalization condition \eqref{orthoExcitatioOpDef1} implies 
 \be\lb{ExcitedStateOrthNormDef1}
 \sum_p \left(\brket{\phi_p^a}{\phi_p^b} - \brket{\chi_p^b}{\chi_p^a}\right) = \delta_{ab} \;. 
 \ee
-Once again we present a formal solution of \eqref{ExcitationOperatorsDef3} as follows 
-\begin{align}
-&\ket{\phi^a_p} = \op G_H(\Omega_a+\eps_p)\ket{s_{\phi}} \;, \nn \\
-&\ket{\chi^a_p} = \op G_H(-\Omega_a+\eps_p)\ket{s_{\chi}} \;,
+In this way we may parametrize the excitation operators of the system as:
+\begin{align}\lb{ExcitationOperatorsDef2}
+\op E_a &= \sum_p \left( \ket{\phi^a_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^a_p}\right)\;, \nn \\
+\op{\tilde E}_a = \commutator{\dmnot}{\op E^t_a} &= \sum_p \left( \ket{\psi_p}\bra{\phi^a_p} - \ket{\chi^a_p} \bra{\psi_p}\right)\;.
 \end{align}
-where the source terms $s_\phi$ and $s_{\chi}$ collect the sum of the r.h.s of \eqref{ExcitationOperatorsDef3} plus the action of the KS potential on the excited states. 
+Each excitation ``mode'' of the system $\op E_a$ with energy $\Omega_a$,
+may then be associated to a set of states $\{\phi^a_p,\chi^a_p\}$,
+entirely defined in the unoccupied subspace.
 
-The excitation spectrum is symmetric w.r.t the inversion of the eigenvalues $\Omega_a \rightarrow -\Omega_a$ and we focus our analysis on the sector with positive energies. The localization 
-character of $\op G_H(\Omega_a+\eps_p)$ depends from $\Omega_a$ and we identify the threshold level $\Omega_a=|\eps_p|$. At the same time we point out that the Helmholtz kernel evaluated in 
-$-\Omega_a+\eps_p$ contains an exponential damping factor for \emph{all} the positive values of $\Omega_a$.  As a consequence of these behaviors and assuming the spatial localization of 
+% We observe that right eigenvalues of $\Liouv$ can be written in terms of the left ones due to the properties 
+% of the Liouvillian described in appendix \ref{LiouvillianAction}. 
+% By applying equations \eqref{LiouZeroDef1},\eqref{CouplDef1} and \eqref{LiouvillianRightActionDef1} presented in 
+% appendix \ref{LiouvillianAction} to the dyadic representations of the excitation 
+% operators, 
+By applying the equations \eqref{ExcitationOperatorsDef1} to the above parametrization
+of the excitations, we obtain the following Sternheimer-like equations for the excited states 
+\begin{align}\lb{ExcitationOperatorsDef3}
+&\left[\Omega_a-(\hnot - \eps_p)\right] \ket{\phi_p^a} = \op Q_0 \op V'[\op E_a] \ket{\psi_p} \;, \nn\\
+&\left[-\Omega_a-(\hnot - \eps_p)\right]\ket{\chi_p^a} = \op Q_0\op V'[\op E^t_a]\ket{\psi_p}  \;.
+\end{align}
+By writing these equations in a basis set of virtual states we obtain the well-known Casida's eigenvalue equation
+associated to the excitation energy $\Omega_a$.
+The excitation spectrum is symmetric w.r.t the inversion of the eigenvalues 
+$\Omega_a \rightarrow -\Omega_a$; the associated excitation with negative energy will
+be then parametrized with the states $\{\chi^a_p,\phi^a_p\}$.
+We may concertrate our analysis on the sector of positive energies, i.e. $\Omega_a > 0$.
+
+
+With the same spirit of the previous sections, we present a formal solution of \eqref{ExcitationOperatorsDef3} as follows 
+\begin{align}
+\ket{\phi^a_p} &= \op G_H(\Omega_a+\eps_p)\ket{s_{\phi}} \;, \nn \\
+\ket{\chi^a_p} &= \op G_H(-\Omega_a+\eps_p)\ket{s_{\chi}} \;,
+\end{align}
+where the source terms $s_\phi$ and $s_{\chi}$ are defined as:
+\begin{align}
+ \ket{s_{\phi}} &= \op V \ket{\phi^a_p} + \op Q_0 \op V'[\op E_a] \ket{\psi_p} \\
+ \ket{s_{\chi}} &= \op V \ket{\chi^a_p} + \op Q_0 \op V'[\op E^t_a] \ket{\psi_p}\;.
+\end{align}
+We first point out that the Helmholtz kernel for the $\ket{\chi^a_p}$ state 
+contains an exponential damping factor for \emph{all} the positive values of $\Omega_a$.
+The asymptotic long-range behaviour of $\ket{\chi^a_p}$ thus depends only on the locality properties of 
+$\ket{s_{\chi}}$, which in turn is related to the behaviour of the operator $\op V'[\op E^t_a]$.
+
+On the other hand, the long-range behaviour of $\op G_H(\Omega_a+\eps_p)$ depends from 
+$\Omega_a$, with a threshold of value $\Omega_a=|\eps_p|$. 
+For energies above this value, the behviour
+As a consequence of these behaviors and assuming the spatial localization of 
 the source terms,  we observe that the asymptotic character of $\ket{\phi^a_p}$ changes from bound to unbound as the value of the excitation energy crosses the threshold $|\eps_p|$ while all 
 the $\ket{\chi^a_p}$ states exhibit a bound-state behavior for all the values of $a$. 
 Furthermore, excited states are subjected to the orthonormalization condition \eqref{ExcitedStateOrthNormDef1} that acts as a ulterior constraint and has the effect of determining the quantization 
