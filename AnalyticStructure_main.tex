@@ -5,9 +5,10 @@
 
 % Useful packages
 \usepackage{graphicx}
+\usepackage{subfig}
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
 \usepackage{mathtools,braket}
-\usepackage{tikz}%,pgfplots}
+\usepackage{tikz}
 \usepackage{xifthen}
 %\pgfplotsset{compat=1.15}
 
@@ -87,6 +88,7 @@
 \newcommand{\identity}{\op{\mathbb I}}
 \newcommand{\rmat}[1]{\optr R}
 
+\captionsetup{justification=centerlast}
 
 \begin{document}
 
@@ -378,7 +380,7 @@ response density parametrized as
 Here we have introduced the set of $\omega$-dependent \emph{fluctuation states} $\{\ket{f_p^\Phi(\omega)}\}$, 
 that have values in the \emph{unoccupied} subspace of $\hnot$. 
 An analysis of the Liouville equation \eqref{LiouvillianRhopomegaDef1} for the response density written in this fashion evidences that the equations of motion of fluctuation states are 
-written as a modified Sternheimer equation~\cite{mahan1980}
+written as a modified Sternheimer equation~\cite{mahan1980,giustino2012,giustino2014}
 \be\lb{fluctuationStateEqMotion1}
 \left[\omega - (\hnot-\eps_p)\right]\ket{f_p^\Phi(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'[\dm'_\Phi](\omega))\ket{\psi_p} \;,
 \ee
@@ -428,8 +430,10 @@ they would exhibit bound-state behavior.\footnote{The fulfilling of Eq.~\eqref{S
 is not \textit{per se} a guarantee of a localized $\ket{\psi}$. With such equation we demonstrate that, \emph{in the case when} a localized
 solution exists, this cannot be found for energies above threshold.}
 \begin{figure}[t]
-\includegraphics[scale=0.56]{CO_alpha+D0_vsBoxSize.eps}
-\caption{\label{co_alphaStatic}(Color online) Convergence of the statical polarizability of the $CO$ with respect to the size of the computational domain.}
+\includegraphics[scale=0.68]{CO_statPolvsBox.eps}
+\caption{\label{co_alphaStatic}(Color online) Convergence of the statical polarizability (blue continuous line) and of the ground state permanent dipole (red dotted line) 
+of the $CO$ molecule with respect to the size of the computational domain. The inset plot evidences the relative percentage convergence using the value associated to the largest 
+box as reference.}
 \end{figure}
 
 From the linearized Schroedinger Equation of the perturbed problem, it is easy to see that the fluctuation state at $\omega=0$ can be expressed
@@ -517,7 +521,7 @@ For these ultraviolet regions, convergence might be reached for domains of much 
 which in turn reveal more than sufficient below threshold.
 
 \begin{figure}
-\includegraphics[scale=0.56]{co_spectrum.eps}
+\includegraphics[scale=0.6]{CO_spectrum.eps}
 \caption{\label{co_spectrum}(Color online) Convergence below threshold of the $CO$ spectrum computed in different computational setup.}
 \end{figure}
 
@@ -827,21 +831,48 @@ reliable results for the LR.
 
 
 \begin{figure}[ht]
-\includegraphics[scale=0.24]{CO_exc.eps}
+\includegraphics[scale=0.6]{CO_dos.eps}
 \caption{(Color online) Excitation spectrum of $CO$. The two curves correspond to two computational domain of different sizes. The inset contains the sole contribution of localized excitations.}
 \label{CO_exc}
 \end{figure}
 
-\begin{figure}[ht]
-\includegraphics[scale=0.24]{C6H6_exc.eps}
-\caption{(Color online) Excitation spectrum of $C_6H_6$. The two curves correspond to two computational domain of different sizes. The inset contains the sole contribution of localized excitations.}
-\label{C6H6_exc}
-\end{figure}
+% \begin{figure}[ht]
+% \includegraphics[scale=0.6]{C6H6_dos.eps}
+% \caption{(Color online) Excitation spectrum of $C_6H_6$. The two curves correspond to two computational domain of different sizes. The inset contains the sole contribution of localized excitations.}
+% \label{C6H6_exc}
+% \end{figure}
+% 
+% \begin{figure}[ht]
+% \includegraphics[scale=0.56]{C6H6_excLandscape.eps}
+% \caption{\label{c6h6_excLand}(Color online) Excitation landscape of $C_6H_6$.}
+% \end{figure}
+
+% \begin{figure}[ht]
+% \centering
+% \begin{subfigure}[]{0.2\textwidth}
+% \includegraphics[scale=0.56]{C6H6_excLandscape.eps}
+% %\caption{\label{c6h6_excLand}(Color online) Excitation landscape of $C_6H_6$.}
+% \end{subfigure}
+% \centering
+% \begin{subfigure}[b]{0.2\textwidth}
+% \includegraphics[scale=0.6]{C6H6_dos.eps}
+% \end{subfigure}
+% \caption{(Color online) Excitation spectrum of $C_6H_6$. The two curves correspond to two computational domain of different sizes. The inset contains the sole contribution of localized excitations.}
+% \end{figure}
 
 \begin{figure}[ht]
-\includegraphics[scale=0.56]{c6h6_excitationLandscape.eps}
-\caption{\label{c6h6_excLand}(Color online) Excitation landscape of $C_6H_6$.}
+\centering
+\subfloat[aaaa]
+{\label{c6h6_excLand}
+\includegraphics[scale=0.56]{C6H6_excLandscape.eps}} \\
+\centering
+\subfloat[bbbbb]
+{\label{C6H6_exc}
+\includegraphics[scale=0.58]{C6H6_dos.eps}}
+\caption{(Color online) Excitation landscape and DOS of $C_6H_6$.}
 \end{figure}
+
+
 \section{Criterion of computational reliability for the numerical convergence of the LR}
 
 % From the theoretical analysis of the previous section we can made two statements:
@@ -888,7 +919,7 @@ Show the convergence of the statical polarizability of the $CO$ in function of t
 and add the plot that show the convergence rate of the statical polarizability to the reference (finite difference) value in functions of the number of excitations. The plot evidence that the
 continuum sector of the excitation spectrum is 
 \begin{figure}
-\includegraphics[scale=0.56]{CO_alphaX_isto.eps}
+\includegraphics[scale=0.6]{CO_statPolvsExc.eps}
 \caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability of the $CO$ molecule w.r.t the number of excitations.}
 \end{figure}
 
@@ -930,7 +961,7 @@ express the spectral decomposition of the Liouvillian superoperator.
 The Liouvillian superoperator $\Liouv$ for self-consistent systems is expressed as the sum of the unperturbed part plus a coupling term. The left action of these 
 terms reads, respectively
 \be\lb{LiouZeroDef1}
-\Liouvnot \op O = \commutator{\hnot}{O} \;,
+\Liouvnot \op O = \commutator{\hnot}{\op O} \;,
 \ee
 and
 \be\lb{CouplDef1}
@@ -963,30 +994,6 @@ In the last equivalence we have made usage of the transverse property (see equat
 \eqref{LiouZeroDef1},\eqref{CouplDef1} and \eqref{LiouvillianRightActionDef1} are the starting point for the solution of the eigenvalues equations \eqref{ExcitationOperatorsDef1}. 
 
 \section{Casida equations}
-
-% We show that Casida equations are equivalent to the operator eigenvalue equations \eqref{ExcitationOperatorsDef1} when an explicit basis $\{\ket{\eta}\}$ for the empty states subspace is used,
-% so that $\op Q_0 = \sum_{\eta}\ketbra{\eta}{\eta}$. Operators $\op O$ satisfying the transverse condition $\op O = \op O_{\perp}$ (see eq. \eqref{RhopTransverseDef1}) can be represented as 
-% follows
-% \be\lb{OperatorTransBasisExpDef1}
-% \op O = \sum_{p\eta}\left(
-% \excite{p}{\eta}\trace{\decay{\eta}{p}\op O} + \decay{\eta}{p}\trace{\excite{p}{\eta}\op O}
-% \right) \;,
-% \ee
-% where the \emph{transition operators} $\excite{p}{\eta} \equiv \ketbra{\eta}{\psi_p}$ and $\decay{\eta}{p} \equiv \ketbra{\psi_p}{\eta}$
-% are normalized as follows
-% \be
-% \trace{\excite{p}{\eta}\excite{q}{\rho}} = \trace{\decay{\eta}{p}\decay{\rho}{q}} = 0 \;, \quad
-% \trace{\excite{p}{\eta}\decay{\rho}{q}} = \delta_{pq}\delta_{\eta\rho} \;. \nonumber
-% \ee
-% Expanding equations \eqref{ExcitationOperatorsDef1} in the basis of transitions provides a matrix equation for the coefficients of the expansion. In particular from the left action equation
-% one has
-% \be
-% \sum_{q\rho}\mat{\trace{\decay{\alpha}{p}\, \sop{\mathcal L}\, \excite{q}{\beta}} &
-% \trace{\decay{\alpha}{p}\, \sop{\mathcal L}\, \decay{\beta}{q}} \\
-% \trace{\excite{p}{\alpha}\, \sop{\mathcal L}\, \excite{q}{\beta}} &
-% \trace{\excite{p}{\alpha}\, \sop{\mathcal L}\, \decay{\beta}{q}}}
-% \mat{X_a^{p\eta} \\ Y_a^{p\eta}} = \Omega_a \mat{X_a^{p\eta} \\ Y_a^{p\eta}}
-% \ee
 
 We show that Casida equations are equivalent to the equations of motion for the excited states \eqref{ExcitationOperatorsDef3}. To this scope we introduce an explicit basis $\{\ket{\eta}\}$
 in the subspace of empty states so that both $\ket{\phi^a_p}$ and $\bra{\chi^a_p}$ can be represented as
@@ -1026,9 +1033,29 @@ where
 Finally, exploiting the symmetry properties of both the unperturbed Hamiltonian and of the coupling kernel it follows that $F=G$ and $D=E$ so that equations
 \eqref{ExcitationMatrixEq1} reduce to the usual formulation of the Casida equations in the basis of transitions. 
 
+\section{Computational details}
 
+\subsection{$CO$}
 
+Both GS and LR calculations for the $CO$ molecule are performed in three distinct computational setup that differs for the dimension of the computational
+domain. The molecule is oriented along the $z$ axis and the $z$-dimension of the box is equal to 11.5, 15.1 and 16.6 \AA.
 
+Excitation energies and states are obtained through the explicit diagonalization of the Casida matrix. To this scope we have built a basis in the domain of $\op Q_0$ 
+by calculating the eigenvectors and associated energies of the empty virtual orbitals of $\hnot$. 280 states have been computed in each setup and the corresponding
+energy cutoff in the three simulation box is 30.7, 19.3 and 15.4 eV (energy cutoff decreases as the box increases due to the collapse of the unbound virtual states). 
+
+The DOS reported in figure \ref{CO_exc} are obtained by adding a complex shift of $8\times 10^{-2}$ eV whereas in the inset shift is $5\times 10^{-3}$ eV. 
+
+\subsection{$C_6H_6$}
+
+Both GS and LR calculations for the $C_6H_6$ molecule are performed in three distinct computational setup that differs for the dimension of the computational
+domain. The molecule is oriented in the $xy$ plain and the $x$-dimension of the box is equal to 15.0, 18.2 and 19.7 \AA.
+
+Excitation energies and states are obtained through the explicit diagonalization of the Casida matrix. To this scope we have built a basis in the domain of $\op Q_0$ 
+by calculating the eigenvectors and associated energies of the empty virtual orbitals of $\hnot$. 220 states have been computed in each setup and the corresponding
+energy cutoff in the three simulation box is 16.9, 11.6 and 9.7 eV (energy cutoff decreases as the box increases due to the collapse of the unbound virtual states).  
+
+The DOS reported in figure \ref{C6H6_exc} are obtained by adding a complex shift of $1.3\times 10^{-2}$ eV whereas in the inset shift is $5\times 10^{-3}$ eV. 
 
 
 
