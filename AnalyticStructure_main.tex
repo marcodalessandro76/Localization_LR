@@ -558,7 +558,8 @@ Eq.~\eqref{RhopTransverseDef1}, and enable us to express the suscpeptivity as a 
 \frac{\trace{\commutator{\op{\tilde E}_a}{\dmnot}\cdot}}{\omega-\Omega_a} \;.
 \ee 
 
-Being themselves transverse operators, we may parametrize the excitations by employing  
+\subsection{The analytic structure of linear susceptivity}
+Being themselves transverse operators, without loss of generality we may parametrize the excitations by employing  
 the \emph{excited states} $\ket{\phi^a_p}$ and $\bra{\chi^a_p}$ that, by construction, are orthogonal to the occupied orbitals
 $\psi_p$ and satisfy the normalization condition % and the orthonormalization condition \eqref{orthoExcitatioOpDef1} implies 
 \be\lb{ExcitedStateOrthNormDef1}
@@ -570,8 +571,13 @@ In this way we may parametrize the excitation operators of the system as:
 \op{\tilde E}_a = \commutator{\dmnot}{\op E^t_a} &= \sum_p \left( \ket{\psi_p}\bra{\phi^a_p} - \ket{\chi^a_p} \bra{\psi_p}\right)\;.
 \end{align}
 Each excitation ``mode'' of the system $\op E_a$ with energy $\Omega_a$,
-may then be associated to a set of states $\{\phi^a_p,\chi^a_p\}$,
-entirely defined in the unoccupied subspace.
+may then be associated to a set of states $\{\phi^a_p,\chi^a_p\}_{p \in a}$,
+entirely defined in the unoccupied subspace. For each $p,a$, these two states represent, 
+respectively, the state in which the occupied state $\ket{\psi_p}$
+is excited -- or from whom it decays -- when the system is subject to the perturbation $\op E_a^t$.
+We denote with the shorthand $p \in a$ the fact that the sum of Eq.~\eqref{ExcitationOperatorsDef2}
+is in general restricted only to a $a$-dependent subset of the occupied orbitals, depending on the particular symmetry 
+of the excitation.
 
 % We observe that right eigenvalues of $\Liouv$ can be written in terms of the left ones due to the properties 
 % of the Liouvillian described in appendix \ref{LiouvillianAction}. 
@@ -602,20 +608,38 @@ where the source terms $s_\phi$ and $s_{\chi}$ are defined as:
  \ket{s_{\phi}} &= \op V \ket{\phi^a_p} + \op Q_0 \op V'[\op E_a] \ket{\psi_p} \\
  \ket{s_{\chi}} &= \op V \ket{\chi^a_p} + \op Q_0 \op V'[\op E^t_a] \ket{\psi_p}\;.
 \end{align}
-We first point out that the Helmholtz kernel for the $\ket{\chi^a_p}$ state 
+We first point out that the Helmholtz kernel associated to the $\ket{\chi^a_p}$ state 
 contains an exponential damping factor for \emph{all} the positive values of $\Omega_a$.
 The asymptotic long-range behaviour of $\ket{\chi^a_p}$ thus depends only on the locality properties of 
 $\ket{s_{\chi}}$, which in turn is related to the behaviour of the operator $\op V'[\op E^t_a]$.
+% As in the previous section, we assume the hypothesis that such operator is such that
+% the state $\op Q_0 \op V'[\op E^t_a] \ket{\psi_p}$ is localized, at least when \emph{both}
+% the states $\phi_p^a$ $\chi_p^a$ have bound-state-like behaviour.
 
 On the other hand, the long-range behaviour of $\op G_H(\Omega_a+\eps_p)$ depends from 
 $\Omega_a$, with a threshold of value $\Omega_a=|\eps_p|$. 
-For energies above this value, the behviour
-As a consequence of these behaviors and assuming the spatial localization of 
-the source terms,  we observe that the asymptotic character of $\ket{\phi^a_p}$ changes from bound to unbound as the value of the excitation energy crosses the threshold $|\eps_p|$ while all 
-the $\ket{\chi^a_p}$ states exhibit a bound-state behavior for all the values of $a$. 
-Furthermore, excited states are subjected to the orthonormalization condition \eqref{ExcitedStateOrthNormDef1} that acts as a ulterior constraint and has the effect of determining the quantization 
-of the energy levels associated to the the bound-state solutions. Thus we can conclude that all the states $\ket{\chi^a_p}$ and the $\ket{\phi^a_p}$ with $\Omega_a$ below the threshold value constitute 
-a genuine \emph{discrete} set, while the ones in the unbound energy range behaves as generalized eigenvectors associated to a continuum spectrum. 
+For energies above this value, the behaviour of the state $\ket{\phi^a_p}$ is 
+delocalized regardless of the particular nature of the operators $\op V$ and $\op V'$.
+This means that, if an excitation operator $\op E_a$ has an energy such that
+$\Omega_a>|\eps_p|$  for \emph{at least one} of the $p \in a$ defining the excitation,
+such operator cannot be restricted to localized states.
+
+As a consequence, we deduce that a molecular excitation \emph{may} be expressed in terms of localized states
+\emph{only} when its energy is lower than \emph{all} the ionization potentials of the occupied states participating to the excitation,
+namely if $\Omega_a>|\eps_p|$ $\forall p \in a$. This will only be true if the operators
+$\op V'[\op E^t_a]$ and $\op V'[\op E_a]$ might be restricted to localized wavefunctions.
+If any of these hypothesis would not hold, the excitations of the systems are defined via genuinely delocalized wavefunctions.
+% As a consequence of these behaviors and assuming the spatial localization of 
+% the source terms,  we observe that the asymptotic character of $\ket{\phi^a_p}$ changes from bound to unbound as the value of the excitation energy crosses the threshold $|\eps_p|$ while all 
+% the $\ket{\chi^a_p}$ states exhibit a bound-state behavior for all the values of $a$. 
+Furthermore, excited states are subjected to the orthonormalization condition 
+\eqref{ExcitedStateOrthNormDef1} that acts as a ulterior constraint and has the effect of determining the \emph{quantization}
+of the energy levels $\Omega_a$ associated to the bound-state-like objects.
+For delocalized states, as in the case of the continuum states of $\hnot$,
+such a condition has to be interpreted in disctributional sense and does not lead to quantization of $\Omega_a$.
+Thus we can conclude that all the states $\ket{\chi^a_p}$ and the $\ket{\phi^a_p}$ with $\Omega_a$ below the threshold value constitute 
+-- if localized -- a genuine \emph{discrete} set, while the ones in the unbound energy range behaves as generalized eigenvectors associated to a
+continuum spectrum. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!t]
@@ -635,11 +659,11 @@ a genuine \emph{discrete} set, while the ones in the unbound energy range behave
 \draw[dashed,very thin,color=black] (4,0) -- (4,3);
 \draw[dashed,very thin,color=black] (6,0) -- (6,1);
 % % threshold levels labels
-\node[left] at (0,5) {$p_h$};
-\node[left] at (0,3) {$p_i$};
-\node[left] at (0,1) {$p_1$};
+\node[left] at (0,5) {$p=h$};
+\node[left] at (0,3) {$p$};
+\node[left] at (0,1) {$p=1$};
 \node[below] at (2,0) {$|\eps_h|$};
-\node[below] at (4,0) {$|\eps_i|$};
+\node[below] at (4,0) {$|\eps_p|$};
 \node[below] at (6,0) {$|\eps_1|$};
 \node[below] at (4,-0.5) {excitation energy};
 % bars at thresholds
@@ -662,16 +686,76 @@ excitations whereas the tick black lines describe delocalized excitation with a 
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The structure of the excitation spectrum follows from the properties of the excited states described above. To clarify this point we consider a value of $\Omega_a$ that satisfies equations
-\eqref{ExcitationOperatorsDef1}. In correspondence of this values equations \eqref{ExcitationOperatorsDef3} possess a solution in which \emph{at least} one of the excited states 
-is not zero. We denote with $p=p_m$ the label of the $\ket{\phi^a_p}$  with the highest value of $|\eps_p|$, among the ones that contribute to \eqref{ExcitationOperatorsDef2}. From the previous 
-considerations it emerge that if $\Omega_a<|\eps_{p_m}|$ \emph{all} the excited states in the dyadic representation of the excitation operator possess a bound-state like behavior. Excitations 
-of this type thus represent localized quantities and the associated eigenvalue are discrete. On the contrary, for $\Omega_a>|\eps_{p_m}|$ some (or all) of the excited states in the dyadic representation
-of the excitation behave as generalized eigenvectors and the corresponding eigenvalue belong to a continuum of accessible values.
+% The structure of the excitation spectrum follows from the properties of the excited states described above. 
+% To clarify this point we consider a value of $\Omega_a$ that satisfies equations
+% \eqref{ExcitationOperatorsDef1}. In correspondence of this values equations \eqref{ExcitationOperatorsDef3} 
+% possess a solution in which \emph{at least} one of the excited states 
+% is not zero. We denote with $p=p_m$ the label of the $\ket{\phi^a_p}$  with the highest value of $|\eps_p|$, among the ones that contribute to \eqref{ExcitationOperatorsDef2}. From the previous 
+% considerations it emerge that if $\Omega_a<|\eps_{p_m}|$ \emph{all} the excited states in the dyadic representation of the excitation operator possess a bound-state like behavior. Excitations 
+% of this type thus represent localized quantities and the associated eigenvalue are discrete. On the contrary, for $\Omega_a>|\eps_{p_m}|$ some (or all) of the excited states in the dyadic representation
+% of the excitation behave as generalized eigenvectors and the corresponding eigenvalue belong to a continuum of accessible values.
 
-The typical structure of the excitations landscape is depicted in figure \ref{ExcitationLandscape}. The plot evidences that below the first ionization energy $|\eps_h|$ only localized excitations are 
-present. Conversely, in the intermediate energy interval that extends from $|\eps_h|$ to the absolute value of the deepest occupied orbital, the elements belonging to the discrete sector are embedded 
-in a continuum of delocalized excitations. Lastly, for energies higher than $|\eps_1|$ the excitations landscape takes contributions only from the delocalized sector. 
+The susceptibility functional has therefore a peculiar analytic structure, that
+is made of multiple threshold energies, one for each of the ionization potentials
+associated to the occupied states. 
+If an excitation $\op E_a$ has a energy $\Omega_a < |\eps_a|$ with $\eps_a = \mathrm{max}\left(\eps_p\right)_{p\in a}$,
+it may belong to a discrete spectrum; otherwise it \emph{has} to belong to a continuum of states. 
+
+Following these observations, the typical structure of the excitations landscape 
+may be depicted in figure \ref{ExcitationLandscape}, once again assuming a reasonable behaviour of the
+perturbed potential $\op V'$.
+Below the first ionization energy $|\eps_h|$ only localized excitations are 
+present. Conversely, in the intermediate energy interval that extends from $|\eps_h|$ to the absolute value of the deepest 
+occupied orbital, other discrete excitations may exist, and they would be embedded 
+in a continuum of delocalized excitations. 
+Lastly, for energies higher than $|\eps_1|$ \emph{no localized} excitations are anymore possible,
+regardless of the particular behaviour of $\op V'$. The excitations landscape is formed by only continuum energies.
+
+\subsection{Stability and convergence of the excitation spectrum}
+
+The analysis of the above section reveals that the excitation spectrum is composed by two distinct sectors. 
+The first one is realized by the (finite) set of localized excitations with discrete eigenvalues. 
+Extending 
+the results achieved in \cite{boffi2016} for the KS virtual orbitals, to the equations for excited states 
+\eqref{ExcitationOperatorsDef3}, we conclude that such localized excitations behave as 
+\emph{observable} quantities and the associated energies possess ideal features of reproducibility:
+if the numerical basis employed is complete enough to
+represent the states $\{\phi_p^a,\chi_p^a\}$, the energy $\Omega_a$ 
+should not depend from the computational setup used for their representation.
+
+Instead, the second sector contains the dense set of delocalized excitations with an associated continuum spectrum. These excitations behave as the unbound virtual orbitals analyzed in \cite{boffi2016} 
+and are deeply affected by the computational setup used to represent them. In particular, the presence of a finite computational domain implies a fictitious discretization of the excitation levels and 
+the associated spectrum exhibit an explicit dependence from the size of the domain. Excitations belonging to this sector thus lose their intrinsic physical meaning and have to be understood as a tool to 
+express the spectral decomposition of the Liouvillian superoperator.
+
+In Fig.~\ref{CO_exc} and \ref{C6H6_exc} we plot the Density of States of the Liouvillian for the $CO$  and Benzene molecules, 
+for two different numerical setups of increasing simulation domains. 
+The figures show clearly that all the excitations of energy $\Omega_a$ lying below the 
+molecule ionization potential (IP) have a clear localized behaviour, as their energy does not vary with the size of the simulation domain.
+On the other hand, above the first ionization threshold the excitation energies have an energy that strongly depends on the computational
+setup, which is in line with the expected pseudo-continuum character of this sector. 
+In addition, for the benzene molecule it is also possible to 
+identify excitations of energy above IP that still possess a localized behaviour: these excitations satisfy the
+condition $\Omega_a < |\eps_a|$ presented in the above section.
+In Fig.~\ref{c6h6_excLand} we collecting the excitations of the benzene molecule following this criterion:
+the agreement with the expected analytic structure presented in Fig.~\ref{ExcitationLandscape} is impressive.
+
+\subsection{The importance of the continuum sector}
+We have presented formal arguments, confirmed by numerical calculations, that show that 
+the excitations belonging to the discrete sector of the spectrum have energies
+that may be \emph{quantitatively} compared between codes, thanks to their
+localized character. 
+Such objects are LR quantities, associated to the molecule, whose numerical convergence
+might be found by employing techniques which are very similar to 
+the one employed for GS calculations. Being expressed by localized excited states,
+computational setups with sufficient level of completeness will be such to
+express with high \emph{precision} such section of the excitation spectrum.
+
+It might be interesting to obtain information on whether such localized excitations
+will be sufficient to express LR quantities that are associated to localized
+fluctuation states.
+
+
 
 %The introduction of the excitation operators allows us to express the spectral decomposition of the resolvent of the Liouvillian so that:
 %Susceptibility written as
@@ -741,16 +825,6 @@ reliable results for the LR.
 
 \vspace{0.3cm}
 
-\subsection{Stability and convergence of the excitation spectrum}
-
-This analysis reveals that the excitations spectrum is composed by two distinct sectors. The first one is realized by the (finite) set of localized excitations with discrete eigenvalues. Extending 
-the results achieved in \cite{boffi2016} for the KS virtual orbitals, to the equations for excited states \eqref{ExcitationOperatorsDef3}, we conclude that localized excitations behave as 
-\emph{observable} quantities and the associated energies possess an absolute meaning, which should not depend from the computational setup used for their representation. 
-
-Instead, the second sector contains the dense set of delocalized excitations with an associated continuum spectrum. These excitations behave as the unbound virtual orbitals analyzed in \cite{boffi2016} 
-and are deeply affected by the computational setup used to represent them. In particular, the presence of a finite computational domain implies a fictitious discretization of the excitation levels and 
-the associated spectrum exhibit an explicit dependence from the size of the domain. Excitations belonging to this sector thus lose their intrinsic physical meaning and have to be understood as a tool to 
-express the spectral decomposition of the Liouvillian superoperator. 
 
 \begin{figure}[ht]
 \includegraphics[scale=0.24]{CO_exc.eps}
