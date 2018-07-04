@@ -377,7 +377,8 @@ response density parametrized as
 \be\lb{rhoPrimeFluctuationStateDef1}
 \dm'_\Phi(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p^\Phi(-\omega)} + \ketbra{f_p^\Phi(\omega)}{\psi_p}\right) \;.
 \ee
-Here we have introduced the set of $\omega$-dependent \emph{fluctuation states} $\{\ket{f_p^\Phi(\omega)}\}$, 
+Here we have introduced the set of $\omega$-dependent \emph{fluctuation states} 
+$\ket{f_p^\Phi(\omega)} = \dm'_\Phi(\omega) \ket{\psi_p}$, 
 that have values in the \emph{unoccupied} subspace of $\hnot$. 
 An analysis of the Liouville equation \eqref{LiouvillianRhopomegaDef1} for the response density written in this fashion evidences that the equations of motion of fluctuation states are 
 written as a modified Sternheimer equation~\cite{mahan1980,giustino2012,giustino2014}
@@ -732,6 +733,24 @@ and are deeply affected by the computational setup used to represent them. In pa
 the associated spectrum exhibit an explicit dependence from the size of the domain. Excitations belonging to this sector thus lose their intrinsic physical meaning and have to be understood as a tool to 
 express the spectral decomposition of the Liouvillian superoperator.
 
+\begin{figure}[ht]
+\includegraphics[scale=0.6]{CO_dos.eps}
+\caption{(Color online) Excitation spectrum of $CO$. The two curves correspond to two computational domain of different sizes. The inset contains the sole contribution of localized excitations.}
+\label{CO_exc}
+\end{figure}
+\begin{figure}[ht]
+\centering
+\subfloat[aaaa]
+{\label{c6h6_excLand}
+\includegraphics[scale=0.56]{C6H6_excLandscape.eps}} \\
+\centering
+\subfloat[bbbbb]
+{\label{C6H6_exc}
+\includegraphics[scale=0.58]{C6H6_dos.eps}}
+\caption{(Color online) Excitation landscape and DOS of $C_6H_6$.}
+\end{figure}
+
+
 In Fig.~\ref{CO_exc} and \ref{C6H6_exc} we plot the Density of States of the Liouvillian for the $CO$  and Benzene molecules, 
 for two different numerical setups of increasing simulation domains. 
 The figures show clearly that all the excitations of energy $\Omega_a$ lying below the 
@@ -741,8 +760,9 @@ setup, which is in line with the expected pseudo-continuum character of this sec
 In addition, for the benzene molecule it is also possible to 
 identify excitations of energy above IP that still possess a localized behaviour: these excitations satisfy the
 condition $\Omega_a < |\eps_a|$ presented in the above section.
-In Fig.~\ref{c6h6_excLand} we collecting the excitations of the benzene molecule following this criterion:
+In Fig.~\ref{c6h6_excLand} we collect the excitations of the benzene molecule following this criterion:
 the agreement with the expected analytic structure presented in Fig.~\ref{ExcitationLandscape} is impressive.
+
 
 \subsection{The importance of the continuum sector}
 We have presented formal arguments, confirmed by numerical calculations, that show that 
@@ -758,6 +778,152 @@ express with high \emph{precision} such section of the excitation spectrum.
 It might be interesting to obtain information on whether such localized excitations
 will be sufficient to express LR quantities that are associated to localized
 fluctuation states.
+By recalling that $\ket{f_p^\Phi(\omega)} = \dm'_\Phi(\omega) \ket{\psi_p}$,
+considering Eq.~\eqref{SusceptibilityDef1} and
+expressing the spectral decomposition of the linear susceptivity we find:
+\begin{align}
+ \ket{f_p^\Phi(\omega)} &= \ket{f_p(\omega)^D} + \ket{f_p(\omega)^C} \lb{FSExcitationDef1} \\
+ \ket{f_p^\Phi(\omega)^D} &= \sum_a^{0<\Omega_a < |\eps_a|} \ket{w_p^a} \frac{f_p^a(\op \Phi,\omega)}{\omega^2-\Omega_a^2} \\
+ \ket{f_p^\Phi(\omega)^C} &= \int_{0<\Omega_a > |\eps_a|} \!\!\!\!\dd a \ket{w_p^a} \frac{f_p^a(\op \Phi,\omega)}{\omega^2-\Omega_a^2}
+\end{align}
+where $f_p^a(\op \Phi,\omega) \equiv \bra{\psi_p}\op\Phi(\omega)\ket{w_p^a}$,
+% \be
+% \ket{f_p(\omega)}   = \left(\sum_a + \int\dd a   \right) \ket{w_p^a} \,
+% \frac{\bra{\psi_p}\op\Phi(\omega)\ket{w_p^a}}{\omega^2-\Omega_a^2} \;,
+% \ee 
+and $\ket{w_p^a}=\ket{\phi_p^a}+\ket{\chi_p^a}$. 
+In the above equation we have explicitly separated the contributions of the discrete ($D$) and continuous ($C$) excitations 
+in the spectral decomposition \eqref{SusceptibilityDef1}.
+The summation and the integration run only on the positive values of $\Omega_a$.
+The states $\ket{w_p^a}$ that appear in the discrete sum 
+or in the integral are genuinely localized and delocalized, respectively.
+For \emph{any} value of $\omega$ the ket $\ket{f_p^\Phi(\omega)^D}$ has, by definition, a bound-state like
+character as it is expressed as a sum of localized contributions.
+
+We have seen in Sec.~\ref{FluctuationState} that 
+for values of $\omega$ below the first ionization potential we expect
+$\ket{f_p^\Phi(\omega)}$ to have bound-state like behavior.
+For this to be true, the contribution from the delocalized  continuum states defining the state
+$\ket{f_p^\Phi(\omega)^C}$ should resum into a localized, asymptotically vanishing state.
+\footnote{We might have locality of $\ket{f_p^\Phi}$ also when perturbation operator $\op \Phi$ is such that 
+$f_p^a(\op \Phi,\omega)=0$ for any $a$ labelling the continuum excitations. 
+However, this is not true in general: the plot in Fig.~\ref{co_AlphaExc}
+show this evidence when $\op \Phi$ is the dipole operator.}
+
+This means that, contrary to GS, \emph{for LR calculation,
+even when the response density is localized, the contribution coming from the 
+continuum sector of the exicitations can never be neglected}. 
+We are not referring here to the continuum eigenstates of the 
+unperturbed GS hamiltonian, %which is not in itself important for expressing the linear susceptivity, 
+but to the continuum of excitations expressed as eigenstate of the 
+Liouvillian superoperator of Eq.~\eqref{Liouvillian}, needed to 
+express the spectral representation of the linear susceptivity.
+A fluctuation state, even if genuinely localized, will \emph{always} have a nonzero projection
+in the essential part of the Liouvillan spectrum.
+
+\begin{figure}
+\includegraphics[scale=0.6]{CO_statPolvsExc.eps}
+\caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability of the $CO$ molecule w.r.t the number of excitations.}
+\end{figure}
+We show an evidence of the above statement in Fig.~\ref{co_AlphaExc}. Indeed,
+we may decompose the linear response functional of Eq.~\eqref{LinearResponseFunctDef1}
+for any operator $\op O$ as $\braket{\delta\op O}_\Phi=\braket{\delta\op O}^D_\Phi +
+\braket{\delta\op O}^C_\Phi$, where
+\be
+\braket{\delta\op O}^{D,C}_\Phi(\omega) = 
+2 \mathrm{Re}\left(\bra{\psi_p} \op O \ket{f_p^\Phi(\omega)^{D,C}} \right)\;,
+\ee
+And we show how the value of the static polarizability $\alpha_{zz}(\omega=0)$
+defined in Eq.~\eqref{staticpol} will depend on the set of excitations
+included in the integral defining $\ket{f_p^\Phi(\omega)^C}$.
+Such value is compared with the reference result where the 
+localized FS is obtained from GS techniques as described in Sec.~\ref{FluctuationState}.
+This is the well-know $S_{-2}$ sum-rule, that express the value of the static polarizability
+in terms of the molecule's oscillator strengths.
+We see that a considerable number of pseudo-continuum excitations is required
+to find the correct result; the sector of the discrete excitations, even though 
+parametrised by localized, observable (in the sense of reproducible) excited states,
+appears to be largely insufficient to express the reference fluctuation state.
+This seems to be independent on the number of atoms of the molecule, as the range in $\omega$ needed to 
+achieve satisfactory agreement is largely above the last valence ionization threshold, which is
+a intensive (i.e. independent on the number of atoms) quantity.
+The inclusion of core electrons in the calculation would have added a further set of localized
+excitations, but at much higher energies than the one needed for this test.
+
+This fact shows that it is \emph{impossible} to restrict the spectral representation
+of $\chi(\omega)$ only localized and discrete excitations, even for representing LR results in the $\omega=0$ limit.
+In addition, we can see that the above sum-rule \emph{cannot} be used to assess
+the correctness of $\chi(\omega)$ for values of $\omega$ above IP; it is enough to recall
+the strong dependency on the box size of the absorption spectra of Fig.~\ref{CO_exc}.
+For all these computational setups, the $S_{-2}$ sum rule is, on the contrary, perfectly satisfied.
+
+\section{Conclusions and Perspectives}
+In the analysis presented in this paper we have investigated how 
+computational results of linear-response calculations of molecular systems 
+might be compared among various formalisms.
+In particular, we have been interested in identifiying the quantities that can
+be expressed in computational setups that are originally conceived for 
+\emph{localised} objects, which are the \emph{only} quantities that
+play a significant role in GS calculations.
+
+We have shown that all response densities for $\omega$ above the first IP
+\emph{have} to be expressed in terms of genuinely delocalized states, whereas below this threshold,
+under reasonable assumptions on the perturbing operators,
+the perturbed density operator is genuinely localized.
+In this localized regime, it is possible to achieve convergence of the numerical result
+by increasing the completeness of the basis with the usual GS rationales.
+One might expect that more complete basis will give more precise results, regardless of their asymptotic behaviour.
+A comparison among various codes in view of reproducibility should therefore be performed 
+initially in this regime.
+
+The situation is not so simple in the above-threshold regime.
+In this case what is important is matrix element of the observable of interest
+between the bound, occupied state and the delocalized fluctuation state.
+To achieve convergence, care should be taken in expressing accurately the FS on the
+appropriate region of space. In view of reproducibility, computational setups which are able to express precisely
+delocalized states seem more interesting in this regime.
+
+Such point of view have also enabled us to shed light on the analytic structure of the 
+linear susceptivity, which is a intrinsic property of the molecule and does not depend on
+ the perturbing fields.
+ In particular, we have concentrated our interest in its spectral representation in
+ terms of ``free oscillation'' (i.e. excitations) of the system.
+ We have found that \emph{not all} the excitations have to be considered on equal footing.
+ As the excitation spectrum has several energy thresholds, one per quasi-particle IP,
+ there is a sector of \emph{discrete}, \emph{localized} excitations -- whose energies are 
+below the corresponding threshold -- which can be compared among different computational treatments.
+Their energies are \emph{true} poles of the linear susceptivity, the excited states being their residues.
+
+On the other hand, the excitation energies which lie above these thresholds are only pseudo-poles of $\chi(\omega)$, 
+and will \emph{strongly} depend on the computational setup. This is visible already for energies higher than
+IP, and it has been pointed out several times (see e.g. \ref{giustino}) in the literature.
+However, such part of the excitation spectrum has a prominent role in the
+great majority of LR quantities, \emph{even in the localised regime} of $\omega$.
+In other terms, the set of continuum excitations might only be \emph{effectively} represented
+in a computational approach, depending on the quantities of interest.
+As an example, we have shown that spectral representations of $\chi(\omega)$ tailored for static
+LR quantities are in general unreliable for absorbtion spectra above IP, whilst provide precise values
+of the excitation energies in the discrete sector.
+
+We believe that these considerations, based on simple manipulations on the fundamental LR equations, will help in increase
+the reliability of LR calculations in the community, and in building test-sets that would help in
+the \emph{calibration} of present and future computer codes, thereby increasing the predictivity of present-day theoretical approaches.
+The example of the static polarizability of molecules
+present ideal features as an initial playground. Work is ongoing in this direction.
+
+
+\section{Garbage Colllector}
+We have found that a given LR calculation might be decomposed in two different
+contributions. The first one originate from the 
+are two kind of there are two different regimes in which 
+LR results are 
+
+In particular, when dealing with localized objects as molecules,
+we have investigated 
+
+The first sector is realized by the (finite) set of localized excitations with discrete eigenvalues that contribute 
+as \emph{true poles} of the susceptibility. 
+Instead, the second sector contains the dense set of delocalized excitations with an associated continuum spectrum. 
 
 
 
@@ -771,10 +937,6 @@ Liouvillian. Pursuing this procedure provides:
 \ee 
 where we have defined the symmetric operators $\op W_a = \frac{1}{\sqrt{2}}(\ketbra{w_p^a}{\psi_p}+\ketbra{\psi_p}{w_p^a})$ and states $\ket{w_p^a}=\ket{\psi_p^a}+\ket{\chi_p^a}$.
 
-On the basis of the present analysis we have explicitly separated the contributions of the discrete and continuous excitations in the spectral decomposition \eqref{RhopExcitationDef2}. 
-The first sector is realized by the (finite) set of localized excitations with discrete eigenvalues that contribute as \emph{true poles} of the susceptibility. 
-Instead, the second sector contains the dense set of delocalized excitations with an associated continuum spectrum. Excitations belonging to this sector thus lose their intrinsic physical meaning 
-and have to be understood as a tool to express the spectral decomposition of the Liouvillian superoperator. 
 
 % The elements of the first category correspond to \emph{true poles} of the susceptibility while the others can be interpreted only in terms of the spectral function. 
 
@@ -830,11 +992,6 @@ reliable results for the LR.
 \vspace{0.3cm}
 
 
-\begin{figure}[ht]
-\includegraphics[scale=0.6]{CO_dos.eps}
-\caption{(Color online) Excitation spectrum of $CO$. The two curves correspond to two computational domain of different sizes. The inset contains the sole contribution of localized excitations.}
-\label{CO_exc}
-\end{figure}
 
 % \begin{figure}[ht]
 % \includegraphics[scale=0.6]{C6H6_dos.eps}
@@ -860,17 +1017,6 @@ reliable results for the LR.
 % \caption{(Color online) Excitation spectrum of $C_6H_6$. The two curves correspond to two computational domain of different sizes. The inset contains the sole contribution of localized excitations.}
 % \end{figure}
 
-\begin{figure}[ht]
-\centering
-\subfloat[aaaa]
-{\label{c6h6_excLand}
-\includegraphics[scale=0.56]{C6H6_excLandscape.eps}} \\
-\centering
-\subfloat[bbbbb]
-{\label{C6H6_exc}
-\includegraphics[scale=0.58]{C6H6_dos.eps}}
-\caption{(Color online) Excitation landscape and DOS of $C_6H_6$.}
-\end{figure}
 
 
 \section{Criterion of computational reliability for the numerical convergence of the LR}
@@ -904,13 +1050,6 @@ priori indicator of the goodness of the results.
 
 \subsection{Fluctuation state and excitations}
 
-Express the fluctuation state in terms of excitation using the relation $\ket{f_p(\omega)} = \dm'(\omega)\ket{\psi_p}$ and using formula \eqref{SusceptibilityDef1} to express the excitation
-expansion of the response density. Due to this procedure we obtain
-\be\lb{FSExcitationDef1}
-\ket{f_p(\omega)}   = \left(\sum_a + \int\dd a   \right) \ket{w_p^a} \,
-\frac{\bra{\psi_p}\op\Phi(\omega)\ket{w_p^a}}{\omega^2-\Omega_a^2} \;,
-\ee 
-with $\ket{w_p^a}=\ket{\phi_p^a}+\ket{\chi_p^a}$. 
 Show the convergence of the statical polarizability of the $CO$ in function of the number of excitations. Write formula
 \be\lb{AlphaExcitationDef1}
 \alpha_{xx} =  \left(\sum_a + \int\dd a   \right) 2 \,
@@ -918,10 +1057,6 @@ Show the convergence of the statical polarizability of the $CO$ in function of t
 \ee 
 and add the plot that show the convergence rate of the statical polarizability to the reference (finite difference) value in functions of the number of excitations. The plot evidence that the
 continuum sector of the excitation spectrum is 
-\begin{figure}
-\includegraphics[scale=0.6]{CO_statPolvsExc.eps}
-\caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability of the $CO$ molecule w.r.t the number of excitations.}
-\end{figure}
 
 % \subsection{Choice of the $\alpha$-basis. Statical polarizability-driven criterion revised}
 % 
