@@ -911,20 +911,7 @@ The example of the static polarizability of molecules
 present ideal features as an initial playground. Work is ongoing in this direction.
 
 
-\section{Garbage Colllector}
-We have found that a given LR calculation might be decomposed in two different
-contributions. The first one originate from the 
-are two kind of there are two different regimes in which 
-LR results are 
-
-In particular, when dealing with localized objects as molecules,
-we have investigated 
-
-The first sector is realized by the (finite) set of localized excitations with discrete eigenvalues that contribute 
-as \emph{true poles} of the susceptibility. 
-Instead, the second sector contains the dense set of delocalized excitations with an associated continuum spectrum. 
-
-
+\section{Garbage Collector}
 
 %The introduction of the excitation operators allows us to express the spectral decomposition of the resolvent of the Liouvillian so that:
 %Susceptibility written as
@@ -1028,23 +1015,23 @@ reliable results for the LR.
 %  poles to the spectral decomposition of the susceptibility functional. The second sector contains a continuum of delocalized excitations which represents a tool to provide
 %  an effective representation of the spectral function. 
 % \end{itemize}
-The topic to be discussed in this section is the following: on the basis of these statements can we define some indicator to evaluate the reliability of a linear response calculations? And, 
-if so, up to which energy threshold can we assume that our computations do converge?
-
-The first element of this discussion is the introduction of the computational basis, made of $n_\mu$ basis functions $\{\mu\}$, used to perform the DFT calculations subjacent to the LR analysis. 
-The properties of the $\mu$-basis (state something about the systematic character the basis? comment on the finite dimension of the computational domain?) are chosen to ensure an unbiased description 
-of the ground state properties of the system. 
-
-FIRST QUESTION: The usage of the $\mu$-basis allows us to obtain a reliable evaluation of the perturbation induced modification of an observable? 
-The answer of this question is based on the analysis of equation \eqref{LinearResponseFunctDef2} and has been partially provided in section \ref{FluctuationState} (move that material in this section?). 
-We can complete the answer by observing that $\ket{f_p(0)}$ can be obtained through a ground state calculation with the explicit time independent perturbation added to the system. So we can perform
-a check on the goodness of the basis in this case as in a ground state calculation. Then use the localization argument of the fluctuation states to extend the reliability of the result up to
-$\omega=|\eps_p|$. 
-
-SO TO SUMMARIZE: below the threshold the numerical convergence is regulated by the localization of the fluctuation states, in this range we can assess the reliability of the results provided by
-the $\mu$-basis by looking at the basis-independence of the fluctuation states at $\omega=0$. Above the threshold the convergence can be reached due to the localized nature of $\bra{\psi_p}\op O$, 
-in this case the computational setup provides reliable results if it guarantees the unbiased reconstruction of fluctuation states in the support of $\bra{\psi_p}\op O$. In this range there is no a 
-priori indicator of the goodness of the results. 
+% The topic to be discussed in this section is the following: on the basis of these statements can we define some indicator to evaluate the reliability of a linear response calculations? And, 
+% if so, up to which energy threshold can we assume that our computations do converge?
+% 
+% The first element of this discussion is the introduction of the computational basis, made of $n_\mu$ basis functions $\{\mu\}$, used to perform the DFT calculations subjacent to the LR analysis. 
+% The properties of the $\mu$-basis (state something about the systematic character the basis? comment on the finite dimension of the computational domain?) are chosen to ensure an unbiased description 
+% of the ground state properties of the system. 
+% 
+% FIRST QUESTION: The usage of the $\mu$-basis allows us to obtain a reliable evaluation of the perturbation induced modification of an observable? 
+% The answer of this question is based on the analysis of equation \eqref{LinearResponseFunctDef2} and has been partially provided in section \ref{FluctuationState} (move that material in this section?). 
+% We can complete the answer by observing that $\ket{f_p(0)}$ can be obtained through a ground state calculation with the explicit time independent perturbation added to the system. So we can perform
+% a check on the goodness of the basis in this case as in a ground state calculation. Then use the localization argument of the fluctuation states to extend the reliability of the result up to
+% $\omega=|\eps_p|$. 
+% 
+% SO TO SUMMARIZE: below the threshold the numerical convergence is regulated by the localization of the fluctuation states, in this range we can assess the reliability of the results provided by
+% the $\mu$-basis by looking at the basis-independence of the fluctuation states at $\omega=0$. Above the threshold the convergence can be reached due to the localized nature of $\bra{\psi_p}\op O$, 
+% in this case the computational setup provides reliable results if it guarantees the unbiased reconstruction of fluctuation states in the support of $\bra{\psi_p}\op O$. In this range there is no a 
+% priori indicator of the goodness of the results. 
 
 
 \subsection{Fluctuation state and excitations}
@@ -1075,18 +1062,6 @@ The analysis carried out starting from the representation of the linear response
 for open systems. In particular, by analyzing the asymptotic behavior of fluctuation states in long range limit, we have showed that they exhibit a bound-state character in the regime  
 $\omega<|\eps_h|$. Consequently we have argued that the linear response functional, in the same $\omega$ range, provides a setup-independent result with a modest computational effort... 
 
-This analysis has revealed that the excitations spectrum is composed by two distinct sectors. The first one is realized by the (finite) set of localized excitations with discrete eigenvalues. Extending 
-the results achieved in \cite{boffi2016} for the KS virtual orbitals, to the equations for excited states \eqref{ExcitationOperatorsDef3}, we conclude that localized excitations behave as 
-\emph{observable} quantities and the associated energies possess an absolute meaning, which should not depend from the computational setup used for their representation. 
-
-Instead, the second sector contains the dense set of delocalized excitations with an associated continuum spectrum. These excitations behave as the unbound virtual orbitals analyzed in \cite{boffi2016} 
-and are deeply affected by the computational setup used to represent them. In particular, the presence of a finite computational domain implies a fictitious discretization of the excitation levels and 
-the associated spectrum exhibit an explicit dependence from the size of the domain. Excitations belonging to this sector thus lose their intrinsic physical meaning and have to be understood as a tool to 
-express the spectral decomposition of the Liouvillian superoperator. 
-
-%  \item The excitation landscape is composed of two sectors with distinct properties. The elements of the first one behave as localized, observable quantities and contribute as discrete 
-%  poles to the spectral decomposition of the susceptibility functional. The second sector contains a continuum of delocalized excitations which represents a tool to provide
-%  an effective representation of the spectral function. 
 
 
 \appendix
