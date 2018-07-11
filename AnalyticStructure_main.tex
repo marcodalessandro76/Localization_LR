@@ -1206,8 +1206,14 @@ This is the well-known Casida Equation in the basis of transitions for the excit
 eigenvalue $\Omega_a$ depends on the capability of the basis set $\ket{s}$ to fulfill of Eq.~\eqref{phiandchi}. Note that this may be valid only for a subset of the solutions of the eigenproblem \eqref{ExcitationMatrixEq1}.
 
 \section{Computational details}
-All the calcualtions presented in this paper are performed with the BigDFT code,
-which uses Daub
+The illustrative calculations presented in this paper are all KS-DFT calculations at the LDA level of theory. We employed the BigDFT code \cite{bigdft},
+which employs Daubechies Wavelets as computational basis set.
+Such basis present optimal features of in view of reproducibility of the results,
+ans it has proven to represent precisely and explicitly system with Free boundary conditions, without any basis set superposition error nor supercell aliasing.
+For Ground State results, the important parameters in the context of convergence of the calculations are the spacing of the wavelet grid and the size of the simulation domain: for bound-state like functions, convergence is achieved by reducing the grid spacing and increasing the simulation box size.
+Norm Conserving Pseudopotentials (PSP) of the HGH \cite{NLCCPSP} type are employed to remove the core electrons. Such PSP have proven to be able to provide all-electron accuracy for molecular systems.
+
+Our LR calculation are performed with the Casida formalism \cite{bhaarathi}, where 
 
 \subsection{$CO$}
 
