@@ -346,7 +346,7 @@ perturbation strength ($|\mathbf F|$ in the above example) is sufficiently small
 In this case, the occupied eigenfunction $\ket{\psi_p^{\Phi_s}}$ of the perturbed Hamiltonian can be extracted with traditional GS techniques, 
 as from the discussion around Eq.~\eqref{SEHelmholtz1}, they exhibit bound-state behavior.
 \begin{figure}[t]
-\includegraphics[scale=0.68]{CO_statPolvsBox.eps}
+\includegraphics[scale=0.68]{Fig1_CO_statPolvsBox.eps}
 \caption{\label{co_alphaStatic}(Color online) Convergence of the statical polarizability $\alpha_{zz}$ (blue continuous line) and of the ground state dipole $d_z$ (red dotted line) 
 of $CO$ molecule as a function of the size of the computational domain. The inset evidences the relative convergence (in percent) of the two quantities w.r.t. the corresponding value associated to the largest 
 box.}
@@ -404,9 +404,6 @@ On the contrary, the computation of the linear response functional can be much m
 states start behaving as unbound wave functions.
 As by hypothesis $\ket{\op O \psi_p}$ is bound-state like, \emph{only} the scalar products of Eq.~\eqref{LinearResponseFunctDef2} can be evaluated in a localized domain.
 In this case a computational description of fluctuation states is only meaningful in ``weak'' sense,
-%\emph{i.e.} inside the scalar products of 
-%\eqref{LinearResponseFunctDef2}. 
-%since $\ket{f_p^\Phi(\omega)}$ becomes an unbound, delocalized function, 
 where the bound state character of $\{\bra{\psi_p}\op O\}$ behaves as a regulator.
 
 These considerations prove why, when a given computer code employs established GS numerical techniques, 
@@ -429,7 +426,7 @@ For these high-frequency regions, convergence might be reached for domains of mu
 which are -- as already noticed -- more than sufficient below threshold.
 
 \begin{figure}
-\includegraphics[scale=0.6]{CO_spectrum.eps}
+\includegraphics[scale=0.6]{Fig2_CO_spectrum.eps}
 \caption{\label{co_spectrum}(Color online) Illustrative LR absorption spectra of the $CO$ molecule in computational setups with different sizes of the simulation domain. The value of the IP threshold is indicated by a vertical dashed line.}
 \end{figure}
 
@@ -605,7 +602,7 @@ Excitations belonging to this sector thus lose their intrinsic physical meaning 
 a representation of the density of states (DOS) of the Liouvillian superoperator.
 
 \begin{figure}[ht]
-\includegraphics[scale=0.6]{CO_dos.eps}
+\includegraphics[scale=0.6]{Fig4_CO_dos.eps}
 \caption{(Color online) DOS of $CO$ excitation energies $\Omega_a$. The two curves correspond to two computational domain of different sizes. The inset contains the sole contribution of localized excitations. The first IP threshold is depicted as the vertical dashed line.}
 \label{CO_exc}
 \end{figure}
@@ -613,11 +610,11 @@ a representation of the density of states (DOS) of the Liouvillian superoperator
 \centering
 \subfloat[Excitation landscape]
 {\label{c6h6_excLand}
-\includegraphics[scale=0.56]{C6H6_excLandscape.eps}} \\
+\includegraphics[scale=0.56]{Fig5a_C6H6_excLandscape.eps}} \\
 \centering
 \subfloat[DOS of Excitation energies]
 {\label{C6H6_exc}
-\includegraphics[scale=0.58]{C6H6_dos.eps}}
+\includegraphics[scale=0.58]{Fig5b_C6H6_dos.eps}}
 \caption{(Color online) Benzene molecule. (a): Excitation Landscape: the excitations have been separated in discrete and continuum sector following the criteria of Sec.~\ref{ExcitationLandscape}. (b): DOS of excitation energies $\Omega_a$. The first IP threshold is depicted as the vertical dashed line.}
 \end{figure}
 
@@ -702,7 +699,7 @@ appears to be largely insufficient to express the reference fluctuation state. I
 the one coming from the continuum sector.
 
 \begin{figure}
-\includegraphics[scale=0.6]{CO_statPolvsExc.eps}
+\includegraphics[scale=0.6]{Fig6_CO_statPolvsExc.eps}
 \caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability $\alpha_{zz}$ of the $CO$ molecule, in a box of $11.5$ \AA,  
 w.r.t the excitations considered in the integral of Eq.~\eqref{sminus2}. The reference value obtained from Eq.~\eqref{staticalpha} is represented as a 
 horizontal red dashed line. The value of the IP energy is indicated by a vertical black dashed line. For each excitation energy, the values of the 
