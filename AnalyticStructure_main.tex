@@ -776,8 +776,8 @@ a representation of the density of states (DOS) of the Liouvillian superoperator
 In Fig.~\ref{CO_exc} and \ref{C6H6_exc} we plot the DOS of the Liouvillian for the $CO$  and Benzene molecules, 
 for two different numerical setups of increasing size of the simulation domain. 
 The figures show clearly that all the excitations of energy $\Omega_a$ lying below the 
-molecule ionization potential (IP) have a clear localized behavior, as their energy does not vary with the size of the simulation domain.
-On the other hand, above the first ionization threshold the excitation energies have an energy that strongly depends on the computational
+molecule ionization potential (IP) have a localized behavior, as their energy does not vary with the size of the simulation domain.
+On the other hand, above the first ionization threshold the excitations have an energy that strongly depends on the computational
 setup, which is in line with the expected pseudo-continuum character of this sector. 
 In addition, for the benzene molecule it is also possible to 
 identify excitations of energy above IP that still possess a localized behavior, fulfilling the condition $\Omega_a < |\eps_a|$.
@@ -845,7 +845,7 @@ for any operator $\op O$ as $\braket{\delta\op O}_\Phi=\braket{\delta\op O}^D_\P
 \ee
 For instance, the static polarizability tensor $\alpha_{ij}$ can be easily expressed
 from the above quantities as
-\be
+\be\lb{sminus2}
 \alpha_{ij} = \sint \dd a \frac{w^a_{ij}}{\Omega_a^2}\,, \quad w^a_{ij} \equiv \sum_{p\in a} \varphi_p^a[\op r_i]\varphi_p^a[\op r_j]\;.
 \ee
 Such value can be straightforwardly compared with results of Eq.~\eqref{staticalpha}, where the localized FS is obtained from GS techniques as described in Sec.~\ref{FluctuationState}.
@@ -864,7 +864,7 @@ the one coming from the continuum sector.
 
 \begin{figure}
 \includegraphics[scale=0.6]{CO_statPolvsExc.eps}
-\caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability of the $CO$ molecule w.r.t the number of excitations.}
+\caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability $\alpha_{zz}$ of the $CO$ molecule, in a box of $11.5$ \AA w.r.t to excitations considered in the integral of Eq.~\eqref{sminus2}. The reference value obtained from Eq.~\eqref{staticalpha} is represented as a horizontal red dashed line. The value of the IP energy is indicated by a vertical black dashed line. For each excitation energy, the values of the oscillator strengths $w^a_{zz}$ of Eq.~\eqref{sminus2} are also plotted. }
 \end{figure}
 Hence, contrary to GS, \emph{for LR calculation,
 even when the response density is localized, the contribution coming from the 
