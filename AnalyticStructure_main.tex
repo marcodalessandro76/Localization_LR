@@ -386,13 +386,13 @@ The response density satisfies an equation of motion written in the form of a qu
 \be\lb{LiouvillianRhopomegaDef1}
 \left(\omega - \Liouv\right) \dm'_\Phi(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot} \;.
 \ee
-The Liouvillian superoperator $\Liouv$ for self-consistent systems is expressed as the sum of the unperturbed part plus a coupling term. The action of these 
+The Liouvillian superoperator $\Liouv$ for self-consistent systems is expressed as the sum of the unperturbed part $\Liouvnot$ plus a coupling term $ \coupl$. The action of these 
 terms reads, respectively
 \be\lb{LiouZeroDef1}
 \Liouv \op O \equiv \left(\Liouvnot + \coupl \right) \op O = \commutator{\hnot}{\op O} +\commutator{\op V'[\op O]}{\dmnot}  \;,
 \ee
 where $\op V'[\op O] \equiv \int \dd \r \dd \r'\frac{\delta \op V[\dmnot]}{\delta \rho(\r,\r')} O(\r,\r')$ encodes the response of the $\dm$-dependent potential to a modification of the density operator.
-The inspection of the linear order time evolution of the eigenstates of $\hnot$ evidence that the response density acts as a transition 
+The inspection of the linear order time evolution of the eigenstates of $\hnot$ evidences that the response density acts as a transition 
 operator, linking the occupied and empty subspaces of $\hnot$.
 An operator $\op O_\perp$ with this feature satisfy the \emph{transverse} condition  
 \be\lb{RhopTransverseDef1}
@@ -400,7 +400,7 @@ An operator $\op O_\perp$ with this feature satisfy the \emph{transverse} condit
 \dmnot\op O \op Q_0 + \op Q_0 \op O\dmnot \;,
 \ee
 where $\op Q_0=\identity-\dmnot$ is the projector in the subspace orthogonal to the occupied states of $\hnot$. 
-Thus the condition $\dm'_\Phi = \dm_{\perp}$ holds.
+In other terms, the condition $\dm'_\Phi = \dm'_{\Phi\,\perp}$ holds.
 
 We can therefore introduce an explicit representation of the 
 response density parametrized as
@@ -849,7 +849,7 @@ from the above quantities as
 \alpha_{ij} = \sint \dd a \frac{w^a_{ij}}{\Omega_a^2}\,, \quad w^a_{ij} \equiv \sum_{p\in a} \varphi_p^a[\op r_i]\varphi_p^a[\op r_j]\;.
 \ee
 Such value can be straightforwardly compared with results of Eq.~\eqref{staticalpha}, where the localized FS is obtained from GS techniques as described in Sec.~\ref{FluctuationState}.
-This is the well-know $S_{-2}$ sum-rule\cite{TDDFTBOOK}, that express the value of the static polarizability
+This is the well-know $S_{-2}$ sum-rule (see e.g.\cite{Wagner2012}), that express the value of the static polarizability
 in terms of the molecule's oscillator strengths.
 
 In Fig.~\ref{co_AlphaExc} we show explicitly such a comparison in the case of the $CO$ molecule.
@@ -1203,7 +1203,7 @@ This is the well-known Casida Equation in the basis of transitions for the excit
 eigenvalue $\Omega_a$ depends on the capability of the basis set $\ket{s}$ to fulfill of Eq.~\eqref{phiandchi}. Note that this may be valid only for a subset of the solutions of the eigenproblem \eqref{ExcitationMatrixEq1}.
 
 \section{Computational details}
-The illustrative calculations presented in this paper are all KS-DFT calculations at the LDA level of theory. We employed the BigDFT code \cite{bigdft},
+The illustrative calculations presented in this paper are all KS-DFT calculations at the LDA level of theory. We employed the BigDFT code \cite{BigDFT},
 which employs Daubechies Wavelets as computational basis set.
 Such orthonormal basis presents optimal features of in view of reproducibility of the results,
 and it has proven to represent precisely and explicitly system with Free as well as Periodic boundary conditions (BC), without any basis set superposition error nor supercell aliasing, for Free BC.
