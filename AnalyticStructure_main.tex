@@ -95,7 +95,7 @@
 
 %\preprint{APS/123-QED}
 
-%\title{On the analytic structure of the linear response susceptibility in open systems}
+
 \title{Locality and Computational Reliability of Linear Response Calculations for Molecular Systems}% Localization properties, observable character and computational reliability of the linear response in open systems}
 \author{Marco D'Alessandro}%
 \affiliation{Istituto di Struttura della Materia-CNR (ISM-CNR), Via del Fosso del Cavaliere 100, 00133 Roma, Italia}
@@ -190,7 +190,7 @@ for ground state calculations of molecules.
 Following these guidelines, we will then move to LR equations,
 by first considering the equations of motion of the response density operator, given
 the application of a perturbing field.
-Then we will consider the behaviour of the ``free oscillations'', i.e. the excited states
+Then we will consider the behavior of the ``free oscillations'', i.e. the excited states
 of the molecule.
 Our considerations will also reveal useful for the understanding of the \emph{analytic structure} of LR quantities like
 the linear susceptibility of the system (i.e. the reducible polarizability).
@@ -448,9 +448,9 @@ once again provided that the above locality arguments on $\ket{s_p^\Phi(\omega)}
 Such locality property of the fluctuation state can be directly confirmed for static perturbations at $\omega=0$.
 Let us consider a static perturbing operator $\op\Phi_s$ that can be restricted to a finite domain. 
 Any local operator, like \emph{e.g.} a static electric field $\mathbf F$, with associated scalar potential $\Phi_s[\mathbf F](\r) = -\mathbf F \cdot \r$, would satisfy such property.
-We consider the perturbed hamiltonian $\hnot[\dm_{\Phi_s}] + \op\Phi_s[\mathbf F]$, where $\dm_{\Phi_s}$ represents the GS density of the perturbed system, and assume that the 
+We consider the perturbed Hamiltonian $\hnot[\dm_{\Phi_s}] + \op\Phi_s[\mathbf F]$, where $\dm_{\Phi_s}$ represents the GS density of the perturbed system, and assume that the 
 perturbation strength ($|\mathbf F|$ in the above example) is sufficiently small to be consistent with a LR treatment of the problem. 
-In this case, the occupied eigenfunction $\ket{\psi_p^{\Phi_s}}$ of the perturbed hamiltonian can be extracted with traditional GS techniques, 
+In this case, the occupied eigenfunction $\ket{\psi_p^{\Phi_s}}$ of the perturbed Hamiltonian can be extracted with traditional GS techniques, 
 as from the discussion around Eq.~\eqref{SEHelmholtz1}, they exhibit bound-state behavior.
 %\footnote{The fulfilling of Eq.~\eqref{SEHelmholtz1} for energies below threshold
 % is not \textit{per se} a guarantee of a localized $\ket{\psi}$. With such equation we demonstrate that, \emph{in the case when} a localized
@@ -574,7 +574,7 @@ This can be achieved by studying the
 %This alternative formulation of the problem has the advantage of providing general information on the nature of the excitation spectrum. Results achieved in this way thus describes an intrinsic 
 %feature of the system under inspection and determine the properties of the LR independently from the specific choice of the perturbing field. 
 The susceptibility (super)operator $\cal \chi(\omega)$ is therefore closely related to the resolvent of the Liouvillian of Eq.~\eqref{LiouvillianRhopomegaDef1}, which is completely defined 
-from the molecule hamiltonian $\hnot[\dm]$.
+from the molecule Hamiltonian $\hnot[\dm]$.
 The ``excitation modes''  of the molecule are defined through the \emph{excitation operators}, satisfying
 \be\lb{ExcitationOperatorsDef1}
 \Liouv \op E_a = \Omega_a \op E_a \qq \op{\tilde E}_a \Liouv = \Omega_a \op{\tilde E}_a \;,
@@ -639,15 +639,15 @@ where the source terms are here defined as:
 \ee
 We first point out that the Helmholtz kernel associated to the $\ket{\chi^a_p}$ state 
 contains an exponential damping factor for \emph{all} the positive values of $\Omega_a$.
-The asymptotic long-range behaviour of $\ket{\chi^a_p}$ thus depends only on the locality properties of 
+The asymptotic long-range behavior of $\ket{\chi^a_p}$ thus depends only on the locality properties of 
 $\bra{s_p[\op E_a]}$, which in turn is related to the behavior of the operator $\op V'[\op E_a]$.
 % As in the previous section, we assume the hypothesis that such operator is such that
 % the state $\op Q_0 \op V'[\op E^t_a] \ket{\psi_p}$ is localized, at least when \emph{both}
 % the states $\phi_p^a$ $\chi_p^a$ have bound-state-like behaviour.
 
-On the other hand, the long-range behaviour of $\op G_H(\Omega_a+\eps_p)$ depends from 
+On the other hand, the long-range behavior of $\op G_H(\Omega_a+\eps_p)$ depends from 
 $\Omega_a$, with a threshold of value $\Omega_a=|\eps_p|$. 
-For energies above this value, the behaviour of the state $\ket{\phi^a_p}$ is 
+For energies above this value, the behavior of the state $\ket{\phi^a_p}$ is 
 delocalized regardless of the particular nature of the operators $\op V$ and $\op V'$.
 This means that, if an excitation operator $\op E_a$ has an energy such that
 $\Omega_a>|\eps_p|$  for at least one of the $p \in a$ defining the excitation,
@@ -776,11 +776,11 @@ a representation of the density of states (DOS) of the Liouvillian superoperator
 In Fig.~\ref{CO_exc} and \ref{C6H6_exc} we plot the DOS of the Liouvillian for the $CO$  and Benzene molecules, 
 for two different numerical setups of increasing size of the simulation domain. 
 The figures show clearly that all the excitations of energy $\Omega_a$ lying below the 
-molecule ionization potential (IP) have a clear localized behaviour, as their energy does not vary with the size of the simulation domain.
+molecule ionization potential (IP) have a clear localized behavior, as their energy does not vary with the size of the simulation domain.
 On the other hand, above the first ionization threshold the excitation energies have an energy that strongly depends on the computational
 setup, which is in line with the expected pseudo-continuum character of this sector. 
 In addition, for the benzene molecule it is also possible to 
-identify excitations of energy above IP that still possess a localized behaviour, fulfilling the condition $\Omega_a < |\eps_a|$.
+identify excitations of energy above IP that still possess a localized behavior, fulfilling the condition $\Omega_a < |\eps_a|$.
 In Fig.~\ref{c6h6_excLand} we collect the excitations of the benzene molecule following this criterion:
 the agreement with the expected analytic structure presented in Fig.~\ref{ExcitationLandscape} is remarkable.
 
@@ -926,13 +926,13 @@ and will \emph{strongly} depend on the computational setup. This is visible for 
 IP, and it has been pointed out several times (see e.g. \cite{giustino2012,giustino2014}) in the literature.
 These excitations belong to a continuum sector that embeds the above mentioned discrete excitations.
 We remark that we are not referring here to the continuum eigenstates of the 
-unperturbed GS hamiltonian, %which is not in itself important for expressing the linear susceptivity, 
+unperturbed GS Hamiltonian, %which is not in itself important for expressing the linear susceptivity, 
 but to the continuum of excitations expressed as eigenstate of the 
 Liouvillian superoperator of Eq.~\eqref{LiouZeroDef1}, needed to 
 express the spectral representation of the linear susceptibility.
 
 Both the sectors of the excitations energies have to be considered in view of the extraction of computationally reliable quantities, and this \emph{even below} the first IP.
-For generic LR quantities, which are functionals of the linear susceptivity, 
+For generic LR quantities, which are functionals of the linear susceptibility, 
 the quality of the $\chi(\omega)$ (super)operator will depend
 on the frequency $\omega$ of interest: a given spectral representation may provide high-quality results for static $\omega=0$ regimes, while being
 unable to provide convergence for high-energy absorption spectra.
@@ -1218,7 +1218,7 @@ For each size of the simulation domain, the number of unoccupied states used for
 The molecule is oriented along the $z$ axis and the $z$-dimension of the box is equal to 11.5, 15.1 and 16.6 \AA.
 280 unoccupied states have been computed in each setup, which span an energy range of the empty KS orbitals of 30.7, 19.3 and 15.4 eV respectively. 
 Such energy values should not be confused with the excitations energy ranges reported in Figs.~\ref{co_spectrum} and \ref{CO_exc}. 
-Once again, such choices of unoccupied states ensures convergence in of excitations spectum in the presented range.
+Once again, such choices of unoccupied states ensures convergence in of excitations spectrum in the presented range.
 
 The DOS reported in figure \ref{CO_exc} are obtained by adding a smearing parameter of $8\times 10^{-2}$ eV whereas in the inset shift is $5\times 10^{-3}$ eV. 
 
