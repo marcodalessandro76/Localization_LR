@@ -18,6 +18,7 @@
 \newcommand{\dd}{{\rm d}}
 \renewcommand{\r}{{\bf r}}
 \newcommand{\br}{\bar{\bf r}}
+\renewcommand{\AA}{{Angstr\"om}}
 \newcommand{\x}{{\bf x}}
 \newcommand{\eps}{\epsilon}
 \newcommand{\bomega}{\bar\omega}
@@ -472,7 +473,7 @@ In this way we can parametrize, without loss of generality, the excitation opera
 \op E_a &= \sum_p \left( \ket{\phi^a_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^a_p}\right)\;, \nn \\
 \op{\tilde E}_a = \commutator{\dmnot}{\op E^t_a} &= \sum_p \left( \ket{\psi_p}\bra{\phi^a_p} - \ket{\chi^a_p} \bra{\psi_p}\right)\;.
 \end{align}
-For each choice of $p,a$, these objects represent, respectively, the state in which $\ket{\psi_p}$
+For each choice of $\{\phi^a_p,\chi^a_p\}_{p \in a}$, these objects represent, respectively, the state in which $\ket{\psi_p}$
 is excited -- or from whom it decays -- when the system is subject to the \emph{monochromatic} perturbation $\op \Phi_a \equiv \commutator{\dmnot}{\op E_a}$.
 We denote with the shorthand $p \in a$ the fact that the sum of Eq.~\eqref{ExcitationOperatorsDef2}
 is in general restricted only to a $a$-dependent subset of the occupied orbitals, depending on the particular symmetry 
@@ -688,7 +689,8 @@ from the above quantities as
 \be\lb{sminus2}
 \alpha_{ij} = \sint \dd a \frac{w^a_{ij}}{\Omega_a^2}\,, \quad w^a_{ij} \equiv \sum_{p\in a} \varphi_p^a[\op r_i]\varphi_p^a[\op r_j]\;.
 \ee
-Such value can be straightforwardly compared with results of Eq.~\eqref{staticalpha}, where the localized FS is obtained from GS techniques as described in Sec.~\ref{FluctuationState}.
+Such value can be straightforwardly compared with results of Eq.~\eqref{staticalpha}, where the localized FS is obtained from GS techniques as 
+described in Sec.~\ref{FluctuationState}.
 This is the well-know $S_{-2}$ sum-rule (see e.g.\cite{Wagner2012}), that express the value of the static polarizability
 in terms of the molecule's oscillator strengths.
 
@@ -701,7 +703,10 @@ the one coming from the continuum sector.
 
 \begin{figure}
 \includegraphics[scale=0.6]{CO_statPolvsExc.eps}
-\caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability $\alpha_{zz}$ of the $CO$ molecule, in a box of $11.5$ \AA,  w.r.t to excitations considered in the integral of Eq.~\eqref{sminus2}. The reference value obtained from Eq.~\eqref{staticalpha} is represented as a horizontal red dashed line. The value of the IP energy is indicated by a vertical black dashed line. For each excitation energy, the values of the oscillator strengths $w^a_{zz}$ of Eq.~\eqref{sminus2} are also plotted. }
+\caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability $\alpha_{zz}$ of the $CO$ molecule, in a box of $11.5$ \AA,  
+w.r.t the excitations considered in the integral of Eq.~\eqref{sminus2}. The reference value obtained from Eq.~\eqref{staticalpha} is represented as a 
+horizontal red dashed line. The value of the IP energy is indicated by a vertical black dashed line. For each excitation energy, the values of the 
+oscillator strengths $w^a_{zz}$ of Eq.~\eqref{sminus2} are also plotted. }
 \end{figure}
 Hence, contrary to GS, \emph{for LR calculation,
 even when the response density is localized, the contribution coming from the 
