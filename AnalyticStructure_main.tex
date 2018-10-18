@@ -11,6 +11,9 @@
 \usepackage{tikz}
 \usepackage{xifthen}
 %\pgfplotsset{compat=1.15}
+\usepackage[markup=underlined]{changes}
+\definechangesauthor{dal}
+\definechangesauthor{gen}
 
 % notation for standard math
 \renewcommand{\d}{\partial}
@@ -125,6 +128,9 @@ approximations on the scientific outcomes of the simulation.
 \maketitle
 
 \section{Introduction}
+\added[id=dal]{Testo nuovo}.
+\deleted[id=dal]{lallero}
+
 Since the days of their foundations, disciplines like Computational Physics or Quantum Chemistry always had to deal with the problem of the 
 computational reliability of the results. More specifically, a computational result may be considered reliable for various reasons.
 For example, it may be in agreement with some previous observation or measurement that the employed computational model is susceptible to reproduce.
@@ -385,9 +391,12 @@ The analysis described above has shown that the building blocks of the response 
 are susceptible to exhibit bound-state long-range behavior \emph{only} when $\omega < |\eps_p|$, 
 while they behave as unbound states for values of $\omega$ above the threshold levels.
 This fact has interesting implications in the evaluation of LR quantities. Indeed, writing the response 
-density in terms of FS implies that 
+density in terms of FS implies that \added[id=dal]{(equation for the response density modified)}
+% \be\lb{LinearResponseFunctDef2}
+% \braket{\delta\op O}_\Phi(\omega) = 2 \mathrm{Re} \left(\sum_p \bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}\right) \;.
+% \ee
 \be\lb{LinearResponseFunctDef2}
-\braket{\delta\op O}_\Phi(\omega) = 2\mathrm{Re} \left(\sum_p \bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}\right) \;.
+\braket{\delta\op O} = \sum_p \left( \bra{f_p^\Phi(-\omega)}\op O\ket{\psi_p}+ \bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}\right) \;.
 \ee
 Let us suppose that also the observable of interest $\op O$ exhibits the locality properties introduced for the potentials $ \op V$, $\op \Phi$ and $\op V'$.
 Once again, it would be enough to consider a local operator for this condition to be met.
@@ -426,10 +435,8 @@ The IP threshold has an evident physical interpretation: for energies in a range
 localized and delocalized states might be coupled by the perturbation. Obtaining convergence of the observable quantities at these energies is therefore much more challenging if one employs 
 numerical techniques which were originally tailored for GS calculations.
 
-As an example in support of these arguments we compare the absorption spectrum of a $CO$ molecule computed in 
-three distinct real-space computational setups, which differs for the dimension of 
-the computational domain. 
-Results reported in figure \ref{co_spectrum} evidences a typical behavior: the curves are almost coincident in the below threshold regime,
+As an example in support of these arguments we compare the \replaced[id=dal]{dynamical polarizability $\alpha(\omega)$}{absorption spectrum} of a $CO$ molecule computed in three distinct real-space computational setups, which differs for the dimension of the computational domain. 
+Results reported in \replaced[id=dal]{the two panels of figure \ref{co_spectrum} show the real and imaginary part of $\alpha(\omega)$, respectively. In all the cases a typical behavior emerges}{evidences a typical behavior}: the curves are almost coincident in the below threshold regime,
 whereas the effect of the computational setup are clearly visible for values of $\omega$ that exceed the threshold value.
 For these high-frequency regions, convergence might be reached for domains of much larger sizes than what presented here~\cite{baroni2008},
 which are -- as already noticed -- more than sufficient below threshold.
@@ -438,7 +445,6 @@ which are -- as already noticed -- more than sufficient below threshold.
 \includegraphics[scale=0.6]{Fig2_CO_spectrum.eps}
 \caption{\label{co_spectrum}(Color online) Illustrative LR absorption spectra of the $CO$ molecule in computational setups with different sizes of the simulation domain. The value of the IP threshold is indicated by a vertical dashed line.}
 \end{figure}
-
 
 \section{Excitation operators. The analytic structure of the susceptibility functional}
 
