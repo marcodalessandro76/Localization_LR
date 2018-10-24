@@ -1,0 +1,1107 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathtools,braket}
+\usepackage{xifthen}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{authblk}
+
+% notation for standard math
+\renewcommand{\d}{\partial}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\dd}{{\rm d}}
+\renewcommand{\r}{{\bf r}}
+\newcommand{\br}{\bar{\bf r}}
+\newcommand{\x}{{\bf x}}
+\newcommand{\eps}{\epsilon}
+\newcommand{\bomega}{\bar\omega}
+\newcommand{\bbomega}{\bar{\bomega}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\intdef}[3]{\int_{#1}^{#2} \dd {#3}}
+\newcommand{\intover}[1]{\int_{-\infty}^{+\infty} \dd {#1}}
+\newcommand{\sint}{\mathrlap{\displaystyle\int}
+\mathrlap{\textstyle\sum}
+\phantom{\mathrlap{\displaystyle
+\int}\textstyle\sum}}
+
+% notatiotion for equation environments
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\baa}{\begin{align}}
+\newcommand{\eaa}{\end{align}}
+\newcommand{\nn}{\notag}
+\newcommand{\qq}{\qquad}
+\newcommand{\lb}{\label}
+\newcommand{\mat}[1]{\begin{pmatrix} #1\end{pmatrix}}
+
+% notation for the operators
+\newcommand{\op}[1]{\hat {#1}}
+\newcommand{\sop}[1]{\op{\op {#1}}}
+\newcommand{\commutator}[2]{\left[ {#1} , {#2} \right]}
+\newcommand{\trace}[1]{\mathrm{tr}\left(#1\right)}
+\newcommand{\argument}[1]{\ifthenelse{\isempty{#1}{}}{}{(#1)}}
+\newcommand{\matop}[1]{\mathbf{#1}}
+\newcommand{\optr}[1]{\check #1}
+\newcommand{\opskew}[1]{{\op {#1}}_{\perp}}
+
+% notation for the states
+\newcommand{\tket}[1]{| \tilde #1 \rangle}
+\newcommand{\tbra}[1]{\langle \tilde #1 |}
+\newcommand{\brket}[2]{\langle  #1 | #2 \rangle} %standard braket
+\newcommand{\tbraket}[2]{\langle \tilde #1 | #2 \rangle}
+\newcommand{\ketbra}[2]{| #1 \rangle \langle #2 |}
+\newcommand{\tketbra}[2]{| #1 \rangle \langle \tilde #2 |}
+\newcommand{\sket}[2]{| #2)^{#1}}
+\newcommand{\sbra}[2]{( #2|_{#1}}
+\newcommand{\sketor}[2]{| #2]^{#1}}
+\newcommand{\sbraor}[2]{[ #2|_{#1}}
+\newcommand{\sbraket}[2]{\braket{\op{#1} | \op{#2}}}
+\newcommand{\dket}[1]{\Bigl| #1 \Bigr)}
+\newcommand{\dbra}[1]{\Bigl(#1 \Bigr|}
+\newcommand{\dbraket}[2]{\Bigl(#1 \Bigl| #2 \Bigr)}
+\newcommand{\dketor}[1]{\Bigl| #1 \Bigr]}
+\newcommand{\dbraor}[1]{\Bigl[#1 \Bigr|}
+\newcommand{\hket}[1]{| #1 ]}
+\newcommand{\hbra}[1]{[ #1 |}
+\newcommand{\hbraket}[2]{[#1 | #2 ]}
+
+% special operators
+\newcommand{\dmnot}{\op{\rho}_0}
+\newcommand{\dm}{\op{\rho}}
+\newcommand{\hnot}{\op{H}_0}
+\newcommand{\hone}[1]{\op{H}_1\argument{#1}}
+\newcommand{\transition}[1]{\op T_{#1}}
+\newcommand{\excite}[2]{\op e_{{#1}{#2}}}
+\newcommand{\decay}[2]{\op d_{{#1}{#2}}}
+\newcommand{\Liouv}{\sop{\mathcal L}}
+\newcommand{\Liouvnot}{\sop{\mathcal L_0}}
+\newcommand{\coupl}{\sop{\mathcal K}}
+\newcommand{\honetmp}[1][]{\op{H_1}\argument{#1}} 
+\newcommand{\identity}{\op{\mathbb I}}
+\newcommand{\rmat}[1]{\optr R}
+
+
+\title{Critical assessment of Linear-Response Excitations in Molecular system\\
+or \\
+On the Localization of the Linear-Response excitations in Open Systems}
+\author[2]{Marco D'Alessandro}
+\author[1]{Luigi Genovese}
+\affil[1]{Laboratoire de Simulation Atomistique (LSim), SP2M, INAC, CEA-UJF, 17 Av. des Martyrs,
+38054 Grenoble, France}
+\affil[2]{Istituto di Struttura della Materia-CNR (ISM-CNR), Via del Fosso del Cavaliere 100, 00133 Roma, Italia}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We analyze how the fundamental equations which govern the linear response properties of a quantum system are influenced by the presence of open boundaries.
+In particular we focus our attention on linear-response (LR)-TDDFT calculation of molecular systems. We show that optical excitations of energy below the LR ionization potential behave as observable, localized quantities, that can be computationally calculated with high precision, provided an adequate level of completeness.
+Above this energy threshold, the analytic structure of the susceptivity functional might be separated in two sectors: one can still be described in terms of observable excitation with discrete energies, that can be captured within computational setups tailored for localized states. However such excitations are embedded in a continuum of excited states that, on the contrary, behave as plane waves and cannot be described efficiently by the same computational techniques. Such excitations do not exhibit observable features and \emph{cannot} be considered as poles of the dynamical polarizability. Nonetheless, the contribution of such continuum of excitation reveals to be of paramount importance even for expressing LR quantities in the infrared regime like for example static polarizabilities.
+This is particularly evident for small molecules; we show how these considerations might be influenced by the size of molecular system.
+ We then present indicators that can help to quantify such potential observable property of an excitation, that can be evaluated 
+in any discretization scheme.  This result is a inherent behavior of the system's Liouvillian, and does not depend on computational treatment of the 
+unoccupied subspace.
+\end{abstract}
+
+\section{On the analytic structure linear response susceptibility}
+\begin{itemize}
+\item People want converged quantities related to systems properties. How to obtain them?
+\item FS naturally emerges as the minimal building block for the evaluation of physical quantities in LR formalism . For a given Phi, I need to express O and FS.
+\item We imposing a pertubation of the system, it is easay to see that the FS are also  functional of the Perturbation potential applied on the response function of the system. FS = R Phi for the same omega.
+\item the fundamental objet is therefore R.
+\item[$\Rightarrow$] EoM of FS evidence two distinct regimes of \emph{locality}; 
+below threshold FS are localized quantities and can be expressed explicitly;
+above threshold they behave as plane waves and the only physical meaning is inside the scalar product, which requires bith  the evaluation of $\op \Phi$ and $\op O$.
+\item this fact reflect the physical effect that a low-energy excitation is not able to ionize the molecule.
+\item As by hypothesis we are much more capable to express localized quantities it is therefore likely that it easier to converge LR quantities in the infrared regime. Let us show why this fact happens.
+\item If I have the correct DoF to express the FS as a genuinely localized quantity I have the LR for \emph{any} observable $\op O$. This fact would not be possible above threshold.
+\item The capability of expressing the FS below threshold reflects the capability of expressing the LR kernel. Therefore \emph{the same} localization argument should be reformulated in term of R
+\item Let us discuss how this observations are related to the analytic structure of the LR.
+\item FS are explicitly dependent on the perturbation potential. The LR would be (formally) completely defined in terms of free oscillation of the system (eigenoperators of the Liouvillian).
+\item The FS can be also expressed as a sum over excitations
+%\item As the imaginary part of the FS should be also localized below threshold this implies that also the excitations are localized quantities when E is below threshold
+\item [$\Rightarrow$]Such sum over the excitation must be such as to express a localized quantity below threshold, (at least when applied to localized potentials).
+\item[$\Rightarrow$] In addition, also the excited states undergo two different regimes of locality, but this time their EoM implies \emph{also} conditions on the discreteness of the energies. Above threshold the excitations belong to a \emph{continuum}
+\item Such continuum of excitation is formed by a set of ldelocalized excitations that are nontheless important to express the localized infomration below threshold.
+\item However this implies that \emph{also} the analytic structure of the LR undergo two different regimes.
+%\item The absorption spectra, which are only dependent by the imaginary part of R, are therefore well expressed only for discrete energies
+\item[$\Rightarrow$] We might therefore show that below threshold the analytic structure of the LR is given in terms of localized quantities that are at discrete, observable and physically meaningful energies.
+\item[$\Rightarrow$] The spectral function of the LR, which would be written as a sum of delta, only converges when the ecxitation are dense enough in the continuum sector, wheras convergence in the infrared regimes only requires identification of the discrete excitation energies
+\item There are multiple thresholds, one for any QP energy. The first threshold is the ionization potential.
+\item[$\Rightarrow$] in a computational setup that is able to capture localized information, the analytic structure of the LR can be expressed with arbitrary good convergence \textbf{only} below the first threshold, as localized information it is more easily expressed in computational treatments that are initially performed for the Ground state.
+\item For this reason it is easier to have convergence in the optical properties for energy sector below the first threshold
+\item Above each of the threshold (therefore after the first), there is a continuum of delocalized excited states that have to be expressed if we want to abandon the representation in terms of scalar product between FS and O.
+\item Such representation in terms of O, FS and Phi is still the most convenient to have accurate evaluation of the LR above threshold.
+
+\end{itemize}
+\section{Reboot with recent considerations}
+\subsection{Perturbative approach to finite-size corrections}
+Given a approximate eigenvector $\ket{\psi}$ we approximate its energy by $E=\bra{\psi} \op H \ket{\psi}$.
+This energy is an approximation of the true eigenvalue. We assume that the wavefunction gradient $\ket{g(E)}\equiv \left(\op H -E\right)\ket{\psi}$ indicates the distance from the solution of the Schroedinger Equation (SE) in a complete basis set.
+By imposing the solution of the SE for a better approximation of the wavefunction $\psi + \Delta \psi$
+we should obtain, self-consistently:
+\begin{align}
+\left(E -\op H \right)\ket{\Delta \psi} &= \ket{g(E+ \Delta E)}\;,\\
+\Delta E &= 2 \bra{\psi} \op H \ket{\Delta \psi}\;.
+\end{align}
+From the expression of $\Delta \psi$ we can recalculate another approximation for the wavefunction and, correspondingly, for the eigenvalue.
+By definition, the exact solution is reached only when $\ket{g}=0$, which implies that the norm of $\Delta \psi$ must decrease during the perturbative process.
+
+\textbf{Theorem:} Only the eigenstates with negative energy might have a finite-size correction that can be expressed perturbatvely.
+
+\textbf{Proof}: 
+If we apply this process to estimate the finite-size correction to a numerical solution of the Schroedinger equation, as the eigenvalue should converge faster than the eigenvector, we conclude that the gradient $g$ becomes nonzero only in regions that  should be located far from the potential region. If this is true, at the next iteration the gradient would become $g + \op H \Delta \psi + \mathcal{O}(\Delta E)$.
+Therefore, for having a convergent perturbative process, also the ket $\ket{\Delta \psi}$ solution of the above equation should be localized far from the support of the potential. In other terms, the relation between $g$ and $\Delta \psi$ should be local in space.
+
+The Lippmann-Schwinger relation defines the Dyson series of the resolvent of the Hamiltonian in terms of the Helmholtz Green's function $\op G_0(E)$:
+\be 
+\op G(E) \equiv (E- \op H)^{-1} = \op G_0(E) + \op G_0(E) \op V \op G(E)\;.
+\ee
+We have therefore 
+\be 
+\ket{\Delta \psi} = 
+\sum_{p=0}^\infty \op G_0(E) 
+\left(\op V \op G_0(E)\right)^p \ket{g}\;.
+\ee
+For the properties of the Helmholtz equation, locality in space of $\Delta \psi$ might only be recovered for negative energy values. This equation proves that for positive values of the energy the finite-size corrections will \emph{always} provide fully delocalized corrections: it would be impossible to observe a convergence of the wavefunction in the interior region by simply increasing the size of the simulation domain. 
+If the value of the approximate energy does not become negative during the perturbative process, 
+a modification of the domain boundaries will impact the wavefunction in the entire simulation region. In this case, convergence might only be achieved uniformly and there is no guarantee that a larger domain will provide similar energies.
+$\square$
+\begin{itemize}
+\item Write the excitations as the eigenstates of the Liouvillian:
+\begin{itemize}
+\item The Casida Matrix provides the eigenvectors in the basis of the unperturbed transitions
+\item From the Casida eigenproblem we 
+get the poles of the dynamical polarizability and we may reconstruct the perturbed wavefunctions
+\item Lot of solution in state of 
+the art to express \emph{the same information}, still by avoiding the explicit diagonalization of the problem
+\end{itemize}
+\item Such transitions might also be written in terms of the solutions of the eigenproblem for the perturbed hamiltonian
+\begin{itemize}
+\item There are therefore excitations which correspond to localized solutions of the above eigenproblems
+\item There is a \emph{energy threshold} above which the eigenfunction associated \emph{cannot be anymore} localized
+\end{itemize}
+\item Below threshold, the eigenfunction are localized and the energy values are \emph{observable} quantities (there is a convergence in terms of the simulation parameters)
+\begin{itemize}
+\item Casida treatments for different
+basis sets exhibit convergence of the low-energy excitations
+\item Still, even for such localized excitations, non-trivial dependence on the empty states on some of excitation value is observed (energies converge relatively slowly wrt $N_\alpha$)
+\item The locality of the excitation can be \emph{measured}
+{\bf NEW idea for the SoB: why not to consider}
+$$
+\int \mathrm d \mathbf r
+\rho(\mathbf r) |\phi_p^E(\mathbf r)|^2
+$$
+or similar quantities, that are independent on the number of empty and  bound states
+\item Localized Excitation are the  only one with an observable character (this is surely already known)
+\item The spectrum of the Liouvillian in this regime is a \emph{discrete} spectrum; the excitation energies are \emph{poles} of the dynamical polarizability
+nano\item We may associate the value of the threshold to the \emph{ionization potential}: This is a very interesting remark in my opinion: the physics of the optical excitation is observable 
+(and therefore localized) only if the energies are not higher than the energy needed to ionize the system. After this point, it seems normal to me that the ``optical'' excitations with 
+real value of the energy are not  meant to be observable anymore.
+\item Optical Excitations below threshold have therefore a (very) long lifetime (poles on the real axis), and they contribute to the analytic structure of the dynamical polarizability.
+\end{itemize}
+\item Above this threshold the energies have a strong dependence on the computational treatment
+\begin{itemize}
+\item The high-energy part of the 
+spectrum does not converge with the 
+boundary conditions, even though they converge wrt the empty states (established techniques \emph{do not solve} such problem)
+\item This is \emph{not} a problem that is related to the continuum collapse of the empty states.
+\item They belong to the continuum of  the Liouvillian $\rightarrow$ they collapse, or depend strongly on the basis set adopted
+\item They cannot be considered separately \emph{even when they are expressed in localized basis} as 
+their shape is dependent on the treatment
+\item They energies are not \emph{true} poles of the dynamical polarizability (the spectra converge only by superposition of deltas)
+\end{itemize}
+\item Optical excitation above Ionization threshold are therefore observable \emph{only} if they possess a lifetime (the peaks of the spectrum have a well-defined broadening). 
+In this way they might be expressed in terms of resonant wavefunctions
+\end{itemize}
+
+\section{General theoretical setup}
+
+\subsection{Basic definitions}\lb{BasicDef}
+
+We consider a generic one-body quantum mechanical problem described by the hermitian Hamiltonian $\hnot$  written in terms of the standard 
+kinetic operator $\op T$ plus a one-body potential $\op V$, which we assume to be completely general, i.e. possibly nonlocal.
+We consider open systems, so that $\hnot$ is defined on $\mathbb L_2(\mathbb R_3)$ and the basis of its eigenfunctions spans this 
+functional space. Therefore, together with the discrete (bound) part of its spectrum $\eps_b$, the Hamiltonian may have an essential spectrum 
+$\eps(c)$, parametrized by the continuum label $c$. 
+
+A generic state $\ket{f} \in \mathbb L_2(\mathbb R_3)$ can be expanded in the basis of the eigenstates of $\hnot$, that is:
+\be\lb{ketBasisExpDef1}
+\ket{f} = \sum_b f_b \ket{\psi_b} + \int \dd c f(c) \ket{\psi(c)}  = 
+\sint \dd s f(s) \ket{\psi(s)} \;,
+\ee
+where we have introduced the compact multi-index $s$ that collect both the discrete and continuum part of the spectrum of $\hnot$.
+The normalization of the basis can be chosen so that the standard orthonormality condition holds, that is: 
+\be
+\brket{\psi(s)}{\psi(s')} = \delta(s-s') \;,
+\ee
+and the completeness condition is written as:
+\be\lb{completenessH0basis1}
+\identity = \sint \dd s \ketbra{\psi(s)}{\psi(s)} = \sum_{b} \ketbra{\psi_b}{\psi_b} + \int \dd c \ketbra{\psi(c)}{\psi(c)} \;. 
+\ee
+Thanks to this condition the coefficients of the expansion \eqref{ketBasisExpDef1} can be expressed via a scalar products, namely $f_{b} = 
+\brket{\psi_b}{f}$ and $f(c) = \brket{\psi(c)}{f}$.
+
+\subsection{Time evolution of states in the linear response regime}
+
+We discuss the time evolution of a generic state vector in the case in which a hermitian time dependent perturbation $\hone{t}$ is added to $\hnot$. 
+To achieve this task we have to solve the time dependent Schroedinger equation supplied by the knowledge of the state at the ``initial'' time $t_0$.
+We seek for a solution of the form:
+\be\lb{ketTimeEvol1}
+\ket{\psi(t_{0},t)} = e^{-\ii \hnot t} \op{U}_{I}(t,t_0) e^{\ii \hnot t_0}\ket{\psi_0} \; . 
+\ee
+where $\op{U}_I(t,t_0)$ is the time evolution operator induced by $\hone{}$ that satisfies the ``initial'' time condition $\op{U}_I(t_0,t_0)=1$. 
+Plugging the expression \eqref{ketTimeEvol1} in the Schroedinger equation we obtain a differential equation for $\op{U}_I$ that can be solved 
+iteratively as a power series in $\hone{}$. Limiting to the linear order provides:
+\be \lb{UiLinOrderSol1}
+\op{U}_I(t,t_0) = \identity - \ii \intdef{t_0}{t}{t'} e^{\ii \hnot t'} \hone{t'} e^{-\ii \hnot t'} \; .
+\ee
+So, at the first order in $\hone{}$ equation \eqref{ketTimeEvol1} can thus be written as:
+\be \lb{ketTimeEvol2} 
+\ket{\psi(t_{0},t)} = \left( \op{U}_0(t-t_0) - \ii \intdef{t_0}{t}{t'} \op{U}_0(t-t') \hone{t'} 
+\op{U}_0(t'-t_0) \right)\ket{\psi_0} \; ,
+\ee
+were we have defined the time evolution operator of the unperturbed Hamiltonian by
+\be
+\op{U}_0(t-t_0)\equiv e^{-\ii \hnot(t -t_0)} \;.
+\ee
+The time evolution of left vectors can be derived in the same way. We can express the temporal evolution of the left 
+vectors in the form:
+\be \lb{braTimeEvol1}
+\bra{\psi(t_{0},t)} = \bra{\psi_0} e^{-\ii \hnot t_0} \op{U}_{I}(t_0,t) e^{\ii \hnot t} \;,
+\ee
+plugging this equation in the conjugate Schroedinger equation and pursuing the same procedure defined above, we obtain the 
+linear order expression of time evolution of left vectors:
+\be\lb{leftVectTimeEvol2}
+\bra{\psi(t_{0},t)} = \bra{\psi_0} \left( \op{U}_0(t_0-t) + \ii \intdef{t_0}{t}{t'} \op{U}_0(t_0-t') 
+\hone{t'} \op{U}_0(t'-t) \right) 
+\ee
+It is immediate to check that, in order to preserve the norm vectors during the time evolution, it is sufficient that $\op{U}_I$ 
+possesses the  semi-group structure $\op{U}_I(t_2,t_1) \op{U}_I(t_1,t_0) = \op{U}_I(t_2,t_0)$. An inspection of \eqref{UiLinOrderSol1}
+evidences that this condition is satisfied in the linear response regime.
+
+\subsubsection{Time evolution of stationary states. Adiabatic limit vs finite time switch-on procedure}
+
+We are interested in determining the time evolution of an eigenstate of $\hnot$ under the action of the perturbation $\hone{t}$ in the linear 
+response regime. A proper statement of the problem requires the specification of the way in which the perturbation is switched on.
+Possible choice of the switching on protocol are, for instance, the \emph{adiabatic limit} and the \emph{sudden limit} protocols. In the first
+case the perturbation is switched on at $t_0=-\infty$, but the intrinsic time structure of $\hone{}$ is modified by the damping function 
+$e^{-\eta_a |t|}$. In the second one the perturbation is abruptly switched on at the finite time $t_0$, so that the time structure of
+$\hone{}$ is multiplied times the $\theta$-function $\theta(t-t_0)$.
+
+Starting from the generic time evolution equation \eqref{ketTimeEvol2} and choosing the initial condition in the form 
+$\ket{\psi_0} = e^{-\\i \eps_b t_0}\ket{\psi_b}$, we can write the time evolution of the generic $\ket{\psi_b}$ eigenvector of $\hnot$ as:
+\be \lb{ketTimeEvol3} 
+\ket{\psi_b(t)} = e^{-\ii \eps_b t}\left( \identity - \ii \intdef{t_0}{t}{t'} \op{U}_0(t-t') \op\Phi^{a.l,s.l}(t') \op{U}_0(t'-t)  \right)\ket{\psi_b} \; ,
+\ee
+where we have introduced the \emph{perturbing field operators}: 
+\be
+\op\Phi^{a.l.}(t) = e^{-\eta_a |t|} \hone{t} \;, \qq
+\op\Phi^{s.l.}(t) = \theta(t-t_0) \hone{t}
+\ee
+that codify the effective of the perturbing Hamiltonian in the specific switch-on procedure. Making usage of elementary properties of $\theta$ functions allows us
+to rewrite the former time integral as:
+\be\lb{AopDef1}
+\op A(t) = \intdef{-\infty}{\infty}{t'} \op{U}^{+}_0(t-t') \op\Phi^{a.l,s.l}(t') \op{U}^{-}_0(t'-t) \;,
+\ee
+so that the effect of the switch-on protocol are completely reabsorbed in the perturbing field. In the subsequent analysis we will omit the apex in the fields $\op\Phi$, 
+unless explicitly needed, to keep notations as simple as possible. Thanks to this definition we can express the time evolution of the eigenvectors of $\hnot$ in the 
+compact form:
+\be\lb{ketBraTimeEvol1}
+\ket{\psi_b(t)} = e^{-\ii \eps_b t}\left( \identity - \ii \op A(t)  \right)\ket{\psi_b} \; , \qq 
+\bra{\psi_b(t)} = \bra{\psi_b} \left( \identity + \ii \op A(t)  \right) e^{\ii \eps_b t} \; .
+\ee
+
+\subsection{Linear response on the density operator. Liouville equation in the time domain}
+
+We introduce the \emph{density operator} defined as the sum of the one-particle densities of all the states with energy lower than the \emph{chemical potential} 
+(Fermi energy):
+\be\label{rhodef1}
+\dmnot = \sum_{\{p\}} \ket{\psi_p} \bra{\psi_p}  \;,
+\ee
+where the index $p$ labels the occupied state, \emph{i.e} the subset of the bound eigenstates of $\hnot$ with energy lower than the Fermi energy.
+Clearly $\dmnot$ commutes with $\hnot$ and in the unperturbed case is a time-independent operator. When the perturbation is switched the system starts to evolve
+and we indicate with $\dm(t)$ the modified density of the perturbed system. We introduce the shorthand notation:
+\be\lb{rhodef2}
+\dm(t)  =  \dmnot + \dm'(t)\;,
+\ee
+where $\dm'(t)$ is called the \emph{response density operator} and represents the time dependent modification of the ground state density induced by the perturbation.
+Here we are assuming that the highest occupied energy level and the lowest unoccupied one will never intersect during the time evolution. Thanks to this condition, the 
+linear response regime the expression of $\dm'(t)$ can be readily derived using equations \eqref{ketBraTimeEvol1} and reads:  
+\be\lb{rhoTimeEvolutionDef3}
+\dm'(t) = \ii \commutator{\dmnot}{\op A(t)} \;.
+\ee
+The equation of motion (Liouville equation) for $\dm'$ is obtained by performing the time derivative of the previous equation. The derivative of $\op A(t)$ can be 
+computed starting from its definition and reads:
+\be
+\d_t\op A(t) = \op\Phi(t) -\ii \commutator{\hnot}{\op A(t)} \nn \;,
+\ee
+and using the Jacobi identity we have:
+\be\lb{LiouvilleRhoDef1}
+\ii \d_t \dm'(t) = \commutator{\op\Phi(t)}{\dmnot} + \ii\commutator{\hnot}{\commutator{\dmnot}{\op A(t)}} = 
+\commutator{\op\Phi(t)}{\dmnot} + \commutator{\hnot}{\dm'(t)} \;.
+\ee
+It is useful to introduce the \emph{Liouvillian} superoperator:
+\be\lb{L0sopDef1}
+\Liouvnot \equiv \commutator{\hnot}{\cdot} \;,
+\ee
+so that the Liouville equation can be written as:
+\be\lb{LiouvilleRhoDef2}
+\ii \d_t \dm'(t) = \Liouvnot \dm'(t) + \commutator{\op\Phi(t)}{\dmnot} \;.
+\ee
+
+\subsection{Self-consistent Hamiltonians. Generalized Liouville operator}
+
+Let us extend the the former analysis to self-consistent systems, \emph{i.e.} to the case in which the unperturbed Hamiltonian is itself a function of the density.
+In this case the perturbing field $\op\Phi$ has also the effect of adding a further perturbation operator to the perturbing Hamiltonian. In the linear response framework, 
+this latter quantity can be expressed as the functional derivatives of $\hnot$ with respect to the density kernel (evaluated at $\dm=\dmnot$) times the value of the
+induced density modification, that is:
+\be\label{Vptspacedef1}
+\op V'(t)= 
+\int \dd \r \dd \r' \frac{\delta\hnot}{\delta \rho_0(\r,\r')}
+\trace{\dm'(t) \ket{\r} \bra{\r'}} \;.
+\ee
+The Liouville equation for self-consistent systems can be written by adding the contribution of $\op V'$ to $\op\Phi$ in \eqref{LiouvilleRhoDef2}. 
+It reads:
+\be\lb{LiouvilleRhoSelfDef1}
+\ii \d_t \dm'(t) = \Liouvnot \dm'(t) + \commutator{\op V'(t)}{\dmnot} + \commutator{\op \Phi(t)}{\dmnot} \;.
+\ee
+We point out that the response density operator obeys a self-consistent equation, since the  induced perturbing field $\op V'$ is itself a function of $\dm'$. 
+It is possible to formally recast \eqref{LiouvilleRhoSelfDef1} in the same form of \eqref{LiouvilleRhoDef2} by introducing the \emph{coupling}
+superoperator:
+\be\lb{couplingSopDef1}
+\coupl = 
+\int \dd \r \dd \r' \commutator{\frac{\delta\hnot}{\delta \rho_0(\r,\r')}}{\dmnot}
+\trace{\cdot \ket{\r} \bra{\r'}} \;,
+\ee
+in this way the first commutator in \eqref{LiouvilleRhoSelfDef1} can be written as the formal action of the coupling superoperator to $\dm'$ and \eqref{LiouvilleRhoSelfDef1}
+can be written as:
+\be\lb{LiouvilleRhoSelfDef2}
+\ii \d_t \dm'(t) = \Liouv \dm'(t) + \commutator{\op \Phi(t)}{\dmnot} \;, \qq
+\Liouv = \Liouvnot + \coupl \;.
+\ee
+
+\subsection{Formulation in the frequency domain}
+
+We reformulate the Liouville equation \eqref{LiouvilleRhoSelfDef2} in the frequency domain. In order to achieve this task it is
+preferable to directly compute the action of the Liouville operator on the Fourier transform of the response density, since in this
+way some subtleties that concerns the analytic structure in the $\omega$ complex plane can be properly taken into account.
+We first define the response density in the frequency domain that, staring from \eqref{rhoTimeEvolutionDef3}, is given by:
+\be\lb{rhoPrimeOmegaDef1}
+\dm'(\omega) \equiv \intover{t} e^{\ii \omega t} \dm'(t)
+= \ii \commutator{\dmnot}{\op A(\omega)} \;,
+\ee
+where $\op A(\omega)$ is The Fourier transform of \eqref{AopDef1} and reads:
+\be \lb{AomegaDef1}
+\op A(\omega) = \frac{1}{2\pi} \int_{-\infty}^\infty  \dd \omega'
+\op G_0^+(\omega') \op \Phi(\omega) \op G_0^-(\omega'-\omega)\;.
+\ee
+The action of $\Liouvnot$ on $\dm'(\omega)$ follows from \eqref{L0sopDef1}:
+\be\lb{LiouvillianRhopomegaDef1}
+\Liouvnot \dm'(\omega) = \ii \commutator{\hnot}{\commutator{\dmnot}{\op A(\omega)}} = 
+\ii \commutator{\dmnot}{\commutator{\hnot}{\op A(\omega)}} \;,
+\ee
+and the commutator between the unperturbed Hamiltonian and $\op A(\omega)$ can be directly computed starting from \eqref{AomegaDef1}: 
+\be
+\commutator{\hnot }{\op A(\omega)} = \bbomega \op A(\omega) - \ii \op \Phi(\omega)\;, \nn
+\ee
+where $\bbomega \equiv \omega + 2\ii\eta$, so that:
+\be\lb{LiouvillianRhopomegaDef2}
+\Liouvnot \dm'(\omega) =  \bbomega\dm'(\omega) + \commutator{\dmnot}{\op\Phi(\omega)}\;.
+\ee
+The coupling superoperator has the same formal action on the response density both in the time and in the frequency domain, so the complete
+Liouville equation in $\omega$ space can be written as:
+\be\lb{LiouvillianRhopomegaDef3}
+\left(\bbomega - \Liouv\right) \dm'(\omega) =  \commutator{\op\Phi(\omega)}{\dmnot}\;.
+\ee
+
+\section{Critical Analysis of the linear response results}
+
+The main aim of this section is to discuss the reliability in the assessment of the results provided by the linear response formalism. In particular we are interested in 
+analyzing the \emph{linear response functional} defined as:
+\be\lb{LinearResponseFunctDef1}
+{\cal R}_{\op O}(\omega) = \trace{\dm'(\omega)\op O} \;,
+\ee
+that represents the perturbation-induced modification of the expectation value of an observable $\op O$. Here, for a sake of concreteness, we are limiting our considerations 
+to observables that do not explicitly depend on time. 
+
+We start this analysis by deriving an ulterior expression of the response density operator in the frequency space. We consider equation \eqref{rhoPrimeOmegaDef1} and observe that, for any 
+operator $\op O$, we may write:  
+\be
+\commutator{\dmnot}{\op O} = \dmnot \op O \op Q_0 - \op Q_0 \op O \dmnot\;,
+\ee
+where $\op Q_0= \identity - \dmnot$ is the projection operator in the subspace orthogonal to $\dmnot$. So, thanks to this relation we have that:
+\be
+\dm'(\omega) = \ii\sum_p\left(\ketbra{\psi_p}{\psi_p}\op A(\omega)\op Q_0 - \op Q_0\op A(\omega)\ketbra{\psi_p}{\psi_p}\right) \;.
+\ee
+This equation suggests us to define the \emph{fluctuation states}:
+\be\lb{fluctuationStateDef1}
+\ket{f_p(\omega)} \doteq -\ii\op Q_0\op A(\omega)\ket{\psi_p} \;, \qq
+\bra{f_p(\omega)} \doteq \bra{\psi_p}\ii\op A(-\omega)\op Q_0 \;,
+\ee
+where the $\omega$ dependence of the bra is consistent with hermitian conjugation property of the Fourier transform of a hermitian operator. An inspection of equation \eqref{ketBraTimeEvol1} 
+evidence that formulas \eqref{fluctuationStateDef1} are equivalent to the action of the $\op Q_0$ projector acting on the time evolution of the (occupied) eigenstates of $\hnot$, written 
+in the $\omega$ domain. Fluctuation states are, by definition, orthogonal to the occupied eigenstates of $\hnot$, so that:
+\be
+\brket{f_p(\omega)}{\psi_q} = \brket{\psi_q}{f_p(\omega)} = 0 \;, \forall \, p,q,\omega \;.
+\ee
+The response density written in terms of the fluctuation states reads:
+\be\lb{rhoPrimeFluctuationStateDef1}
+\dm'(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p(-\omega)} + \ketbra{f_p(\omega)}{\psi_p}\right) \;,
+\ee
+and consequently the linear response functional can be expressed as:
+\be\lb{LinearResponseFunctDef2}
+{\cal R}_{\op O}(\omega) = 
+\sum_p\left(\bra{f_p(-\omega)}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{f_p(\omega)}\right) \;.
+\ee
+
+\subsection{Spectral representation of Susceptibility Functional}
+The Liouvillian expressed the excitation modes of the system $\op E$.
+A free excitation of the system might therefore be expressed by the operator $\op E$.
+The scalar product between the perturbed state and the excitation $\op E$ is provided by the quantity
+\be
+a_{\Phi \rightarrow E} = \sum_p \bra{\phi_p^E} \op \Phi \ket{\psi_p} = \trace{\op{\tilde E} \op \Phi}
+\ee
+the rate of probability of being into an excited state after the application of a perturbation $\op \Phi$ is therefore
+\begin{multline}
+\sint \dd E\Gamma_{\op\Phi, \op E}(t) = \sint \dd E a_{\Phi \rightarrow E} \cdot a_{E \rightarrow \Phi} = \\=  \sint \dd E \trace{\op \Phi E } \trace{ \op{\tilde E} \op \Phi} \frac{\sin(E t)}{E}
+\simeq \int \dd \omega' \sin(\omega' t) \trace{\op \Phi \sop R(\omega')\op \Phi}
+\end{multline}
+To calculate this rate of probability we need the spectral function of $\sop R(\omega)$.
+
+Taking into account that, for the Kramers-Kronig relation
+\be
+\sop R(\omega)=1+ \frac{1}{\pi}\mathcal P \int \dd \omega' \frac{B(\omega')}{\omega -\omega'} + \ii B(\omega)
+\ee
+where $B$ is a real operator, the Susceptibility functional might be expressed in two ways:
+\begin{itemize}
+\item By considering the eigenvectors of the Liouvillian superoperator:
+\be
+\sop R(\omega) = \sint \dd E \op E \frac{\trace{\op{\tilde E}_\perp \cdot }}{\bbomega -E}
+\ee
+which would lead to the condition
+\begin{align}
+\left(\hnot-\eps_p\right)\ket{\phi^E_p} +\sint \dd\alpha  U\left[\decay{\alpha}{p}; \op E\right] \ket{\psi(\alpha)} &= E\ket{\phi^E_p} \;,\nn \\
+\bra{\chi^E_p}\left(\hnot-\eps_p\right) +\sint \dd\alpha \bra{\psi(\alpha)} U\left[\excite{p}{\alpha}; \op E\right] &= -E\bra{\chi^E_p} \;.
+\end{align}
+In this case we are identifying 
+\be
+B(\omega) = \sint \dd E \op E \trace{\op{\tilde E}_\perp \cdot } \delta(\omega - E)
+\ee
+Such conditions should bring us to the observation:
+\begin{itemize}
+\item The representation in terms of excitation is related to the linear response properties of the 
+system
+\item Excitation energies below threshold are \emph{discrete};
+\item Excitation states above threshold belong to a \emph{continuum} of states and are \emph{delocalized} in space, and they collapse with the incresing of the computational domain;
+\item The absorbtion spectra are therefore expressed in two different regimes: below the ionization threshold, where the excitation are well-defined quantities (discrete energies, localized excited states), and the high-energy range where the only well defined quantity is the spectral function.
+In this regime a \emph{single} excitation lose its physical significance as they belong to a continuum (we are above the ionization energy for a optical excitation)  and are simply \emph{tools} 
+for expressing the action of $\sop B(\omega)$
+\item By watching naively at this representation it seems that to have a converged real part of the polarizability we should have a converged spectral function in a large part of the high energy sector (above threshold). 
+\item When expressing the spectrum in terms of excited states above threshold we approximate the spectral function in terms of a sum of dirac deltas centered at the \emph{single}, ``unphysical'' excitation; we should therefore express a \textbf{density} of excitations which is sufficiently converged, in terms of the smearing function that is used for the expression of the spectral function.
+\item This is more and more difficult to obtain for  increasing of the energy, as the sizes of the computationa domain should be large to ensure a converged density of excitation, which would imply a collapse of the continuum of excited states as written in the above equations.
+\end{itemize}
+\item By considering the fluctuation state
+via the equation
+\be
+{\cal R}_{\op O}(\omega) = 
+2 \sum_p \bra{\psi_p}\op O\ket{f_p(\omega)} \;.
+\ee
+% {\cal R}_{\op O}(\omega) = 
+%  \ii \sum_p\left(\bra{\psi_p}\op A(\omega)\op Q_0\op O\ket{\psi_p} - \bra{\psi_p}\op O\op Q_0\op A(\omega)\ket{\psi_p}\right) =\\ =
+% \ii \sum_p\left(\bra{\psi_p} \op \Phi(\omega) \op G_0^-(\epsilon_p - \bomega)  \op Q_0 \op O\ket{\psi_p} - 
+% \bra{\psi_p}\op O\op Q_0\op G_0^+(\bomega + \epsilon_p) \op \Phi(\omega) \ket{\psi_p}\right) = \\ 
+% % \ii \int \dd \omega' \sum_p\left(\frac{\bra{\psi_p} \op \Phi(\omega) \op B(\omega')  \op Q_0 \op O\ket{\psi_p}}{\epsilon_p - \bbomega - \omega'} - 
+% % \frac{
+% % \bra{\psi_p}\op O\op Q_0\op B(\omega') \op \Phi(\omega) \ket{\psi_p}}
+% % {\epsilon_p + \bbomega - \omega'}\right) = \\ 
+% \;.
+that will lead to the condition
+\be
+\left(\bbomega+\eps_p -\op T\right)\ket{f_p(\omega)} = \op V\ket{f_p(\omega)} + \op Q_0\left(\op V'(\omega) + \op \Phi(\omega)\right)\ket{\psi_p} \;.
+\ee
+which implies
+\begin{itemize}
+\item Also the fluctuation states and therefore \emph{both} the real and imaginary part of the linear susceptibility may be localized \emph{only} below the energy threshold.
+\item By expressing the FS in term of sum of excitation we obtain \emph{localized wavepackets} written in terms of both localized and delocalized excitation
+\be
+\ket{f_p(\omega)} = \sint\dd E \frac{\trace{\op{\tilde E}\opskew{\Phi}(\omega)}}{\bbomega-E} \ket{\phi^E_p} = \sum_\alpha \braket{\alpha|f_p(\omega)} \ket{\alpha}
+\ee
+\item The description provided by a FS written in a given computational basis is \emph{strictly} equivalent to the one provided by its decomposition in the maximal set of computational excitation.
+\item it seems that \emph{either} I have the description in temrs of excitations, which would prevent to assess the qaulity of the real part of the susceptivity, or I have the fluctuation states that provide correct susceptivity 
+
+\item Below threashold we therefore have the possiblity to express efficiently the fluctuation states instead of the high energy excitations, which would have been needed to express its real part. This would provide a converged and physically meaningful susceptivity (both real and imaginary part) even though the spectral function in the high energy sector will not be converged.
+It appears convenient to write:
+\be
+\sop R(\omega)= \sop C(\omega) - \frac{\ii}{\pi}\mathcal P \int \dd \omega' \frac{\sop C(\omega')-1}{\omega -\omega'}
+\ee
+for the range of $\omega$ for which we are if we are able to write
+\be
+\sop C(\omega) = \mathcal P \sint \dd E   \op E \trace{\op{\tilde E}_\perp \cdot } \frac{1}{\omega -E }\;,
+\ee
+then we would be sure that the spectral function of the susceptivity is correct for energies that belong to the same range, as in this regime the excitation energies are discrete and observable.
+\item The real part of the linear susceptibility has a localized behaviour even though it might be expressed as an integral of delaoclized quantities
+\item If we are interested in expressing quantities which are below ionization threshold we might optimize the computational degrees of freedom by using the corresponding fluctuation states as reference objects. In this case the resultin excitation will be i) such as to produce the desired behaviour on the referecne fluctuation state (example of static polarizability) ii) have a reasonable behaviour for the excitations close to the optimization energy range (observable character of the excited energies). The computational degrees of freedom are likely to express with good quality excitations close to the target energy.
+\item Such minimal basis approach is valid only for energies below threshold: we cannot assess the quality of the fluctuation state above 
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Computational realization of Eq.~\eqref{LinearResponseFunctDef2}}
+Let us further investigate this formula pointing out some of the  computational aspects needed to explicitly perform the scalar products appearing in 
+\eqref{LinearResponseFunctDef2}. 
+We introduce a computational $\mu$-basis, composed by a finite set of $n_\mu$ basis elements $\{\ket{\mu}\}$, and assume that a reliable solution of the ground state problem has 
+been provided in this basis. This means that the feature of the basis (that, for instance, for real space basis are given by the grid spacing and number of points) are chosen so 
+that the coefficients $\brket{\mu}{\psi_p}$ represent a valid discretization of the occupied orbitals. The same can be stated also for the matrix elements $\bra{\mu}\op O\ket{\psi_p}$, 
+under the hypothesis that the observable $\op O$ acts as a local operator on the occupied orbitals.  
+
+The formal scalar products that express the linear response functional \eqref{LinearResponseFunctDef1} can be evaluated in the same basis introduced above, that is: 
+\be\lb{LinearResponseFunctDef3}
+{\cal R}_{\op O}(\omega) = 
+\sum_p\sum_\mu\left(\brket{f_p(-\omega)}{\mu}\bra{\mu}\op O\ket{\psi_p} + \bra{\psi_p}\op O\ket{\mu}\brket{\mu}{f_p(\omega)}\right) \;.
+\ee
+The task of the linear response formalism to provide reliable results for the expectation value of $\op O$ can be reformulated in the problem of finding an accurate and unbiased
+expression for the numerical coefficients appearing in \eqref{LinearResponseFunctDef3}. The features of the computational basis described above ensures that this requirement should
+be satisfied for $\bra{\mu}\op O\ket{\psi_p}$ (and its hermitian conjugates). 
+On the contrary, the problem of the reliable reconstruction of the fluctuation states through the sampling of the coefficients $\brket{f_p(-\omega)}{\mu}$ and $\brket{\mu}{f_p(\omega)}$
+turns out to be highly non-trivial, since the behavior of the fluctuation states strongly depends on $\omega$, as will be readily clarified in the next section.
+
+\subsection{Sternheimer equations and localization properties of the fluctuation states}
+\lb{LocalizationFluctuationStates}
+
+Starting from the Liouville equation \eqref{LiouvillianRhopomegaDef3} it is possible to derive a set of equation of motion for the fluctuation states. 
+The following equations are useful for this task: 
+\begin{align}
+\Liouvnot\dm'(\omega) & = \sum_p\left(-\ketbra{\psi_p}{f_p(-\omega)}\left(\hnot-\eps_p\right) + \left(\hnot-\eps_p\right)\ketbra{f_p(\omega)}{\psi_p}\right) \;, \nn \\
+\coupl\dm'(\omega) &= \commutator{\op V'(\omega)}{\dmnot} = \op Q_0 \op V'(\omega) \dmnot - \dmnot \op V'(\omega) \op Q_0 = \nn \\
+& = \sum_p\left( \op Q_0 \op V'(\omega) \ketbra{\psi_p}{\psi_p} - \ketbra{\psi_p}{\psi_p} \op V'(\omega) \op Q_0 \right) \;, \nn \\
+\commutator{\op \Phi(\omega)}{\dmnot} & =  \sum_p\left( \op Q_0 \op \Phi(\omega) \ketbra{\psi_p}{\psi_p} - \ketbra{\psi_p}{\psi_p} \op \Phi(\omega) \op Q_0 \right) \;. \nn
+\end{align} 
+Liouville equation written in this fashion implies the following equations for the fluctuation states, that can be extracted by multiplying from left and right for the 
+occupied eigenstates of $\hnot$:
+\begin{align}\lb{fluctuationStateEqMotion1}
+\left[\bbomega - \left(\hnot-\eps_p\right)\right]\ket{f_p(\omega)} &= \op Q_0\left(\op V'(\omega) + \op \Phi(\omega)\right)\ket{\psi_p} \;, \nn \\
+\bra{f_p(-\omega)}\left[-\bbomega - \left(\hnot-\eps_p\right)\right] &= \bra{\psi_p}\left(\op V'(\omega) + \op \Phi(\omega)\right)\op Q_0 \;.
+\end{align}
+Equations \eqref{fluctuationStateEqMotion1} have the form of a Sternheimer equation. Once projected in the $\{\ket{\mu}\}$ basis, and fixed the value of $\omega$, they can be solved 
+using a self-consistent procedure (add references). This approach provides a direct evaluation of the fluctuation states and thus the linear response functional \eqref{LinearResponseFunctDef3}
+can be computed.
+
+Much more interestingly for the main topic of the present discussion, and regardless from the detailed strategy of their solutions, equations \eqref{fluctuationStateEqMotion1} 
+allow us to present a \emph{localization argument} for the fluctuation states. We discuss this point for the right vectors, \emph{i.e.} for the first line of \eqref{fluctuationStateEqMotion1}, 
+but the same argument holds also for the left ones. We split the unperturbed Hamiltonian as the sum of the kinetic $\op T$ and potential $\op V$ term, so that the equation of motion 
+for $\ket{f_p(\omega)}$ is recasted as:
+\be\lb{fluctuationStateEqMotion}
+\left(\bbomega+\eps_p -\op T\right)\ket{f_p(\omega)} = \op V\ket{f_p(\omega)} + \op Q_0\left(\op V'(\omega) + \op \Phi(\omega)\right)\ket{\psi_p} \;.
+\ee
+This equation has the formal structure of an inhomogeneous Helmholtz equation and can be written in the coordinate representation as:
+\be
+\left(k^2_p(\omega)+\ii\eta + \nabla^2\right)f_p(\omega,\r) = s(\omega,\r) \;\;, {\rm with} \;\; k^2_p(\omega) = 2(\omega+\eps_p) \;.
+\ee
+The solution of this equation admits an integral representation in the form:
+\be\lb{fluctuationStateIntEq1}
+f_p(\omega,\r) = \int \dd\r' g_H(\r-\r')s(\r') \;,
+\ee
+where $g_H(\r)$ is the Green function of the Helmholtz operator in three dimensions. This integral representation allows us to assess the localization character 
+of the fluctuation states, \emph{i.e.} the behavior of $f_p(\omega,\r)$ when $\r$ becomes large. Indeed, assuming that the support of the source term is compact
+we have that, for $\r$ outside the domain in which the integrand of \eqref{fluctuationStateIntEq1} is not vanishing, the leading contribution of the fluctuation states
+is given by:
+\be\lb{fluctuationStateIntEq2}
+f_p(\omega,\r) \sim \frac{e^{\ii \sqrt{k^2_p(\omega)+\ii\eta} |\r|}}{|\r|} \simeq 
+e^{-\frac{\eta}{2}|\r|} \frac{e^{\ii \sqrt{k^2_p(\omega)} |\r|}}{|\r|} \;.
+\ee
+We observe that the presence of the regularization parameter $\eta$ ensures a (slow) asymptotic convergence to zero, nonetheless the qualitative $\r$-dependence of the fluctuation 
+states is determined by the sign of $k^2_p(\omega)$. In particular equation \eqref{fluctuationStateIntEq2} describes an exponential damping for $\omega < |\eps_p|$ and an oscillating 
+power law behavior for $\omega \geq |\eps_p|$.
+This argument holds for all the fluctuation states that contribute to the perturbation-induced expectation value \eqref{LinearResponseFunctDef3}, so we conclude that
+the linear response functional is built in terms of localized fluctuation states for $\omega < |\eps_h|$. Instead, in the range $\eps_h|\leq\omega<|\eps_0|$ it contains both
+contributions from local and non-local quantities and, finally is composed only by non-local fluctuation states for $\omega\geq|\eps_0|$. 
+
+\subsubsection{Criterion for the choice of the computational basis}
+
+The capability of the computational basis to express the results of the linear response can be analyzed using the localization argument previously discussed. 
+The first step needed to address this problem concerns with the evaluation of the reliability of the $\mu$-basis for $\omega=0$, \emph{i.e.} for a perturbing field that does 
+not depend on time. In this case the fluctuation states, as well as the expectation value of a given observable, can be computed performing a ground state calculation in which the perturbing 
+field $\op\Phi$ is added to the external potential of $\hnot$\footnote{We are interested in the linear response, so the magnitude of $\op\Phi$ has to be chosen in a way that respects this 
+regime. To check this point we can compute the perturbation-induced modification of an observable an verify that its value scales linearly with the magnitude of the field}. 
+The goodness of the $\mu$-basis can thus be verified as in the standard ground state calculation, for instance by checking that, given a certain level of completeness of the basis,
+the energy of the occupied (perturbed) orbitals is stable with respect to further refinements. 
+
+Once that a basis with acceptable features has been chosen and verified for $\omega=0$ we can reasonably extend its reliability to $\omega>0$ by using the localization argument. 
+Indeed, we have argued that fluctuation states retain a local behavior up to $\omega=|\eps_h|$ and so we can expect that, up to this threshold value, the $\mu$-basis represents an 
+effective tool for a precise discretization of \eqref{LinearResponseFunctDef3}, thus providing a reliable estimate of the linear response.  
+
+On the contrary, the situation becomes very less predictable for $\omega$ higher than the threshold $|\eps_h|$ since in this regime the fluctuation states start to delocalize in all the 
+accessible space and the spatial cutoff is provided only by the ground state matrix elements $\bra{\mu}\op O\ket{\psi_p}$.  
+In this case formula \eqref{LinearResponseFunctDef3} provides basis independent results only if the (partial) sampling of the fluctuation states is reconstructed in the domain in which
+$\bra{\mu}\op O\ket{\psi_p}$ are non vanishing. As we shall see through explicit computations this requirement turns out to be quite severe and choices of the basis that provide precise
+results below $|\eps_p|$ fails in the high-$\omega$ regime.  
+
+\subsection{Linear response \emph{via} the construction of the excitation operators}
+
+The linear response presented so far is expressed in functions of the fluctuation states, that essentially describe the modification of the occupied eigenstates of $\hnot$ induced by 
+the perturbation. Fluctuation states depend explicitly on the perturbing field $\op\Phi(\omega)$ and, consequently, the analytic structure of the linear response written as in formula 
+\eqref{LinearResponseFunctDef2} emerge through a combination of the $\omega$ dependence of the perturbing field an on the intrinsic response of the system under inspection.    
+
+It is however possible to present and equivalent but alternative formulation of the linear response that allows us to express the response density operator in term of the spectral
+decomposition of the Liouville superoperator. This approach naturally leads to the concept of \emph{excitation operators}, defined through a self-consistent operator eigenvalue equation,
+that codify the intrinsic capability of the system to respond to an arbitrary perturbation. Excitations behave as singularity of the response density operator and their knowledge provides a 
+deeper insight into the analytic structure of the linear response. 
+
+The material presented in this section discusses a complete re-derivation of the linear response written in terms of excitation operators. Moreover, we will evidence that a \emph{localization 
+argument}, analogous to the one presented in section \ref{LocalizationFluctuationStates} for the fluctuation states, holds also for the excited states of the systems below a specific energetic
+threshold. This analysis has relevant consequence both under theoretical and computational point of view. Indeed, it provides a deeper understanding in the role of both localized and de-localized 
+excitations in determining the analytic structure of the linear response and it gives us clear indication in the level of refinement of the computational setup needed to obtain reliable results 
+from a linear response calculation. 
+
+\subsubsection{Explicit sampling of the empty-states subspace}
+
+We now introduce the notion of $\alpha$-basis, that is a set of orthonormal vectors $\{\ket{\psi(\alpha)}\}$ that form a basis in the subspace of the empty-states, \emph{i.e.} in the subspace 
+orthogonal to the occupied eigenstates of $\hnot$. The elements of this set satisfy, by definition, the following orthonormality relation: 
+\be\lb{psiAlphaDef1}
+\brket{\psi(\alpha)}{\psi_p} = \brket{\psi_p}{\psi(\alpha)} = 0 \;, \qq
+\brket{\psi(\alpha)}{\psi(\beta)} = \delta(\alpha-\beta) \;,
+\ee
+where we have parametrized the basis element through the multi-index $\alpha$, in the sense described in \ref{BasicDef}, since the associated vector can describe both a localized or a 
+de-localized state. The $\op Q_0$ projector as well as the completeness relation can be easily written in function of this basis: 
+\be\lb{psiAlphaQ0}
+\op Q_0 = \sint\dd\alpha\ketbra{\psi(\alpha)}{\psi(\alpha)} \;, \;\; 
+\identity = \sum_p\ketbra{\psi_p}{\psi_p} + \sint\dd\alpha\ketbra{\psi(\alpha)}{\psi(\alpha)} \;.
+\ee
+The $\alpha$-basis, defined through equations \eqref{psiAlphaDef1} and \eqref{psiAlphaQ0}, formally spans an infinite dimensional domain. However, for obvious computational reason it is 
+interesting to express the $\{\ket{\psi(\alpha)}\}$ in the same $\mu$-basis used to perform the ground states calculations. The discretization conditions imposed by the $\mu$-basis reduce 
+the $\{\ket{\psi(\alpha)}\}$ to a finite dimensional set. The dimension $n_\alpha$ of the basis can be computed by subtracting to the $n_\mu$ degrees of freedom the $n_{occ}$ constraints 
+needed to imposes the orthonormality of the $\{\ket{\psi(\alpha)}\}$ to the occupied states, so that $n_\alpha=n_\mu-n_{occ}$.
+
+\vspace{0.4cm}
+\emph{Quality assessment of the reduced $\alpha$-basis}
+\vspace{0.4cm}
+
+When the sampling of the empty state subspace is needed to perform practical calculations in realistic systems the construction of a complete $\alpha$-basis typically turns out to be 
+computationally unaffordable. In these cases it is possible to introduce a \emph{reduced} basis, denoted as $r\alpha$-basis, composed of a subset of dimension $n_{r\alpha}$ of the 
+$\{\ket{\psi(\alpha)}\}$ elements of the complete basis. 
+
+The capability of the reduced basis to express the results of the linear response can be evaluated by using the results of a ground state calculation in which the time-independent 
+perturbing field $\op\Phi$ is added to the external potential of $\hnot$. We denote with $\ket{\psi_p^\Phi}$ the occupied eigenstate of the perturbed Hamiltonian and, using the 
+completeness relation of \eqref{psiAlphaQ0}, we can write the following expansion:
+\be\lb{PertPsiExpansion1}
+\ket{\psi_p^{\Phi}} = \sum_q a_{pq}\ket{\psi_q} + \sint\dd\alpha \,a_{p\alpha}\ket{\psi(\alpha)} \;,
+\ee
+where $a_{pq} = \brket{\psi_q}{\psi_p^{\Phi}}$ and $a_{p\alpha} = \brket{\psi(\alpha)}{\psi_p^{\Phi}}$. Equation \eqref{PertPsiExpansion1} holds exactly since the sum over the empty states
+is extended to the complete $\alpha$-basis. Taking the norm of $\ket{\psi_p^\Phi}$ and summing over $p$ provides:
+\be\lb{PertPsiExpansion2}
+n_{occ} = \sum_{pq} |a_{pq}|^2 + \sum_p\sint\dd\alpha\,|a_{p\alpha}|^2 \;,
+\ee
+the two addend of this equation measure the distribution of the total electronic charge of the perturbed system between the occupied and empty subspaces. Furthermore, we can use
+equation \eqref{PertPsiExpansion2} to build an estimator $C(n_{r\alpha})$ of the capability of the $r\alpha$-basis to describe the modification of the ground state density induced 
+by the time-independent perturbation. We define this estimator as follows:
+\be\lb{Cestimator1}
+C(n_{r\alpha}) = 1 - \frac{\sum_p\sum_\alpha^{n_{r\alpha}}|a_{p\alpha}|^2}{n_{occ} - \sum_{pq} |a_{pq}|^2} \;,
+\ee
+$C(n_{r\alpha})$ is by construction a positive function with values between 1, achieved when the sampling of the empty-states subspace is absent and 0, obtained when the reduced basis
+is complete. The normalization adopted in \eqref{Cestimator1} ensures that $C(n_{r\alpha})$ is an intensive estimator, so that its value does not depend on the number of occupied
+orbitals of the system. 
+
+\subsubsection{Linear response in the basis of transitions}
+
+The defining equation of the linear response can be reformulated using the explicit sampling of the empty states defined above. The fundamental observation on the basis
+of this procedure regards the fact that both the response density operator \eqref{rhoPrimeOmegaDef1} and all the operators appearing in the Liouville equation 
+\eqref{LiouvillianRhopomegaDef3} are expressed as a commutator with $\dmnot$. This observation implies that all the operators $\op O$ appearing in the contest of the linear 
+response satisfy the formal relation:
+\be
+\op O = \dmnot\op O\op Q_0 + \op Q_0\op O\dmnot \;.
+\ee
+Plugging the operator expression of $\dmnot$ and $\op Q_0$ in terms of basis vector in the occupied and empty subspace provides:
+\be\lb{OperatorTransBasisExpDef1}
+\op O = \sum_p\sint \dd \alpha\left(
+\excite{p}{\alpha}\trace{\decay{\alpha}{p}\op O} + \decay{\alpha}{p}\trace{\excite{p}{\alpha}\op O}
+\right) \;,
+\ee
+where we have defined the \emph{transition operators}:
+\be
+\excite{p}{\alpha} \equiv \ketbra{\psi(\alpha)}{\psi_p}\;, \qq
+\decay{\alpha}{p} \equiv \ketbra{\psi_p}{\psi(\alpha)} \;,
+\ee
+that thanks to \eqref{psiAlphaDef1} satisfy the orthonormality conditions:
+\be\lb{transitionOpOrthonormalityDef1}
+\trace{\excite{p}{\alpha}\excite{q}{\beta}} = \trace{\decay{\alpha}{p}\decay{\beta}{q}} = 0 \;, \qq
+\trace{\excite{p}{\alpha}\decay{\beta}{q}} = \delta_{pq}\delta(\alpha-\beta) \;.
+\ee
+Here we are assuming that the complete $\alpha$-basis is used, so the operator expansion in the basis of transition \eqref{OperatorTransBasisExpDef1} is exact. The effect of
+the adoption of a reduced basis will be analyzed when needed. 
+In order to recast this expansion in a simpler expression it turns out to be useful to define the rank-2 row vectors of the transition basis: 
+\be
+\sbra{p\alpha}{\cdot} \equiv 
+\mat{ \excite{p}{\alpha} \;, & \decay{\alpha}{p} }\;,
+\ee
+and we also introduce a vectorial notation to deal with the coefficients of the expansion of an operator in the transition basis, that is: 
+\be\lb{OperatorTransitionCoeffDef1}
+\sket{p\alpha}{\op O}  \equiv \mat{ \trace{\decay{\alpha}{p}\op O } \\ 
+\trace{\excite{p}{\alpha}\op O}} \; .
+\ee
+Thanks to this formalism we have that equation \eqref{OperatorTransBasisExpDef1} can be expressed as:
+\be\lb{OperatorTransBasisExpDef2}
+\op O = \sum_p\sint \dd \alpha \sbra{p\alpha}{\cdot}\sket{p\alpha}{\op O} = 
+\dbraket{\cdot}{\op O} \;,
+\ee
+where the last equality implicitly define the ulterior compact notation of the ``big-shaped'' vectors in which the summed indexes are omitted.  
+In the same fashion it will be also useful for the subsequent analysis to introduce a conjugate notation, in which the basis operators are expressed
+as column vector and the coefficients of the expanded operator as row ones, that is: 
+\be\lb{TransitionBasisConjugateDef1}
+\sket{p\alpha}{\cdot} \equiv 
+\mat{\decay{\alpha}{p} \\  \excite{p}{\alpha}} \;, \qq
+\sbra{p\alpha}{\op O}  \equiv 
+\mat{ \trace{\excite{\alpha}{p}\op O } \;, & \trace{\decay{p}{\alpha}\op O} }
+\;,
+\ee
+where the flip in the role of $\op e$ and $\op d$ in \eqref{TransitionBasisConjugateDef1} follows from the properties of excitation and decay operators
+under hermitian-conjugate operation. The expansion of an operator in the transition basis using the conjugate description reads: 
+\be\lb{OperatorTransBasisConjugateExpDef1}
+\op O = \sum_p\sint \dd \alpha \sbra{p\alpha}{\op O}\sket{p\alpha}{\cdot} = 
+\dbraket{\op O}{\cdot} \;.
+\ee
+The Liouville equation \eqref{LiouvillianRhopomegaDef3} can be consistently written in the transition basis where it becomes a linear matrix equation for the 
+rank-2 vectors of the coefficients \eqref{OperatorTransitionCoeffDef1} of the operators in its left and right side, that is:
+\be\lb{LiouvillianRhopomegaDef4}
+\omega\mat{ \trace{\decay{\alpha}{p}\dm'(\omega)} \\ \trace{\excite{p}{\alpha}\dm'(\omega)}} - 
+\mat{ \trace{\decay{\alpha}{p}\Liouv\dm'(\omega)} \\ \trace{\excite{p}{\alpha}\Liouv\dm'(\omega)}} =
+\mat{ \trace{\decay{\alpha}{p}\opskew{\Phi}(\omega)} \\ \trace{\excite{p}{\alpha}\opskew{\Phi}(\omega)}}
+\;,\nn
+\ee
+where we have introduced a compact notation to deal with the commutator of on operator with the unperturbed density: 
+\be
+\opskew{O} = \commutator{\op O}{\dmnot}\;.
+\ee
+The second addend in the l.h.s of \eqref{LiouvillianRhopomegaDef4} can be further analyzed by writing the transition basis expansion of $\dm'$ inside the traces. 
+Performing this procedure we can recast this quantity as the action of a 2-dimensional matrix on the rank-2 vector of the response density. So we have: 
+\be\lb{LiouvilleTransBasisDef1}
+\sum_q\sint\dd\beta \left[\omega\delta_q^p\delta(\alpha-\beta)- \optr{L}^{p \alpha}_{q\beta} \right]\sket{q\beta}{\dm'(\omega)} =
+\sket{p\alpha}{\opskew{\Phi}(\omega)} \;.
+\ee
+with:
+\be\lb{LiouvilleMatrixTransBasisDef1}
+\optr{L}^{p \alpha}_{q\beta} \equiv \mat{\trace{\decay{\alpha}{p}\, \Liouv\, \excite{q}{\beta}} &
+\trace{\decay{\alpha}{p}\, \Liouv\, \decay{\beta}{q}} \\
+\trace{\excite{p}{\alpha}\, \Liouv\, \excite{q}{\beta}} &
+\trace{\excite{p}{\alpha}\, \Liouv\, \decay{\beta}{q}}} \;.
+\ee
+
+\subsubsection{Spectral decomposition of the response density in the transitions basis. Definition of excitation operators}
+
+The formulation of the Liouville equation in the basis of transitions is the starting point for the derivation of the spectral decomposition of the response density operator
+in terms of the eigenvectors if the Liouville operator. The first step in the achievement of this result is provided by the construction of the eigenvectors of the matrix 
+\eqref{LiouvilleMatrixTransBasisDef1}. Following the notation previously defined we introduce the rank-2 vectors $\sket{p\alpha}{E}$ and $\sbra{p\alpha}{\tilde E}$ that represent, 
+by definition, the right and left eigenvectors $\optr{L}$, respectively, so that:
+\be\lb{LiouvMatrixEigenvectorDef1}
+\sum_q \sint \dd \beta \optr{L}^{p \alpha}_{q\beta} \sket{q \beta}{E} = E \sket{p\alpha}{E} \;, \quad
+\sum_p \sint \dd \alpha \sbra{p\alpha}{\tilde E} \optr{L}^{p \alpha}_{q\beta} = E \sbra{q\beta}{\tilde E}\;.
+\ee
+In general, left and right eigenvectors do not coincide, but it is always possible to choose they normalization so that a orthonormality conditions among the
+elements of left and right spaces holds, namely:
+\be\lb{ExcitationOrthonormalityDef1}
+\sum_p \sint \dd \alpha \sbra{p\alpha}{\tilde E}\sket{p\alpha}{E'} \equiv \dbraket{\tilde E}{E'} = \delta(E-E') \;.
+\ee
+Once that the eigenvectors are known, the spectral decomposition of the resolvent of $\optr{L}$ can be provided:  
+\be
+\left[\left(\bbomega-\optr{L}\right)^{-1}\right]^{p\alpha}_{q\beta} =\sint\dd E
+\frac{\sket{p\alpha}{E}\sbra{q\beta}{\tilde E}}{\bbomega-E} \;,
+\ee
+so equation \eqref{LiouvilleTransBasisDef1} can be inverted and we obtain the response density written in basis of transition, in the form:
+\be\lb{RhopExcitationTransBasisDef1}
+\sket{p\alpha}{\dm'(\omega)} = 
+\sint\dd E \sket{p\alpha}{E}
+\frac{\dbraket{\tilde E}{\opskew{\Phi}(\omega)}}{\bbomega-E} \;.
+\ee
+%\subsubsection{Definition of excitation operators}
+It is possible to express formula \eqref{RhopExcitationTransBasisDef1} as a true operator equation. First of all we show that the rank-2 vectors $\sket{p\alpha}{E}$ 
+and $\sbra{p\alpha}{\tilde E}$ can be interpreted as the transition basis coefficients of the right and left \emph{eigenstates} of the Liouville superoperator.   
+In order to do so we introduce the explicit representation of the eigenvectors op $\optr{L}$:
+\be\lb{XYcoeffDef1}
+\sket{p\alpha}{E} \equiv \mat{X_E^{p\alpha} \\ Y_E^{p\alpha}} \;, \qq
+\sbra{p\alpha}{\tilde E} \equiv \mat{\tilde X_{E\,p\alpha} & \tilde Y_{E\,p\alpha}} \;,
+\ee
+and, on the basis of these elements, we define the \emph{excitation operators}:
+\begin{align}\lb{ExctitationOperatorsDef1}
+\op E &\equiv \dbraket{\cdot}{E} = 
+\sum_p \sint \dd \alpha \left(\excite{p}{\alpha} X_E^{p\alpha} + \decay{\alpha}{p} Y_E^{p\alpha}\right) 
+\;,\nn \\
+\op{\tilde E} &\equiv \dbraket{\tilde E}{\cdot} = \sum_p \sint \dd \alpha \left(\decay{\alpha}{p} \tilde X_{E\,p\alpha} + 
+\excite{p}{\alpha}\tilde Y_{E\,p\alpha}  \right)\;.
+\end{align}
+The orthonormality condition \eqref{ExcitationOrthonormalityDef1} implies that:
+\be
+\trace{\op{\tilde E} \op E'} = \sum_p\sint \dd\alpha \left(\tilde X_E^{p\alpha} X_{E'\,p\alpha} +
+\tilde Y_E^{p\alpha} Y_{E'\,p\alpha}\right) = \delta(E-E') \;. 
+\ee
+Excitation operators are the right and left eigenvectors of the Liouville superoperator, as directly follows from their
+definition. Indeed for $\op E$ we have:
+\begin{align}\lb{opEeigenvalueDef1}
+\Liouv \op E & = \sum_p \sint \dd \alpha \left(\trace{\decay{\alpha}{p} \Liouv \op E} \excite{p}{\alpha} + 
+\decay{\alpha}{p} \trace{ \excite{p}{\alpha} \Liouv \op E}  \right) = \nn \\
+&= \sum_p \sint  \dd \alpha \sbra{p\alpha}{\cdot} \sum_q \sint  \dd \beta \optr{L}^{p \alpha}_{q\beta} \sket{q\beta}{E} 
+= E \sum_p \sint \dd \alpha \sbra{p\alpha}{\cdot} \sket{p\alpha}{E} = E \, \op E \;,	
+\end{align}
+whereas the left action on $\op{\tilde E}$ provides:
+\begin{align}\lb{optildeEeigenvalueDef1}
+ \op{\tilde E} \Liouv &=  \sum_p \sint \dd \alpha \left(
+\trace{\op{\tilde E}\Liouv\excite{p}{\alpha}}\decay{\alpha}{p} +  
+\trace{\op{\tilde E}\sop{\mathcal L}\decay{\alpha}{p}} \excite{p}{\alpha} \right) = 
+\nn \\ &= \sum_p \sint  \dd \alpha  \sum_q \sint  \dd \beta
+\sbra{q\beta}{\tilde E}\optr{L}^{q\beta}_{p\alpha}\sket{p\alpha}{\cdot} = 
+E\sum_p \sint \dd \alpha \sbra{p\alpha}{\tilde E} \sket{p\alpha}{\cdot}  =
+E \op{\tilde E} \;.
+\end{align}
+The introduction of the excitation operators allows us to provide a complete operator version of equation \eqref{RhopExcitationTransBasisDef1}, that is:
+\be\lb{RhopExcitationDef1}
+\dm'(\omega) = \dbraket{\cdot}{\dm'(\omega)} =
+\sint\dd E \op E
+\frac{\trace{\op{\tilde E}\opskew{\Phi}(\omega)}}{\bbomega-E} \;,
+\ee
+where the algebraic equivalence between the trace written in \eqref{RhopExcitationDef1} and the numerator of \eqref{RhopExcitationTransBasisDef1}
+can be easily proved.
+
+Thanks to the usage of the basis of transition, we have been able to express the response density as a linear superposition of excitation operators. Now 
+we are interested in analyzing this restatement of the linear response under the perspective of the main topic of the paper, namely the critical assessment 
+of the results provided by the linear response formalism in a given computational setup. Our interests are mainly twofold. First, to analyze the localization 
+properties of the excitations, in a analogous fashion of what done in section \ref{LocalizationFluctuationStates} for the fluctuation states. Second, to determine 
+the precise nature of the formal sum over excitations written in \eqref{RhopExcitationDef1}, in order to be able to discriminate between the discrete and the 
+continuum sector of the excitation spectrum.  
+
+\subsubsection{Excitation expansion of the fluctuation states. A localization argument for the excited states}
+
+%Thanks to the usage of the basis of transition, we have been able to express the response density as a linear superposition of excitations $\op E$. Now
+We push this formalism a little bit forward and derive the expansion of the fluctuation states \eqref{fluctuationStateDef1} in terms of the \emph{excited states} of the 
+system . Firstly, we introduce excited states, defined via the linear combination of the elements of the $\alpha$-basis with the coefficients that appears in 
+\eqref{XYcoeffDef1}, that is:
+\begin{align}\lb{ExcitedStatesDef1}
+\ket{\phi^E_p} &\equiv \sint \dd \alpha X_{E}^{p \alpha} \ket{\psi(\alpha)} &
+\tbra{\phi^E_p} &\equiv \sint \dd \alpha {\tilde X_{E}^{p \alpha}} \bra{\psi(\alpha)} \;, \nn\\
+\bra{\chi^E_p} &\equiv \sint \dd \alpha  Y_{E}^{p \alpha} \bra{\psi(\alpha)} &
+\tket{\chi^E_p} &\equiv \sint \dd \alpha {\tilde Y}_{E}^{p\alpha} \ket{\psi(\alpha)} \;,
+\end{align}
+due to these definitions we can express excitation operators as follows:
+\be\lb{ExcitationOperatorsDef2}
+\op E = \sum_p \left( \ket{\phi^E_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^E_p}\right)\;, \qq
+\op {\tilde E} = \sum_p \left( \ket{\psi_p} \tbra{\phi^E_p} + \tket{\chi^E_p}\bra{\psi_p} \right)\;.
+\ee
+Formulas \eqref{ExcitationOperatorsDef2} provides a clear representation of the physical meaning of excited states \eqref{ExcitedStatesDef1}, as can be seen by applying
+the excitation operators on the occupied eigenstates of the systems:
+\be
+\op E\ket{\psi_p} = \ket{\phi^E_p} \;, \quad \bra{\psi_p} \op E = \bra{\chi^E_p} \;, \quad
+\op {\tilde E}\ket{\psi_p} = \tket{\chi^E_p} \;, \quad \bra{\psi_p} \op {\tilde E} = \tbra{\phi^E_p} \;.
+\nn
+\ee
+The excited states expansion of fluctuation states can be easily derived.  Indeed an inspection of formula \eqref{rhoPrimeFluctuationStateDef1} show that fluctuation 
+states can be extracted from the response density operator as follows:
+\be
+\ket{f_p(\omega)} = \dm'(\omega)\ket{\psi_p} \;, \qq
+\bra{f_p(-\omega)} = \bra{\psi_p}\dm'(\omega) \;, \nn
+\ee
+so plugging the expression \eqref{ExcitationOperatorsDef2} inside \eqref{RhopExcitationDef1} and applying the response density to a occupied state provides:
+\be\lb{FluctStateExcitationDef1}
+\ket{f_p(\omega)} = \sint\dd E \frac{\trace{\op{\tilde E}\opskew{\Phi}(\omega)}}{\bbomega-E} \ket{\phi^E_p} \;, \qq
+\bra{f_p(-\omega)} = \sint\dd E \bra{\chi^E_p}\frac{\trace{\op{\tilde E}\opskew{\Phi}(\omega)}}{\bbomega-E} \;.
+\ee
+Fluctuation states emerge as a linear superposition of excited states. The $\omega$-dependent coefficients codify the effect of the perturbing field in determining the 
+relative contribution of each addend through the weighting coefficients in the numerators of \eqref{FluctStateExcitationDef1}.  
+
+We perform a particular choice of the perturbing field:
+\be
+\op\Phi = \commutator{\op E}{\dmnot} \; \longrightarrow \; \opskew{\Phi} = 
+\commutator{\commutator{\op E}{\dmnot}}{\dmnot} = \op E
+\ee
+...to be continued...we have to state precisely the time-dependence of $\hone{t}$...
+
+\subsubsection{Sternheimer equation for excited states. Localization argument revisited}
+
+The operator eigenvalue equations \eqref{opEeigenvalueDef1} and \eqref{optildeEeigenvalueDef1} can be translated into a Schroedinger-like equations
+for the excitonic states. 
+
+\vspace{0.5cm}
+\emph{Equations for $\coupl = 0$}
+\vspace{0.5cm}
+
+\noindent In this case the $\optr{L}_{q\beta}^{p\alpha}$ matrix has only diagonal non-vanishing elements, given by: 
+\be
+\trace{\decay{\alpha}{p}\Liouv\excite{q}{\beta}} = H_{0\alpha\beta}\delta_{pq} - \eps_p\delta_{pq}\delta(\alpha-\beta) \;, \qq
+\trace{\excite{\alpha}{p}\Liouv\decay{q}{\beta}} = \eps_p\delta_{pq}\delta(\alpha-\beta) - H_{0\beta\alpha}\delta_{pq} \;, 
+\ee
+where $H_{0\alpha\beta} = \bra{\psi(\alpha)}\hnot\ket{\psi(\beta)}$. The eigenvalue conditions \eqref{LiouvMatrixEigenvectorDef1} imply
+that the $Y$ and $\tilde Y$ coefficients introduced in \eqref{XYcoeffDef1} vanish so that both $\tket{\chi^E_p}$ and $\bra{\chi^E_p}$ do not
+contribute to the excitation operators \eqref{ExcitationOperatorsDef2}. The eigenvalue operator equation for $\op E$ reduces to:
+\be
+\sum_q\left(\hnot - \eps_q\right)\ket{\phi^E_q}\bra{\psi_q} = E \sum_q \ket{\phi^E_q}\bra{\psi_q} \;,
+\ee
+and projecting on $\ket{\psi_q}$ provides the eigenvalue condition for the excitonic state $\ket{\phi^E_p}$:
+\be
+\left(\hnot - \eps_p\right)\ket{\phi^E_p} = E \ket{\phi^E_p} \;.
+\ee
+In the same way, by using the eigenvalue condition for $\op{\tilde E}$, we can derive an analogous equation for $\tbra{\phi^E_p}$. To achieve this
+result we need the expression of the left action of the (unperturbed) Liouville superoperator defined in \eqref{L0sopDef1}, that can be derived by
+observing that:
+\be\lb{leftActionLouv0Def1}
+\trace{\op O' (\Liouvnot \op O)} = \trace{(\op O' \Liouvnot) \op O } =
+\trace{\commutator{\op O'}{\op H_0} \op O} \quad \Rightarrow \quad \op O \Liouvnot = 
+- \Liouvnot \op O \;.
+\ee
+So, the eigenvalue operator equation for $\op{\tilde E}$ provides:
+\be
+\sum_q  \ket{\psi_q} \tbra{\phi^E_q} \left( \hnot - \eps_q \right) =
+E \sum_q  \ket{\psi_q} \tbra{\phi^E_q} \;,
+\ee
+so that:
+\be
+\tbra{\phi^E_p} \left( \hnot - \eps_p \right) = E \tbra{\phi^E_p} \;.
+\ee
+So we find that the excitonic states are the left and right eigenvectors of $\hnot$ (that actually coincide since we are considering
+hermitian Hamiltonians). The energy eigenvalue is shifted by $\eps_p$, that is the energy of the occupied states involved in the 
+excitation. 
+
+A last interesting comment regards the expression of the response density when the excitation operator $\op E$ itself is used as the source of the
+perturbation. In this case, denoting as $\op E'$ the given perturbing excitation, it is easy to see that:
+\be
+\trace{\op{\tilde E}\commutator{\op E'}{\dmnot}} = \trace{\op{\tilde E}\op E'} = \delta(E-E') \;, \nn 
+\ee
+and the response density generated by this perturbation is given by: 
+\be
+\dm'(\omega) = \frac{1}{\bbomega - E'} \op E'\;,
+\ee
+which represents a monochromatic term of energy $E'$. Under this perspective we can state that excitations constitute
+the \emph{resonant channels} for the construction  of the response density.
+
+\vspace{0.5cm}
+\emph{Generic equations for $\coupl \neq 0$}
+\vspace{0.5cm}
+
+To explicitly write the generic eigenvalue equations for the excitonic states it is useful to introduce some further formalism to express the 
+self-consistent part of the perturbing Hamiltonian \eqref{Vptspacedef1}. We start by expanding $\op V'$ in the coordinate representation, that is:
+\be
+\op V'(t)= 
+\int \dd \br \dd \br' \dd \r \dd \r' \bra{\br'}\frac{\delta\hnot}{\delta \rho_0(\r,\r')}\ket{\br}
+\trace{\dm'(t) \ket{\r} \bra{\r'}} \ketbra{\br'}{\br}\;, \nn
+\ee
+then we introduce the \emph{coupling kernel}, defined as:
+\be\lb{couplingKernelDef1}
+U\left[\op O; \op O'\right] \equiv  \int \dd \r \dd \r' \trace{\op O \frac{\delta \hnot }{\delta \rho_0(\r,\r')}
+} \trace{\op O' \ket{\r} \bra{\r'}} \;,
+\ee
+using this quantity we can express $\op V'$ as:
+\be\lb{Vptspacedef2}
+\op V'(t)= 
+\int \dd \br \dd \br' U\left[\ketbra{\br}{\br'};\dm'(t)\right] \ketbra{\br'}{\br}\;,
+\ee
+and consequently the formal action of the coupling superoperator \eqref{couplingSopDef1} on a generic operator $\op O$ can be expressed as: 
+\be\lb{couplingSopDef2}
+\coupl\op O = 
+\int \dd \r \dd \r' \commutator{\ketbra{\r'}{\r}}{\dmnot} U\left[\ketbra{\r}{\r'};\op O\right] \;.
+\ee
+Using this formalism we can define the left action of the coupling superoperator, in analogous way of what done in \eqref{leftActionLouv0Def1}, 
+that is:
+\begin{align}\lb{leftActionCouplingDef1}
+\trace{\op O' (\coupl \op O)} &= \int \dd\r\dd\r'\trace{\ketbra{\r'}{\r}\commutator{\dmnot}{\op O'}}
+U\left[\ketbra{\r}{\r'};\op O\right]  = \nn \\ &= 
+U\left[\commutator{\dmnot}{\op O'};\op O\right] \doteq \trace{(\op O' \coupl) \op O } \;,
+\end{align}
+where the second equality follows from the linearity of the coupling kernel. The right action of the coupling superoperator consistent with this result is:
+\be\lb{leftActionCouplingDef2}
+(\op O \coupl) = \int \dd\r\dd\r'
+U\left[\commutator{\dmnot}{\op O};\ketbra{\r'}{\r}\right]\ketbra{\r}{\r'} \;.
+\ee
+This formalism allows us to provide a compact expression for the action of the Liouville superoperator on the excitation operators. For the left action we have:
+\begin{align}
+\Liouv\op E &= \sum_p\left(\hnot-\eps_p\right)\ketbra{\phi^E_p}{\psi_p} - \sum_p\ketbra{\psi_p}{\chi^E_p}\left(\hnot-\eps_p\right) + \nn \\
+&+ \sum_p \sint \dd\alpha  U\left[\decay{\alpha}{p}; \op E\right] \ketbra{\psi(\alpha)}{\psi_p}
+- \sum_p \sint \dd\alpha U\left[\excite{p}{\alpha}; \op E\right] \ketbra{\psi_p}{\psi(\alpha)} = E\op E \;, \nn
+\end{align}
+here the action of the coupling superoperator on $\op E$ has been computed imposing its expansion in the transition basis and computing the coefficients with formula 
+\eqref{leftActionCouplingDef1}. Projecting out the previous equation by multiplication with an occupied eigenstates from both the left and right provides the equations:
+\begin{align}\lb{PhipChipEqDef1}
+\left(\hnot-\eps_p\right)\ket{\phi^E_p} +\sint \dd\alpha  U\left[\decay{\alpha}{p}; \op E\right] \ket{\psi(\alpha)} &= E\ket{\phi^E_p} \;,\nn \\
+\bra{\chi^E_p}\left(\hnot-\eps_p\right) +\sint \dd\alpha \bra{\psi(\alpha)} U\left[\excite{p}{\alpha}; \op E\right] &= -E\bra{\chi^E_p} \;.
+\end{align}
+We observe that the coupling kernel behaves as a (non-local) potential that depends on both the $X_{E}^{p \alpha}$ and $Y_{E}^{p \alpha}$ coefficients of \eqref{ExcitedStatesDef1}
+thus introducing a coupling between the $\phi$ and $\chi$ states. 
+
+In the same way the right action provides:
+\begin{align}
+\op{\tilde E}\Liouv &= \sum_p\tketbra{\psi_p}{\phi^E_p}\left(\hnot-\eps_p\right) - \sum_p\left(\hnot-\eps_p\right)\tket{\chi^E_p}\bra{\psi^E_p} + \nn \\
+&+ \sum_p \sint \dd\alpha  U\left[\commutator{\dmnot}{\op{\tilde E}};\decay{\alpha}{p}\right] \ketbra{\psi(\alpha)}{\psi_p}
++ \sum_p \sint \dd\alpha U\left[\commutator{\dmnot}{\op{\tilde E}};\excite{p}{\alpha}\right] \ketbra{\psi_p}{\psi(\alpha)} = E\op{\tilde E} \;, \nn
+\end{align}
+so that:
+\begin{align}\lb{TildePhipChipEqDef1}
+\tbra{\phi^E_p}\left(\hnot-\eps_p\right) +\sint \dd\alpha \bra{\psi(\alpha)} U\left[\commutator{\dmnot}{\op{\tilde E}};\excite{p}{\alpha}\right]  &= E\tbra{\phi^E_p} \;,\nn \\
+\left(\hnot-\eps_p\right)\tket{\chi^E_p} -\sint \dd\alpha \bra{\psi(\alpha)} U\left[\commutator{\dmnot}{\op{\tilde E}};\decay{\alpha}{p}\right] &= -E\tket{\chi^E_p} \;.
+\end{align}
+
+
+\subsubsection{Excitation expansion of the linear response functional}
+
+We have that:
+\be
+\sket{p\alpha}{\commutator{\op\Phi(\omega)}{\dmnot}} = \sum_q\sint\dd\beta\, \optr{J}^{p\alpha}_{q\beta}
+\sket{q\beta}{\op\Phi(\omega)} \;\;, \;{\rm with} \;\;
+\optr{J}^{p\alpha}_{q\beta} = \delta_{pq}\delta(\alpha-\beta)\mat{1 & 0 \\ 0 & -1}
+\ee
+and the linear response functional \eqref{LinearResponseFunctDef1} can be written as:
+\be
+{\cal R}_{\op O}(\omega) = 
+\sint\dd E \dbraket{\op O}{E}
+\frac{\dbra{\tilde E}\optr{J}\dket{\op\Phi(\omega)}}{\bbomega-E} \;.
+\ee
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \section{Draft of the paper - old notes}
+% 
+% \begin{itemize}
+% \item Aim of the paper: Compute the electronic properties of a molecular system with the formalism of linear scaling using a LR-TDDFT inside BigDFT code. 
+% %We also want to define a set of computational tools that allow to check the reliability of the computation.  
+% \end{itemize}
+% 
+% \begin{itemize}
+% \item Motivation: the DFT code have reached reliable features of precision for the computation of the GS. The same probletic are instead needed in order to achieve the same type of results for spectroscopic 
+% properties in large systems
+% \begin{itemize}
+% \item Quantify the impact of several modelling of a given systems (environment, disorder)
+% \item Systematic approach has proven its effectiveness for GS calculations (easy to handle)~\cite{deltatest2016}. The quality of localized basis function is therefore easy to quantify (variational theorem)
+% \item A challenge is represented by large scale computation for \emph{molecular} systems
+% \end{itemize}
+% \item State-of-the-art 
+% \begin{itemize}
+% \item localized basis set for representing the Hamiltonians (e.g. Fiesta (Blase, Olevano), FHI-Aims, GWMol)
+% \item This approach has been also generalized to LR calculation in the case of ONETEP \cite{Ratcliff2013}. However little is said about the reliability of the results in terms of the convergence of the spectra
+% \end{itemize}
+% \item Content of the paper: 
+% \begin{itemize}
+% \item Brief illustration of the support function approach in wavelets (Large systems are  accessible for the structure (Energy, Forces,\ldots)
+% \item We want to exploit the wavelet properties in the context of LR, \emph{by also providing some criteria} which may be of interest for the evaluation of the quality of the LR results.
+% \end{itemize}
+% \item Conclusions and implications
+% \begin{itemize}
+% \item We might apply this formalism also in the contect of MBPT and inspect the validity of the linear response functional for e.g. GW calcualtions (the perturbation operator will be different from the dipole)
+% \end{itemize}
+% \end{itemize}
+
+
+
+%\bibliographystyle{alpha}
+%\bibliography{sample}
+
+\end{document}
