@@ -1,0 +1,103 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb,amsmath}
+\usepackage[english]{babel}
+
+% Parametri di stampa
+\setlength{\topmargin}{-2.5cm} \setlength{\oddsidemargin}{0.3cm}
+\setlength{\evensidemargin}{0.3cm}
+%
+\textheight=23.0truecm \textwidth=16.0truecm
+%
+\headheight=1.0cm \headsep=1.0cm
+%
+\renewcommand{\baselinestretch}{1.1}
+\setlength{\unitlength}{1mm}
+
+\parindent=6pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\al}{\alpha}
+\newcommand{\br}{\bar{\rho}}
+\newcommand{\bg}{\bar{g}}
+\newcommand{\bpi}{\bar{\pi}}
+\newcommand{\bra}{\langle}
+\newcommand{\ket}{\rangle}
+\newcommand{\sst}{\scriptscriptstyle}
+
+\newcommand{\op}[1]{\hat {#1}}
+
+\def\sst{\scriptscriptstyle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Response to the first referee}
+
+We wish to thank the referee for the positive review on the paper. Here we report a list of the modification performed in the text according
+to his/her suggestions:
+\begin{enumerate}
+  \item \emph{point concerning the dimension of the simulation box needed to achieve the convergence of the delocalized states of the $CO$ molecule}. 
+  
+  Clarify that delocalized (fluctuation) states never achieve convergence (continumm collapse). What is expected to converge is the spectral function, or declined in the present case the real and imaginary part of the dynamical polarizability. To give a reasonable value from the literature we can make usage of the results of achieved by Baroni for the benzene molecule... 
+  \item \emph{point concerning the convergence rate of the delocalized vs. localized states (which one? fluctuation or excitation?) with respect
+  to the grid spacing}
+  
+ Actually I don't know but I do not expected relevant differences, since localized and delocalized states differ in their asymptotic properties whereas the grid spacing convergence is influenced by the fast oscillation of the functions.  
+ 
+ To present a more detailed answer we could perform a convergence analysis w.r.t the gridspacing looking at the convergence rate of the energies of say 16 virtual orbitals of the $CO$ molecule. In this way we can see if the rate of the bound-state ones differs from the others.
+ 
+ Lastly, the values of the grid spacing used for the calculations have been added in appendix C.
+ 
+\item Answer to the other minor points...
+  
+\end{enumerate}
+
+\section*{Response to the second referee}
+
+We thank the referee for its comment and criticism of the paper.
+We try to answer to the critical points raised out by the review:
+
+\begin{enumerate}
+ \item \emph{on the relevance of the symmetry of the molecule in determining the delocalized vs localized character of the an excitation}
+ 
+ In the paper we have introduced a the dyadic representation of excitation $\op E_a$ operator (eq. 16) and we have presented an argument to
+ demonstrate that the associated excited states $\phi_p^a,\chi_p^a$ are localized only if the condition $\Omega_a<\epsilon_p$ is satisfied. 
+ The set of $p$ labels relevant for the construction of a specific excitation depends of the symmetry...
+ 
+ %The structure of eq. 16 states that when both localized and delocalized excited states partecipate to the excitation 
+ 
+ \item \emph{regarding the localized excitations which can still be found above the IP threshold (Fig 5a), is there any scope to target these, to the exclusion of other states so that a set of just the localizedexcitations can be calculated at reduced computational cost compared to the whole set?}
+
+ 
+ Answer using the results for the statical polarizability described in section III.C...
+ 
+ \item \emph{exclusion ''by design'' of the delocalized part of the excitation spectrum}
+ 
+ On the base of what written by the referee it seems to me that this sentence could be interpreted in two different way. 
+ 
+ The first one concerns with the removal of the contribution of the delocalized states in a specific excitation. This  
+ 
+ The second one indicate what happens when one uses a basis able to express localized states only...
+ 
+ 
+ 
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
