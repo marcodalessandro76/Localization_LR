@@ -129,32 +129,44 @@ approximations on the scientific outcomes of the simulation.
 
 \section{Introduction}
 
-Since the days of their foundations, disciplines like Computational Physics or Quantum Chemistry always had to deal with the problem of the
-computational reliability of the results. More specifically, a computational result may be considered reliable for various reasons.
-For example, it may be in agreement with some previous observation or measurement that the employed computational model is susceptible to reproduce.
-The model itself may in this way be classified as ``accurate''; it can then be employed to extract, \textit{in silico},
-other quantities that might be then used to \emph{predict} or \emph{interpret} experiments.
-Another concept of reliability is the concept of  ``precision'', which is more focused to the actual results
-that a given computational model provides for a specific set of quantities, regardless of their potential agreement with
-experimental data. The aim of precise computational approach is to reduce the \emph{computational} uncertainties
-of quantities extracted out of a well-defined model, and provide reference results, to which other computer codes
-employing the same model can be compared.
-
-A recent, remarkable example of precision-driven initiative is provided by the DeltaCodes project~\cite{deltaTest2016},
-where a grassroot community of code-owners struggled to extract well-defined computational results in the context of
-Density Functional Theory (DFT) calculations. Ground-State quantum mechanical quantities as lattice constants and bulk modulus of
-elementary crystals extracted from different codes were compared with each other, with the objective of reducing the uncertainties
-on such data, and in some sense, to define a \emph{calibration} procedure for a Solid-State Physics DFT code.
-Any other code able to extract the same quantities with the same approximations may be compared with the
-results of the community in order to assess its computational reliability.
+% Since the days of their foundations, disciplines like Computational Physics or Quantum Chemistry always had to deal with the problem of the
+% computational reliability of the results. More specifically, a computational result may be considered reliable for various reasons.
+% For example, it may be in agreement with some previous observation or measurement that the employed computational model is susceptible to reproduce.
+% The model itself may in this way be classified as ``accurate''; it can then be employed to extract, \textit{in silico},
+% other quantities that might be then used to \emph{predict} or \emph{interpret} experiments.
+% Another concept of reliability is the concept of  ``precision'', which is more focused to the actual results
+% that a given computational model provides for a specific set of quantities, regardless of their potential agreement with
+% experimental data. The aim of precise computational approach is to reduce the \emph{computational} uncertainties
+% of quantities extracted out of a well-defined model, and provide reference results, to which other computer codes
+% employing the same model can be compared.
+% 
+% A recent, remarkable example of precision-driven initiative is provided by the DeltaCodes project~\cite{deltaTest2016},
+% where a grassroot community of code-owners struggled to extract well-defined computational results in the context of
+% Density Functional Theory (DFT) calculations. Ground-State quantum mechanical quantities as lattice constants and bulk modulus of
+% elementary crystals extracted from different codes were compared with each other, with the objective of reducing the uncertainties
+% on such data, and in some sense, to define a \emph{calibration} procedure for a Solid-State Physics DFT code.
+% Any other code able to extract the same quantities with the same approximations may be compared with the
+% results of the community in order to assess its computational reliability.
+% 
+% For a theoretical approach that is based on numerical calculations, for which no analytic reference solution exists,
+% reducing the computational uncertainty is the only possible way to shed light on the predictivity power of the
+% model. In other terms, the ``accuracy'' of a result with respect to experimental data may be reliably quantified
+% only when the computational uncertainty is guaranteed to be significantly lower than the found discrepancy.
+% For communities like DFT, such a ``calibration'' of computer codes among each other is a discipline that is still in its infancy;
+% the DeltaCodes initiative and the foundations of DFT are separated in time by more than 50 years, and the computational
+% model employed in the comparison (the Perdew-Burke-Erzerhof functional~\cite{PBE}) has been introduced more than 20 years ago.
 
 For a theoretical approach that is based on numerical calculations, for which no analytic reference solution exists,
 reducing the computational uncertainty is the only possible way to shed light on the predictivity power of the
 model. In other terms, the ``accuracy'' of a result with respect to experimental data may be reliably quantified
 only when the computational uncertainty is guaranteed to be significantly lower than the found discrepancy.
-For communities like DFT, such a ``calibration'' of computer codes among each other is a discipline that is still in its infancy;
-the DeltaCodes initiative and the foundations of DFT are separated in time by more than 50 years, and the computational
-model employed in the comparison (the Perdew-Burke-Erzerhof functional~\cite{PBE}) has been introduced more than 20 years ago.
+For communities like DFT, the need of such a ``calibration'' of computer codes has led to the DeltaCodes project~\cite{deltaTest2016}. 
+This project represents a remarkable example of precision-driven initiative where a grassroot community of code-owners struggled to extract 
+well-defined computational results in the context of Density Functional Theory (DFT) calculations. Ground-State quantum mechanical quantities 
+as lattice constants and bulk modulus of elementary crystals extracted from different codes were compared with each other, with the objective of reducing the uncertainties on such data, and in some sense, to define a \emph{calibration} procedure for a Solid-State Physics DFT code.
+Any other code able to extract the same quantities with the same approximations may be compared with the
+results of the community in order to assess its computational reliability.
+
 
 The problem is even more stringent for calculations that refer to quantities \emph{beyond} ground state, like
 for instance the time-dependent density functional theory (TDDFT) \cite{casida1995,runge1984,onida2002},
@@ -168,9 +180,14 @@ In this paper, we focus our attention to Linear-Response treatments of \emph{mol
 in particular referring to LR-TDDFT calculation. We will investigate the impact that
 \emph{open} (i.e. Isolated) Boundary Conditions (BC) that have to be imposed to the system will have on the computational evaluation of LR quantities.
 In order to do this, we perform analytic considerations on the equations beyond LR treatment.
+\added[id=dal]{This analysis evidences that the description of molecular systems beyond the ground state unavoidably leads to the inclusion of delocalised
+degrees of freedom above a specific energetic threshold.}
 Such considerations will enable us to distinguish quantities that \textit{a priori} can be compared among different treatments - and therefore tested for reproducibility -
-from others that would \emph{explicitly} depend of the employed computational treatment.
-In particular, we will discuss the interplay between reproducible LR quantities and the \emph{locality} of the related objects.
+from others that would \emph{explicitly} depend of the employed computational treatment. \added[id=dal]{Moreover on the basis of this analysis we can assess
+something about the reliability of the results provided by computational setups able to explicit include the presence of delocalised degrees of freedom compared
+to the ones in which these degrees of freedom are excluded by design.}
+\deleted[id=dal]{In particular, we will discuss the interplay between reproducible LR quantities and the \emph{locality} of the related objects.}
+
 
 The paper is organized as follows.
 Initially we will inspect how the question of reproducibility may be expressed
@@ -191,10 +208,11 @@ approaches, in the context of Quasi-Particle equations.
 \subsection{Long range behavior of the eigenvalue solution of the Schr\"odinger equation}
 \label{SEopenSystem}
 
-Let us start our discussion by revisiting the impact that the Isolated BC have on the
-solutions of the time-independent Schr\"odinger Equation.
-We here present well-known concepts of quantum mechanics, under a perspective that
-will turn out to be very useful in the forthcoming considerations about linear-response quantities.
+\replaced[id=dal]{Let us start our discussion by reviewing some well-known concepts of quantum mechanic under a perspective that
+will turn out to be very useful in the forthcoming considerations about linear-response quantities. In particular we revisit the impact 
+that the Isolated BC have on the solutions of the time-independent Schr\"odinger Equation.}{Let us start our discussion by revisiting the 
+impact that the Isolated BC have on the solutions of the time-independent Schr\"odinger Equation. We here present well-known concepts of 
+quantum mechanics, under a perspective that will turn out to be very useful in the forthcoming considerations about linear-response quantities.}
 
 Consider a (one-body) wavefunction $\ket{\psi}$ solution of the equation
 $\op H\ket{\psi}=\eps\ket{\psi}$, where we split the Hamiltonian operator into the sum of
@@ -317,6 +335,8 @@ response density parametrized as
 \ee
 Here we have introduced the set of $\omega$-dependent \emph{fluctuation states}
 $\ket{f_p^\Phi(\omega)} = \dm'_\Phi(\omega) \ket{\psi_p}$, that have values in the unoccupied subspace of $\hnot$.
+\added[id=dal]{Fluctuation states are complex quantities and consequently $\dm'_\Phi(\omega)$ is not hermitian; nonetheless the $\omega$ dependence of \eqref{rhoPrimeFluctuationStateDef1} ensures that the hermitian nature of this operator is recovered in the time domain, as expected.} 
+
 An analysis of the Liouville equation \eqref{LiouvillianRhopomegaDef1} for the response density written in this fashion evidences that the equations of motion of fluctuation states (FS) are
 written as a modified Sternheimer equation~\cite{mahan1980,giustino2012,giustino2014}
 \be\lb{fluctuationStateEqMotion1}
@@ -334,10 +354,9 @@ $
 \ket{s_p^\Phi(\omega)} = \op Q_0(\op \Phi(\omega) +\op V'[\dm'_\Phi](\omega) )\ket{\psi_p}
 $ as a source term.
 
-It can be seen that for each choice of $p$, the value $\omega = |\eps_p|$ represents the threshold level
-that governs the localization properties of the FS.
-As a \emph{stringent} hypothesis, let us now assume that the source term $\ket{s_p^\Phi(\omega)}$ is localized, \textit{i.e.} its evaluation can be
-restricted on a bounded real-space domain.
+\replaced[id=dal]{Equation \eqref{rhoPrimeFluctuationStateDef2} is the convenient starting point to assess the localization properties of the FS as it is easy to see that, for each choice of $p$, the value $\omega = |\eps_p|$ represents the threshold level that governs the asymptotic behavior of the associated Helmholtz kernel.}{It can be seen that for each choice of $p$, the value $\omega = |\eps_p|$ represents the threshold level
+that governs the localization properties of the FS.}
+As a ulterior \emph{stringent} hypothesis, let us now assume that the source term $\ket{s_p^\Phi(\omega)}$ is \added[id=dal]{spatially} localized, \textit{i.e.} its evaluation can be restricted on a bounded real-space domain.
 Even when such locality argument holds true, for $\omega > |\eps_p|$,
 the Helmholtz kernel behaves as a spherical wave and  gives raise to a $\ket{f^\Phi_p(\omega)}$ which is \emph{delocalized} in the entire real-space domain.
 Such delocalization is an intrinsic consequence of the value of $\omega$, and does not depend on the particular choice of
@@ -345,7 +364,12 @@ $\op \Phi$.
 Only for $\omega < |\eps_p|$ the kernel contains an exponential damping factor and $\ket{f^\Phi_p(\omega)}$ exhibits a bound-state behavior in the long range,
 once again provided that the above locality arguments on $\ket{s_p^\Phi(\omega)}$ -- hence on $\op V'$ and $\Phi$ -- are valid.
 
-Such locality property of the fluctuation state can be directly confirmed for static perturbations at $\omega=0$.
+\added[id=dal]{Added a subsection for static perturbations}
+
+\subsection{Localized behavior for static perturbations}
+
+
+The locality property of the fluctuation state can be directly confirmed for static perturbations at $\omega=0$.
 Let us consider a static perturbing operator $\op\Phi_s$ that can be restricted to a finite domain.
 Any local operator, like \emph{e.g.} a static electric field $\mathbf F$, with associated scalar potential $\Phi_s[\mathbf F](\r) = -\mathbf F \cdot \r$, would satisfy such property.
 We consider the perturbed Hamiltonian $\hnot[\dm_{\Phi_s}] + \op\Phi_s[\mathbf F]$, where $\dm_{\Phi_s}$ represents the GS density of the perturbed system, and assume that the
@@ -383,7 +407,11 @@ the size of the computational domain used to express the fluctuation states. The
 one of the static dipole of the molecule computed at zero external field.
 The results evidence that the typical sizes of $\ket{f^\Phi_p(0)}$ are analogous to the ones of the unperturbed KS orbitals, which is a direct proof of the bound-state behaviour of the FS.
 
-\subsection{Strong and weak convergence}
+\added[id=dal]{Modified the name of the subsection}
+
+\subsection{Localization propeties at finite $\omega$. Emergence of a strong and a weak regime}
+
+%\subsection{Strong and weak convergence at finite $\omega$}
 
 The analysis described above has shown that the building blocks of the response density $\{\ket{f_p(\omega)}\}$
 are susceptible to exhibit bound-state long-range behavior \emph{only} when $\omega < |\eps_p|$,
@@ -446,15 +474,17 @@ which are -- as already noticed -- more than sufficient below threshold.
 
 \section{Excitation operators. The analytic structure of the susceptibility functional}
 
+\added[id=dal]{It is possible to reformulate this type of analysis by directly looking at LR quantities that are defined independently from the perturbing operators and target observables. This can be achieved by studying the
+\emph{susceptibility functional}, defined implicitly trough the operator equation}
+\deleted[id=dal]{
 In view of reproducibility, the scalar product of Eq.~\eqref{LinearResponseFunctDef1}, defining the observable fluctuation, may be compared among various numerical treatments.
 However, even though directly related to experimental results, such quantity is not by itself a property of the molecule, as it is a function of $\omega$ that explicitly depends
 on the perturbation operator $\op \Phi$, not to mention the target observable $\op O$. Alternatively, we may consider only the fluctuation state, but it is still a $\op \Phi$-dependent wavefunction,
 with a potential local behavior only for $\omega$ below the ionization threshold. Hence, comparing fluctuation states among diverse numerical treatments would be a
-challenging task.
-
-It is therefore much more interesting to concentrate on LR quantities that are defined independently from the perturbing operators and target observables.
+challenging task.}
+\deleted[id=dal]{It is therefore much more interesting to concentrate on LR quantities that are defined independently from the perturbing operators and target observables.
 This can be achieved by studying the
-\emph{susceptibility functional}, defined implicitly trough the operator equation
+\emph{susceptibility functional}, defined implicitly trough the operator equation}
 \be\lb{SusceptibilityDef1}
 \dm'(\omega) = \left(\omega -\mathcal L \right)^{-1} \commutator{\op \Phi(\omega)}{\dmnot} = \sop{{\cal \chi}}(\omega) \op\Phi(\omega) \;.
 \ee
@@ -474,8 +504,13 @@ Eq.~\eqref{RhopTransverseDef1}, and enable us to express the susceptibility as a
 \sop{{\cal \chi}}(\omega) \cdot   = \sum_{\{a\}} \op E_{a} \,
 \frac{\trace{\commutator{\op{\tilde E}_a}{\dmnot}\cdot}}{\omega-\Omega_a} \;.
 \ee
+\added[id=dal]{Here add a short justification for the expression of the real and imaginary part of the linear response functional written
+in terms of excitation operators. Principal part vs delta functions.}
 
-\subsection{The analytic structure of linear susceptibility}
+\added[id=dal]{Modified name of the subsection}
+
+\subsection{Localization features of the excitation operators. The analytic structure of linear susceptibility}
+
 Each excitation ``mode'' of the system $\op E_a$ with energy $\Omega_a$, can be associated to a set of states $\{\phi^a_p,\chi^a_p\}_{p \in a}$,
 entirely defined in the unoccupied subspace.
 In this way we can parametrize, without loss of generality, the excitation operators of the system as:
