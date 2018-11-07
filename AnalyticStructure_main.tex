@@ -519,15 +519,23 @@ in terms of excitation operators. Principal part vs delta functions.}
 
 \subsection{Localization features of the excitation operators. The analytic structure of linear susceptibility}
 
-Each excitation ``mode'' of the system $\op E_a$ with energy $\Omega_a$, can be associated to a set of states $\{\phi^a_p,\chi^a_p\}_{p \in a}$,
-entirely defined in the unoccupied subspace.
-In this way we can parametrize, without loss of generality, the excitation operators of the system as:
+\added[id=dal]{The properties of the Liouvillian superoperator $\Liouv$ (sketched in appendix \ref{LiouvillianAction}) imply that both the left and right operator-valued
+eigenstates \eqref{ExcitationOperatorsDef1} satisfy the transverse condition \eqref{RhopTransverseDef1} and can be parametrized as} 
 \begin{align}\lb{ExcitationOperatorsDef2}
 \op E_a &= \sum_p \left( \ket{\phi^a_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^a_p}\right)\;, \nn \\
 \op{\tilde E}_a = \commutator{\dmnot}{\op E^t_a} &= \sum_p \left( \ket{\psi_p}\bra{\phi^a_p} - \ket{\chi^a_p} \bra{\psi_p}\right)\;.
 \end{align}
-For each choice of $\{\phi^a_p,\chi^a_p\}_{p \in a}$, these objects represent, respectively, the state in which $\ket{\psi_p}$
-is excited -- or from whom it decays -- when the system is subject to the \emph{monochromatic} perturbation $\op \Phi_a \equiv \commutator{\dmnot}{\op E_a}$.
+\added[id=dal]{Each excitation ``mode'' of the system with associated energy $\Omega_a$ is thus described by a set of states $\{\phi^a_p,\chi^a_p\}_{p \in a}$, defined in the unoccupied subspace. These objects represent, respectively, the state in which $\ket{\psi_p}$
+is excited -- or from whom it decays -- when the system is subject to the \emph{monochromatic} perturbation $\op \Phi_a \equiv \commutator{\dmnot}{\op E_a}$.}
+% Each excitation ``mode'' of the system $\op E_a$ with energy $\Omega_a$, can be associated to a set of states $\{\phi^a_p,\chi^a_p\}_{p \in a}$,
+% entirely defined in the unoccupied subspace.
+% In this way we can parametrize, without loss of generality, the excitation operators of the system as:
+% \begin{align}\lb{ExcitationOperatorsDef2}
+% \op E_a &= \sum_p \left( \ket{\phi^a_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^a_p}\right)\;, \nn \\
+% \op{\tilde E}_a = \commutator{\dmnot}{\op E^t_a} &= \sum_p \left( \ket{\psi_p}\bra{\phi^a_p} - \ket{\chi^a_p} \bra{\psi_p}\right)\;.
+% \end{align}
+% For each choice of $\{\phi^a_p,\chi^a_p\}_{p \in a}$, these objects represent, respectively, the state in which $\ket{\psi_p}$
+% is excited -- or from whom it decays -- when the system is subject to the \emph{monochromatic} perturbation $\op \Phi_a \equiv \commutator{\dmnot}{\op E_a}$.
 We denote with the shorthand $p \in a$ the fact that the sum of Eq.~\eqref{ExcitationOperatorsDef2}
 is in general restricted only to a $a$-dependent subset of the occupied orbitals, depending on the particular symmetry
 of the excitation.
@@ -544,7 +552,7 @@ of the excitations, we obtain the following Sternheimer-like equations for the e
 By writing these equations in a basis set of virtual states we obtain the well-known Casida's eigenvalue equation\cite{CasidaBook}
 associated to the excitation energy $\Omega_a$ (see appendix \ref{casida}).
 The spectrum is symmetric w.r.t the inversion of the eigenvalues
-$\Omega_a \rightarrow -\Omega_a$ and the associated excitation with negative energy are described by the transposed pair $\{\chi^a_p,\phi^a_p\}$.
+$\Omega_a \rightarrow -\Omega_a$ and \replaced[id=dal]{given a specific excitation $\{\phi^a_p,\chi^a_p\}$ the associated solution with opposite  energy is described by the transposed pair $\{\chi^a_p,\phi^a_p\}$.}{the associated excitation with negative energy are described by the transposed pair $\{\chi^a_p,\phi^a_p\}$.}
 We concentrate our analysis on the sector of positive energies, i.e. $\Omega_a > 0$.
 
 With the same spirit of the previous sections, we present a formal solution of \eqref{ExcitationOperatorsDef3} as follows
@@ -557,7 +565,7 @@ where the source terms are here defined as:
  \ket{s_p[\op O]} =  \op Q_0 \op V'[\op O] \ket{\psi_p}\,, \quad
  \bra{s_p[\op O]} =   \bra{\psi_p} \op V'[\op O] \op Q_0 \nn \;.
 \ee
-We first point out that the Helmholtz kernel associated to the $\ket{\chi^a_p}$ state
+First, we point out that the Helmholtz kernel associated to the $\ket{\chi^a_p}$ state
 contains an exponential damping factor for \emph{all} the positive values of $\Omega_a$.
 The asymptotic long-range behavior of $\ket{\chi^a_p}$ thus depends only on the locality properties of
 $\bra{s_p[\op E_a]}$, which in turn is related to the behavior of the operator $\op V'[\op E_a]$.
@@ -634,12 +642,11 @@ is made of multiple threshold energies, one for each of the ionization potential
 associated to the occupied states.
 If an excitation $\op E_a$ has an energy $\Omega_a < |\eps_a|$ with $\eps_a = \mathrm{max}\left(\eps_p\right)_{p\in a}$,
 it may belong to a discrete spectrum; otherwise it \emph{has} to belong to a continuum of states.
-The typical structure of the excitation landscape is depicted in figure \ref{ExcitationLandscape}, once again assuming a reasonable
-behavior of the perturbed potential $\op V'$.
+The typical structure of the excitation landscape is depicted in figure \ref{ExcitationLandscape}, once again assuming \replaced[id=dal]{that the perturbed potential $\op V'[\op E]$ gives rise to a bound state when applied to $\ket{\psi_p}$.}{a reasonable behavior of the perturbed potential $\op V'$.}
 Below the first ionization energy $|\eps_h|$ only localized excitations are present. Conversely, in the intermediate energy interval that extends from $|\eps_h|$ to the
 absolute value of the deepest occupied orbital, other discrete excitations may exist, and are embedded in a continuum of delocalized excitations.
 For energies higher than $|\eps_1|$ \emph{no localized} excitations are anymore possible,
-regardless of the particular behavior of $\op V'$: the excitation landscape in this region only contains continuum states.
+regardless of the particular behavior of $\op V'$: the excitation landscape in this region \replaced[id=dal]{contains a continuum set of delocalized states.}{only contains continuum states.}
 
 \subsection{Observable features of the excitation spectrum}
 
@@ -658,7 +665,7 @@ Excitations belonging to this sector thus lose their intrinsic physical meaning 
 a representation of the density of states (DOS) of the Liouvillian superoperator.
 
 \begin{figure}[ht]
-\includegraphics[scale=0.6]{Fig4_CO_dos.eps}
+\includegraphics[scale=0.6]{Fig4_CO_dos_rev1.eps} %{Fig4_CO_dos.eps}
 \caption{(Color online) DOS of $CO$ excitation energies $\Omega_a$. The two curves correspond to two computational domain of different sizes. The inset contains the sole contribution of localized excitations. The first IP threshold is depicted as the vertical dashed line.}
 \label{CO_exc}
 \end{figure}
@@ -670,7 +677,7 @@ a representation of the density of states (DOS) of the Liouvillian superoperator
 \centering
 \subfloat[DOS of Excitation energies]
 {\label{C6H6_exc}
-\includegraphics[scale=0.58]{Fig5b_C6H6_dos.eps}}
+\includegraphics[scale=0.58]{Fig5b_C6H6_dos_rev1.eps}} %{Fig5b_C6H6_dos.eps}
 \caption{(Color online) Benzene molecule. (a): Excitation Landscape: the excitations have been separated in discrete and continuum sector following the criteria of Sec.~\ref{ExcitationLandscape}. (b): DOS of excitation energies $\Omega_a$. The first IP threshold is depicted as the vertical dashed line.}
 \end{figure}
 
