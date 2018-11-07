@@ -179,15 +179,11 @@ and quantify their computational uncertainty.
 In this paper, we focus our attention to Linear-Response treatments of \emph{molecular} systems,
 in particular referring to LR-TDDFT calculation. We will investigate the impact that
 \emph{open} (i.e. Isolated) Boundary Conditions (BC) that have to be imposed to the system will have on the computational evaluation of LR quantities.
-In order to do this, we perform analytic considerations on the equations beyond LR treatment.
-\added[id=dal]{This analysis evidences that the description of molecular systems beyond the ground state unavoidably leads to the inclusion of delocalised
-degrees of freedom above a specific energetic threshold.}
-Such considerations will enable us to distinguish quantities that \textit{a priori} can be compared among different treatments - and therefore tested for reproducibility -
-from others that would \emph{explicitly} depend of the employed computational treatment. \added[id=dal]{Moreover on the basis of this analysis we can assess
-something about the reliability of the results provided by computational setups able to explicit include the presence of delocalised degrees of freedom compared
-to the ones in which these degrees of freedom are excluded by design.}
-\deleted[id=dal]{In particular, we will discuss the interplay between reproducible LR quantities and the \emph{locality} of the related objects.}
+In order to do this, we perform analytic considerations on the equations beyond LR treatment and discuss the interplay between reproducible LR quantities and the \emph{locality} of the related objects. Such considerations will enable us to distinguish quantities that \textit{a priori} can be compared among different treatments - and therefore tested for reproducibility - from others that would \emph{explicitly} depend of the employed computational treatment.
 
+\added[id=dal]{This analysis evidences that the description of molecular systems beyond the ground state unavoidably leads to the inclusion of delocalized
+degrees of freedom above a specific energetic threshold. Moreover on the basis of this analysis we can assess something about the reliability of the results provided by computational setups able to explicit include the presence of delocalized degrees of freedom compared
+to the ones in which these degrees of freedom are excluded by design.}
 
 The paper is organized as follows.
 Initially we will inspect how the question of reproducibility may be expressed
@@ -217,7 +213,7 @@ quantum mechanics, under a perspective that will turn out to be very useful in t
 Consider a (one-body) wavefunction $\ket{\psi}$ solution of the equation
 $\op H\ket{\psi}=\eps\ket{\psi}$, where we split the Hamiltonian operator into the sum of
 a kinetic $\op T$ and a potential $\op V \equiv \op H - \op T$ term.
-In view of analysing the impact of the BC, it is instructive to transform
+In view of discussing the impact of the BC, it is instructive to transform
 the Schr\"odinger equation in a scattering problem, by writing
 \be\lb{SEHelmholtz1}
 \ket{\psi} = \GH(\eps)\ket{\op V\psi}\;,
@@ -261,8 +257,7 @@ provide reference results on them.
 
 
 On the other hand, positive energy solutions behave differently.
-Even though the potential is localized, their positive energy are
- spherical waves and the convolution with the source term provides a delocalized wavefunction $\psi(\r)$ in the whole space.
+Even though the potential is localized \replaced[id=dal]{the associated Helmholtz kernel is a spherical wave and its}{, their positive energy are spherical waves and the} convolution with the source term provides a delocalized wavefunction $\psi(\r)$ in the whole space.
 As they cannot be normalized they belong to the essential spectrum of the Hamiltonian operator and form a \emph{continuum} of states.
 Outside of the support of the $\ket{\op V \psi}$ the solutions of Eq.~\eqref{SEHelmholtz1} can be put in bijection with the eigenstates of the
 free-particle Hamiltonian $\op H_s$. For positive energies, the quantum numbers of the eigenstates are determined by the Laplacian operator,
@@ -463,14 +458,27 @@ numerical techniques which were originally tailored for GS calculations.
 
 As an example in support of these arguments we compare the \replaced[id=dal]{dynamical polarizability $\alpha(\omega)$}{absorption spectrum} of a $CO$ molecule computed in three distinct real-space computational setups, which differs for the dimension of the computational domain.
 Results reported in \replaced[id=dal]{the two panels of figure \ref{co_spectrum} show the real and imaginary part of $\alpha(\omega)$, respectively. In all the cases a typical behavior emerges}{evidences a typical behavior}: the curves are almost coincident in the below threshold regime,
-whereas the effect of the computational setup are clearly visible for values of $\omega$ that exceed the threshold value.
+whereas the effect of the computational setup are clearly visible for values of  $\omega$ that exceed the threshold value.
 For these high-frequency regions, convergence might be reached for domains of much larger sizes than what presented here~\cite{baroni2008},
 which are -- as already noticed -- more than sufficient below threshold.
 
 \begin{figure}
-\includegraphics[scale=0.6]{Fig2_CO_spectrum.eps}
-\caption{\label{co_spectrum}(Color online) Illustrative LR absorption spectra of the $CO$ molecule in computational setups with different sizes of the simulation domain. The value of the IP threshold is indicated by a vertical dashed line.}
+\centering
+\subfloat
+{\includegraphics[scale=0.56]{Fig2a_CO_AlphaOmegaReal.eps}} \\
+\centering
+\subfloat
+{\includegraphics[scale=0.58]{Fig2b_CO_spectrum.eps}}
+\caption{\label{co_spectrum}(Color online) LR dynamical polarizability of the $CO$ molecule in computational setups with different 
+sizes of the simulation domain. The top panel displays the real part and the bottom one the imaginary part. The value of the IP threshold 
+is indicated by a vertical dashed line.}
 \end{figure}
+
+% \begin{figure}
+% \includegraphics[scale=0.6]{Fig2_CO_spectrum.eps}
+% \caption{\label{co_spectrum}(Color online) Illustrative LR absorption spectra of the $CO$ molecule in computational setups with different sizes of the simulation domain. 
+% The value of the IP threshold is indicated by a vertical dashed line.}
+% \end{figure}
 
 \section{Excitation operators. The analytic structure of the susceptibility functional}
 
@@ -922,9 +930,7 @@ eigenvalue $\Omega_a$ depends on the capability of the basis set $\ket{s}$ to fu
 
 \section{Computational details} \lb{compdetails}
 The illustrative calculations presented in this paper are all KS-DFT calculations at the LDA level of theory. We employed the BigDFT code \cite{BigDFT},
-which employs Daubechies Wavelets as computational basis set.
-Such orthonormal basis presents optimal features of in view of reproducibility of the results,
-and it has proven to represent precisely and explicitly system with Free as well as Periodic boundary conditions (BC), without any basis set superposition error nor supercell aliasing, for Free BC.
+that make usage of Daubechies Wavelets as computational basis set. This orthonormal basis presents optimal features of in view of reproducibility of the results, and it has proven to represent precisely and explicitly system with Free as well as Periodic boundary conditions (BC), without any basis set superposition error nor supercell aliasing, for Free BC.
 
 For Ground State results, the important parameters in the context of convergence of the calculations are the spacing of the wavelet grid and the size of the simulation domain: for bound-state like functions, convergence is achieved by reducing the grid spacing and increasing the simulation box size.
 Norm Conserving Pseudopotentials (PSP) of the HGH \cite{NLCCPSP} type are employed to remove the core electrons. Such PSP have proven to be able to provide all-electron accuracy for molecular systems.
