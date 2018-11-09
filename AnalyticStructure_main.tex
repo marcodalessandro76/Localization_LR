@@ -648,6 +648,35 @@ absolute value of the deepest occupied orbital, other discrete excitations may e
 For energies higher than $|\eps_1|$ \emph{no localized} excitations are anymore possible,
 regardless of the particular behavior of $\op V'$: the excitation landscape in this region \replaced[id=dal]{contains a continuum set of delocalized states.}{only contains continuum states.}
 
+\vspace{1cm}
+\added[id=dal]{A proposal to reorganize the material of the following two subsection B e C in a different way}
+
+\section{Physical relevance of the excitation spectrum. A comparison among localized and continuum sectors}
+
+Comments on the features and the physical relevance of the two sector of the excitation spectrum
+
+\subsection{Localized sector}
+
+\begin{itemize}
+\item It is composed by a genuine set of discrete elements. 
+\item The values of the excitation energies do not depend on the computational setup (observable features) and so can be compared among different approaches. 
+\item The knowledge of this sector of the excitation spectrum allows us to express only the imaginary part of (proper equation that expresses the response functional written using Sokowsky-Plemely
+on the susceptibility functional). 
+\item A computational setup in which delocalized degrees of freedom are excluded by design can in principle describe to this sector in a exact way. 
+\end{itemize}
+
+\subsection{Continuum sector}
+
+\begin{itemize}
+ \item Not true poles of the susceptibility (but only an effective tool to compute the spectral function).
+ \item Deeply affected by the computational setup used to represent them. In particular, the presence of a finite computational domain implies a fictitious discretization of the excitation levels and the associated spectrum exhibits an explicit dependence from the size of the domain.
+ \item This sector of the excitation spectrum is needed to compute imaginary parts above IP and real part for \emph{all} the values of $\omega$. Add examples on the statical polarizability. Can we comment
+ \item Make some statements on the features that a computational setup must have to guarantees that this sector provides converged results. Difference between systematic and localized basis setup. Can we comment about the needs to add ghost atoms for the evaluation of statical polarizability with gaussian basis? 
+\end{itemize}
+
+
+\vspace{1cm}
+
 \subsection{Observable features of the excitation spectrum}
 
 The analysis of the above section reveals that the excitation spectrum is composed by two distinct sectors.
@@ -929,8 +958,8 @@ and so equations \eqref{ExcitationOperatorsDef3} can be recasted in matrix form
 \ee
 where
 \begin{align}
-& F_{p\rho}^{q\eta} = (H_{0\rho\eta}-\eps_p\delta_{\rho\eta})\delta_{pq} + U[\decay{\rho}{p};\excite{q}{\eta}] \;,\nn \\
-& D_{p\rho}^{q\eta} = U[\decay{\rho}{p};\decay{\eta}{q}] \;.
+& F_{ps}^{qs'} = (H_{0 ss'}-\eps_p\delta_{ss'})\delta_{pq} + U[\decay{s}{p};\excite{q}{s'}] \;,\nn \\
+& D_{ps}^{qs'} = U[\decay{s}{p};\decay{s'}{q}] \;.
 \end{align}
 This is the well-known Casida Equation in the basis of transitions for the excitation of energy $\Omega_a$. The computational reliability of the
 eigenvalue $\Omega_a$ depends on the capability of the basis set $\ket{s}$ to fulfill of Eq.~\eqref{phiandchi}. Note that this may be valid only for a subset of the solutions of the eigenproblem \eqref{ExcitationMatrixEq1}.
