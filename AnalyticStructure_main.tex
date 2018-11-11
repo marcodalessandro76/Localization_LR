@@ -11,7 +11,8 @@
 \usepackage{tikz}
 \usepackage{xifthen}
 %\pgfplotsset{compat=1.15}
-\usepackage[markup=underlined]{changes}
+% \usepackage[markup=underline]{changes}
+\usepackage[final]{changes}
 \definechangesauthor{dal}
 \definechangesauthor{gen}
 
@@ -91,7 +92,7 @@
 \newcommand{\honetmp}[1]{\op{H_1}\argument{#1}}
 \newcommand{\identity}{\op{\mathbb I}}
 \newcommand{\rmat}[1]{\optr R}
-\newcommand{\fscd}[1]{\ket{f_p^\Phi(\omega)^{#1}}}
+\newcommand{\fscd}[1]{\mathrm{Im}\ket{f_p^{\mathbf r_j}(\omega)^{#1}}}
 \newcommand{\GH}{\op G_{\op T}}
 
 \captionsetup{justification=centerlast}
@@ -128,41 +129,41 @@ approximations on the scientific outcomes of the simulation.
 \maketitle
 
 \section{Introduction}
-
-% Since the days of their foundations, disciplines like Computational Physics or Quantum Chemistry always had to deal with the problem of the
-% computational reliability of the results. More specifically, a computational result may be considered reliable for various reasons.
-% For example, it may be in agreement with some previous observation or measurement that the employed computational model is susceptible to reproduce.
-% The model itself may in this way be classified as ``accurate''; it can then be employed to extract, \textit{in silico},
-% other quantities that might be then used to \emph{predict} or \emph{interpret} experiments.
-% Another concept of reliability is the concept of  ``precision'', which is more focused to the actual results
-% that a given computational model provides for a specific set of quantities, regardless of their potential agreement with
-% experimental data. The aim of precise computational approach is to reduce the \emph{computational} uncertainties
-% of quantities extracted out of a well-defined model, and provide reference results, to which other computer codes
-% employing the same model can be compared.
-% 
-% A recent, remarkable example of precision-driven initiative is provided by the DeltaCodes project~\cite{deltaTest2016},
-% where a grassroot community of code-owners struggled to extract well-defined computational results in the context of
-% Density Functional Theory (DFT) calculations. Ground-State quantum mechanical quantities as lattice constants and bulk modulus of
-% elementary crystals extracted from different codes were compared with each other, with the objective of reducing the uncertainties
-% on such data, and in some sense, to define a \emph{calibration} procedure for a Solid-State Physics DFT code.
-% Any other code able to extract the same quantities with the same approximations may be compared with the
-% results of the community in order to assess its computational reliability.
-% 
-% For a theoretical approach that is based on numerical calculations, for which no analytic reference solution exists,
-% reducing the computational uncertainty is the only possible way to shed light on the predictivity power of the
-% model. In other terms, the ``accuracy'' of a result with respect to experimental data may be reliably quantified
-% only when the computational uncertainty is guaranteed to be significantly lower than the found discrepancy.
-% For communities like DFT, such a ``calibration'' of computer codes among each other is a discipline that is still in its infancy;
-% the DeltaCodes initiative and the foundations of DFT are separated in time by more than 50 years, and the computational
-% model employed in the comparison (the Perdew-Burke-Erzerhof functional~\cite{PBE}) has been introduced more than 20 years ago.
+\deleted[id=gen]{%
+Since the days of their foundations, disciplines like Computational Physics or Quantum Chemistry always had to deal with the problem of the
+computational reliability of the results. More specifically, a computational result may be considered reliable for various reasons.
+For example, it may be in agreement with some previous observation or measurement that the employed computational model is susceptible to reproduce.
+The model itself may in this way be classified as ``accurate''; it can then be employed to extract, \textit{in silico},
+other quantities that might be then used to \emph{predict} or \emph{interpret} experiments.
+Another concept of reliability is the concept of  ``precision'', which is more focused to the actual results
+that a given computational model provides for a specific set of quantities, regardless of their potential agreement with
+experimental data. The aim of precise computational approach is to reduce the \emph{computational} uncertainties
+of quantities extracted out of a well-defined model, and provide reference results, to which other computer codes
+employing the same model can be compared.
+%
+A recent, remarkable example of precision-driven initiative is provided by the DeltaCodes project~\cite{deltaTest2016},
+where a grassroot community of code-owners struggled to extract well-defined computational results in the context of
+Density Functional Theory (DFT) calculations. Ground-State quantum mechanical quantities as lattice constants and bulk modulus of
+elementary crystals extracted from different codes were compared with each other, with the objective of reducing the uncertainties
+on such data, and in some sense, to define a \emph{calibration} procedure for a Solid-State Physics DFT code.
+Any other code able to extract the same quantities with the same approximations may be compared with the
+results of the community in order to assess its computational reliability.
+%
+For a theoretical approach that is based on numerical calculations, for which no analytic reference solution exists,
+reducing the computational uncertainty is the only possible way to shed light on the predictivity power of the
+model. In other terms, the ``accuracy'' of a result with respect to experimental data may be reliably quantified
+only when the computational uncertainty is guaranteed to be significantly lower than the found discrepancy.
+For communities like DFT, such a ``calibration'' of computer codes among each other is a discipline that is still in its infancy;
+the DeltaCodes initiative and the foundations of DFT are separated in time by more than 50 years, and the computational
+model employed in the comparison (the Perdew-Burke-Erzerhof functional~\cite{PBE}) has been introduced more than 20 years ago.}
 
 For a theoretical approach that is based on numerical calculations, for which no analytic reference solution exists,
 reducing the computational uncertainty is the only possible way to shed light on the predictivity power of the
 model. In other terms, the ``accuracy'' of a result with respect to experimental data may be reliably quantified
 only when the computational uncertainty is guaranteed to be significantly lower than the found discrepancy.
-For communities like DFT, the need of such a ``calibration'' of computer codes has led to the DeltaCodes project~\cite{deltaTest2016}. 
-This project represents a remarkable example of precision-driven initiative where a grassroot community of code-owners struggled to extract 
-well-defined computational results in the context of Density Functional Theory (DFT) calculations. Ground-State quantum mechanical quantities 
+For communities employing Density Functional Theory (DFT), the need of such a ``calibration'' of computer codes has led to the DeltaCodes project~\cite{deltaTest2016}.
+This project represents a remarkable example of precision-driven initiative where a grassroot community of code-owners struggled to extract
+well-defined computational results in the context of DFT calculations. Ground-State quantum mechanical quantities
 as lattice constants and bulk modulus of elementary crystals extracted from different codes were compared with each other, with the objective of reducing the uncertainties on such data, and in some sense, to define a \emph{calibration} procedure for a Solid-State Physics DFT code.
 Any other code able to extract the same quantities with the same approximations may be compared with the
 results of the community in order to assess its computational reliability.
@@ -179,7 +180,7 @@ and quantify their computational uncertainty.
 In this paper, we focus our attention to Linear-Response treatments of \emph{molecular} systems,
 in particular referring to LR-TDDFT calculation. We will investigate the impact that
 \emph{open} (i.e. Isolated) Boundary Conditions (BC) that have to be imposed to the system will have on the computational evaluation of LR quantities.
-In order to do this, we perform analytic considerations on the equations beyond LR treatment and discuss the interplay between reproducible LR quantities and the \emph{locality} of the related objects. Such considerations will enable us to distinguish quantities that \textit{a priori} can be compared among different treatments - and therefore tested for reproducibility - from others that would \emph{explicitly} depend of the employed computational treatment.
+\deleted[id=gen]{In order to do this}We perform analytic considerations on the equations beyond LR treatment and discuss the interplay between reproducible LR quantities and the \emph{locality} of the related objects. Such considerations will enable us to distinguish quantities that \textit{a priori} can be compared among different treatments - and therefore tested for reproducibility - from others that would \emph{explicitly} depend of the employed computational treatment.
 
 \added[id=dal]{This analysis evidences that the description of molecular systems beyond the ground state unavoidably leads to the inclusion of delocalized
 degrees of freedom above a specific energetic threshold. Moreover on the basis of this analysis we can assess something about the reliability of the results provided by computational setups able to explicit include the presence of delocalized degrees of freedom compared
@@ -205,9 +206,9 @@ approaches, in the context of Quasi-Particle equations.
 \label{SEopenSystem}
 
 \replaced[id=dal]{Let us start our discussion by reviewing some well-known concepts of quantum mechanic under a perspective that
-will turn out to be very useful in the forthcoming considerations about linear-response quantities. In particular we revisit the impact 
-that the Isolated BC have on the solutions of the time-independent Schr\"odinger Equation.}{Let us start our discussion by revisiting the 
-impact that the Isolated BC have on the solutions of the time-independent Schr\"odinger Equation. We here present well-known concepts of 
+will turn out to be very useful in the forthcoming considerations about linear-response quantities. In particular we revisit the impact
+that the Isolated BC have on the solutions of the Schr\"odinger Equation.}{Let us start our discussion by revisiting the
+impact that the Isolated BC have on the solutions of the time-independent Schr\"odinger Equation. We here present well-known concepts of
 quantum mechanics, under a perspective that will turn out to be very useful in the forthcoming considerations about linear-response quantities.}
 
 Consider a (one-body) wavefunction $\ket{\psi}$ solution of the equation
@@ -328,19 +329,27 @@ response density parametrized as
 \be\lb{rhoPrimeFluctuationStateDef1}
 \dm'_\Phi(\omega) = \sum_p\left(\ketbra{\psi_p}{f_p^\Phi(-\omega)} + \ketbra{f_p^\Phi(\omega)}{\psi_p}\right) \;.
 \ee
-Here we have introduced the set of $\omega$-dependent \emph{fluctuation states}
+Here we have introduced the set of $\omega$-dependent \emph{fluctuation states} (FS)
 $\ket{f_p^\Phi(\omega)} = \dm'_\Phi(\omega) \ket{\psi_p}$, that have values in the unoccupied subspace of $\hnot$.
-\added[id=dal]{Fluctuation states are complex quantities and consequently $\dm'_\Phi(\omega)$ is not hermitian; nonetheless the $\omega$ dependence of \eqref{rhoPrimeFluctuationStateDef1} ensures that the hermitian nature of this operator is recovered in the time domain, as expected.} 
+\added[id=gen]{
+However, non-hermiticity of $\dm'_\Phi(\omega)$ implies that the
+fluctuation states are complex quantities. Causality implies that the real and imaginary part of the states are related to each othe by the Kramers-Kronig relations}
+\be\lb{KKrel}
+\mathrm{Re}\left( \ket{f_p^\Phi(\omega)} \right) =
+\mathcal P \int \dd \omega'
+\frac{\mathrm{Im}\left(\ket{f_p^\Phi(\omega')}\right)}{\omega -\omega'}.
+\ee
+\added[id=gen]{We will come to these equations in the forthcoming sections.}
+%}
 
-An analysis of the Liouville equation \eqref{LiouvillianRhopomegaDef1} for the response density written in this fashion evidences that the equations of motion of fluctuation states (FS) are
+An analysis of the Liouville equation \eqref{LiouvillianRhopomegaDef1} for the response density written in this fashion evidences that the equations of motion of fluctuation states  are
 written as a modified Sternheimer equation~\cite{mahan1980,giustino2012,giustino2014}
 \be\lb{fluctuationStateEqMotion1}
 \left[\omega - (\hnot-\eps_p)\right]\ket{f_p^\Phi(\omega)} = \op Q_0(\op\Phi(\omega)+\op V'[\dm'_\Phi](\omega))\ket{\psi_p} \;,
 \ee
 and we observe that the first-order Hamiltonian contains,
 apart from the perturbing field, a further term $\op V'[\dm'_\Phi]$ due to the density-dependence of $\hnot$.
-It is easy to see that the solution of equation \eqref{fluctuationStateEqMotion1} can be casted in the form of
-a set of scattering problems:
+It is easy to see that the solution of equation \eqref{fluctuationStateEqMotion1} can be recast in a scattering problem:
 \be\lb{rhoPrimeFluctuationStateDef2}
 \ket{f_p^\Phi(\omega)} = \GH(\omega+\epsilon_p)\left(\op V\ket{f_p^\Phi(\omega)} + \ket{s_p^\Phi(\omega)} \right)\;,
 \ee
@@ -358,12 +367,13 @@ Such delocalization is an intrinsic consequence of the value of $\omega$, and do
 $\op \Phi$.
 Only for $\omega < |\eps_p|$ the kernel contains an exponential damping factor and $\ket{f^\Phi_p(\omega)}$ exhibits a bound-state behavior in the long range,
 once again provided that the above locality arguments on $\ket{s_p^\Phi(\omega)}$ -- hence on $\op V'$ and $\Phi$ -- are valid.
+\added[id=gen]{These arguments demonstate that for frequencies above the IP threshold energy, the
+response density operator cannot be expressed in terms of localized states. Locality of
+FS (and therefore of $\dm'_\Phi(\omega)$) can be only recovered for frequencies below such threshold.}
 
-\added[id=dal]{Added a subsection for static perturbations}
+\deleted[id=dal]{Added a subsection for static perturbations}
 
 \subsection{Localized behavior for static perturbations}
-
-
 The locality property of the fluctuation state can be directly confirmed for static perturbations at $\omega=0$.
 Let us consider a static perturbing operator $\op\Phi_s$ that can be restricted to a finite domain.
 Any local operator, like \emph{e.g.} a static electric field $\mathbf F$, with associated scalar potential $\Phi_s[\mathbf F](\r) = -\mathbf F \cdot \r$, would satisfy such property.
@@ -391,7 +401,7 @@ By expressing the induced dipole $\braket{\delta \op{\mathbf r}}_{\Phi_s}$ in th
 \alpha_{ij} =
 -\frac{1}{F_j} \left(\trace{\op r_i \dm_{\Phi_s[F_j]}} - d^{\text{(GS)}}_i \right)\;,
 \ee
-where $\mathbf d^\text{(GS)}$ is the ground state dipole.
+where $\mathbf d^\text{(GS)}=\braket{\mathbf r}$ is the ground state dipole.
 Fig.~\eqref{co_alphaStatic} illustrates this procedure for a $CO$ molecule
 perturbed by a static electric field.
 Care has been taken in keeping the field strenghts $F_j$ small enough to
@@ -402,7 +412,7 @@ the size of the computational domain used to express the fluctuation states. The
 one of the static dipole of the molecule computed at zero external field.
 The results evidence that the typical sizes of $\ket{f^\Phi_p(0)}$ are analogous to the ones of the unperturbed KS orbitals, which is a direct proof of the bound-state behaviour of the FS.
 
-\added[id=dal]{Modified the name of the subsection}
+\deleted[id=dal]{Modified the name of the subsection}
 
 \subsection{Localization propeties at finite $\omega$. Emergence of a strong and a weak regime}
 
@@ -412,18 +422,19 @@ The analysis described above has shown that the building blocks of the response 
 are susceptible to exhibit bound-state long-range behavior \emph{only} when $\omega < |\eps_p|$,
 while they behave as unbound states for values of $\omega$ above the threshold levels.
 This fact has interesting implications in the evaluation of LR quantities. Indeed, writing the response
-density in terms of FS implies that \added[id=dal]{(equation for the response density modified)}
+density in terms of FS implies that \deleted[id=dal]{(equation for the response density modified)}
 % \be\lb{LinearResponseFunctDef2}
 % \braket{\delta\op O}_\Phi(\omega) = 2 \mathrm{Re} \left(\sum_p \bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}\right) \;.
 % \ee
-\be\lb{LinearResponseFunctDef2}
-\braket{\delta\op O} = \sum_p \left( \bra{f_p^\Phi(-\omega)}\op O\ket{\psi_p}+ \bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}\right) \;.
-\ee
-Let us suppose that also the observable of interest $\op O$ exhibits the locality properties introduced for the potentials $ \op V$, $\op \Phi$ and $\op V'$.
+\begin{multline}\lb{LinearResponseFunctDef2}
+\braket{\delta\op O} = \sum_p \left( \bra{f_p^\Phi(-\omega)}\op O\ket{\psi_p}+ \bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}\right) \\
+=2 \sum_p\bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}  \;.
+\end{multline}
+Let us suppose that also the observable of interest $\op O$ \replaced[id=gen]{may be restricted to localized domains in the same way as the potentials $ \op V$ and $\op \Phi$.}{exhibits the locality properties introduced for the potentials $ \op V$, $\op \Phi$ and $\op V'$.}
 Once again, it would be enough to consider a local operator for this condition to be met.
 
-We observe that there exists two
-distinct regimes, on the basis of value of $\omega$.
+Two
+distinct regimes can be identified, on the basis of value of $\omega$.
 The first one, which we will refer to as the \emph{below threshold} regime, is realized when
 $\omega$ is lower than the ionization potential $|\eps_h|$.
 In this case all the FS are below their threshold level and equation \eqref{LinearResponseFunctDef2}
@@ -435,6 +446,7 @@ The convergence in this regime is ``strong'', in the sense that the basis functi
 with arbitrary precision \emph{both} the states $\ket{\op O \psi_p}$ and $\ket{f_p^\Phi(\omega)}$.
 This is of course true even when the above states are only implicitly expressed by the employed LR treatment,
  as e.g. in the case of Krylov spaces generated from the states $\ket{\op\Phi(\omega) \psi_p}$ \cite{baroni2006,baroni2008,linlinKPM}.
+ \added[id=gen]{In this regime, a computational treatment based on localized basis set is susceptible to provide a precise answer, assuming a reasonable level of completeness.}
 
 On the contrary, the computation of the linear response functional can be much more demanding in the \emph{above threshold regime}, realized for $\omega>|\eps_h|$, in which fluctuation
 states start behaving as unbound wave functions.
@@ -442,8 +454,11 @@ As by hypothesis $\ket{\op O \psi_p}$ is bound-state like, \emph{only} the scala
 In this case a computational description of fluctuation states is only meaningful in ``weak'' sense,
 where the bound state character of $\{\bra{\psi_p}\op O\}$ behaves as a regulator.
 This is naturally achieved in the above mentioned Krylov space treatments, which
-explicitly deal with the expression of the scalar products. However
-it is important that the underlying basis set is able to express delocalised states.
+explicitly deal with the expression of the scalar products.
+\added[id=gen]{However, in this regime, imposing \emph{by design} a localized
+behaviour of the FS might reveal very dangerous in view of convergence of the results:
+the computational basis set have to be able to express in the support domain of $\{\bra{\psi_p}\op O\}$ a asymptotically delocalized FS. The degrees of completeness
+of the computational basis should therefore be increased by imposing oscillatory degrees of freedom needed to represent the FS at the border of the simulation domain: it is important that the underlying basis set is able to express delocalised states.}
 
 These considerations prove why, when a given computer code employs established GS numerical techniques,
 \emph{it is much easier to converge LR quantities for $\omega$ below IP}.
@@ -469,14 +484,14 @@ which are -- as already noticed -- more than sufficient below threshold.
 \centering
 \subfloat
 {\includegraphics[scale=0.58]{Fig2b_CO_spectrum.eps}}
-\caption{\label{co_spectrum}(Color online) LR dynamical polarizability of the $CO$ molecule in computational setups with different 
-sizes of the simulation domain. The top panel displays the real part and the bottom one the imaginary part. The value of the IP threshold 
+\caption{\label{co_spectrum}(Color online) LR dynamical polarizability of the $CO$ molecule in computational setups with different
+sizes of the simulation domain. The top panel displays the real part and the bottom one the imaginary part. The value of the IP threshold
 is indicated by a vertical dashed line.}
 \end{figure}
 
 % \begin{figure}
 % \includegraphics[scale=0.6]{Fig2_CO_spectrum.eps}
-% \caption{\label{co_spectrum}(Color online) Illustrative LR absorption spectra of the $CO$ molecule in computational setups with different sizes of the simulation domain. 
+% \caption{\label{co_spectrum}(Color online) Illustrative LR absorption spectra of the $CO$ molecule in computational setups with different sizes of the simulation domain.
 % The value of the IP threshold is indicated by a vertical dashed line.}
 % \end{figure}
 
@@ -512,15 +527,22 @@ Eq.~\eqref{RhopTransverseDef1}, and enable us to express the susceptibility as a
 \sop{{\cal \chi}}(\omega) \cdot   = \sum_{\{a\}} \op E_{a} \,
 \frac{\trace{\commutator{\op{\tilde E}_a}{\dmnot}\cdot}}{\omega-\Omega_a} \;.
 \ee
-\added[id=dal]{Here add a short justification for the expression of the real and imaginary part of the linear response functional written
-in terms of excitation operators. Principal part vs delta functions.}
+In this way Eq.~\eqref{LinearResponseFunctDef2} may be also written as:
+\begin{equation}\lb{deltaoexc}
+  \braket{\delta \op O} =  \sum_{\{a\}} \frac{\trace{\op O \sop B_a \op \Phi(\omega)}}{\omega -\Omega_a}
+\end{equation}
+where the action of the spectral operator $\sop B_a$ reads
+\begin{equation}
+  \trace{\op O \sop B_a \op \Phi(\omega)} = \trace{\op O \op E_a}
+  \trace{\op{\tilde E}_a \commutator{\dmnot}{\op \Phi(\omega)}}
+\end{equation}
 
-\added[id=dal]{Modified name of the subsection}
+\deleted[id=dal]{Modified name of the subsection}
 
 \subsection{Localization features of the excitation operators. The analytic structure of linear susceptibility}
 
 \added[id=dal]{The properties of the Liouvillian superoperator $\Liouv$ (sketched in appendix \ref{LiouvillianAction}) imply that both the left and right operator-valued
-eigenstates \eqref{ExcitationOperatorsDef1} satisfy the transverse condition \eqref{RhopTransverseDef1} and can be parametrized as} 
+eigenstates \eqref{ExcitationOperatorsDef1} satisfy the transverse condition \eqref{RhopTransverseDef1} and can be parametrized as}
 \begin{align}\lb{ExcitationOperatorsDef2}
 \op E_a &= \sum_p \left( \ket{\phi^a_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^a_p}\right)\;, \nn \\
 \op{\tilde E}_a = \commutator{\dmnot}{\op E^t_a} &= \sum_p \left( \ket{\psi_p}\bra{\phi^a_p} - \ket{\chi^a_p} \bra{\psi_p}\right)\;.
@@ -652,26 +674,26 @@ regardless of the particular behavior of $\op V'$: the excitation landscape in t
 \added[id=dal]{A proposal to reorganize the material of the following two subsection B e C in a different way}
 
 \section{Physical relevance of the excitation spectrum. A comparison among localized and continuum sectors}
+\deleted[id=dal]{
+Comments on the features and the physical relevance of the two sector of the excitation spectrum}
 
-Comments on the features and the physical relevance of the two sector of the excitation spectrum
+%\subsection{Localized sector}
 
-\subsection{Localized sector}
-
-\begin{itemize}
-\item It is composed by a genuine set of discrete elements. 
-\item The values of the excitation energies do not depend on the computational setup (observable features) and so can be compared among different approaches. 
-\item The knowledge of this sector of the excitation spectrum allows us to express only the imaginary part of (proper equation that expresses the response functional written using Sokowsky-Plemely
-on the susceptibility functional). 
-\item A computational setup in which delocalized degrees of freedom are excluded by design can in principle describe to this sector in a exact way. 
-\end{itemize}
+%\begin{itemize}
+% \deleted[id=dal]{\item It is composed by a genuine set of discrete elements.}
+% \deleted[id=dal]{\item The values of the excitation energies do not depend on the computational setup (observable features) and so can be compared among different approaches.}
+% \deleted[id=dal]{\item The knowledge of this sector of the excitation spectrum allows us to express only the imaginary part of (proper equation that expresses the response functional written using Sokowsky-Plemely
+% on the susceptibility functional).}
+% \deleted[id=dal]{\item A computational setup in which delocalized degrees of freedom are excluded by design can in principle describe to this sector in a exact way.}
+%\end{itemize}
 
 \subsection{Continuum sector}
 
 \begin{itemize}
- \item Not true poles of the susceptibility (but only an effective tool to compute the spectral function).
- \item Deeply affected by the computational setup used to represent them. In particular, the presence of a finite computational domain implies a fictitious discretization of the excitation levels and the associated spectrum exhibits an explicit dependence from the size of the domain.
- \item This sector of the excitation spectrum is needed to compute imaginary parts above IP and real part for \emph{all} the values of $\omega$. Add examples on the statical polarizability. Can we comment
- \item Make some statements on the features that a computational setup must have to guarantees that this sector provides converged results. Difference between systematic and localized basis setup. Can we comment about the needs to add ghost atoms for the evaluation of statical polarizability with gaussian basis? 
+ \deleted[id=dal]{\item Not true poles of the susceptibility (but only an effective tool to compute the spectral function).}
+ \deleted[id=dal]{\item Deeply affected by the computational setup used to represent them. In particular, the presence of a finite computational domain implies a fictitious discretization of the excitation levels and the associated spectrum exhibits an explicit dependence from the size of the domain.}
+ \deleted[id=dal]{\item This sector of the excitation spectrum is needed to compute imaginary parts above IP and real part for \emph{all} the values of $\omega$. Add examples on the statical polarizability. Can we comment}
+ \item Make some statements on the features that a computational setup must have to guarantees that this sector provides converged results. Difference between systematic and localized basis setup. Can we comment about the needs to add ghost atoms for the evaluation of statical polarizability with gaussian basis?
 \end{itemize}
 
 
@@ -686,12 +708,12 @@ Borrowing the terminology introduced in section \ref{SEopenSystem} to the presen
 if the numerical basis employed is complete enough to
 represent the states $\{\phi_p^a,\chi_p^a\}$, the energy $\Omega_a$
 converges to its reference value.
+\added[id=gen]{A computational setup in which delocalized degrees of freedom are excluded by design can, in principle, describe excitations of this sector in a exact way.}
 
 The second sector contains a continuum spectrum of delocalized excitations. The associated states $\ket{\phi_p^a}$ behave as the unbound virtual orbitals analyzed in \cite{boffi2016}
 and are deeply affected by the computational setup used to represent them. In particular, the presence of a finite computational domain implies a fictitious discretization of the excitation levels and
 the associated spectrum exhibits an explicit dependence from the size of the domain.
-Excitations belonging to this sector thus lose their intrinsic physical meaning and have to be understood simply as
-a representation of the density of states (DOS) of the Liouvillian superoperator.
+Excitations belonging to this sector thus lose their intrinsic physical meaning and have to be understood simply as objects providing an effective representation of the density of states (DOS) of the Liouvillian superoperator.
 
 \begin{figure}[ht]
 \includegraphics[scale=0.6]{Fig4_CO_dos_rev1.eps} %{Fig4_CO_dos.eps}
@@ -721,8 +743,9 @@ identify excitations of energy above IP that still possess a localized behavior,
 In Fig.~\ref{c6h6_excLand} we collect the excitations of the benzene molecule following this criterion:
 the agreement with the expected analytic structure presented in Fig.~\ref{ExcitationLandscape} is remarkable.
 
-\subsection{Physical relevance of the continuum sector}
 
+\subsection{Relative importance of discrete and continuum excitations}
+\deleted[id=gen]{
 We have presented formal arguments, confirmed by numerical calculations, that show that
 the excitations belonging to the discrete sector of the spectrum have energies
 that can be \emph{quantitatively} compared between codes, thanks to their
@@ -730,54 +753,81 @@ localized character.
 Such objects are LR quantities, associated to the molecule, whose numerical convergence
 can be found by employing techniques which can be borrowed from the ones adopted for GS calculations. Being expressed by localized excited states,
 computational setups with sufficient level of completeness are able to
-express with high \emph{precision} such section of the excitation spectrum.
+express with high \emph{precision} such section of the excitation spectrum.}
 
+To better understand the interplay between the discrete and continuum sector of
+the excitations, it is interesting to apply the above arguments for the computational extraction of the dynamical polarizability tensor $\alpha_{ij}(\omega)$.
+Employing the formalism of Eq.~\eqref{deltaoexc} we obtain, for its real and imaginary part:
+\begin{align}
+  \mathrm{Im}\left(\alpha_{ij}(\omega) \right) &=
+  \sum_{a} \trace{\mathbf r_i \sop B_a \mathbf r_j} \delta(\omega - \Omega_a)\\
+   &= 2 \sum_p \bra{\psi_p} \mathbf r_i \left(\mathrm{Im}\ket{f_p^{\mathbf r_j}(\omega)}\right)\;,\\
+  \mathrm{Re}\left(\alpha_{ij}(\omega) \right) &= \mathcal P \int \dd \omega'
+  \frac{\mathrm{Im}\left(\alpha_{ij}(\omega')\right)}{\omega - \omega'} \\
+  & =2 \sum_p \bra{\psi_p} \op O \left(\mathrm{Re}\ket{f_p^\Phi(\omega)}\right)\;.
+\end{align}
+Such equations are in coherency with the Kramers-Kronig relations of the fluctuation states, see Eq.~\eqref{KKrel}.
+The imaginary part of the FS may be decomposed in two quantities:
+
+
+\deleted[id=gen]{
+Following the considerations of Sec.~\ref{FluctuationState}, we know that
+for $\omega$ below the IP threshold all these quantities may be expressed
+via asymptotically localized states.
 We have also seen in Sec.~\ref{FluctuationState} that
 there exist a sector where the fluctuation states are genuinely localized, thereby presenting reproducibility features. Therefore,
 knowing that $\ket{f_p^\Phi(\omega)} =\sop \chi(\omega) \op \Phi(\omega) \ket{\psi_p}$,
 it would be interesting to obtain information on whether the discrete, localized sector of the excitations which appear in the spectral decomposition of $\sop \chi(\omega)$
 will be sufficient to express a localized FS.
 Considering Eq.~\eqref{SusceptibilityDef1} and
-expressing the spectral decomposition of the linear susceptibility we find:
+expressing the spectral decomposition of the linear susceptibility we find:}
 \be
-\ket{f_p^\Phi(\omega)} = \fscd{D} + \fscd{C}
+\mathrm{Im}\left(\ket{f_p^{\mathbf r_j}(\omega)} \right)= \fscd{D} + \fscd{C}
 \lb{FSExcitationDef1} \;,
 \ee
 with
 \begin{align}
- \fscd{D} &= \sum_a^{\Omega_a < |\eps_a|} \ket{w_p^a} \frac{\varphi_p^a[\op \Phi(\omega)]}{\omega^2-\Omega_a^2} \;, \nn \\
+ \fscd{D} &= \sum_a^{|\Omega_a| < |\eps_a|} \ket{w_p^a} \bra{\psi_p} \op {\mathbf r}_j \ket{w_p^a} \delta\left(\omega-\Omega_a\right) \;, \nn \\
  \fscd{C}
- &= \int_{\Omega_a > |\eps_a|} \!\!\!\!\dd a \ket{w_p^a} \frac{\varphi_p^a[\op \Phi(\omega)]}{\omega^2-\Omega_a^2} \;, \nn
+ &= \int_{|\Omega_a| > |\eps_a|} \!\!\!\!\!\!\!\!\!\!\!\!\!\dd a \ket{w_p^a}  \ket{w_p^a} \bra{\psi_p} \op {\mathbf r}_j \ket{w_p^a} \delta\left(\omega-\Omega_a\right) \;, \nn
 \end{align}
-where $\varphi_p^a[\op \Phi(\omega)] \equiv \bra{\psi_p}\op\Phi(\omega)\ket{w_p^a}$,
-and $\ket{w_p^a}=\ket{\phi_p^a}+\ket{\chi_p^a}$.
+where %$\varphi_p^a[\op \Phi(\omega)] \equiv \bra{\psi_p}\op\Phi(\omega)\ket{w_p^a}$, and
+$\ket{w_p^a}=\ket{\phi_p^a}+\ket{\chi_p^a}$.
 
 In the above equation we have explicitly separated the contributions of the discrete ($D$) and continuous ($C$) excitations
 in the spectral decomposition \eqref{SusceptibilityDef1}.
-The summation and the integration run only on the positive values of $\Omega_a$.
+\deleted[id=gen]{The summation and the integration run only on the positive values of $\Omega_a$.}
 The states $\ket{w_p^a}$ that appear in the discrete sum
 or in the integral are genuinely localized and delocalized, respectively.
 For \emph{any} value of $\omega$ the ket $\fscd{D}$ has, by definition, a bound-state like
 character as it is expressed as a sum of localized contributions.
-For $\omega <$ IP, the equivalence of the Sternheimer formalism with the spectral representation of the LR susceptibility implies that the integral defining
+
+It is easy to see that for $\omega$ below IP  we have $\fscd{C}=0$.
+Below threshold, continuum excitations \emph{do not} contribute to the imaginary part of the
+dynamical polarizability.
+
+For $\mathrm{Re}\ket{f_p^\Phi(\omega)}$ the situation is slightly more complicated.
+For $\omega <$ IP, we know that the entire FS is localized. The equivalence of the Sternheimer formalism with the spectral representation of the LR susceptibility implies that the integral of the Kramers-Kronig
+relation ~\eqref{KKrel} involving the delocalized states
 $\fscd{C}$ should resum into a localized, asymptotically vanishing state\footnote{There is no particular reason to believe that $\fscd{C}$ should be
 zero. Since $\ket{w_p^a}$ states are linearly independent,
 $\fscd{C}=0$ would imply
-$\varphi_p^a[\op \Phi(\omega)]=0$ for any $a$ labelling the continuum excitations,
-which is too strong a condition for a general choice of $\op \Phi$.}.
+$\bra{\psi_p} \op {\mathbf r}_j \ket{w_p^a}$ for any $a$ labelling the continuum excitations, which is too strong a condition.}.
 
-We may then decompose the linear response functional of Eq.~\eqref{LinearResponseFunctDef1}
-for any operator $\op O$ as $\braket{\delta\op O}_\Phi=\braket{\delta\op O}^D_\Phi +
-\braket{\delta\op O}^C_\Phi$, where
-\be
-\braket{\delta\op O}^{D,C}_\Phi(\omega) =
-2 \mathrm{Re}\left(\bra{\psi_p} \op O \fscd{D,C} \right)\;.
-\ee
-For instance, the static polarizability tensor $\alpha_{ij}$ can be easily expressed
-from the above quantities as
+% We may then decompose the linear response functional of Eq.~\eqref{LinearResponseFunctDef1}
+% for any operator $\op O$ as $\braket{\delta\op O}_\Phi=\braket{\delta\op O}^D_\Phi +
+% \braket{\delta\op O}^C_\Phi$, where
+% \be
+% \braket{\delta\op O}^{D,C}_\Phi(\omega) =
+% 2 \bra{\psi_p} \op O \fscd{D,C}\;.
+% \ee
+For instance, the static polarizability tensor $\alpha_{ij}$ can be calculated as
 \be\lb{sminus2}
-\alpha_{ij} = \sint \dd a \frac{w^a_{ij}}{\Omega_a^2}\,, \quad w^a_{ij} \equiv \sum_{p\in a} \varphi_p^a[\op r_i]\varphi_p^a[\op r_j]\;.
+\alpha_{ij} = \sint \dd a \frac{w^a_{ij}}{\Omega_a^2}\,, \quad w^a_{ij} \equiv \sum_{p\in a} \bra{\psi_p} \op {\mathbf r}_i \ket{w_p^a}\bra{\psi_p} \op {\mathbf r}_j \ket{w_p^a}\;.
 \ee
+The summation above runs on both localized and delocalized sector of the excitations.
+
+We also know that $\alpha_{ij}$ might be expressed with arbitrary precision by only employing localized quantities.
 Such value can be straightforwardly compared with results of Eq.~\eqref{staticalpha}, where the localized FS is obtained from GS techniques as
 described in Sec.~\ref{FluctuationState}.
 This is the well-know $S_{-2}$ sum-rule (see e.g.\cite{Wagner2012}), that express the value of the static polarizability
@@ -805,6 +855,9 @@ in the essential part of the Liouvillian spectrum.
 This fact shows that it is \emph{impossible} to restrict the spectral representation
 of $\chi(\omega)$ only localized, discrete, \emph{code-independent} excitations, even for representing LR results in the $\omega=0$ limit.
 
+\subsection{Generality of the considerations: varying the size and the symmetry of the molecule}
+
+
 Such considerations are independent on the number of atoms of the molecule, as the range in $\omega$ needed to
 achieve satisfactory agreement is largely above the last valence ionization threshold, which is
 a intensive quantity.
@@ -812,6 +865,9 @@ In addition, we can see that the $S_{-2}$ sum-rule \emph{cannot} be used to asse
 the correctness of $\chi(\omega)$ for values of $\omega$ above IP; it is enough to recall
 the strong dependency on the box size of the absorption spectra of Fig.~\ref{CO_exc}.
 For all these computational setups, the $S_{-2}$ sum rule is, on the contrary, perfectly satisfied.
+
+Here we may put other examples
+
 
 \section{Conclusions and Perspectives}
 
