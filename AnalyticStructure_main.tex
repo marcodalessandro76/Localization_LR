@@ -11,8 +11,8 @@
 \usepackage{tikz}
 \usepackage{xifthen}
 %\pgfplotsset{compat=1.15}
-% \usepackage[markup=underline]{changes}
-\usepackage[final]{changes}
+\usepackage[markup=underline]{changes}
+%\usepackage[final]{changes}
 \definechangesauthor{dal}
 \definechangesauthor{gen}
 
@@ -690,10 +690,10 @@ Comments on the features and the physical relevance of the two sector of the exc
 \subsection{Continuum sector}
 
 \begin{itemize}
- \deleted[id=dal]{\item Not true poles of the susceptibility (but only an effective tool to compute the spectral function).}
- \deleted[id=dal]{\item Deeply affected by the computational setup used to represent them. In particular, the presence of a finite computational domain implies a fictitious discretization of the excitation levels and the associated spectrum exhibits an explicit dependence from the size of the domain.}
- \deleted[id=dal]{\item This sector of the excitation spectrum is needed to compute imaginary parts above IP and real part for \emph{all} the values of $\omega$. Add examples on the statical polarizability. Can we comment}
- \item Make some statements on the features that a computational setup must have to guarantees that this sector provides converged results. Difference between systematic and localized basis setup. Can we comment about the needs to add ghost atoms for the evaluation of statical polarizability with gaussian basis?
+   \item Make some statements on the features that a computational setup must have to guarantees that this sector provides converged results. Difference between systematic and localized basis setup. Can we comment about the needs to add ghost atoms for the evaluation of statical polarizability with gaussian basis?
+ % \deleted[id=dal]{\item Not true poles of the susceptibility (but only an effective tool to compute the spectral function).}
+ % \deleted[id=dal]{\item Deeply affected by the computational setup used to represent them. In particular, the presence of a finite computational domain implies a fictitious discretization of the excitation levels and the associated spectrum exhibits an explicit dependence from the size of the domain.}
+ % \deleted[id=dal]{\item This sector of the excitation spectrum is needed to compute imaginary parts above IP and real part for \emph{all} the values of $\omega$. Add examples on the statical polarizability. Can we comment}
 \end{itemize}
 
 
@@ -764,7 +764,7 @@ Employing the formalism of Eq.~\eqref{deltaoexc} we obtain, for its real and ima
    &= 2 \sum_p \bra{\psi_p} \mathbf r_i \left(\mathrm{Im}\ket{f_p^{\mathbf r_j}(\omega)}\right)\;,\\
   \mathrm{Re}\left(\alpha_{ij}(\omega) \right) &= \mathcal P \int \dd \omega'
   \frac{\mathrm{Im}\left(\alpha_{ij}(\omega')\right)}{\omega - \omega'} \\
-  & =2 \sum_p \bra{\psi_p} \op O \left(\mathrm{Re}\ket{f_p^\Phi(\omega)}\right)\;.
+  & =2 \sum_p \bra{\psi_p} \op O \left(\mathrm{Re}\ket{f_p^{\mathbf r_j}(\omega)}\right)\;.
 \end{align}
 Such equations are in coherency with the Kramers-Kronig relations of the fluctuation states, see Eq.~\eqref{KKrel}.
 The imaginary part of the FS may be decomposed in two quantities:
