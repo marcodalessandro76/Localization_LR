@@ -2,6 +2,7 @@
 \usepackage{latexsym}
 \usepackage{graphicx}
 \usepackage{amssymb,amsmath}
+\usepackage{mathtools,braket}
 \usepackage[english]{babel}
 
 % Parametri di stampa
@@ -27,13 +28,8 @@
 \newcommand{\br}{\bar{\rho}}
 \newcommand{\bg}{\bar{g}}
 \newcommand{\bpi}{\bar{\pi}}
-\newcommand{\bra}{\langle}
-\newcommand{\ket}{\rangle}
-\newcommand{\sst}{\scriptscriptstyle}
 
 \newcommand{\op}[1]{\hat {#1}}
-
-\def\sst{\scriptscriptstyle}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -43,41 +39,52 @@
 
 List of major changes apported to the paper:
 \begin{itemize}
- \item The introduction has been deeply revised. In particular we have cut the first two
- paragraph concerning the differences between accuracy and precision.
- \item Added a comment after eq. (7) on the non-hermiticity of the response density and corrected
- the equation (11).
+ \item Much efforts have been spent in trying to clarify better the relation between localization properties and features of the computational basis needed 
+ to provide precise results. This topic has been discussed in all the text. Major modifications under this perspective have been done in the introduction, in section II at pag. 5 before the analysis of fig. 2,in section IV and in the conclusions. 
+ \item The introduction has been deeply revised. In particular we have reduced the length of the first two paragraph concerning the differences between accuracy and precision.
+ \item We added a comment after eq. (7) on the non-hermiticity of the response density and corrected the equation (11).
  \item Added a dedicated subsection (actually the IIA at page 4)  to discuss the localization properties of the FS states for static perturbations. 
  \item Added a panel in figure 2 that contain the plot of the real part of $\alpha(\omega)$ in calculated in different computational domain. This new plot aims to evidence that the localization
  properties of th FS affect, on equal footing, both the real and the imaginary part of the linear response functional.
- \item The relation between localization properties and features of the computational basis needed to provide precise results has been discussed in a stronger way in all the text. Major modifications under this perspective have been done in section II before the analysis of fig. 2 and....
+ \item We have reorganized the material after section III A. In particular we have introduced a new section (number IV in the actual version of the paper) in which we have discussed both the physical features of the excitation spectrum and the relative importance of localized vs. delocalized sector in expressing the susceptibility functional. This section also collects computational results for molecules beyond the case of $CO$ and benzene, already discussed in the previous version of the paper.  
 \end{itemize}
-
 
 \section*{Response to the first referee}
 
-We wish to thank the referee for the positive review on the paper. Here we report a list of the modification performed in the text according
-to his/her suggestions:
+We wish to thank the referee for the positive review on the paper. The text has been deeply revised according to the suggestions of both the referees.
+
+Here we report some detailed answer concerning the main aspects raised in the referee's report:
 \begin{enumerate}
-  \item \emph{point concerning the dimension of the simulation box needed to achieve the convergence of the delocalized states of the $CO$ molecule}. 
+  \item \emph{on the point concerning the dimension of the simulation box needed to achieve the convergence of the delocalized states of the $CO$ molecule}. 
   
-  Clarify that delocalized (fluctuation) states never achieve convergence (continumm collapse). What is expected to converge is the spectral function, or declined in the present case the real and imaginary part of the dynamical polarizability. To give a reasonable value from the literature we can make usage of the results of achieved by Baroni for the benzene molecule... 
-  \item \emph{point concerning the convergence rate of the delocalized vs. localized states (which one? fluctuation or excitation?) with respect
+  Delocalized fluctuation states do not achieve convergence as long as the simulation box is increased. Since they behave as continuum states they suffer of the same continuum collapse behavior described in section IA for the unbound solution of the Schr\"odinger equation. What is expected to converge is the spectral function, or declined in the present case the real and imaginary part of the dynamical polarizability. 
+  The value of convergence is system/observable and perturbation dependent. It can be found through an explicit convergence analysis by introducing an acceptance tolerance, however this procedure is out of the scope of our analysis and has not been performed. 
+  
+  Nonetheless, to have an idea of the dimension of the box needed to achieve convergence we can refer to the case of the Benzene molecule and make usage
+  of the result found in our analysis, compared to the one reporte in fig. 2 of \cite{baroni2008}. Within our analysis we show that a box linear size of about 18 Angostroem is sufficient to produce converged results for excitation spectrum below IP (around 6.5 eV in the present case). On the contrary, results of \cite{baroni2008} evidence that to achieve convergence up to 30 eV a box of linear dimension of more than 31 Angstroem is needed, so going from the localized to the delocalized sector of excitation spectrum requires a relevant increase in the simulation domain. 
+  
+  \item \emph{on the point concerning the convergence rate of the delocalized vs. localized states with respect
   to the grid spacing}
   
- Actually I don't know but I do not expected relevant differences, since localized and delocalized states differ in their asymptotic properties whereas the grid spacing convergence is influenced by the fast oscillation of the functions.  
+ In presenting the results of this paper care has been taken to ensures the convergence of the results wrt the computational parameters. We have found that there are no relevant difference in the convergence rate of localized vs delocalized quantities (for instance excitations) in function of the grid spacing. This is due to the fact that localized and delocalized states differ in their asymptotic properties whereas the grid spacing convergence is influenced by the fast short-range oscillation of the functions.
  
- To present a more detailed answer we could perform a convergence analysis w.r.t the gridspacing looking at the convergence rate of the energies of say 16 virtual orbitals of the $CO$ molecule. In this way we can see if the rate of the bound-state ones differs from the others.
+ Add a comment in the text somewhere?
  
- Lastly, the values of the grid spacing used for the calculations have been added in appendix C.
+ The values of the grid spacing used for the calculations have been added in appendix C.
  
-\item Answer to the other minor points...
-  
+\item Other minor corrections:
+\begin{itemize}
+ \item The insets of fig. 4 and 5 have been increased.
+ \item the \emph{reasonable behavior of the perturbed potential} at the end of section IIIA has been clarified. It simply means that the
+ the perturbed potential $\op V'[\op E]$ gives rise to a bound state when applied to $\ket{\psi_p}$.
+ \item explicit reference to the inset of fig. 5 has been performed in the text.
+\end{itemize}
+
 \end{enumerate}
 
 \section*{Response to the second referee}
 
-We thank the referee for its comment and criticism of the paper.
+We thank the referee for its comment on the paper. Thank to his/her advice and criticism we have tried to clarify our message. 
 We try to answer to the critical points raised out by the review:
 
 \begin{enumerate}
@@ -106,7 +113,8 @@ We try to answer to the critical points raised out by the review:
  
 \end{enumerate}
 
-
+\bibliographystyle{elsarticle-num}
+\bibliography{Analytic_biblio}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

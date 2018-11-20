@@ -12,11 +12,6 @@
 \usepackage{xifthen}
 %\pgfplotsset{compat=1.15}
 
-%\usepackage[markup=underline]{changes}
-%\usepackage[final]{changes}
-%\definechangesauthor{dal}
-%\definechangesauthor{gen}
-
 % notation for standard math
 \renewcommand{\d}{\partial}
 \newcommand{\half}{\frac{1}{2}}
@@ -164,7 +159,7 @@ We will also see that the reliabilty of the convergence criteria that can be est
 % This analysis evidences that the description of molecular systems beyond the ground state unavoidably leads to the inclusion of delocalized
 % degrees of freedom above a specific energetic threshold. Moreover on the basis of this analysis we can assess something about the reliability of the results provided by computational setups able to explicit include the presence of delocalized degrees of freedom compared
 % to the ones in which these degrees of freedom are excluded by design.
-
+ 
 The paper is organized as follows.
 Initially we will inspect how the question of reproducibility may be expressed
 for ground state calculations of molecules.
@@ -374,7 +369,7 @@ the size of the computational domain used to express the fluctuation states. The
 one of the static dipole of the molecule computed at zero external field.
 The results evidence that the typical sizes of $\ket{f^\Phi_p(0)}$ are analogous to the ones of the unperturbed KS orbitals, which is a direct proof of the bound-state behaviour of the FS.
 
-\subsection{Localization propeties at finite $\omega$. Emergence of a strong and a weak regime}
+\subsection{Localization properties at finite $\omega$. Emergence of a strong and a weak regime}
 
 The analysis described above has shown that the building blocks of the response density $\{\ket{f_p(\omega)}\}$
 are susceptible to exhibit bound-state long-range behavior \emph{only} when $\omega < |\eps_p|$,
@@ -382,13 +377,13 @@ while they behave as unbound states for values of $\omega$ above these threshold
 This fact has interesting implications in the evaluation of LR quantities. Indeed, writing the response
 density in terms of FS implies that 
 \be\lb{LinearResponseFunctDef2}
-\braket{\delta\op O}_\Phi(\omega) = 2 \sum_p\bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}  \;.
+\braket{\delta\op O}_\Phi(\omega) = 2 \sum_p\bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}  \;,
 \ee
 % \begin{multline}\lb{LinearResponseFunctDef2}
 % \braket{\delta\op O}_\Phi(\omega) = \sum_p \left( \bra{f_p^\Phi(-\omega)}\op O\ket{\psi_p}+ \bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}\right) \\
 % =2 \sum_p\bra{\psi_p}\op O\ket{f_p^\Phi(\omega)}  \;.
 % \end{multline}
-In the second equality we have assumed that $\op O$ is a real symmetric operator and chosen a real set of occupied molecular states.
+here we have assumed that $\op O$ is a real symmetric operator and chosen a real set of occupied molecular states.
 Let us suppose that also the observable of interest $\op O$ can be restricted to localized domains in the same way as the potentials $ \op V$ and $\op \Phi$.
 Once again, it would be enough to consider a local operator for this condition to be met.
 
@@ -444,6 +439,12 @@ is indicated by a vertical dashed line.}
 \section{Excitation operators. The analytic structure of the susceptibility functional}
 
 It is possible to reformulate this type of analysis by directly looking at LR quantities that are defined independently from the perturbing operators and target observable. This can be achieved by studying the \emph{susceptibility functional}, defined implicitly trough the operator equation
+\be\lb{SusceptibilityDef1}
+\dm'(\omega) = \left(\omega -\mathcal L \right)^{-1} \commutator{\op \Phi(\omega)}{\dmnot} = \sop{{\cal \chi}}(\omega) \op\Phi(\omega) \;.
+\ee
+The susceptibility (super)operator $\cal \chi(\omega)$ is therefore closely related to the resolvent of the Liouvillian of Eq.~\eqref{LiouvillianRhopomegaDef1}, which is completely defined
+from the molecule Hamiltonian $\hnot[\dm]$.
+The ``excitation modes''  of the molecule are defined through the \emph{excitation operators}, satisfying
 \be\lb{ExcitationOperatorsDef1}
 \Liouv \op E_a = \Omega_a \op E_a \qq \op{\tilde E}_a \Liouv = \Omega_a \op{\tilde E}_a \;,
 \ee
@@ -452,20 +453,24 @@ together with the operator orthonormalization condition %$\trace{\op{\tilde E}\o
 \trace{\op{\tilde E}_a\op E_b} = \delta_{ab} \;.
 \ee
 Excitations defined in that way may be considered as a basis of the operators that satisfy the transverse condition as in
-Eq.~\eqref{RhopTransverseDef1}, and enable us to express the susceptibility as a spectral decomposition:
+Eq.~\eqref{RhopTransverseDef1}, and enable us to express the susceptibility as a spectral decomposition
 \be\lb{RhopExcitationDef1}
 \sop{{\cal \chi}}(\omega) \cdot   = \sum_{\{a\}} \op E_{a} \,
-\frac{\trace{\commutator{\op{\tilde E}_a}{\dmnot}\cdot}}{\omega-\Omega_a} \;.
+\frac{\trace{\commutator{\dmnot}{\op{\tilde E}_a}\cdot}}{\omega-\Omega_a} \;.
 \ee
 In this way Eq.~\eqref{LinearResponseFunctDef2} may be also written as:
 \be\lb{deltaoexc}
   \braket{\delta \op O} =  \sum_{\{a\}} \frac{\trace{\op O \sop B_a \op \Phi(\omega)}}{\omega -\Omega_a}\;,
 \ee
-where the action of the spectral operator $\sop B_a$ reads
+where the action of the spectral (super)operator $\sop B_a$ reads
 \be
-  \trace{\op O \sop B_a \op \Phi(\omega)} = \trace{\op O \op E_a}
-  \trace{\op{\tilde E}_a \commutator{\dmnot}{\op \Phi(\omega)}} \;. \nn
+  \sop B_a \cdot = \op E_a \trace{\commutator{\dmnot}{\op{\tilde E}_a} \cdot} \;. \nn
 \ee
+
+% \be
+%   \trace{\op O \sop B_a \op \Phi(\omega)} = \trace{\op O \op E_a}
+%   \trace{\op{\tilde E}_a \commutator{\dmnot}{\op \Phi(\omega)}} \;. \nn
+% \ee
 
 \subsection{Localization features of the excitation operators. The analytic structure of linear susceptibility}
 
@@ -475,7 +480,7 @@ eigenstates \eqref{ExcitationOperatorsDef1} satisfy the transverse condition \eq
 \op E_a &= \sum_p \left( \ket{\phi^a_p}\bra{\psi_p} + \ket{\psi_p} \bra{\chi^a_p}\right)\;, \nn \\
 \op{\tilde E}_a = \commutator{\dmnot}{\op E^t_a} &= \sum_p \left( \ket{\psi_p}\bra{\phi^a_p} - \ket{\chi^a_p} \bra{\psi_p}\right)\;.
 \end{align}
-Each excitation ``mode'' of the system, with associated energy $\Omega_a$, is thus described by a set of states $\{\phi^a_p,\chi^a_p\}_{p \in a}$, defined in the unoccupied subspace. These objects represent, respectively, the state in which $\ket{\psi_p}$ is excited -- or from whom it decays -- when the system is subject to the \emph{monochromatic} perturbation $\op \Phi_a \equiv \commutator{\dmnot}{\op E_a}$. We denote with the shorthand $p \in a$ the fact that the sum of Eq.~\eqref{ExcitationOperatorsDef2} is in general restricted only to a $a$-dependent subset of the occupied orbitals, depending on the particular symmetry
+Each excitation ``mode'' of the system, with associated energy $\Omega_a$, is thus described by a set of states $\{\phi^a_p,\chi^a_p\}_{p \in a}$, defined in the unoccupied subspace. These objects represent, respectively, the state in which $\ket{\psi_p}$ is excited -- or from whom it decays -- when the system is subject to the \emph{monochromatic} perturbation $\op \Phi_a \equiv \commutator{\op E_a}{\dmnot}$. We denote with the shorthand $p \in a$ the fact that the sum of Eq.~\eqref{ExcitationOperatorsDef2} is in general restricted only to a $a$-dependent subset of the occupied orbitals, depending on the particular symmetry
 of the excitation. Excited states  satisfy the normalization condition
 \be\lb{ExcitedStateOrthNormDef1}
 \sum_p \left(\brket{\phi_p^a}{\phi_p^b} - \brket{\chi_p^b}{\chi_p^a}\right) = \delta_{ab} \;.
@@ -579,30 +584,6 @@ The typical structure of the excitation landscape is depicted in figure \ref{Exc
 regardless of the particular behavior of $\op V'$: the excitation landscape in this region contains a continuum set of delocalized states.
 
 \section{Physical relevance of the excitation spectrum. A comparison among localized and continuum sectors}
-% \deleted[id=dal]{
-% Comments on the features and the physical relevance of the two sector of the excitation spectrum}
-% 
-% %\subsection{Localized sector}
-% 
-% %\begin{itemize}
-% % \deleted[id=dal]{\item It is composed by a genuine set of discrete elements.}
-% % \deleted[id=dal]{\item The values of the excitation energies do not depend on the computational setup (observable features) and so can be compared among different approaches.}
-% % \deleted[id=dal]{\item The knowledge of this sector of the excitation spectrum allows us to express only the imaginary part of (proper equation that expresses the response functional written using Sokowsky-Plemely
-% % on the susceptibility functional).}
-% % \deleted[id=dal]{\item A computational setup in which delocalized degrees of freedom are excluded by design can in principle describe to this sector in a exact way.}
-% %\end{itemize}
-% 
-% \subsection{Continuum sector}
-% 
-% \begin{itemize}
-%    \item Make some statements on the features that a computational setup must have to guarantees that this sector provides converged results. Difference between systematic and localized basis setup. Can we comment about the needs to add ghost atoms for the evaluation of statical polarizability with gaussian basis?
-%  % \deleted[id=dal]{\item Not true poles of the susceptibility (but only an effective tool to compute the spectral function).}
-%  % \deleted[id=dal]{\item Deeply affected by the computational setup used to represent them. In particular, the presence of a finite computational domain implies a fictitious discretization of the excitation levels and the associated spectrum exhibits an explicit dependence from the size of the domain.}
-%  % \deleted[id=dal]{\item This sector of the excitation spectrum is needed to compute imaginary parts above IP and real part for \emph{all} the values of $\omega$. Add examples on the statical polarizability. Can we comment}
-% \end{itemize}
-% 
-% 
-% \vspace{1cm}
 
 \subsection{Observable features of the excitation spectrum}
 
@@ -644,154 +625,69 @@ molecule ionization potential (IP) have a localized behavior, as their energy do
 On the other hand, above the first ionization threshold the excitations have an energy that strongly depends on the computational
 setup, which is in line with the expected pseudo-continuum character of this sector.
 In addition, for the benzene molecule it is also possible to
-identify excitations of energy above IP that still possess a localized behavior, fulfilling the condition $\Omega_a < |\eps_a|$.
-In Fig.~\ref{c6h6_excLand} we collect the excitations of the benzene molecule following this criterion:
+identify excitations of energy above IP that still possess a localized behavior, fulfilling the condition $\Omega_a < |\eps_a|$ (see the inset of 
+Fig.~\ref{C6H6_exc}). In Fig.~\ref{c6h6_excLand} we collect the excitations of the benzene molecule following this criterion:
 the agreement with the expected analytic structure presented in Fig.~\ref{ExcitationLandscape} is remarkable.
 
 \subsection{Relative importance of discrete and continuum excitations}
-% \deleted[id=gen]{
-% We have presented formal arguments, confirmed by numerical calculations, that show that
-% the excitations belonging to the discrete sector of the spectrum have energies
-% that can be \emph{quantitatively} compared between codes, thanks to their
-% localized character.
-% Such objects are LR quantities, associated to the molecule, whose numerical convergence
-% can be found by employing techniques which can be borrowed from the ones adopted for GS calculations. Being expressed by localized excited states,
-% computational setups with sufficient level of completeness are able to
-% express with high \emph{precision} such section of the excitation spectrum.}
-
-So far we have showed with both formal arguments and numerical calculations that the excitation spectrum split into two sectors with very different features.
-It is so reasonable to ask which is the relative importance of these two sectors and in particular if there is the possibility to express observable quantities
-in a suitable $\omega$ range, by only employing the sector of genuinely localized excitations.
-% We may ask which is the relative importance of the two sectors and in particular if there is the possibility to express observable quantities
-% in a suitable $\omega$ range, by only employing the sector of genuinely localized excitations.
+  
+So far we have showed with both formal arguments and numerical calculations that the excitation spectrum split into two sectors with very distinct features.
+It is then reasonable to ask which is their relative importance and, in particular, if there is the possibility to express observable quantities, in a suitable $\omega$ range, by only employing the sector of genuinely localized excitations.
 Stated otherwise, will the \emph{restriction} of $\sop \chi(\omega)$ to only localized excitations can be useful to extract some physical quantities?
 
 In this regard it is illustrative to apply the above arguments to the evaluation of the dynamical polarizability tensor $\alpha_{ij}(\omega)$.
 Employing the formalism of Eq.~\eqref{deltaoexc} provides
-\be%gin{align}
-  \mathrm{Im}\left(\alpha_{ij}(\omega) \right) =
-  \sum_{a} \trace{\mathbf r_i \sop B_a \mathbf r_j} \delta(\omega - \Omega_a)\lb{imalpha} \;.
-  %\\
-  % &= 2 \sum_p \bra{\psi_p} \mathbf r_i \left(\mathrm{Im}\ket{f_p^{\mathbf r_j}(\omega)}\right)\lb{imfs}\;,
-\ee%nd{align}
+\be\lb{imalpha}
+\mathrm{Im}\left(\alpha_{ij}(\omega) \right) =
+\sum_{a} \trace{\mathbf r_i \sop B_a \mathbf r_j} \delta(\omega - \Omega_a) \;.
+\ee
 The imaginary part of the dynamical polarizability tensor therefore can be seen as the partial density of states of the Liouvillian projected on
 $\op{\mathbf r}_i\op{\mathbf r}_j$. For this reason, it is evident that below the \emph{first} excitation threshold (IP), the contributions to $\mathrm{Im}\left(\alpha_{ij}(\omega)\right)$ can be expressed only in terms of observable excited states. On the contrary, the non-observable, basis dependent continuum sector of the excitation starts to contribute to $\mathrm{Im}\left(\alpha_{ij}(\omega)\right)$ above IP; the localized sector is not anymore sufficient to express Eq.~\eqref{imalpha} in this $\omega$ range.
 
-% Not surprisingly this behaviour is in coherency with the
-% localization properties of the FS below IP; Eq.~\eqref{imfs} show that
-% for its imaginary part.
-
-%
-% The imaginary part of the FS may be decomposed in two quantities:
-%
-%
-% \deleted[id=gen]{
-% Following the considerations of Sec.~\ref{FluctuationState}, we know that
-% for $\omega$ below the IP threshold all these quantities may be expressed
-% via asymptotically localized states.
-% We have also seen in Sec.~\ref{FluctuationState} that
-% there exist a sector where the fluctuation states are genuinely localized, thereby presenting reproducibility features. Therefore,
-% knowing that $\ket{f_p^\Phi(\omega)} =\sop \chi(\omega) \op \Phi(\omega) \ket{\psi_p}$,
-% it would be interesting to obtain information on whether the discrete, localized sector of the excitations which appear in the spectral decomposition of $\sop \chi(\omega)$
-% will be sufficient to express a localized FS.
-% Considering Eq.~\eqref{SusceptibilityDef1} and
-% expressing the spectral decomposition of the linear susceptibility we find:}
-% \be
-% \mathrm{Im}\left(\ket{f_p^{\mathbf r_j}(\omega)} \right)= \fscd{D} + \fscd{C}
-% \lb{FSExcitationDef1} \;,
+To further address this point we exploit the formal relation between response density and susceptibility functional %established in ~\eqref{SusceptibilityDef1} 
+$\dm'(\omega) = \sop \chi(\omega)\op\Phi(\omega)$ and make usage of the diadic representation ~\eqref{rhoPrimeFluctuationStateDef1} of the response density. Pursuing this procedure provides the excitation-based
+representation of FS as follows:
+% Let us now consider the features of the response density operator of Eq.~\eqref{rhoPrimeFluctuationStateDef1}.
+% The fluctuation state in this case can be written as
+% \be\lb{fsinexc}
+% \ket{f_p^{\mathbf r_j}(\omega)}=
+% \sop \chi(\omega) \op{\mathbf r_j} \ket{\psi_p}
+% = \sum_a \frac{\bra{w_p^a} \op{\mathbf r_j} \ket{\psi_p}}{\omega^2 - \Omega_a^2}
+% \ket{w_p^a}\;,
 % \ee
-% with
-% \begin{align}
-%  \fscd{D} &= \sum_a^{|\Omega_a| < |\eps_a|} \ket{w_p^a} \bra{\psi_p} \op {\mathbf r}_j \ket{w_p^a} \delta\left(\omega-\Omega_a\right) \;, \nn \\
-%  \fscd{C}
-%  &= \int_{|\Omega_a| > |\eps_a|} \!\!\!\!\!\!\!\!\!\!\!\!\!\dd a \ket{w_p^a}  \ket{w_p^a} \bra{\psi_p} \op {\mathbf r}_j \ket{w_p^a} \delta\left(\omega-\Omega_a\right) \;, \nn
-% \end{align}
-% where %$\varphi_p^a[\op \Phi(\omega)] \equiv \bra{\psi_p}\op\Phi(\omega)\ket{w_p^a}$, and
-% $\ket{w_p^a}=\ket{\phi_p^a}+\ket{\chi_p^a}$.
-%
-% In the above equation we have explicitly separated the contributions of the discrete ($D$) and continuous ($C$) excitations
-% in the spectral decomposition \eqref{SusceptibilityDef1}.
-% \deleted[id=gen]{The summation and the integration run only on the positive values of $\Omega_a$.}
-% The states $\ket{w_p^a}$ that appear in the discrete sum
-% or in the integral are genuinely localized and delocalized, respectively.
-% For \emph{any} value of $\omega$ the ket $\fscd{D}$ has, by definition, a bound-state like
-% character as it is expressed as a sum of localized contributions.
-%
-% It is easy to see that for $\omega$ below IP  we have $\fscd{C}=0$.
-% Below threshold, continuum excitations \emph{do not} contribute to the imaginary part of the
-% dynamical polarizability.
-
-Let us now consider the features of the response density operator of Eq.~\eqref{rhoPrimeFluctuationStateDef1}.
-The fluctuation state in this case can be written as
 \be\lb{fsinexc}
 \ket{f_p^{\mathbf r_j}(\omega)}=
-\sop \chi(\omega) \op{\mathbf r_j} \ket{\psi_p}
-= \sum_a \frac{\bra{w_p^a} \op{\mathbf r_j} \ket{\psi_p}}{\omega^2 - \Omega_a^2}
-\ket{w_p^a}\;.
+\sum_a \frac{\bra{w_p^a} \op{\mathbf r_j} \ket{\psi_p}}{\omega^2 - \Omega_a^2}
+\ket{w_p^a}\;,
 \ee
-Here we have employed the notation $\ket{w_p^a}=\ket{\phi_p^a}+\ket{\chi_p^a}$.
-The above equation shows that for \emph{any} value of $\omega$ both sectors of localized and delocalized states $\ket{w_p^a}$ contribute.
-However the discussion of Sec.~\ref{FluctuationState} has shown that
-the FS is a genuinely localized state below the IP threshold.
+where we have employed the notation $\ket{w_p^a}=\ket{\phi_p^a}+\ket{\chi_p^a}$.
+%The above equation shows that for \emph{any} value of $\omega$ both sectors of localized and delocalized states $\ket{w_p^a}$ contribute.
+The above equation shows that both the sectors of localized and delocalized states $\ket{w_p^a}$ contribute to the FS for \emph{any} value of $\omega$.
+However the discussion of Sec.~\ref{FluctuationState} has shown that the FS is a genuinely localized state below the IP threshold.
 The equivalence of the Sternheimer formalism with the spectral representation of the LR susceptibility implies that in this regime the contribution of the delocalized excitations in Eq.~\eqref{fsinexc} has to resum into a localized, asymptotically vanishing FS.
-Such a locality is evident for the imaginary part of the FS, which
-can be straightforwardly restricted to the sum over $\ket{w_p^a}$ below IP (see Eq.~\eqref{imalpha}). For the real part of FS the \emph{entire} spectrum
-of excitations contribute.
+% Such a locality is evident for the imaginary part of the FS, which can be straightforwardly restricted to the sum over $\ket{w_p^a}$ below IP (see Eq.~\eqref{imalpha}). For the real part of FS the \emph{entire} spectrum
+% of excitations contribute.
+The localization below threshold is manifest for the imaginary part of the FS, that is explicitly written as a the sum over $\ket{w_p^a}$ below IP (see Eq.~\eqref{imalpha}). Instead, for the real part of FS, the \emph{entire} excitation spectrum contributes to the construction of the FS and the localization
+\emph{has} to realize due to a non trivial cancellation of the unbound parts of the $\ket{w_p^a}$'s.
 
-Hence, contrary to GS, \emph{for LR calculation,
-even when the response density is localized, the contribution coming from the
-continuum sector of the excitations can never be neglected}.
-In other terms, we \emph{cannot} exclude that a fluctuation state, even if genuinely localized, will have a nonzero projection
-in the essential part of the Liouvillian spectrum.
-This fact shows that it is \emph{impossible} to restrict the spectral representation
-of $\chi(\omega)$ to only localized, discrete, \emph{code-independent} excitations, even for representing LR results in the $\omega=0$ limit.
-
-
-
-% For $\mathrm{Re}\ket{f_p^{\mathbf r_j}(\omega)}$ the situation is slightly more complicated.
-% \begin{align}
-%   \mathrm{Re}\left(\alpha_{ij}(\omega) \right) &= \mathcal P \int \dd \omega'
-%   \frac{\mathrm{Im}\left(\alpha_{ij}(\omega')\right)}{\omega - \omega'} \\
-%   & =   \sum_{a} \mathcal P  \frac{\trace{\mathbf r_i \sop B_a \mathbf r_j}}{\omega - \Omega_a}\\
-%   & =2 \sum_p \bra{\psi_p} \op O \left(\mathrm{Re}\ket{f_p^{\mathbf r_j}(\omega)}\right)\;.
-% \end{align}
-% Such equations are in coherency with the Kramers-Kronig relations of the fluctuation states, see Eq.~\eqref{KKrel}.
-%
-%
-% For $\omega <$ IP, we know that the FS is localized.
-%
-%
-% The equivalence of the Sternheimer formalism with the spectral representation of the LR susceptibility implies that the integral of the Kramers-Kronig
-% relation ~\eqref{KKrel} involving the delocalized states
-% $\fscd{C}$ should resum into a localized, asymptotically vanishing state\footnote{There is no particular reason to believe that $\fscd{C}$ should be
-% zero. Since $\ket{w_p^a}$ states are linearly independent,
-% $\fscd{C}=0$ would imply
-% $\bra{\psi_p} \op {\mathbf r}_j \ket{w_p^a}$ for any $a$ labelling the continuum excitations, which is too strong a condition.}.
-
-% We may then decompose the linear response functional of Eq.~\eqref{LinearResponseFunctDef1}
-% for any operator $\op O$ as $\braket{\delta\op O}_\Phi=\braket{\delta\op O}^D_\Phi +
-% \braket{\delta\op O}^C_\Phi$, where
-% \be
-% \braket{\delta\op O}^{D,C}_\Phi(\omega) =
-% 2 \bra{\psi_p} \op O \fscd{D,C}\;.
-% \ee
+Hence, contrary to GS, we conclude that \emph{for LR calculation, even when the response density is localized, the contribution coming from the
+continuum sector of the excitations can never be neglected}. In other terms, we \emph{cannot} exclude that a fluctuation state, even if genuinely localized, will have a nonzero projection in the essential part of the Liouvillian spectrum. This fact shows that it is \emph{impossible} to restrict the spectral representation of $\chi(\omega)$ to only localized, discrete, \emph{code-independent} excitations, even for representing LR results in the $\omega=0$ limit.
 
 \subsection{Effective representation of $\sop \chi(\omega)$ for localized response densities}
-The above arguments have shown that the only quantity which can be expressed in terms
-of the localized sector of the excitation spectrum is the imaginary part of the
-susceptibility functional $\sop \chi(\omega)$ in the optical regime (i.e. $\omega <$  IP).
-The response densitites for a generic perturbation and $\omega$ value always require the
-inclusion in the Liouvillian DOS of the delocalized part of the excitation spectrum, even in view of expressing localized fluctuation states.
+The above arguments have shown that the only quantity which can be expressed in terms of the localized sector of the excitation spectrum is the imaginary part of the susceptibility functional $\sop \chi(\omega)$ in the optical regime (i.e. $\omega <$  IP). The response density for a generic perturbation and $\omega$ value requires the inclusion in the Liouvillian DOS of the delocalized part of the excitation spectrum, even in view of expressing localized fluctuation states.
 
-It appears therefore important to identify indicators that might assess the capability of
-$\sop \chi(\omega)$ to express localised FS (and thus the complete response density $\dm'_\Phi(\omega)$) below the IP threshold.
+A given numerical treatment typically provides only an effective description of the sector of delocalized excitation which in turns give rise to an effective 
+representation of the susceptibility functional. It appears therefore important to identify indicators that enable us to validate the capability
+of $\sop \chi(\omega)$ to express the localised FS (and thus the complete response density $\dm'_\Phi(\omega)$) below the IP threshold.
+%It appears therefore important to identify indicators that might assess the capability of
+%$\sop \chi(\omega)$ to express localised FS (and thus the complete response density $\dm'_\Phi(\omega)$) below the IP threshold.
 For instance, the static polarizability tensor $\alpha_{ij}$ can be calculated as
+% \be\lb{sminus2}
+% \alpha_{ij} = \sint \dd a \frac{w^a_{ij}}{\Omega_a^2}\,, \quad w^a_{ij} \equiv \sum_{p\in a} \bra{\psi_p} \op {\mathbf r}_i \ket{w_p^a}\bra{\psi_p} \op {\mathbf r}_j \ket{w_p^a}\;.
+% \ee
 \be\lb{sminus2}
-\alpha_{ij} = \sint \dd a \frac{w^a_{ij}}{\Omega_a^2}\,, \quad w^a_{ij} \equiv \sum_{p\in a} \bra{\psi_p} \op {\mathbf r}_i \ket{w_p^a}\bra{\psi_p} \op {\mathbf r}_j \ket{w_p^a}\;.
+\alpha_{ij} = \sint \dd a \frac{w^a_{ij}}{\Omega_a^2}\,, \quad w^a_{ij} \equiv \sum_{p\in a} |\bra{\psi_p} \op {\mathbf r}_i \ket{w_p^a}|^2 \;.
 \ee
-% The summation above runs on both localized and delocalized sector of the excitations.
-%
-% We also know that $\alpha_{ij}$ might be expressed with arbitrary precision by only employing localized quantities.
 Such value can be straightforwardly compared with results of Eq.~\eqref{staticalpha}, where the localized FS is obtained from GS techniques as
 described in Sec.~\ref{FluctuationState}.
 This is the well-know $S_{-2}$ sum-rule (see e.g.\cite{Wagner2012}), that express the value of the static polarizability
@@ -819,7 +715,7 @@ oscillator strengths $w^a_{zz}$ of Eq.~\eqref{sminus2} are also plotted. }
 Present the table of the other results.
 
 Such a scenario can be also found in the other molecules we have considered;
-varying the molecule size and symmetry seems not to modify the qualitative behaviour of the excitation landscape. In addition the
+varying the molecule size and symmetry seems not to modify the qualitative behavior of the excitation landscape. In addition the
 localized sector of the excitations alone is largely insufficient to express $\alpha_{ij}$.
 Such considerations are independent on the number of atoms of the molecule, as the range in $\omega$ needed to
 achieve satisfactory agreement is largely above the last valence ionization threshold, which is
@@ -834,84 +730,25 @@ For all these computational setups, the $S_{-2}$ sum rule is, on the contrary, w
 
 
 \section{Conclusions and Perspectives}
-We have performed a critical assessment of the fundamental equations
-that govern the Linear Response theory of molecular systems.
-We have
-%By analysing the fundamental equations of LR calculations of molecules, we have
-shown that the response density for values of $\omega$ above the first IP
-\emph{has} to be expressed in terms of genuinely delocalized states. This
-result
-has relevant consequences in the choice of the  approptiate computational
-basis set to be employed for the LR treatment.
 
-For frequencies below the IP threshold,
-under reasonable assumptions on the perturbing operators,
-the response density is genuinely localized.
-In this regime, it is possible to achieve convergence of the numerical result
-by increasing the basis completeness in the same spirit of GS calculations.
-More complete basis sets will provide more precise results, regardless of their asymptotic behavior.
-A comparison among various computer codes in view of reproducibility should therefore be performed
-initially in this regime.
+We have performed a critical assessment of the fundamental equations that govern the Linear Response theory of molecular systems.
+We have shown that the response density for values of $\omega$ above the first IP \emph{has} to be expressed in terms of genuinely delocalized states. 
+This result has relevant consequences in the choice of the  appropriate computational basis set to be employed for the LR treatment.
 
-% The situation is not so simple in the above-threshold regime.
-%In this case what is important is the matrix element of the observable of interest
-%between the bound, occupied state and the fluctuation state (FS).
-%The FS is here an unbound, delocalized function, and a numerical treatment tailored for localized functions will \emph{never} be able to discretise such function with arbitrary accuracy.
-% To achieve numerical convergence, care should be taken in expressing accurately the FS on the
-% appropriate region of space.
-%In view of reproducibility, computational setups which are able to express precisely
-%delocalized states seem more interesting in this regime.
+For frequencies below the IP threshold, under reasonable assumptions on the perturbing operators, the response density is genuinely localized.
+In this regime, it is possible to achieve convergence of the numerical result by increasing the basis completeness in the same spirit of GS calculations.
+More complete basis sets will provide more precise results, regardless of their asymptotic behavior. A comparison among various computer codes in view of reproducibility should therefore be performed initially in this regime.
 
+From a computational perspective, a set of localized basis functions, which \emph{by design} excludes long-range oscillatory behaviour, may be complete 
+enough to express $\sop \chi(\omega)$ \emph{below} IP, but it will never be able to capture the entire features of the response density operator above 
+the ionization threshold: the system's excitations expressed in this basis are reliable \emph{only} in the optical regime. 
+High-energy excitations belong to a continuum sector (which should not be confused with the continuum eigenstates of the unperturbed GS Hamiltonian)
+and the excitation density of states for $\omega >$ IP provided by this type of basis-set has to be considered as a effective representation of $\sop \chi(\omega)$ in order to fulfill Eq.~\eqref{fsinexc}. This fact has been pointed out several times (see e.g. \cite{giustino2012,giustino2014}) in the literature.
 
-From a computational perspective, a set of localized basis functions,
-which \emph{by design} excludes long-range oscillatory behaviour,
-may be complete enough to express $\sop \chi(\omega)$ \emph{below} IP,
-but it will never be able to capture the entire features of the
-response density operator above the ionization threshold:
-the system's excitations expressed in this basis are reliable \emph{only} in the optical regime. The excitation density of states for $\omega >$ IP
-has to be considered as a effective representation of $\sop \chi(\omega)$
-in order to fulfill Eq.~\eqref{fsinexc}. This fact has been pointed out several times (see e.g. \cite{giustino2012,giustino2014}) in the literature.
-High-energy excitations belong to a continuum sector, which should not be
-confused
-%that embeds the above mentioned discrete excitations.
-%We remark that we are not referring here to
-with the continuum eigenstates of the
-unperturbed GS Hamiltonian.
-% but to the continuum of excitations expressed as eigenstate of the
-% Liouvillian superoperator of Eq.~\eqref{LiouZeroDef1}, needed to
-% express the spectral representation of the linear susceptibility.
-
-On the contrary, computational treatments that are able to express
-delocalized states may be such to describe more efficiently the
-excitations DOS, especially because of the capability of the basis to
-capture oscillatory behaviour. Like in localized basis sets,
-excitations below threshold can be precisely calculated
-with the same paradigm of traditional GS calculations.
-However, in this computational setup, to correctly express
-the linear susceptibility below IP -- more specifically the real part of the fluctuation state -- care should be taken in considering enough delocalised excitations to guarantee fulfillment of sum-rules like Eq.~\eqref{sminus2}.
-
-
-%
-% Such point of view have also enabled us to shed light on the analytic structure of the
-% linear susceptibility, which is an intrinsic property of the molecule and does not depend on
-%  the perturbing fields.
-%  In particular, we have concentrated our interest in its spectral representation in
-%  terms of ``free oscillation'' (i.e. excitations) of the system.
-%  We have found that \emph{not all} the excitations have to be considered on equal footing.
-%  As the excitation spectrum has several energy thresholds, one per quasi-particle IP,
-%  there is a sector of \emph{discrete}, \emph{localized} excitations -- whose energies are
-% below the corresponding threshold -- which can be compared among different computational treatments.
-% Their energies are \emph{true} poles of the linear susceptibility, the excited states being their residues. We can \emph{quantify} the reliability of such discrete energies, as the corresponding excited states may be discretized with arbitrary accuracy on a localized region.
-
-% On the other hand, the excitation energies which lie above these thresholds are only pseudo-poles of $\chi(\omega)$,
-% and will \emph{strongly} depend on the computational setup. This is visible for energies higher than
-% IP, and it has been pointed out several times (see e.g. \cite{giustino2012,giustino2014}) in the literature.
-% These excitations belong to a continuum sector that embeds the above mentioned discrete excitations.
-% We remark that we are not referring here to the continuum eigenstates of the
-% unperturbed GS Hamiltonian,
-% but to the continuum of excitations expressed as eigenstate of the
-% Liouvillian superoperator of Eq.~\eqref{LiouZeroDef1}, needed to
-% express the spectral representation of the linear susceptibility.
+On the contrary, computational treatments that are able to express delocalized states may be such to describe more efficiently the excitations DOS, 
+especially because of the capability of the basis to capture oscillatory behavior. Like in localized basis sets, excitations below threshold can be 
+precisely calculated with the same paradigm of traditional GS calculations. However, in this computational setup, to correctly express the linear susceptibility below IP -- more specifically the real part of the fluctuation state -- care should be taken in considering enough delocalized excitations 
+to guarantee fulfillment of sum-rules like Eq.~\eqref{sminus2}.
 
 Our results show that \emph{both} the sectors of the excitations energies have to be considered in view of the extraction of computationally reliable quantities, and this even below the first IP.
 For generic LR quantities, which are functionals of the linear susceptibility,
@@ -926,10 +763,9 @@ Moreover, if the basis set employed for the evaluation of the target $\alpha_{ij
 is trivially satisfied in the basis. It is therefore important to have a set of reference values
 in the complete basis set limit.
 
-We believe that these considerations, based on simple manipulations on the fundamental LR equations, will help in increase
-the reliability of LR calculations in the community, and in building test-sets that would help in
-the \emph{calibration} of present and future computer codes, thereby increasing the predictivity of present-day theoretical approaches.
-The example of the static polarizability of molecules
+We believe that these considerations, based on simple manipulations on the fundamental LR equations, will help in increase the reliability of LR 
+calculations in the community, and in building test-sets that would help in the \emph{calibration} of present and future computer codes, thereby 
+increasing the predictivity of present-day theoretical approaches. The example of the static polarizability of molecules
 presents ideal features as an initial playground. Work is ongoing in this direction.
 
 \begin{acknowledgments}
@@ -941,7 +777,7 @@ We thank Thierry Deutsch for useful comments on the manuscript.
 Given a unperturbed Hamiltonian and density operator, which satisfy $\commutator{\hnot}{\dmnot}=0$, we may decompose a generic operator in two contributions, $\op O=\op O_\parallel + \op O_\perp$, defined as:
 \begin{align}
 \op O_\parallel &\equiv \dmnot \op O \dmnot + \op Q_0 \op O \op Q_0 \nn \;,\\
-\op O_\perp &\equiv \dmnot \op O \op Q_0 + \dmnot \op O \op Q_0 =
+\op O_\perp &\equiv \dmnot \op O \op Q_0 +  \op Q_0 \op O \dmnot =
 \commutator{\dmnot}{\commutator{\dmnot}{\op O}} \;,
 \end{align}
 with $\op Q_0 =\identity - \dmnot$.
@@ -950,12 +786,12 @@ $\commutator{\dmnot}{\op O_\parallel} = \commutator{\hnot}{\op O_\parallel} =0$.
 Also, it is easy to verify that given two generic $\op O$, $\op O'$, we have
 $\trace{\op O'_\parallel \op O_\perp} =0$.
 
-The projection $\op O_\perp$ is therefore the relevant part for the commutator:
+The projection $\op O_\perp$ is therefore the relevant part for the commutator
 \begin{equation}
 \commutator{\dmnot}{\op O} = \commutator{\dmnot}{\op O_\perp} =
-\dmnot \op O \op Q_0  - \dmnot \op O \op Q_0 \;.
+\dmnot \op O \op Q_0  - \op Q_0 \op O \dmnot  \;,
 \end{equation}
-The Liouvillian superoperator is therefore constructed such as $\Liouv \op O = \Liouv O_\perp$. In addition, the image operator satisfies the transverse condition
+consequently the Liouvillian superoperator, which contains by definition a commutator with $\hnot$ and $\dmnot$ in its bare and coupling part, is constructed such as $\Liouv \op O = \Liouv O_\perp$. In addition, the image operator satisfies the transverse condition
 $\left( \Liouv \op O \right)_\parallel =0$.
 
 Here $\op V'$, which expresses the perturbation induced by the density dependence on ground state Hamiltonian, can be conveniently expressed by defining the
@@ -1027,7 +863,7 @@ where
 \end{align}
 This is the well-known Casida Equation in the basis of transitions for the excitation of energy $\Omega_a$. The computational reliability of the
 eigenvalue $\Omega_a$ depends on the capability of the basis set $\ket{s}$ to fulfill of Eq.~\eqref{phiandchi}. Note that this may be valid only for a subset of the solutions of the eigenproblem \eqref{ExcitationMatrixEq1}.
-
+    
 \section{Computational details} \lb{compdetails}
 The illustrative calculations presented in this paper are all KS-DFT calculations at the LDA level of theory. We employed the BigDFT code \cite{BigDFT},
 that make usage of Daubechies Wavelets as computational basis set. This orthonormal basis presents optimal features of in view of reproducibility of the results, and it has proven to represent precisely and explicitly system with Free as well as Periodic boundary conditions (BC), without any basis set superposition error nor supercell aliasing, for Free BC.
@@ -1037,7 +873,7 @@ Norm Conserving Pseudopotentials (PSP) of the HGH \cite{NLCCPSP} type are employ
 
 Our LR calculation are performed with the Casida formalism \cite{bhaarathi}, where it is also important to include a sufficient number of unoccupied states in the transition operators. As pointed out in the text such states behave as plane waves: the features of wavelets enable us to represent localized and delocalized states on equal footing.
 For each size of the simulation domain, the number of unoccupied states used for building the Casida' eigenproblem has been increased up to convergence of the presented results.
-
+  
 \subsection{$CO$}
 The molecule is oriented along the $z$ axis and the $z$-dimension of the box is equal to 11.5, 15.1 and 16.6 \AA.
 280 unoccupied states have been computed in each setup, which span an energy range of the empty KS orbitals of 30.7, 19.3 and 15.4 eV respectively.
