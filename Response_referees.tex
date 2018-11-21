@@ -53,7 +53,7 @@ List of major changes apported to the paper:
 
 We wish to thank the referee for the positive review on the paper. The text has been deeply revised according to the suggestions of both the referees.
 
-Here we report some detailed answer concerning the main aspects raised in the referee's report:
+Here we report the detailed answers concerning the main aspects raised in the referee's report:
 \begin{enumerate}
   \item \emph{on the point concerning the dimension of the simulation box needed to achieve the convergence of the delocalized states of the $CO$ molecule}. 
   
@@ -66,7 +66,7 @@ Here we report some detailed answer concerning the main aspects raised in the re
   \item \emph{on the point concerning the convergence rate of the delocalized vs. localized states with respect
   to the grid spacing}
   
- In presenting the results of this paper care has been taken to ensures the convergence of the results wrt the computational parameters. We have found that there are no relevant difference in the convergence rate of localized vs delocalized quantities (for instance excitations) in function of the grid spacing. This is due to the fact that localized and delocalized states differ in their asymptotic properties whereas the grid spacing convergence is influenced by the fast short-range oscillation of the functions.
+ In presenting the results of this paper care has been taken to ensure the convergence of the results wrt the computational parameters. We have found that there are no relevant difference in the convergence rate of localized vs delocalized quantities (for instance excitations) in function of the grid spacing. This is due to the fact that localized and delocalized states differ in their asymptotic properties whereas the grid spacing convergence is influenced by the fast short-range oscillation of the functions.
  
  Add a comment in the text somewhere?
  
@@ -84,31 +84,65 @@ Here we report some detailed answer concerning the main aspects raised in the re
 
 \section*{Response to the second referee}
 
-We thank the referee for its comment on the paper. Thank to his/her advice and criticism we have tried to clarify our message. 
-We try to answer to the critical points raised out by the review:
+We thank the referee for his/her comment on the paper. The text has been deeply revised according to the suggestions of both the referees. To ease the comparison with the previous version a list of the major modifications apported to the paper is included in this report.
+
+We answer to the critical points raised out in the report of the referee:
 
 \begin{enumerate}
- \item \emph{on the relevance of the symmetry of the molecule in determining the delocalized vs localized character of the an excitation}
  
- In the paper we have introduced a the dyadic representation of excitation $\op E_a$ operator (eq. 16) and we have presented an argument to
- demonstrate that the associated excited states $\phi_p^a,\chi_p^a$ are localized only if the condition $\Omega_a<\epsilon_p$ is satisfied. 
- The set of $p$ labels relevant for the construction of a specific excitation depends of the symmetry...
+ \item \emph{On the localized sector of excitation. Dependence on the symmetry and dimension of the molecule.}
  
- %The structure of eq. 16 states that when both localized and delocalized excited states partecipate to the excitation 
+ In section IIIA we have provided formal arguments that evidence that the excitation spectrum splits into two sectors with distinct features. The first one
+ is composed by a finite set of localized excitations with discrete eigenvalues, whereas the second one contains a continuum spectrum of delocalized objects.
+ For excitation energies lower than the ionization potential (IP) of the molecule all the excitations belong to the first sector. In the intermediate energy range which goes from IP to the absolute value of the energy of the deepest occupied orbital the two sectors compenetrate so that there are localized excitation embedded in a continuum of delocalized ones, and finally only elements of the second sector exist for higher values of the energy. 
  
- \item \emph{regarding the localized excitations which can still be found above the IP threshold (Fig 5a), is there any scope to target these, to the exclusion of other states so that a set of just the localizedexcitations can be calculated at reduced computational cost compared to the whole set?}
+ These formal results have been supported by numerical calculations in which the excitation spectrum of several molecules has been explicitly computed. %through the diagonalization using a systematic (wavelet) basis)
+ The attribution of each excitation of the appropriate sector passes through the evaluation of the norm of the states $\phi_p^a$ and $\chi_p^a$ that build
+ the diadic representation of the excitation (see eq. 17). Only states with norm greater than a given tolerance value are considered and the associated 
+ excitation is attributed to the first sector if the condition $\Omega_a < |\epsilon_p|$ with $\epsilon_a = \mathrm{max}\left(\epsilon_p\right)_{p\in a}$.
+ This computational procedure provides results in optimum agreement with the formal arguments reported above. Indeed the excitation landscape of 
+ (for instace the panel a o fig. 5 for the case of Benzene) evidences the presence of discrete excitations (the black bullets) embedded in a pseudo-continuum 
+ represented by the blue filled square. Moreover the comparison between the excitation DOS computed in different computational domain shows that this way of labeling the excitation is correct since the elements attributed to the localized sector have energies that easily converge with respect to the increase of the simulation box, as expected.  
+ 
+ In the previous version of the paper this type of analysis was limited to the case of $CO$ and Benzene molecules. However the same structure of the excitation spectrum is quite general and turns out not to be affected by the size or symmetry of the molecule. To check this statement we have repeated
+ the same computational analysis for several other molecules of different shape and dimension like the Fullerene and the Aflatoxin. Results for this studies 
+ are presented as supplementary materials. Looking at the excitation landscape for these cases (extracted with the same procedure and tolerance parameters?) it...  
+ 
+ 
+\item \emph{Regarding the localized excitations which can still be found above the IP threshold (Fig 5a), is there any scope to target these, to the
+exclusion of other states, so that a set of just the localized excitations can be calculated at reduced computational cost compared to the whole set?}
 
+ During the review process we have deeply revised the final part of the paper (in particular the section IVB in the actual version of the manuscript) in order to clarify which is the relevance the two excitation sectors for obtaining an effective representation of the susceptibility functional.
+  
+
+ \item \emph{On the exclusion ''by design'' of the delocalized part of the excitation spectrum}
  
- Answer using the results for the statical polarizability described in section III.C...
+ ......................
  
- \item \emph{exclusion ''by design'' of the delocalized part of the excitation spectrum}
- 
- On the base of what written by the referee it seems to me that this sentence could be interpreted in two different way. 
- 
- The first one concerns with the removal of the contribution of the delocalized states in a specific excitation. This  
- 
- The second one indicate what happens when one uses a basis able to express localized states only...
- 
+%  \vspace{2cm}
+%  
+%  
+%  \item \emph{on the relevance of the symmetry and dimension of the molecule in determining the delocalized vs localized character of the an excitation}
+%  
+%  In the paper we have introduced a the dyadic representation of excitation $\op E_a$ operator (eq. 16) and we have presented an argument to
+%  demonstrate that the associated excited states $\phi_p^a,\chi_p^a$ are localized only if the condition $\Omega_a<\epsilon_p$ is satisfied. 
+%  The set of $p$ labels relevant for the construction of a specific excitation depends of the symmetry...
+%  
+%  %The structure of eq. 16 states that when both localized and delocalized excited states partecipate to the excitation 
+%  
+%  \item \emph{regarding the localized excitations which can still be found above the IP threshold (Fig 5a), is there any scope to target these, to the exclusion of other states so that a set of just the localizedexcitations can be calculated at reduced computational cost compared to the whole set?}
+% 
+%  
+%  Answer using the results for the statical polarizability described in section III.C...
+%  
+% 
+%  
+%  On the base of what written by the referee it seems to me that this sentence could be interpreted in two different way. 
+%  
+%  The first one concerns with the removal of the contribution of the delocalized states in a specific excitation. This  
+%  
+%  The second one indicate what happens when one uses a basis able to express localized states only...
+%  
  
  
 \end{enumerate}

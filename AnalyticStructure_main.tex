@@ -104,7 +104,7 @@
 \affiliation{Laboratoire de Simulation Atomistique (LSim), INAC, CEA-UGA, 17 Av. des Martyrs,
 38054 Grenoble, France}
 \date{\today}
-
+   
 \begin{abstract}
 By performing a critical analysis of the fundamental equations of linear-response (LR) formalism in molecules,
 we explore the interplay between locality of the response density operator and  numerical convergence of LR-related quantities.
@@ -386,7 +386,7 @@ density in terms of FS implies that
 here we have assumed that $\op O$ is a real symmetric operator and chosen a real set of occupied molecular states.
 Let us suppose that also the observable of interest $\op O$ can be restricted to localized domains in the same way as the potentials $ \op V$ and $\op \Phi$.
 Once again, it would be enough to consider a local operator for this condition to be met.
-
+    
 Two distinct regimes can be identified, on the basis of value of $\omega$.
 The first one, which we will refer to as the \emph{below threshold} regime, is realized when
 $\omega$ is lower than the ionization potential $|\eps_h|$.
@@ -401,11 +401,19 @@ This is of course true even when the above states are only implicitly expressed 
  as e.g. in the case of Krylov spaces generated from the states $\ket{\op\Phi(\omega) \psi_p}$ \cite{baroni2006,baroni2008,linlinKPM}.
  In this regime, a computational treatment based on localized basis set is susceptible to provide a precise answer, assuming a reasonable level of completeness.
 
-On the contrary, the computation of the linear response functional can be much more demanding in the \emph{above threshold regime}, realized for $\omega>|\eps_h|$, in which fluctuation
-states start behaving as unbound wave functions.
-As by hypothesis $\ket{\op O \psi_p}$ is bound-state like, \emph{only} the scalar products of Eq.~\eqref{LinearResponseFunctDef2} can be evaluated in a localized domain.
-In this case a computational description of fluctuation states is only meaningful in ``weak'' sense, where the bound state character of $\{\bra{\psi_p}\op O\}$ behaves as a regulator. This is naturally achieved in the above mentioned Krylov space treatments, which explicitly deal with the expression of the scalar products. However, in this regime, imposing \emph{by design} a localized behaviour of the FS might reveal very dangerous in view of convergence of the results:
-the computational basis set has to be able to express in the support domain of $\{\bra{\psi_p}\op O\}$ a asymptotically delocalized FS. The degrees of completeness of the computational basis should therefore be increased by imposing oscillatory degrees of freedom needed to represent the FS at the border of the simulation domain: it is important that the underlying basis set is able to express delocalized states.
+On the contrary, the computation of the linear response functional can be much more demanding in the \emph{above threshold regime}, 
+realized for $\omega>|\eps_h|$, in which fluctuation states start behaving as unbound wave functions.
+As by hypothesis $\ket{\op O \psi_p}$ is bound-state like, \emph{only} the scalar products of Eq.~\eqref{LinearResponseFunctDef2} 
+can be evaluated in a localized domain. In this case a computational description of fluctuation states is only meaningful in ``weak'' 
+sense, where the bound state character of $\bra{\psi_p\op O}$ behaves as a regulator. This is naturally achieved in the above mentioned 
+Krylov space treatments, which explicitly deal with the expression of the scalar products. However, in this regime, imposing \emph{by design} 
+a localized behaviour of the FS might reveal very dangerous in view of convergence of the results since the computational basis set has 
+to be able to express a delocalized FS in the support domain of $\bra{\psi_p\op O}$ . 
+This fact implies that the degrees of completeness of the computational basis should therefore be increased by adding the necessary degrees
+of freedom for describe the FS in all the relevant domain. Stated otherwise, in order to achieve precise results in in this regime the 
+underlying basis set has to able to express delocalized states.
+%The degrees of completeness of the computational basis should therefore be increased by imposing oscillatory degrees of freedom needed to 
+%represent the FS at the border of the simulation domain: it is important that the underlying basis set is able to express delocalized states.
 
 These considerations prove why, when a given computer code employs established GS numerical techniques,
 \emph{it is much easier to converge LR quantities for $\omega$ below IP}.
@@ -586,7 +594,7 @@ regardless of the particular behavior of $\op V'$: the excitation landscape in t
 \section{Physical relevance of the excitation spectrum. A comparison among localized and continuum sectors}
 
 \subsection{Observable features of the excitation spectrum}
-
+     
 The analysis of the above section reveals that the excitation spectrum is composed by two distinct sectors.
 The first one is realized by the (finite) set of localized excitations with discrete eigenvalues.
 Borrowing the terminology introduced in section \ref{SEopenSystem} to the present case, we can affirm that such localized excitations behave as
