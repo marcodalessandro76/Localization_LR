@@ -410,7 +410,7 @@ Krylov space treatments, which explicitly deal with the expression of the scalar
 a localized behaviour of the FS might reveal very dangerous in view of convergence of the results since the computational basis set has 
 to be able to express a delocalized FS in the support domain of $\bra{\psi_p\op O}$ . 
 This fact implies that the degrees of completeness of the computational basis should therefore be increased by adding the necessary degrees
-of freedom for describe the FS in all the relevant domain. Stated otherwise, in order to achieve precise results in in this regime the 
+of freedom for describe the FS in all the relevant domain. Stated otherwise, to achieve precise results in this regime the 
 underlying basis set has to able to express delocalized states.
 %The degrees of completeness of the computational basis should therefore be increased by imposing oscillatory degrees of freedom needed to 
 %represent the FS at the border of the simulation domain: it is important that the underlying basis set is able to express delocalized states.
@@ -642,7 +642,7 @@ the agreement with the expected analytic structure presented in Fig.~\ref{Excita
 So far we have showed with both formal arguments and numerical calculations that the excitation spectrum split into two sectors with very distinct features.
 It is then reasonable to ask which is their relative importance and, in particular, if there is the possibility to express observable quantities, in a suitable $\omega$ range, by only employing the sector of genuinely localized excitations.
 Stated otherwise, will the \emph{restriction} of $\sop \chi(\omega)$ to only localized excitations can be useful to extract some physical quantities?
-
+  
 In this regard it is illustrative to apply the above arguments to the evaluation of the dynamical polarizability tensor $\alpha_{ij}(\omega)$.
 Employing the formalism of Eq.~\eqref{deltaoexc} provides
 \be\lb{imalpha}
@@ -653,7 +653,7 @@ The imaginary part of the dynamical polarizability tensor therefore can be seen 
 $\op{\mathbf r}_i\op{\mathbf r}_j$. For this reason, it is evident that below the \emph{first} excitation threshold (IP), the contributions to $\mathrm{Im}\left(\alpha_{ij}(\omega)\right)$ can be expressed only in terms of observable excited states. On the contrary, the non-observable, basis dependent continuum sector of the excitation starts to contribute to $\mathrm{Im}\left(\alpha_{ij}(\omega)\right)$ above IP; the localized sector is not anymore sufficient to express Eq.~\eqref{imalpha} in this $\omega$ range.
 
 To further address this point we exploit the formal relation between response density and susceptibility functional %established in ~\eqref{SusceptibilityDef1} 
-$\dm'(\omega) = \sop \chi(\omega)\op\Phi(\omega)$ and make usage of the diadic representation ~\eqref{rhoPrimeFluctuationStateDef1} of the response density. Pursuing this procedure provides the excitation-based
+$\dm'(\omega) = \sop \chi(\omega)\op\Phi(\omega)$ and make usage of the dyadic representation ~\eqref{rhoPrimeFluctuationStateDef1} of the response density. Pursuing this procedure provides the excitation-based
 representation of FS as follows:
 % Let us now consider the features of the response density operator of Eq.~\eqref{rhoPrimeFluctuationStateDef1}.
 % The fluctuation state in this case can be written as
@@ -721,7 +721,7 @@ oscillator strengths $w^a_{zz}$ of Eq.~\eqref{sminus2} are also plotted. }
 \end{figure}
 
 Present the table of the other results.
-
+  
 Such a scenario can be also found in the other molecules we have considered;
 varying the molecule size and symmetry seems not to modify the qualitative behavior of the excitation landscape. In addition the
 localized sector of the excitations alone is largely insufficient to express $\alpha_{ij}$.
@@ -735,7 +735,6 @@ However, the fulfillement of $S_{-2}$ is not a universal quality indicator of $\
 it is enough to recall
 the strong dependency on the box size of the absorption spectra of Fig.~\ref{CO_exc}.
 For all these computational setups, the $S_{-2}$ sum rule is, on the contrary, well satisfied.
-
 
 \section{Conclusions and Perspectives}
 
@@ -793,15 +792,16 @@ The operator $\op O_\parallel$ is constructed to satisfy
 $\commutator{\dmnot}{\op O_\parallel} = \commutator{\hnot}{\op O_\parallel} =0$.
 Also, it is easy to verify that given two generic $\op O$, $\op O'$, we have
 $\trace{\op O'_\parallel \op O_\perp} =0$.
-
+   
 The projection $\op O_\perp$ is therefore the relevant part for the commutator
 \begin{equation}
 \commutator{\dmnot}{\op O} = \commutator{\dmnot}{\op O_\perp} =
 \dmnot \op O \op Q_0  - \op Q_0 \op O \dmnot  \;,
 \end{equation}
-consequently the Liouvillian superoperator, which contains by definition a commutator with $\hnot$ and $\dmnot$ in its bare and coupling part, is constructed such as $\Liouv \op O = \Liouv O_\perp$. In addition, the image operator satisfies the transverse condition
+consequently the Liouvillian superoperator, which contains by definition a commutator with $\hnot$ and $\dmnot$ in its unperturbed and coupling part respectively,
+is constructed such as $\Liouv \op O = \Liouv O_\perp$. In addition, the image operator satisfies the transverse condition
 $\left( \Liouv \op O \right)_\parallel =0$.
-
+  
 Here $\op V'$, which expresses the perturbation induced by the density dependence on ground state Hamiltonian, can be conveniently expressed by defining the
 \emph{scalar coupling kernel}
 \be\lb{CouplingKernelDef1}
