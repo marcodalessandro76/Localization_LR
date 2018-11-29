@@ -101,8 +101,7 @@
 \author{Marco D'Alessandro}
 \affiliation{Istituto di Struttura della Materia-CNR (ISM-CNR), Via del Fosso del Cavaliere 100, 00133 Roma, Italia}
 \author{Luigi Genovese}
-\affiliation{Laboratoire de Simulation Atomistique (LSim), INAC, CEA-UGA, 17 Av. des Martyrs,
-38054 Grenoble, France}
+\affiliation{Laboratoire de Simulation Atomistique (LSim), Univ. Grenoble Alpes, CEA, INAC-MEM, 38000 Grenoble, France}
 \date{\today}
 
 \begin{abstract}
@@ -365,7 +364,7 @@ where $\mathbf d^\text{(GS)}=\braket{\mathbf r}$ is the ground state dipole.
 Fig.~\eqref{co_alphaStatic} illustrates this procedure for a $CO$ molecule
 perturbed by a static electric field.
 Care has been taken in keeping the field strenghts $F_j$ small enough to
-preseve the validity of the linear response regime.
+preserve the validity of the linear response regime.
 The local character of the fluctuation states at $\omega=0$ is
 probed by verifying the convergence of the statical polarizability versus
 the size of the computational domain used to express the fluctuation states. The convergence rate is compared with the
@@ -450,7 +449,7 @@ is indicated by a vertical dashed line.}
 
 \section{Excitation operators. The analytic structure of the susceptibility functional}
 
-It is possible to reformulate this type of analysis by directly looking at LR quantities that are defined independently from the perturbing operators and target observable. This can be achieved by studying the \emph{susceptibility functional}, defined implicitly trough the operator equation
+It is possible to reformulate this type of analysis by directly looking at LR quantities that are defined independently from the perturbing operators and target observable. This can be achieved by studying the \emph{susceptibility functional}, defined implicitly through the operator equation
 \be\lb{SusceptibilityDef1}
 \dm'(\omega) = \left(\omega -\mathcal L \right)^{-1} \commutator{\op \Phi(\omega)}{\dmnot} = \sop{{\cal \chi}}(\omega) \op\Phi(\omega) \;.
 \ee
@@ -687,7 +686,9 @@ which has to be interpreted as a localized wavepacket in the basis of the pseudo
 %\emph{has} to realize due to a non trivial cancellation of the unbound parts of the $\ket{w_p^a}$'s.
 
 Hence, contrary to GS, we conclude that \emph{for LR calculation, even when the response density is localized, the contribution coming from the
-continuum sector of the excitations can never be neglected}. In other terms, we cannot exclude that a fluctuation state, even if genuinely localized, will have a nonzero projection in the essential part of the Liouvillian spectrum, which in turn cannot be expressed by only employing localized states. This fact shows that it is \emph{impossible} to restrict the spectral representation of $\chi(\omega)$ to only localized, discrete, \emph{code-independent} excitations, even for representing LR results in the $\omega=0$ limit.
+continuum sector of the excitations can never be neglected}. In other terms, we cannot exclude that a fluctuation state, even if genuinely localized, will have a nonzero projection in the essential part of the Liouvillian spectrum, which in turn cannot be expressed by only employing localized states.
+This fact shows that it is \emph{impossible} to restrict the spectral representation of $\chi(\omega)$ to only localized, discrete, \emph{code-independent} excitations, even for representing LR results in the $\omega=0$ limit. The basis-dependent sector of the excitation will be needed to
+represent the linear susceptibility in the appropriate region of space.
 
 \subsection{Effective representation of $\sop \chi(\omega)$ for localized response densities}
 The above arguments have shown that the only quantity which can be expressed in terms of the localized sector of the excitation spectrum is the imaginary part of the susceptibility functional $\sop \chi(\omega)$ in the optical regime (i.e. $\omega <$  IP). The response density for a generic perturbation and $\omega$ value requires the inclusion in the Liouvillian DOS of the delocalized part of the excitation spectrum, even in view of expressing localized fluctuation states.
@@ -711,7 +712,7 @@ in terms of the molecule's oscillator strengths.
 In the context of a numerical evaluation of the excitations, such sum rule can therefore be interpreted as the capability of the pseudo-continuum sector of the excitation to
 express the localized FS -- and consequently the reference value of $\alpha_{ij}$ -- at $\omega=0$.
 
-We have analized the fullfillment of Eq.~\eqref{sminus2} for molecules of various
+We have analyzed the fullfillment of Eq.~\eqref{sminus2} for molecules of various
 sizes and symmetries.
 In Fig.~\ref{co_AlphaExc} we show explicitly such a comparison in the case of the $CO$ molecule.
 We notice that a considerable number of pseudo-continuum excitations is required
@@ -730,20 +731,21 @@ oscillator strengths $w^a_{zz}$ of Eq.~\eqref{sminus2} are also plotted. }
 
 \begin{table}
 \begin{tabular}{c|cc||cc}
-  Mol. & $\braket{\alpha}_\text{ref}$ & $ \braket{\text{Eq.~\eqref{sminus2}}}$ & \% LS & \% $\Omega_a <$ IP  \\
+  Mol. ($N_{at}$) & $\braket{\alpha}_\text{ref}$ & $ \braket{\text{Eq.~\eqref{sminus2}}}$ & \% LS & \% $\Omega_a <$ IP  \\
   \hline
   \hline
-  N$_2$ &12.49 & 12.38 & $1.6\cdot 10^{-6}$ & $1.6\cdot 10^{-6}$ \\
-  CO & 15.07 & 14.79 & 8.6 & 8.6 \\
-  H$_2$O & 10.87 & 10.72 & 0.1 & 0.1 \\
-  Benzene & 71.11 & 70.32 & 3.0 & $7.2 \cdot 10^{-5}$\\
-  Aflatoxin & N/A   & 226.27 & 15.87 & 14.84 \\
-  C$_{60}$ & 561.59 & 509.60 & 38.47 & 34.41
-\end{tabular}\caption{Present the table here}
+  N$_2 (2)$ &12.49 & 12.38 & $1.6\cdot 10^{-6}$ & $1.6\cdot 10^{-6}$ \\
+  CO (2)& 15.07 & 14.79 & 8.6 & 8.6 \\
+  H$_2$O (3) & 10.87 & 10.72 & 0.1 & 0.1 \\
+  Benzene (12)& 71.11 & 70.32 & 3.0 & $7.2 \cdot 10^{-5}$\\
+  Aflatoxin (35)& N/A   & 226.27 & 15.87 & 14.84 \\
+  C$_{60}$ (60)& 561.59 & 509.60 & 38.47 & 34.41
+\end{tabular}\caption{Comparison of the average static polarizabilities for molecules of various sizes (indicated by the number of atoms $N_{at}$) and symmetries, obtained from the reference calculations of Eq.~\eqref{staticalpha} and from the sum over the excitations extracted from the Casida coupling matrix. The last two columns show the percentage of the contribution to Eq.~\eqref{sminus2} which
+come from the Localized Sector (LS) of the excitations, by focusing also on the LS before the first IP, where all the excitated states are localized. We see that by increasing the molecules' sizes the LS contribution increases in percentage, however being always largely insufficient; the contribution coming from the pseudocontinuum excitations can never be neglected.}
 \end{table}
 
 Such a scenario can be also found in the other molecules we have considered;
-varying the molecule size and symmetry seems not to modify the qualitative behavior of the excitation landscape. In addition the
+varying the molecule size and symmetry does not modify the qualitative behavior of the excitation landscape. In addition the
 localized sector of the excitations alone is largely insufficient to express $\alpha_{ij}$.
 Such considerations are independent on the number of atoms of the molecule, as the range in $\omega$ needed to
 achieve satisfactory agreement is largely above the last valence ionization threshold, which is
@@ -770,7 +772,7 @@ From a computational perspective, a set of localized basis functions, which \emp
 enough to express $\sop \chi(\omega)$ \emph{below} IP, but it will never be able to capture the entire features of the response density operator above
 the ionization threshold: the system's excitations expressed in this basis are reliable \emph{only} in the optical regime.
 High-energy excitations belong to a continuum sector (which should not be confused with the continuum eigenstates of the unperturbed GS Hamiltonian)
-and the excitation density of states for $\omega >$ IP provided in this way has to be considered as a effective representation of $\sop \chi(\omega)$ in order to fulfill Eq.~\eqref{fsinexc}. This fact has been pointed out several times (see e.g. \cite{giustino2012,giustino2014}) in the literature.
+and the excitation density of states for $\omega >$ IP provided in this way has to be considered as an effective representation of $\sop \chi(\omega)$ in order to fulfill Eq.~\eqref{fsinexc}. This fact has been pointed out several times (see e.g. \cite{giustino2012,giustino2014}) in the literature.
 
 On the contrary, computational treatments that are able to express delocalized states may be such to describe more efficiently the excitations DOS,
 especially because of the capability of the basis to capture oscillatory behavior. Like in localized basis sets, excitations below threshold can be
