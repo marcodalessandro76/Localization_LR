@@ -39,15 +39,16 @@
 
 List of major changes apported to the paper:
 \begin{itemize}
- \item Much efforts have been spent in trying to clarify better the relation between localization properties and features of the computational basis needed 
- to provide precise results. This topic has been discussed in all the text. Major modifications under this perspective have been done in the introduction, in section II at pag. 5 before the analysis of fig. 2,in section IV and in the conclusions. 
+ \item We have further clarified the relation between localization properties and features of the computational basis needed
+ to provide precise results. Major modifications under this perspective have been done in the introduction, in section II at pag. 5 before the analysis of fig. 2,in section IV and in the conclusions.
  \item The introduction has been deeply revised. In particular we have reduced the length of the first two paragraph concerning the differences between accuracy and precision.
  \item We added a comment after eq. (7) on the non-hermiticity of the response density and corrected the equation (11).
- \item Added a dedicated subsection (actually the IIA at page 4)  to discuss the localization properties of the FS states for static perturbations. 
+ \item Added a dedicated subsection (actually the IIA at page 4)  to discuss the localization properties of the FS states for static perturbations.
  \item Added a panel in figure 2 that contain the plot of the real part of $\alpha(\omega)$ in calculated in different computational domain. This new plot aims to evidence that the localization
  properties of th FS affect, on equal footing, both the real and the imaginary part of the linear response functional.
- \item We have reorganized the material after section III A. In particular we have introduced a new section (number IV in the actual version of the paper) in which we have discussed both the physical features of the excitation spectrum and the relative importance of localized vs. delocalized sector in expressing the susceptibility functional. This section also collects computational results for molecules beyond the case of $CO$ and benzene, already discussed in the previous version of the paper.  
- \item State something about the inclusion of other molecules...
+ \item We have reorganized the material after section III A. In particular we have introduced a new section (number IV in the actual version of the paper) in which we have discussed both the physical features of the excitation spectrum and the relative importance of localized vs. delocalized sector in expressing the susceptibility functional. This section also collects computational results for molecules beyond the case of $CO$ and benzene, already discussed in the previous version of the paper.
+ \item We have also included in our analysis the treatment of various molecular systems, of various sizes and symmetries, such as to further illustrate the generality of our assumptions. A table has been added for comparing the excitation landscape of the molecules, in particular related to the ability of the numerical excitations to
+ express the static polarizability tensor.
 \end{itemize}
 
 \section*{Response to the first referee}
@@ -56,23 +57,22 @@ We wish to thank the referee for the positive review on the paper. The text has 
 
 Here we report the detailed answers concerning the main aspects raised in the referee's report:
 \begin{enumerate}
-  \item \emph{on the point concerning the dimension of the simulation box needed to achieve the convergence of the delocalized states of the $CO$ molecule}. 
-  
-  Delocalized fluctuation states do not achieve convergence as long as the simulation box is increased. Since they behave as continuum states they suffer of the same continuum collapse behavior described in section IA for the unbound solution of the Schr\"odinger equation. What is expected to converge is the spectral function, or declined in the present case the real and imaginary part of the dynamical polarizability. 
-  The value of convergence is system/observable and perturbation dependent. It can be found through an explicit convergence analysis by introducing an acceptance tolerance, however this procedure is out of the scope of our analysis and has not been performed. 
-  
+  \item \emph{on the point concerning the dimension of the simulation box needed to achieve the convergence of the delocalized states of the $CO$ molecule}.
+
+  Delocalized fluctuation states do not achieve convergence as long as the simulation box is increased. Since they behave as continuum states they suffer of the same continuum collapse behavior described in section IA for the unbound solution of the Schr\"odinger equation. What is expected to converge is the spectral function, or declined in the present case the real and imaginary part of the dynamical polarizability.
+  The value of convergence is system/observable and perturbation dependent.
+  % It can be found through an explicit convergence analysis by introducing an acceptance tolerance, however this procedure is out of the scope of our analysis and has not been performed.
+
   Nonetheless, to have an idea of the dimension of the box needed to achieve convergence we can refer to the case of the Benzene molecule and make usage
-  of the result found in our analysis, compared to the one reporte in fig. 2 of \cite{baroni2008}. Within our analysis we show that a box linear size of about 18 Angostroem is sufficient to produce converged results for excitation spectrum below IP (around 6.5 eV in the present case). On the contrary, results of \cite{baroni2008} evidence that to achieve convergence up to 30 eV a box of linear dimension of more than 31 Angstroem is needed, so going from the localized to the delocalized sector of excitation spectrum requires a relevant increase in the simulation domain. 
-  
+  of the result found in our analysis, compared to the one reporte in fig. 2 of \cite{baroni2008}. Within our analysis we show that a box linear size of about 18 Angostroem is sufficient to produce converged results for excitation spectrum below IP (around 6.5 eV in the present case). On the contrary, results of \cite{baroni2008} evidence that to achieve convergence up to 30 eV a box of linear dimension of more than 30 Angstroem is needed, so going from the localized to the delocalized sector of excitation spectrum requires a relevant increase in the simulation domain.
+
   \item \emph{on the point concerning the convergence rate of the delocalized vs. localized states with respect
   to the grid spacing}
-  
- In presenting the results of this paper care has been taken to ensure the convergence of the results wrt the computational parameters. We have found that there are no relevant difference in the convergence rate of localized vs delocalized quantities (for instance excitations) in function of the grid spacing. This is due to the fact that localized and delocalized states differ in their asymptotic properties whereas the grid spacing convergence is influenced by the fast short-range oscillation of the functions.
- 
- Add a comment in the text somewhere?
- 
+
+ In presenting the results of this paper care has been taken to ensure the convergence of the results wrt the computational parameters. We have found that there are no relevant difference in the convergence rate of localized vs delocalized quantities (for instance excitations) in function of the grid spacing. This is due to the fact that localized and delocalized states differ in their asymptotic properties whereas the grid spacing convergence is influenced by the short-range oscillation of the functions.
+
  The values of the grid spacing used for the calculations have been added in appendix C.
- 
+
 \item Other minor corrections:
 \begin{itemize}
  \item The insets of fig. 4 and 5 have been increased.
@@ -90,67 +90,67 @@ We thank the referee for his/her comment on the paper. The text has been deeply 
 We answer to the critical points raised out in the report of the referee:
 
 \begin{enumerate}
-  
+
  \item \emph{On the localized sector of excitation. Dependence on the symmetry and dimension of the molecule.}
- 
- In section IIIA we have provided formal arguments that evidence that the excitation spectrum splits into two sectors with distinct features. The first one
- is composed by a finite set of localized excitations with discrete eigenvalues, whereas the second one contains a continuum spectrum of delocalized objects.
- For excitation energies lower than the ionization potential (IP) of the molecule all the excitations belong to the first sector. In the intermediate energy range which goes from IP to the absolute value of the energy of the deepest occupied orbital the two sectors compenetrate so that there are localized excitation embedded in a continuum of delocalized ones, and finally only elements of the second sector exist for higher values of the energy. 
- 
- These formal results have been supported by numerical calculations in which the excitation spectrum of several molecules has been explicitly computed.
+
+ % In section IIIA we have provided formal arguments that evidence that the excitation spectrum splits into two sectors with distinct features. The first one
+ % is composed by a finite set of localized excitations with discrete eigenvalues, whereas the second one contains a continuum spectrum of delocalized objects.
+ % For excitation energies lower than the ionization potential (IP) of the molecule all the excitations belong to the first sector. In the intermediate energy range which goes from IP to the absolute value of the energy of the deepest occupied orbital the two sectors compenetrate so that there are localized excitation embedded in a continuum of delocalized ones, and finally only elements of the second sector exist for higher values of the energy.
+ %
+ % These formal results have been supported by numerical calculations in which the excitation spectrum of several molecules has been explicitly computed.
  The attribution of each excitation of the appropriate sector passes through the evaluation of the norm of the states $\phi_p^a$ and $\chi_p^a$ that build
- the dyadic representation of the excitation (see eq. 17). Only states with norm greater than a given tolerance value are considered and the associated 
+ the dyadic representation of the excitation (see eq. 17). Only states with norm greater than a given tolerance value are considered and the associated
  excitation is attributed to the first sector if the condition $\Omega_a < |\epsilon_p|$ with $\epsilon_a = \mathrm{max}\left(\epsilon_p\right)_{p\in a}$.
- This computational procedure provides results in optimum agreement with the formal arguments reported above. Indeed the excitation landscape of 
- (for instace the panel a o fig. 5 for the case of Benzene) evidences the presence of discrete excitations (the black bullets) embedded in a pseudo-continuum 
- represented by the blue filled square. Moreover the comparison between the excitation DOS computed in different computational domain shows that this way of labeling the excitation is correct since the elements attributed to the localized sector have energies that easily converge with respect to the increase of the simulation box, as expected.  
- 
+ This computational procedure provides results in optimum agreement with the formal arguments reported above. Indeed the excitation landscape of
+ (for instace the panel a o fig. 5 for the case of Benzene) evidences the presence of discrete excitations (the black bullets) embedded in a pseudo-continuum
+ represented by the blue filled square. Moreover the comparison between the excitation DOS computed in different computational domain shows that this way of labeling the excitation is correct since the elements attributed to the localized sector have energies that easily converge with respect to the increase of the simulation box, as expected.
+
  In the previous version of the paper this type of analysis was limited to the case of $CO$ and Benzene molecules. However the same structure of the excitation spectrum is quite general and turns out not to be affected by the size or symmetry of the molecule. To check this statement we have repeated
- the same computational analysis for several other molecules of different shape and dimension like the Fullerene and the Aflatoxin. Results for this studies 
+ the same computational analysis for several other molecules of different shape and dimension like the Fullerene and the Aflatoxin. Results for this studies
  are presented as supplementary materials. Looking at the excitation landscape for these cases (extracted with the same procedure and tolerance parameters?) it...
  to be completed after the inclusion of the table.....
- 
+
 \item \emph{Regarding the localized excitations which can still be found above the IP threshold (Fig 5a), is there any scope to target these, to the
 exclusion of other states, so that a set of just the localized excitations can be calculated at reduced computational cost compared to the whole set?}
 
  During the review process we have deeply revised the final part of the paper (in particular the section IVB in the actual version of the manuscript) in order to clarify which is the relevance the two excitation sectors for obtaining an effective representation of the susceptibility functional.
- 
+
  For a sake of concreteness this analysis has been declined for the relevant case of the computation of the dynamical polarizability. It emerges that the localized
  sector of excitation is sufficient to express the imaginary part of $\alpha(\omega)$ \emph{only} for values of $\omega$ below IP (see eq. 21). The evaluation of
  other quantities, namely $\mathrm{Im}(\alpha(\omega))$ above IP or $\mathrm{Re}(\alpha(\omega))$ in all the $\omega$ range requires a relevant contribution from
  both the sectors of excitation spectrum. So, to answer to the question raised by the referee we can state that localized excitations above IP can be isolated and computed using the procedure described in the previous point of this report, but their knowledge alone is not useful to extract any physical quantities.
- We can state that the multi-threshold structure of the excitation spectrum is surely interesting but is not very relevant for computational purposes.   
- 
+ We can state that the multi-threshold structure of the excitation spectrum is surely interesting but is not very relevant for computational purposes.
+
  \item \emph{On the exclusion ''by design'' of the delocalized part of the excitation spectrum}
- 
+
  ......................
- 
+
 %  \vspace{2cm}
-%  
-%  
+%
+%
 %  \item \emph{on the relevance of the symmetry and dimension of the molecule in determining the delocalized vs localized character of the an excitation}
-%  
+%
 %  In the paper we have introduced a the dyadic representation of excitation $\op E_a$ operator (eq. 16) and we have presented an argument to
-%  demonstrate that the associated excited states $\phi_p^a,\chi_p^a$ are localized only if the condition $\Omega_a<\epsilon_p$ is satisfied. 
+%  demonstrate that the associated excited states $\phi_p^a,\chi_p^a$ are localized only if the condition $\Omega_a<\epsilon_p$ is satisfied.
 %  The set of $p$ labels relevant for the construction of a specific excitation depends of the symmetry...
-%  
-%  %The structure of eq. 16 states that when both localized and delocalized excited states partecipate to the excitation 
-%  
+%
+%  %The structure of eq. 16 states that when both localized and delocalized excited states partecipate to the excitation
+%
 %  \item \emph{regarding the localized excitations which can still be found above the IP threshold (Fig 5a), is there any scope to target these, to the exclusion of other states so that a set of just the localizedexcitations can be calculated at reduced computational cost compared to the whole set?}
-% 
-%  
+%
+%
 %  Answer using the results for the statical polarizability described in section III.C...
-%  
-% 
-%  
-%  On the base of what written by the referee it seems to me that this sentence could be interpreted in two different way. 
-%  
-%  The first one concerns with the removal of the contribution of the delocalized states in a specific excitation. This  
-%  
+%
+%
+%
+%  On the base of what written by the referee it seems to me that this sentence could be interpreted in two different way.
+%
+%  The first one concerns with the removal of the contribution of the delocalized states in a specific excitation. This
+%
 %  The second one indicate what happens when one uses a basis able to express localized states only...
-%  
- 
- 
+%
+
+
 \end{enumerate}
 
 \bibliographystyle{elsarticle-num}

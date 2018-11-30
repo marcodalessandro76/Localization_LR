@@ -906,6 +906,7 @@ For each size of the simulation domain, the number of unoccupied states used for
 
 \subsection{$CO$}
 The molecule is oriented along the $z$ axis and the $z$-dimension of the box is equal to 11.5, 15.1 and 16.6 \AA.
+Bond length is 1.235\AA, stretched wrt the equilibrium LDA position such as to increase the value of the polarizability.
 280 unoccupied states have been computed in each setup, which span an energy range of the empty KS orbitals of 30.7, 19.3 and 15.4 eV respectively.
 Such energy values should not be confused with the excitations energy ranges reported in Figs.~\ref{co_spectrum} and \ref{CO_exc}.
 Once again, such choices of unoccupied states ensures convergence in of excitations spectrum in the presented range.
@@ -918,6 +919,13 @@ The molecule is oriented in the $xy$ plain and the $x$-dimension of the box is e
 energy range for the unoccupied states is 16.9, 11.6 and 9.7 eV.
 
 The DOS reported in figure \ref{C6H6_exc} are obtained by adding a complex shift of $1.3\times 10^{-2}$ eV whereas in the inset shift is $5\times 10^{-3}$ eV.
+
+\subsection{Excitation Landscapes}
+The attribution of each excitation of the appropriate sector passes through the evaluation of the norm of the states $\phi_p^a$ and $\chi_p^a$, in the form of Eq.~\eqref{phiandchi}. Only states with norm greater than a given tolerance value(taken as the 1\% of the total norm) are considered and the associated
+excitation is attributed to the first sector if the condition $\Omega_a < |\epsilon_p|$ with $\epsilon_a = \mathrm{max}\left(\epsilon_p\right)_{p\in a}$.
+This computational procedure provides results in optimum agreement with the formal arguments reported above. Indeed the excitation landscape of
+(for instace the panel a of Fig.~\eqref{c6h6_excLand} for the case of Benzene) evidences the presence of discrete excitations (the black bullets) embedded in a pseudo-continuum
+represented by the blue filled square. The comparison between the excitation DOS computed in different computational domain shows that this way of labeling the excitation is in line with the locality of the corresponding states since the corresponding energies easily converge with respect to the increase of the simulation domain.
 
 
 
