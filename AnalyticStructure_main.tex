@@ -214,7 +214,7 @@ represents a \emph{threshold}~\footnote{The threshold value in general should co
 energy that separates two different classes of solutions.
 Negative-energy solutions are \emph{localized}, i.e. they exhibit bound-state behavior far away from the scatterer.
 These are bound states and, by means of their normalizability, they are associated to \emph{discrete}, well-defined energies.
-The bound states can be of course labelled by quantum numbers that are defined by the properties of the scatterer, namely the
+The bound states can be of course labeled by quantum numbers that are defined by the properties of the scatterer, namely the
 symmetries of the potential $\op V$.
 In a computational discretization of the Schr\"odinger equation, such states can be in principle expressed with arbitrary precision,
 provided that the numerical treatment offers the adequate level of completeness.
@@ -594,7 +594,7 @@ the associated spectrum exhibits an explicit dependence from the size of the dom
 Excitations belonging to this sector thus lose their intrinsic physical meaning and have to be understood simply as objects providing an effective representation of the density of states (DOS) of the Liouvillian superoperator, by means of the spectral operators $\sop B_a$ of Eq.~\eqref{spectralop}.
 
 \begin{figure}[ht]
-\includegraphics[scale=0.6]{Fig4_CO_dos_rev1.eps} %{Fig4_CO_dos.eps}
+\includegraphics[scale=0.6]{Fig4_CO_dos_rev1.eps}
 \caption{(Color online) DOS of $CO$ excitation energies $\Omega_a$. The two curves correspond to two computational domain of different sizes. The inset contains the sole contribution of localized excitations. The first IP threshold is depicted as the vertical dashed line.}
 \label{CO_exc}
 \end{figure}
@@ -606,7 +606,7 @@ Excitations belonging to this sector thus lose their intrinsic physical meaning 
 \centering
 \subfloat[DOS of Excitation energies]
 {\label{C6H6_exc}
-\includegraphics[scale=0.58]{Fig5b_C6H6_dos_rev1.eps}} %{Fig5b_C6H6_dos.eps}
+\includegraphics[scale=0.58]{Fig5b_C6H6_dos_rev1.eps}}
 \caption{(Color online) Benzene molecule. (a): Excitation Landscape: the excitations have been separated in discrete and continuum sector following the criteria of Sec.~\ref{ExcitationLandscape}. (b): DOS of excitation energies $\Omega_a$. The first IP threshold is depicted as the vertical dashed line.}
 \end{figure}
 
@@ -676,22 +676,38 @@ in terms of the molecule's oscillator strengths.
 In the context of a numerical evaluation of the excitations, such sum rule can therefore be interpreted as the capability of the pseudo-continuum sector of the excitation to
 express the localized FS -- and consequently the reference value of $\alpha_{ij}$ -- at $\omega=0$.
 
-We have analyzed the fullfillment of Eq.~\eqref{sminus2} for molecules of various
+We have analyzed the fulfillment of Eq.~\eqref{sminus2} for molecules of various
 sizes and symmetries.
-In Fig.~\ref{co_AlphaExc} we show explicitly such a comparison in the case of the $CO$ molecule.
+In Fig.~\ref{co_AlphaExc} we show explicitly such a comparison for the $CO$ and $C_{60}$ molecules.
 We notice that a considerable number of pseudo-continuum excitations is required
 to find the correct result; the sector of the discrete excitations, even though
-parametrised by localized, observable (in the sense of reproducible) excited states,
+parametrized by localized, observable (in the sense of reproducible) excited states,
 appears to be largely insufficient to express the reference fluctuation state. Its contribution is even negligible w.r.t.
 the one coming from the continuum sector.
 
+% \begin{figure}
+% \includegraphics[scale=0.6]{Fig6_CO_statPolvsExc.eps}
+% \caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability $\alpha_{zz}$ of the $CO$ molecule, in a box of $11.5$ \AA,
+% w.r.t the excitations considered in the integral of Eq.~\eqref{sminus2}. The reference value obtained from Eq.~\eqref{staticalpha} is represented as a
+% horizontal red dashed line. The value of the IP energy is indicated by a vertical black dashed line. For each excitation energy, the values of the
+% oscillator strengths $w^a_{zz}$ of Eq.~\eqref{sminus2} are also plotted. }
+% \end{figure}
+
 \begin{figure}
-\includegraphics[scale=0.6]{Fig6_CO_statPolvsExc.eps}
-\caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability $\alpha_{zz}$ of the $CO$ molecule, in a box of $11.5$ \AA,
+\centering
+\subfloat[$CO$]
+{\label{CO_alphavsExc}
+\includegraphics[scale=0.6]{Fig6a_CO_statPolvsExc.eps}} \\
+\centering
+\subfloat[$C_{60}$]
+{\label{C60_alphavsExc}
+\includegraphics[scale=0.2]{Fig6b_C60_statPolvsExc.eps}}
+\caption{\label{co_AlphaExc}(Color online) Convergence of the statical polarizability $\alpha_{zz}$ of the $CO$ (panel a) and $C_{60}$ (panel b) molecules,
 w.r.t the excitations considered in the integral of Eq.~\eqref{sminus2}. The reference value obtained from Eq.~\eqref{staticalpha} is represented as a
 horizontal red dashed line. The value of the IP energy is indicated by a vertical black dashed line. For each excitation energy, the values of the
 oscillator strengths $w^a_{zz}$ of Eq.~\eqref{sminus2} are also plotted. }
 \end{figure}
+
 
 \begin{table}
 \begin{tabular}{c|cc||cc}
@@ -739,7 +755,7 @@ the ionization threshold: the system's excitations expressed in this basis are r
 High-energy excitations belong to a continuum sector (which should not be confused with the continuum eigenstates of the unperturbed GS Hamiltonian)
 and the excitation density of states for $\omega >$ IP provided in this way has to be considered as an effective representation of $\sop \chi(\omega)$ in order to fulfill Eq.~\eqref{fsinexc}. This fact has been pointed out several times (see e.g. \cite{giustino2012,giustino2014}) in the literature.
 
-On the contrary, computational treatments that are able to express delocalized states may be adeguate to describe more efficiently the excitations DOS,
+On the contrary, computational treatments that are able to express delocalized states may be adequate to describe more efficiently the excitations DOS,
 especially due to the capability of the basis to capture oscillatory behavior. Like in localized basis sets, excitations below threshold can be
 precisely calculated with the same paradigm of traditional GS calculations. However, in this computational setup, to correctly express the linear susceptibility below IP -- more specifically the real part of the fluctuation state -- care should be taken in considering enough delocalized excitations
 to guarantee fulfillment of sum-rules like Eq.~\eqref{sminus2}.
@@ -866,14 +882,14 @@ Norm Conserving Pseudopotentials (PSP) of the HGH \cite{NLCCPSP} type are employ
 Our LR calculation are performed with the Casida formalism \cite{bhaarathi}, where it is also important to include a sufficient number of unoccupied states in the transition operators. As pointed out in the text such states behave as plane waves: the features of wavelets enable us to represent localized and delocalized states on equal footing.
 For each size of the simulation domain, the number of unoccupied states used for building the Casida' eigenproblem has been increased up to convergence of the presented results.
 
-All the details of the calculations, the \textsl{Jupyter} notebooks of the data analysis, including the supplementary informations, may be found at the URL~\footnote{\texttt{https://github.com/luigigenovese/LR-nb/blob/master/ POLARIZABILITY/nb\_paper/LR\_Analysis.ipynb}, or \texttt{https://gitlab.com/luigigenovese/ localization-of-excitations/ blob/master/LR\_Analysis.ipynb}}
+All the details of the calculations, the \textsl{Jupyter} notebooks of the data analysis, including the supplementary information, may be found at the URL~\footnote{\texttt{https://github.com/luigigenovese/LR-nb/blob/master/ POLARIZABILITY/nb\_paper/LR\_Analysis.ipynb}, or \texttt{https://gitlab.com/luigigenovese/ localization-of-excitations/ blob/master/LR\_Analysis.ipynb}}
 
 \subsection{$CO$}
 The molecule is oriented along the $z$ axis and the $z$-dimension of the box is equal to 11.5, 15.1 and 16.6 \AA.
-Bond length is 1.235\AA, stretched wrt the equilibrium LDA position such as to increase the value of the polarizability.
+Bond length is 1.235\AA, stretched w.r.t. the equilibrium LDA position such as to increase the value of the polarizability.
 280 unoccupied states have been computed in each setup, which span an energy range of the empty KS orbitals of 30.7, 19.3 and 15.4 eV respectively.
-Such energy values should not be confused with the excitations energy ranges reported in Figs.~\ref{co_spectrum} and \ref{CO_exc}.
-Once again, such choices of unoccupied states ensures convergence in of excitations spectrum in the presented range.
+These energy values should not be confused with the excitations energy ranges reported in Figs.~\ref{co_spectrum} and \ref{CO_exc}.
+Once again, such choices of unoccupied states ensures convergence of the excitation spectrum in the presented range.
 
 The DOS reported in figure \ref{CO_exc} are obtained by adding a smearing parameter of $8\times 10^{-2}$ eV whereas in the inset shift is $5\times 10^{-3}$ eV.
 
