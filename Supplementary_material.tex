@@ -1,7 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage{latexsym}
 \usepackage{graphicx}
-\usepackage{amssymb,amsmath}
+\usepackage{amssymb,amsmath,url}
 \usepackage{mathtools,braket}
 \usepackage[english]{babel}
 \usepackage{caption}
@@ -57,8 +57,13 @@ The growth of the localized sector with the number of atoms of the molecule seem
 A simple interpretation of this fact may be provided by considering perturbatively the coupling term $\op V'=0$ in Eq.~19 of the paper.
 Indeed, larger molecules possess a high number of localized Kohn-Sham (KS) orbitals that span a wide energy range.
 A numerical evidence in support of this argument is presented in Fig. \ref{dos}, where the DOS of the KS (bound) orbitals of the Aflatoxin and $CO$ molecules are directly compared.
-In a simplified two-levels picture, in which $\op V'=0$, the KS empty orbitals $\psi_a$ coincide with the excitation modes defined in eq. (17) and the associated energy is parametrized as $\Omega_a=\epsilon_a-\epsilon_p$. In this case to the increase of the energy range spanned by the localized orbitals it directly corresponds a richer sector of localized excitations.
-When $\op V'$ is switched on the excitation modes are expressed as a combination of KS orbitals but the presence of a high number of localized orbitals allows for a rich sector of localized excitations, as confirmed by the results of Fig. \ref{exc-land}.
+
+In a simplified two-orbitals picture, in which $\op V'=0$, the KS empty orbitals $\psi_a$ coincide with the excitation modes defined in eq. (17) and the associated energy is given by $\Omega_a=\epsilon_a-\epsilon_p$.
+The increase of the KS DOS below the continuum threshold is therefore directly responsible of the increase of the number of localized excitations above IP.
+
+ Such a two-orbital picture is of course not valid anymore when the coupling $\op V'$ is switched on. Yet, by interpreting perturbatively the action of the coupling term the same arguments hold true; larger molecule seem to have higher rate of  localized excitations as their DOS of KS bound states is higher.
+
+ All the details of the calculations, the \textsl{Jupyter} notebooks of the data analysis of all the molecules considered in this study may be found at the URL~\url{https://github.com/luigigenovese/LR-nb/blob/master/POLARIZABILITY/nb_paper/LR_Analysis.ipynb}.
 
 \begin{figure}[h]
     \centering
