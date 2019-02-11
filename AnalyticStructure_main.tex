@@ -528,52 +528,59 @@ Thus we can conclude that all the states $\ket{\chi^a_p}$ and the $\ket{\phi^a_p
 continuum spectrum.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[!t]
-\begin{tikzpicture}[scale=0.78]
-% axes
-\draw[->] (0,0) -- (8,0);
-\draw[->] (0,0) -- (0,6);
-% orizontal lines
-\draw[dashed,thick,color=gray] (0,5) -- (2,5);
-\draw[very thick](2,5) -- (8,5);
-\draw[dashed,thick,color=gray] (0,3) -- (4,3);
-\draw[very thick] (4,3) -- (8,3);
-\draw[dashed,thick,color=gray] (0,1) -- (6,1);
-\draw[very thick] (6,1) -- (8,1);
-% % vertical lines
-\draw[dashed,very thin,color=black] (2,0) -- (2,5);
-\draw[dashed,very thin,color=black] (4,0) -- (4,3);
-\draw[dashed,very thin,color=black] (6,0) -- (6,1);
-% % threshold levels labels
-\node[left] at (0,5) {$p=h$};
-\node[left] at (0,3) {$p$};
-\node[left] at (0,1) {$p=1$};
-\node[below] at (2,0) {$|\eps_h|$};
-\node[below] at (4,0) {$|\eps_p|$};
-\node[below] at (6,0) {$|\eps_1|$};
-\node[below] at (4,-0.5) {excitation energy};
-% bars at thresholds
-%\foreach \Point in {(2,5),(4,3),(6,1)}{
-%   \node at \Point {{\textbar}};%$\times$};
-%}
-\draw[very thick] (2,4.9) -- (2,5.1);
-\draw[very thick] (4,2.9) -- (4,3.1);
-\draw[very thick] (6,0.9) -- (6,1.1);
-% dotted vertical lines
-%\draw[dotted,thick,color=black] (-0.2,3.6) -- (-0.2,4.4);
-%\draw[dotted,thick,color=black] (-0.2,1.6) -- (-0.2,2.4);
-% discrete excitations
-\foreach \Point in {(0.5,5),(1.0,5),(1.8,5),(0.8,3),(1.3,3),(1.8,3),(2.4,3),(2.8,3),(3.4,3),(3.8,3),(0.7,1),(1.5,1),(1.9,1),(2.6,1),(2.9,1),(3.5,1),(4.1,1),(4.7,1),(5.7,1)}{
-    \node at \Point {\textbullet};
-}
-\end{tikzpicture}
-\caption{\label{ExcitationLandscape} Excitation landscape. Excitations are split in horizontal lines according to the threshold levels $p$. Filled bullets refer to localized
-excitations whereas the thick black lines describe delocalized ones belonging a continuum spectrum.}
-\end{figure}
+% \begin{figure}[!t]
+% \begin{tikzpicture}[scale=0.78]
+% % axes
+% \draw[->] (0,0) -- (8,0);
+% \draw[->] (0,0) -- (0,6);
+% % orizontal lines
+% \draw[dashed,thick,color=gray] (0,5) -- (2,5);
+% \draw[very thick](2,5) -- (8,5);
+% \draw[dashed,thick,color=gray] (0,3) -- (4,3);
+% \draw[very thick] (4,3) -- (8,3);
+% \draw[dashed,thick,color=gray] (0,1) -- (6,1);
+% \draw[very thick] (6,1) -- (8,1);
+% % % vertical lines
+% \draw[dashed,very thin,color=black] (2,0) -- (2,5);
+% \draw[dashed,very thin,color=black] (4,0) -- (4,3);
+% \draw[dashed,very thin,color=black] (6,0) -- (6,1);
+% % % threshold levels labels
+% \node[left] at (0,5) {$p=h$};
+% \node[left] at (0,3) {$p$};
+% \node[left] at (0,1) {$p=1$};
+% \node[below] at (2,0) {$|\eps_h|$};
+% \node[below] at (4,0) {$|\eps_p|$};
+% \node[below] at (6,0) {$|\eps_1|$};
+% \node[below] at (4,-0.5) {excitation energy};
+% % bars at thresholds
+% %\foreach \Point in {(2,5),(4,3),(6,1)}{
+% %   \node at \Point {{\textbar}};%$\times$};
+% %}
+% \draw[very thick] (2,4.9) -- (2,5.1);
+% \draw[very thick] (4,2.9) -- (4,3.1);
+% \draw[very thick] (6,0.9) -- (6,1.1);
+% % dotted vertical lines
+% %\draw[dotted,thick,color=black] (-0.2,3.6) -- (-0.2,4.4);
+% %\draw[dotted,thick,color=black] (-0.2,1.6) -- (-0.2,2.4);
+% % discrete excitations
+% \foreach \Point in {(0.5,5),(1.0,5),(1.8,5),(0.8,3),(1.3,3),(1.8,3),(2.4,3),(2.8,3),(3.4,3),(3.8,3),(0.7,1),(1.5,1),(1.9,1),(2.6,1),(2.9,1),(3.5,1),(4.1,1),(4.7,1),(5.7,1)}{
+%     \node at \Point {\textbullet};
+% }
+% \end{tikzpicture}
+% \caption{\label{ExcitationLandscape} Excitation landscape. Excitations are split in horizontal lines according to the threshold levels $p$. Filled bullets refer to localized
+% excitations whereas the thick black lines describe delocalized ones belonging a continuum spectrum.}
+% \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{figure}[!t]
+\includegraphics[scale=0.12]{Fig3_ExcitationLandscape.eps}
+\caption{\label{ExcitationLandscape} Excitation landscape. Excitations are split in horizontal lines according to the threshold
+levels $p$. Filled bullets refer to localized excitations whereas the thick black lines describe delocalized ones belonging a
+continuum spectrum.}
+\end{figure}
+
 The susceptibility functional has therefore a peculiar analytic structure made of multiple threshold energies, one for each of the ionization potentials associated with the occupied states. If an excitation $\op E_a$ has an energy $\Omega_a < |\eps_a|$ with $\eps_a = \mathrm{max}\left(\eps_p\right)_{p\in a}$, it may belong to a discrete spectrum; otherwise it \emph{has} to belong to a continuum of states.
-The typical structure of the excitation landscape is depicted in figure \ref{ExcitationLandscape}, once again assuming that the perturbed potential $\op V'[\op E]$ gives rise to a bound state when applied to $\ket{\psi_p}$. Below the first ionization energy $|\eps_h|$ only localized excitations are present. Conversely, in the intermediate energy interval that extends from $|\eps_h|$ to the absolute value of the deepest occupied orbital, other discrete excitations may exist, and are embedded in a continuum of delocalized excitations. For energies higher than $|\eps_1|$ \emph{no localized} excitations are anymore possible,
+The typical structure of the excitation landscape is depicted in Fig.~\ref{ExcitationLandscape}, once again assuming that the perturbed potential $\op V'[\op E]$ gives rise to a bound state when applied to $\ket{\psi_p}$. Below the first ionization energy $|\eps_h|$ only localized excitations are present. Conversely, in the intermediate energy interval that extends from $|\eps_h|$ to the absolute value of the deepest occupied orbital, other discrete excitations may exist, and are embedded in a continuum of delocalized excitations. For energies higher than $|\eps_1|$ \emph{no localized} excitations are anymore possible,
 regardless of the particular behavior of $\op V'$: the excitation landscape in this region contains a continuum set of delocalized states.
 
 \section{Physical relevance of the excitation spectrum. A comparison among localized and continuum sectors}
@@ -683,10 +690,7 @@ In Fig.~\ref{co_AlphaExc} we show explicitly such a comparison for the $CO$ and 
 We notice that, in both the cases, a considerable number of pseudo-continuum excitations is required
 to find the correct result; the sector of the discrete excitations appears to be largely insufficient to express the
 reference fluctuation state.
-%In particular, in the case of $CO$, the contribution of localized excitations is even negligible w.r.t. the one coming from the continuum sector.
 In particular, in the case of $CO$, the complete excitation set is able to reproduce the reference value of $\alpha_{zz}$, but the contribution of localized sector is negligible w.r.t. the one coming from the continuum one. Instead, for the $C_{60}$, the localized sector provides a more significant contribution but a higher number of the psuedo-continuum excitations should be included in the sum of \eqref{sminus2} to satisfy the $S_{-2}$ sum-rule.
-
-
 
 \begin{figure}
 \centering
@@ -702,7 +706,6 @@ w.r.t the excitations considered in the integral of Eq.~\eqref{sminus2}. The ref
 horizontal red dashed line. The value of the IP energy is indicated by a vertical black dashed line. For each excitation energy, the values of the
 oscillator strengths $w^a_{zz}$ of Eq.~\eqref{sminus2} are also plotted. }
 \end{figure}
-
 
 \begin{table}
 \begin{tabular}{c|cc||cc}
@@ -720,14 +723,10 @@ come from the Localized Sector (LS) of the excitations, by focusing also on the 
 \label{alphaTable}
 \end{table}
 
-%This scenario can be also found for the other molecules presented in Table \ref{alphaTable};
-This scenario is confirmed by the results for the other molecules presented in Table \ref{alphaTable};
-varying the molecule size and symmetry does not modify the qualitative behavior of the excitation landscape (for further details
-about the dependence of the excitation landscape on the size of the molecule see the supplementary material). In addition the
-localized sector of the excitations alone is largely insufficient to express $\alpha_{ij}$.
-Such considerations are independent of the number of atoms of the molecule, as the range in $\omega$ needed to
-achieve satisfactory agreement is largely above the last valence ionization threshold, which is
-an intensive quantity.
+This scenario is confirmed by the results for the other molecules presented in Table \ref{alphaTable}; varying the molecule size
+and symmetry does not modify the qualitative behavior of the excitation landscape (see Supplementary Material at~\footnote{\texttt{URL insert by the publisher}} for further details about the dependence of the excitation landscape on the size of the molecule). 
+In addition the localized sector of the excitations alone is largely insufficient to express $\alpha_{ij}$. Such considerations 
+are independent of the number of atoms of the molecule, as the range in $\omega$ needed to achieve satisfactory agreement is largely above the last valence ionization threshold, which is an intensive quantity.
 
 Once again, this proves that, for any numerical treatment,  pseudo-continuum excitations are fundamental in view of a correct expression
 of the response density below IP.
